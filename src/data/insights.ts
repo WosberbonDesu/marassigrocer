@@ -1,0 +1,48 @@
+import { Insight } from "@/types";
+
+export const insights: Insight[] = [
+  {
+    id: "insight-1",
+    slug: "fmcg-export-checklist",
+    title: "The Complete FMCG Export Checklist for New Importers",
+    excerpt: "Everything you need to know before placing your first FMCG import order — from documentation to logistics.",
+    content: "Starting your FMCG import business requires careful planning. This guide covers the essential steps from market research to your first container delivery.\n\n## 1. Market Research\nUnderstand your local market demand, competitor landscape, and regulatory requirements before sourcing products.\n\n## 2. Supplier Selection\nChoose suppliers with export experience, proper certifications, and a track record in your target market.\n\n## 3. Documentation\nEnsure all required documents are in order: import license, product registrations, and compliance certificates.\n\n## 4. Logistics Planning\nDecide on Incoterms, shipping method (FCL vs LCL), and find a reliable freight forwarder.\n\n## 5. Quality Control\nEstablish quality standards and inspection protocols before shipping.",
+    tags: ["export", "guide", "beginner"],
+    publishedAt: "2025-01-15",
+    image: "/images/insights/export-checklist.jpg",
+    readTime: "8 min",
+  },
+  {
+    id: "insight-2",
+    slug: "private-label-packaging-guide",
+    title: "Private Label Packaging Guide: From Design to Shelf",
+    excerpt: "How to create packaging that sells — materials, regulations, and design tips for private label FMCG products.",
+    content: "Your packaging is your product's first impression. Here's how to get it right for private label FMCG products.\n\n## Material Selection\nChoose packaging materials based on product type, shelf life requirements, and destination market regulations.\n\n## Labeling Requirements\nEvery market has specific labeling requirements. Plan for multilingual labels if targeting multiple regions.\n\n## Design for the Shelf\nYour packaging must work at scale — consider how it looks on a crowded supermarket shelf.",
+    tags: ["private-label", "packaging", "guide"],
+    publishedAt: "2025-02-01",
+    image: "/images/insights/packaging-guide.jpg",
+    readTime: "6 min",
+  },
+  {
+    id: "insight-3",
+    slug: "shelf-life-cold-chain",
+    title: "Understanding Shelf Life & Cold Chain in FMCG Export",
+    excerpt: "Managing product freshness across international supply chains — shelf life, storage, and cold chain logistics.",
+    content: "Shelf life management is critical in FMCG export. Products must arrive at their destination with adequate remaining shelf life for retail sale.\n\n## Shelf Life Standards\nMost retailers require at least 60-70% of shelf life remaining at delivery. Plan your logistics accordingly.\n\n## Cold Chain Products\nDairy, juices, and other perishable products require reefer containers with temperature monitoring.\n\n## Storage Best Practices\nProper warehouse management ensures products maintain quality throughout the supply chain.",
+    tags: ["logistics", "cold-chain", "quality"],
+    publishedAt: "2025-02-20",
+    image: "/images/insights/cold-chain.jpg",
+    readTime: "5 min",
+  },
+  {
+    id: "insight-4",
+    slug: "choosing-incoterms",
+    title: "Choosing the Right Incoterms for FMCG Trade",
+    excerpt: "FOB, CIF, or EXW? A practical guide to selecting trade terms that protect your interests.",
+    content: "Incoterms define who pays for what in international trade. Choosing the right term affects your costs, risks, and responsibilities.\n\n## FOB (Free On Board)\nThe most common term in FMCG trade. Seller delivers goods onto the vessel; buyer arranges shipping.\n\n## CIF (Cost, Insurance & Freight)\nSeller covers shipping and insurance to destination port. Convenient for buyers who prefer turnkey pricing.\n\n## EXW (Ex Works)\nBuyer takes all responsibility from the seller's premises. Lowest price but highest buyer risk.",
+    tags: ["logistics", "incoterms", "guide"],
+    publishedAt: "2025-03-10",
+    image: "/images/insights/incoterms.jpg",
+    readTime: "7 min",
+  },
+];

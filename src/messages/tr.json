@@ -1,0 +1,377 @@
+{
+  "nav": {
+    "products": "Ürünler",
+    "privateLabel": "Özel Marka",
+    "howItWorks": "Nasıl Çalışır",
+    "logistics": "Lojistik & Belgeler",
+    "markets": "Pazarlar",
+    "company": "Hakkımızda",
+    "insights": "İçerikler",
+    "contact": "İletişim",
+    "requestQuote": "Teklif İste",
+    "downloadCatalog": "Katalog İndir"
+  },
+  "hero": {
+    "title": "FMCG İhracat & Özel Marka",
+    "subtitle": "Tedarik, karma konteyner, dokümantasyon, küresel teslimat",
+    "cta1": "Teklif İste",
+    "cta2": "Katalog İndir"
+  },
+  "proofBar": {
+    "since": "1996'dan Beri",
+    "countries": "50+ Ülke",
+    "products": "10.000+ Ürün",
+    "warehouse": "Depo & Lojistik Merkezi"
+  },
+  "whatWeDo": {
+    "title": "Ne Yapıyoruz",
+    "subtitle": "Küresel alıcılar için uçtan uca FMCG ihracat çözümleri",
+    "sourcing": {
+      "title": "Tedarik & Satın Alma",
+      "description": "Süt ürünleri, atıştırmalıklar, içecekler, temizlik ürünleri ve daha fazlasını kapsayan çok kaynaklı tedarik ağı."
+    },
+    "privateLabel": {
+      "title": "Özel Marka",
+      "description": "Sizin markanız, bizim üretim ağımız. Formülasyondan ambalaja kadar üretimi biz yönetiyoruz."
+    },
+    "logistics": {
+      "title": "Lojistik & Dokümantasyon",
+      "description": "Karma konteyner konsolidasyonu, tam dokümantasyon desteği ve küresel sevkiyat kapsamı."
+    }
+  },
+  "topCategories": {
+    "title": "Popüler Kategoriler",
+    "subtitle": "En çok talep edilen ürün kategorilerimize göz atın",
+    "viewAll": "Tüm Ürünleri Gör"
+  },
+  "howItWorks": {
+    "title": "Nasıl Çalışır",
+    "subtitle": "Talepten teslimata 5 basit adımda",
+    "steps": {
+      "step1": {
+        "title": "Teklif Talebi Gönder",
+        "description": "Hedef pazarınızı, ürün kategorilerinizi ve hacim gereksinimlerinizi bize bildirin."
+      },
+      "step2": {
+        "title": "Teklif Al",
+        "description": "Ekibimiz 24-48 saat içinde detaylı teklif hazırlar."
+      },
+      "step3": {
+        "title": "Onayla & Tedarik Et",
+        "description": "Onaylandıktan sonra siparişinizi tedarik edip konsolide ediyoruz."
+      },
+      "step4": {
+        "title": "Kalite & Yükleme",
+        "description": "Tam kalite kontrol denetimleriyle denetimli yükleme."
+      },
+      "step5": {
+        "title": "Sevk & Teslimat",
+        "description": "Eksiksiz dokümantasyon, sevkiyat ve satış sonrası destek."
+      }
+    }
+  },
+  "whyMarassi": {
+    "title": "Neden Marassi",
+    "subtitle": "Ciddi FMCG alıcıları için inşa edildi",
+    "items": {
+      "warehouse": {
+        "title": "10.000m² Depo",
+        "description": "Konsolidasyon ve depolama için özel depo tesisleri."
+      },
+      "network": {
+        "title": "Fabrika Ağı",
+        "description": "Birden fazla menşe ülkedeki 200+ üreticiyle doğrudan ilişkiler."
+      },
+      "compliance": {
+        "title": "Uyum Desteği",
+        "description": "Hedef pazarınız için tam dokümantasyon ve mevzuat uyumu."
+      },
+      "mixed": {
+        "title": "Karma Konteynerler",
+        "description": "Birden fazla ürünü tek konteyner sevkiyatında birleştirin."
+      }
+    }
+  },
+  "featuredProducts": {
+    "title": "Öne Çıkan Ürünler",
+    "subtitle": "Kataloğumuzdan en çok talep edilen FMCG ürünleri",
+    "viewAll": "Tüm Ürünleri Gör"
+  },
+  "ctaBand": {
+    "title": "Hedef pazarınızı bize bildirin",
+    "subtitle": "Sonraki konteyneriniz için rekabetçi teklif alın",
+    "cta": "Teklif Al"
+  },
+  "products": {
+    "title": "Ürün Bulucu",
+    "subtitle": "Ürünlere göz atın ve teklif listenize ekleyin",
+    "filters": {
+      "category": "Kategori",
+      "brand": "Marka",
+      "origin": "Menşe",
+      "packaging": "Ambalaj",
+      "availability": "Stok Durumu",
+      "allCategories": "Tüm Kategoriler",
+      "allBrands": "Tüm Markalar",
+      "allOrigins": "Tüm Menşeler",
+      "inStock": "Stokta",
+      "onRequest": "Talep Üzerine",
+      "clearFilters": "Filtreleri Temizle"
+    },
+    "card": {
+      "addToRfq": "Teklife Ekle",
+      "addedToRfq": "Eklendi",
+      "moq": "Min. Sipariş"
+    },
+    "detail": {
+      "overview": "Genel Bakış",
+      "specs": "Teknik Özellikler",
+      "documents": "Belgeler",
+      "requestQuote": "Bu Ürün İçin Teklif İste",
+      "addToRfq": "Teklif Listesine Ekle",
+      "origin": "Menşe",
+      "brand": "Marka",
+      "availability": "Stok Durumu",
+      "shelfLife": "Raf Ömrü",
+      "packaging": "Ambalaj",
+      "inStock": "Stokta",
+      "onRequest": "Talep Üzerine"
+    },
+    "noResults": "Filtrelerinize uygun ürün bulunamadı.",
+    "showing": "{count} ürün gösteriliyor"
+  },
+  "privateLabel": {
+    "title": "Özel Marka",
+    "headline": "Sizin Markanız, Bizim Üretim Ağımız",
+    "subtitle": "Konseptten rafa — özel markanız için formülasyon, üretim ve ambalajı biz yönetiyoruz.",
+    "process": {
+      "title": "Nasıl Çalışır",
+      "step1": { "title": "Bilgilendirme & Konsept", "description": "Ürün fikrinizi, hedef pazarınızı ve marka gereksinimlerinizi paylaşın." },
+      "step2": { "title": "Formülasyon & Numune", "description": "Fabrika ortaklarımızla ürün numuneleri geliştiriyoruz." },
+      "step3": { "title": "Ambalaj & Tasarım", "description": "Ambalaj formatınızı seçin ve marka görsellerinizi sağlayın." },
+      "step4": { "title": "Üretim & Teslimat", "description": "Kalite kontrolü ve sevkiyat ile tam üretim." }
+    },
+    "packaging": {
+      "title": "Ambalaj Seçenekleri",
+      "subtitle": "Markanız için esnek ambalaj çözümleri"
+    },
+    "moq": {
+      "title": "Min. Sipariş & Teslim Süreleri",
+      "subtitle": "Özel marka siparişleri için tipik aralıklar",
+      "moqRange": "5.000 - 50.000 adet",
+      "leadTime": "8 - 16 hafta",
+      "sampling": "2 - 4 hafta"
+    },
+    "form": {
+      "title": "Özel Marka Projenizi Başlatın",
+      "targetCountry": "Hedef Ülke / Pazar",
+      "productCategory": "Ürün Kategorisi",
+      "expectedQuantity": "Beklenen Miktar",
+      "packagingLanguage": "Ambalaj Dili",
+      "targetPriceRange": "Hedef Fiyat Aralığı (isteğe bağlı)",
+      "timeline": "Zaman Çizelgesi",
+      "notes": "Ek Notlar",
+      "fileUpload": "Referans Dosyaları Yükle (logo, ambalaj)",
+      "submit": "Talep Gönder"
+    }
+  },
+  "howItWorksPage": {
+    "title": "Nasıl Çalışır",
+    "subtitle": "İlk talepten teslimata şeffaf bir süreç",
+    "steps": {
+      "step1": {
+        "title": "Teklif Talebi",
+        "description": "Hedef pazar, ürün kategorileri, hacim ve tercih ettiğiniz sevkiyat koşullarıyla talebinizi gönderin.",
+        "fromYou": ["İlgilendiğiniz ürün kategorileri", "Hedef ülke / pazar", "Tahmini hacim (konteyner)", "İletişim bilgileri"]
+      },
+      "step2": {
+        "title": "Teklif & Onay",
+        "description": "Ekibimiz talebinizi inceleyerek 24-48 saat içinde detaylı teklif hazırlar.",
+        "fromYou": ["Seçilen ürünlerin onayı", "Tercih edilen ödeme koşulları", "Kesin miktarlar"]
+      },
+      "step3": {
+        "title": "Tedarik & Konsolidasyon",
+        "description": "Ağımızdan ürünleri tedarik edip depo tesislerimizde konsolide ediyoruz.",
+        "fromYou": ["Son dakika ürün değişiklikleri", "Sevkiyat tercihi (FCL/LCL)"]
+      },
+      "step4": {
+        "title": "Yükleme Denetimi",
+        "description": "Tesislerimizde tam fotoğraf dokümantasyonu ile kalite kontrolleri ve denetimli yükleme.",
+        "fromYou": ["Özel yükleme talimatları (varsa)"]
+      },
+      "step5": {
+        "title": "Sevkiyat & Dokümantasyon",
+        "description": "Eksiksiz belge seti hazırlanır: Ticari Fatura, Çeki Listesi, Menşe Şahadetnamesi, Konşimento ve daha fazlası.",
+        "fromYou": ["Alıcı bilgileri", "Belirli belge gereksinimleri"]
+      },
+      "step6": {
+        "title": "Teslimat & Satış Sonrası",
+        "description": "Kargo takibi, varış koordinasyonu ve satış sonrası talep süreci desteği.",
+        "fromYou": ["Varış onayı", "Sevkiyat kalitesi hakkında geri bildirim"]
+      }
+    },
+    "whatWeNeed": "Sizden ihtiyacımız olan"
+  },
+  "logistics": {
+    "title": "Lojistik & Dokümantasyon",
+    "subtitle": "Küresel ticaret için kapsamlı sevkiyat ve uyum desteği",
+    "incoterms": {
+      "title": "Incoterms",
+      "subtitle": "Tüm önemli ticaret koşullarıyla çalışıyoruz",
+      "fob": { "title": "FOB", "description": "Free On Board — satıcı malları gemiye teslim eder. Alıcı bu noktadan itibaren sevkiyat masraflarını ve riski üstlenir." },
+      "cif": { "title": "CIF", "description": "Cost, Insurance & Freight — satıcı varış limanına kadar masrafları ve sigortayı karşılar." },
+      "exw": { "title": "EXW", "description": "Ex Works — alıcı malları satıcının tesisinden alır ve tüm masrafları ve riskleri üstlenir." }
+    },
+    "shipping": {
+      "title": "Sevkiyat Türleri",
+      "fcl": { "title": "FCL (Tam Konteyner)", "description": "Büyük siparişler için özel 20' veya 40' konteynerler." },
+      "lcl": { "title": "LCL (Parsiyel)", "description": "Daha küçük sevkiyatlar için paylaşımlı konteyner alanı." },
+      "reefer": { "title": "Soğutmalı Konteynerler", "description": "Bozulabilir FMCG ürünleri için sıcaklık kontrollü konteynerler." }
+    },
+    "documents": {
+      "title": "Dokümantasyon",
+      "subtitle": "Her sevkiyat için eksiksiz belge seti hazırlanır",
+      "list": [
+        "Ticari Fatura",
+        "Çeki Listesi",
+        "Menşe Şahadetnamesi",
+        "Konşimento",
+        "Analiz Sertifikası",
+        "Sağlık Sertifikası",
+        "Bitki Sağlık Sertifikası",
+        "Sigorta Sertifikası"
+      ]
+    },
+    "faq": {
+      "title": "Sıkça Sorulan Sorular"
+    }
+  },
+  "markets": {
+    "title": "Hizmet Verdiğimiz Pazarlar",
+    "subtitle": "Başlıca küresel bölgelerde deneyim",
+    "popularCategories": "Popüler Kategoriler",
+    "regulatoryNotes": "Mevzuat Notları",
+    "viewDetails": "Detayları Gör"
+  },
+  "company": {
+    "title": "Marassi Group Hakkında",
+    "subtitle": "1996'dan beri güvenilir FMCG ihracat ortağı — Türkiye & Mısır'dan 50+ ülkeye 10.000+ ürün",
+    "capabilities": {
+      "title": "Yeteneklerimiz",
+      "warehouse": { "title": "Depo & Depolama", "description": "Konsolidasyon ve envanter yönetimi için 10.000m² depo tesisleri." },
+      "network": { "title": "Tedarik Ağı", "description": "Türkiye, Avrupa ve Asya genelinde 200+ üreticiyle ortaklıklar." },
+      "quality": { "title": "Kalite Güvence", "description": "Fabrika denetiminden sevkiyat öncesi kontrollere kadar titiz kalite süreçleri." },
+      "compliance": { "title": "Uyum", "description": "45+ hedef ülke için dokümantasyon ve mevzuat uzmanlığı." }
+    },
+    "offices": {
+      "title": "Ofislerimiz"
+    }
+  },
+  "insights": {
+    "title": "İçerikler & Rehberler",
+    "subtitle": "FMCG ithalatçıları ve distribütörler için uzman kaynaklar",
+    "readMore": "Devamını Oku",
+    "readTime": "{time} okuma",
+    "allPosts": "Tüm Yazılar",
+    "backToInsights": "İçeriklere Dön"
+  },
+  "contact": {
+    "title": "Bize Ulaşın",
+    "subtitle": "Satış ekibimizle iletişime geçin",
+    "form": {
+      "name": "Ad Soyad",
+      "email": "E-posta Adresi",
+      "phone": "Telefon / WhatsApp",
+      "company": "Şirket Adı",
+      "country": "Ülke",
+      "buyerType": "Alıcı Tipi",
+      "message": "Mesaj",
+      "submit": "Mesaj Gönder",
+      "success": "Mesajınız gönderildi! Ekibimiz 24 saat içinde size dönüş yapacaktır."
+    },
+    "whatsapp": "WhatsApp ile Yazın",
+    "offices": "Ofislerimiz"
+  },
+  "rfqDrawer": {
+    "title": "Teklif İste",
+    "quickRfq": "Hızlı Teklif",
+    "rfqList": "Teklif Listesi",
+    "emptyList": "Henüz ürün eklenmedi. Kataloğumuza göz atarak ürün ekleyin.",
+    "steps": {
+      "interest": "İlgi Alanı",
+      "details": "Detaylar",
+      "contact": "İletişim"
+    },
+    "form": {
+      "country": "Ülkeniz",
+      "categories": "İlgilendiğiniz Kategoriler",
+      "containerEstimate": "Konteyner Boyutu Tahmini",
+      "20ft": "20' Konteyner",
+      "40ft": "40' Konteyner",
+      "notSure": "Emin Değilim",
+      "targetPrice": "Hedef Fiyat Aralığı (isteğe bağlı)",
+      "notes": "Ek Notlar",
+      "name": "Ad Soyad",
+      "email": "E-posta Adresi",
+      "phone": "Telefon / WhatsApp",
+      "company": "Şirket Adı",
+      "buyerType": "Alıcı Tipi",
+      "distributor": "Distribütör / Toptancı",
+      "retail": "Süpermarket / Perakende Alıcı",
+      "smallBusiness": "Küçük İşletme İthalatçısı",
+      "brandOwner": "Marka Sahibi (Özel Marka)",
+      "partner": "B2B İş Ortağı",
+      "submit": "Teklif Gönder",
+      "submitting": "Gönderiliyor...",
+      "success": "Teklif talebiniz başarıyla gönderildi! 24-48 saat içinde size dönüş yapacağız."
+    },
+    "items": {
+      "quantity": "Adet",
+      "remove": "Kaldır",
+      "total": "Teklif listenizde {count} ürün"
+    }
+  },
+  "catalogModal": {
+    "title": "Kataloğumuzu İndirin",
+    "subtitle": "Fiyat aralıklı eksiksiz ürün kataloğumuzu alın",
+    "form": {
+      "email": "E-posta Adresi",
+      "company": "Şirket Adı",
+      "country": "Ülke",
+      "buyerType": "Alıcı Tipi",
+      "submit": "Katalog İndir",
+      "success": "İndirme başlıyor! Kataloğu e-postanıza da gönderdik."
+    }
+  },
+  "footer": {
+    "company": "Şirket",
+    "products": "Ürünler",
+    "resources": "Kaynaklar",
+    "contact": "İletişim",
+    "about": "Hakkımızda",
+    "capabilities": "Yetenekler",
+    "careers": "Kariyer",
+    "allProducts": "Tüm Ürünler",
+    "categories": "Kategoriler",
+    "brands": "Markalar",
+    "howItWorks": "Nasıl Çalışır",
+    "logisticsDocs": "Lojistik & Belgeler",
+    "blog": "İçerikler & Rehberler",
+    "faq": "SSS",
+    "getInTouch": "İletişime Geçin",
+    "whatsapp": "WhatsApp",
+    "copyright": "Marassi Group. Tüm hakları saklıdır.",
+    "tagline": "FMCG İhracat & Özel Marka Çözümleri"
+  },
+  "common": {
+    "learnMore": "Daha Fazla",
+    "viewAll": "Tümünü Gör",
+    "back": "Geri",
+    "next": "İleri",
+    "previous": "Önceki",
+    "close": "Kapat",
+    "search": "Ara",
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+  }
+}
