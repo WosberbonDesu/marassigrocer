@@ -1,57 +1,178 @@
-"use client";
-
 import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
-import { ArrowRight, Globe } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Globe, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { PageHero } from "@/components/shared/page-hero";
-import { markets } from "@/data/markets";
+import { db } from "@/lib/db";
 
-export default function MarketsPage() {
-  const t = useTranslations("markets");
-  const locale = useLocale();
+export const metadata = {
+  title: "Export Markets",
+  description:
+    "Marassi Group serves clients in 50+ countries across GCC, MENA, Africa, Europe and beyond.",
+};
+
+export default async function MarketsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  let markets: Array<{
+    id: string;
+    name: string;
+    slug: string;
+    region: string | null;
+    countries: string[];
+    description: string | null;
+    image: string | null;
+    featuredCategories: string[];
+  }> = [];
+  try {
+    markets = await db.market.findMany({
+      where: { active: true },
+      orderBy: [{ order: "asc" }, { name: "asc" }],
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        region: true,
+        countries: true,
+        description: true,
+        image: true,
+        featuredCategories: true,
+      },
+    });
+  } catch {
+    markets = [];
+  }
+
+  const totalCountries = new Set(markets.flatMap((m) => m.countries)).size;
 
   return (
     <div>
       <PageHero
-        title={t("title")}
-        subtitle={t("subtitle")}
+        title="Export Markets"
+        subtitle="50+ countries served — GCC, MENA, Africa, Europe and beyond. Direct factory sourcing meets reliable export logistics."
         locale={locale}
-        breadcrumbs={[{ label: "Markets" }]}
+        breadcrumbs={[{ label: "Export Markets" }]}
       />
 
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {markets.map((market) => (
-              <Link
-                key={market.id}
-                href={`/${locale}/markets/${market.slug}`}
-                className="group flex flex-col rounded-2xl border bg-card p-6 transition-all hover:shadow-lg hover:border-[oklch(0.76_0.11_80)]/30"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[oklch(0.76_0.11_80)]/10 text-[oklch(0.76_0.11_80)]">
-                  <Globe className="h-6 w-6" />
-                </div>
-                <h3 className="font-[family-name:var(--font-playfair)] text-lg font-semibold group-hover:text-[oklch(0.76_0.11_80)]">
-                  {market.name}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {market.description.slice(0, 120)}...
-                </p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {market.featuredCategories.slice(0, 3).map((cat) => (
-                    <Badge key={cat} variant="secondary" className="text-xs">
-                      {cat}
-                    </Badge>
-                  ))}
-                </div>
-                <span className="mt-4 inline-flex items-center text-sm font-medium text-[oklch(0.76_0.11_80)]">
-                  {t("viewDetails")}
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </span>
-              </Link>
-            ))}
+      {/* Stats bar */}
+      <section className="border-b bg-muted/30 py-8">
+        <div className="mx-auto grid max-w-4xl grid-cols-3 gap-6 px-4 text-center sm:px-6 lg:px-8">
+          <div>
+            <p className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-primary">
+              50+
+            </p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
+              Countries Served
+            </p>
           </div>
+          <div>
+            <p className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-primary">
+              {markets.length || "—"}
+            </p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
+              Market Regions
+            </p>
+          </div>
+          <div>
+            <p className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-primary">
+              8+
+            </p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
+              Sourcing Countries
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {markets.length === 0 ? (
+            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed py-20 text-center">
+              <Globe className="h-12 w-12 text-muted-foreground/40" />
+              <h3 className="mt-4 text-lg font-semibold">Markets coming soon</h3>
+              <p className="mt-2 max-w-md text-sm text-muted-foreground">
+                Our team is finalizing the market list. For now, reach out to discuss any region — we likely already serve clients there.
+              </p>
+              <Link
+                href={`/${locale}/contact`}
+                className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+              >
+                Contact Export Team
+              </Link>
+            </div>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {markets.map((market) => (
+                <div
+                  key={market.id}
+                  className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition-all hover:shadow-lg hover:border-primary/30"
+                >
+                  {market.image && (
+                    <div className="relative h-40 w-full overflow-hidden bg-muted">
+                      <Image src={market.image} alt={market.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="mb-3 flex items-center gap-2">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                        <Globe className="h-5 w-5" />
+                      </div>
+                      {market.region && (
+                        <Badge variant="secondary" className="text-xs">{market.region}</Badge>
+                      )}
+                    </div>
+                    <h3 className="font-[family-name:var(--font-playfair)] text-lg font-semibold leading-snug group-hover:text-primary">
+                      {market.name}
+                    </h3>
+                    {market.description && (
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                        {market.description}
+                      </p>
+                    )}
+                    {market.countries.length > 0 && (
+                      <div className="mt-4 flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
+                        <MapPin className="h-3 w-3" />
+                        <span>{market.countries.slice(0, 5).join(", ")}</span>
+                        {market.countries.length > 5 && (
+                          <span className="font-medium">+{market.countries.length - 5} more</span>
+                        )}
+                      </div>
+                    )}
+                    {market.featuredCategories.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-1.5">
+                        {market.featuredCategories.slice(0, 3).map((c) => (
+                          <Badge key={c} variant="outline" className="text-xs">{c}</Badge>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-[oklch(0.20_0.02_80)] py-16 text-white">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold sm:text-4xl">
+            Don't see your market?
+          </h2>
+          <p className="mt-3 text-lg text-white/70">
+            We serve clients in {totalCountries > 0 ? `${totalCountries}+` : "50+"} countries — reach out for tailored sourcing & logistics.
+          </p>
+          <Link
+            href={`/${locale}/contact`}
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[oklch(0.62_0.14_30)] px-6 py-3 text-sm font-medium text-white hover:bg-[oklch(0.52_0.14_25)]"
+          >
+            Discuss Your Market
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </div>

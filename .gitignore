@@ -36,6 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local reference assets (not deployed — uploaded to Cloudinary instead)
+/pictures
+/docs
+
+# claude code local settings
+/.claude/settings.local.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

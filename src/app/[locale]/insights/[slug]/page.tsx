@@ -1,87 +1,112 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Calendar } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { insights } from "@/data/insights";
+import { PageHero } from "@/components/shared/page-hero";
+import { db } from "@/lib/db";
 
-export default function InsightDetailPage() {
-  const params = useParams();
-  const locale = useLocale();
-  const t = useTranslations("insights");
+type LocalizedString = { en?: string; tr?: string; ar?: string; ru?: string };
 
-  const post = insights.find((p) => p.slug === params.slug);
+function pick(record: LocalizedString | null | undefined, locale: string): string {
+  if (!record) return "";
+  return record[locale as keyof LocalizedString] || record.en || "";
+}
 
-  if (!post) {
-    return (
-      <div className="mx-auto max-w-7xl px-4 py-20 text-center">
-        <p className="text-muted-foreground">Article not found.</p>
-        <Button variant="outline" asChild className="mt-4">
-          <Link href={`/${locale}/insights`}>
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            {t("backToInsights")}
-          </Link>
-        </Button>
-      </div>
-    );
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  try {
+    const post = await db.blogPost.findUnique({ where: { slug } });
+    if (!post || post.status !== "PUBLISHED") return {};
+    const title = post.seoTitle || pick(post.title as LocalizedString, locale);
+    const description = post.seoDesc || pick(post.excerpt as LocalizedString, locale);
+    return {
+      title,
+      description,
+      openGraph: post.ogImage || post.coverImage
+        ? { title, description, images: [{ url: (post.ogImage || post.coverImage)! }] }
+        : { title, description },
+    };
+  } catch {
+    return {};
   }
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale, slug } = await params;
+  let post: Awaited<ReturnType<typeof db.blogPost.findUnique>> = null;
+  try {
+    post = await db.blogPost.findUnique({ where: { slug } });
+  } catch {
+    post = null;
+  }
+  if (!post || post.status !== "PUBLISHED") notFound();
+
+  const title = pick(post.title as LocalizedString, locale);
+  const content = pick(post.content as LocalizedString, locale);
+  const excerpt = pick(post.excerpt as LocalizedString, locale);
+  const isRtl = locale === "ar";
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-      <Link
-        href={`/${locale}/insights`}
-        className="mb-6 inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
-      >
-        <ArrowLeft className="mr-1.5 h-4 w-4" />
-        {t("backToInsights")}
-      </Link>
+    <div>
+      <PageHero
+        title={title}
+        locale={locale}
+        breadcrumbs={[
+          { label: "Insights", href: `/${locale}/insights` },
+          { label: title },
+        ]}
+      />
+      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+          {post.publishedAt && (
+            <span className="flex items-center gap-1">
+              <Calendar className="h-3.5 w-3.5" />
+              {new Date(post.publishedAt).toLocaleDateString(locale, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </span>
+          )}
+          {post.author && <span>· By {post.author}</span>}
+        </div>
 
-      <div className="flex items-center gap-3 text-sm text-muted-foreground">
-        <span className="flex items-center gap-1">
-          <Calendar className="h-4 w-4" />
-          {new Date(post.publishedAt).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </span>
-        <span className="flex items-center gap-1">
-          <Clock className="h-4 w-4" />
-          {post.readTime}
-        </span>
-      </div>
+        {post.coverImage && (
+          <div className="relative mb-8 aspect-[16/9] overflow-hidden rounded-2xl">
+            <Image src={post.coverImage} alt={title} fill className="object-cover" priority sizes="(max-width: 768px) 100vw, 800px" />
+          </div>
+        )}
 
-      <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-        {post.title}
-      </h1>
+        {excerpt && (
+          <p className="mb-8 text-lg leading-relaxed text-muted-foreground">{excerpt}</p>
+        )}
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {post.tags.map((tag) => (
-          <Badge key={tag} variant="secondary">
-            {tag}
-          </Badge>
-        ))}
-      </div>
+        <div
+          className="prose prose-neutral dark:prose-invert max-w-none"
+          dir={isRtl ? "rtl" : "ltr"}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
 
-      <div className="prose mt-8 max-w-none">
-        {post.content.split("\n\n").map((block, i) => {
-          if (block.startsWith("## ")) {
-            return (
-              <h2 key={i} className="mt-8 text-xl font-semibold">
-                {block.replace("## ", "")}
-              </h2>
-            );
-          }
-          return (
-            <p key={i} className="mt-4 leading-relaxed text-muted-foreground">
-              {block}
-            </p>
-          );
-        })}
-      </div>
-    </article>
+        {post.tags.length > 0 && (
+          <div className="mt-12 flex flex-wrap items-center gap-2 border-t pt-6">
+            <span className="text-xs uppercase tracking-wider text-muted-foreground">Tags:</span>
+            {post.tags.map((tag) => (
+              <Badge key={tag} variant="secondary" className="text-xs">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        )}
+      </article>
+    </div>
   );
 }

@@ -13,6 +13,8 @@ interface Brand {
   logoPublicId?: string;
   origin?: string;
   description?: string;
+  seoTitle?: string;
+  seoDesc?: string;
 }
 
 export default function EditBrandPage({ params }: { params: Promise<{ id: string }> }) {
@@ -55,6 +57,8 @@ export default function EditBrandPage({ params }: { params: Promise<{ id: string
             slug: brand.slug,
             origin: brand.origin,
             description: brand.description,
+            seoTitle: brand.seoTitle,
+            seoDesc: brand.seoDesc,
             logo: brand.logo && brand.logoPublicId
               ? { url: brand.logo, publicId: brand.logoPublicId }
               : null,

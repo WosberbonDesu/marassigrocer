@@ -28,16 +28,16 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={`/${locale}/products/${product.slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition-all duration-200 hover:-translate-y-0.5 hover:border-[oklch(0.76_0.11_80)]/40 hover:shadow-lg hover:shadow-black/5"
+      className="group flex flex-col overflow-hidden rounded-2xl border bg-neutral-50 transition-all duration-200 hover:-translate-y-0.5 hover:border-[oklch(0.72_0.11_80)]/40 hover:shadow-lg hover:shadow-black/5"
     >
       {/* Image with badge overlay */}
-      <div className="relative h-48 bg-muted">
+      <div className="relative h-52 bg-neutral-50">
         {product.images[0] ? (
           <Image
             src={product.images[0]}
             alt={product.name}
             fill
-            className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+            className="object-contain p-5 transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         ) : (
@@ -65,7 +65,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </p>
 
         {/* Name — max 2 lines */}
-        <h3 className="mt-1 line-clamp-2 text-sm font-semibold leading-snug group-hover:text-[oklch(0.62_0.12_75)] transition-colors">
+        <h3 className="mt-1 line-clamp-2 text-sm font-semibold leading-snug group-hover:text-[oklch(0.60_0.12_75)] transition-colors">
           {product.name}
         </h3>
 
@@ -77,7 +77,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </p>
           )}
           {product.moqHint && (
-            <p className="shrink-0 text-[11px] font-semibold text-[oklch(0.62_0.12_75)]">
+            <p className="shrink-0 text-[11px] font-semibold text-[oklch(0.60_0.12_75)]">
               {product.moqHint}
             </p>
           )}
@@ -90,7 +90,7 @@ export function ProductCard({ product }: ProductCardProps) {
             className={`w-full text-xs font-semibold transition-all ${
               isAdded
                 ? "bg-muted text-muted-foreground"
-                : "bg-[oklch(0.76_0.11_80)] text-[oklch(0.12_0.01_60)] hover:bg-[oklch(0.70_0.11_80)]"
+                : "bg-[oklch(0.72_0.11_80)] text-white hover:bg-[oklch(0.66_0.12_78)]"
             }`}
             onClick={handleAdd}
             disabled={isAdded}

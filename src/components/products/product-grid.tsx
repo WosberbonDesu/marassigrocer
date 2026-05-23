@@ -2,15 +2,16 @@
 
 import { SearchX } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProductCard } from "./product-card";
+import { ProductB2BCard } from "./product-b2b-card";
 import { Product } from "@/types";
 
 interface ProductGridProps {
   products: Product[];
+  showPricesPublicly?: boolean;
   onClear?: () => void;
 }
 
-export function ProductGrid({ products, onClear }: ProductGridProps) {
+export function ProductGrid({ products, showPricesPublicly = false, onClear }: ProductGridProps) {
   if (products.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed py-20 text-center">
@@ -36,9 +37,13 @@ export function ProductGrid({ products, onClear }: ProductGridProps) {
   }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="space-y-3">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductB2BCard
+          key={product.id}
+          product={product}
+          showPricesPublicly={showPricesPublicly}
+        />
       ))}
     </div>
   );

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { Menu, Globe } from "lucide-react";
+import { useLocale } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
+import { Menu, Download, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import {
@@ -14,14 +14,32 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRFQStore } from "@/stores/rfq-store";
+import { CustomerSessionBadge } from "@/components/layout/customer-session-badge";
+import { HeaderSearch } from "@/components/layout/header-search";
 
-const navLinks = [
-  { href: "/products", key: "products" },
-  { href: "/private-label", key: "privateLabel" },
-  { href: "/how-it-works", key: "howItWorks" },
-  { href: "/markets", key: "markets" },
-  { href: "/company", key: "company" },
-  { href: "/contact", key: "contact" },
+const categoryLinks = [
+  { href: "/products/list?category=biscuits", label: "Biscuits & Confectionery" },
+  { href: "/products/list?category=dairy", label: "Dairy Products" },
+  { href: "/products/list?category=beverages", label: "Beverages" },
+  { href: "/products/list?category=snacks-confectionery", label: "Snacks" },
+  { href: "/products/list?category=oils-condiments", label: "Sauces & Condiments" },
+  { href: "/products/list?category=canned-jarred-foods", label: "Canned & Dry Foods" },
+];
+
+const exportServiceLinks = [
+  { href: "/private-label", label: "Private Label" },
+  { href: "/mixed-container", label: "Mixed Container" },
+  { href: "/logistics", label: "Logistics & Shipping" },
+  { href: "/how-it-works", label: "Sourcing & Procurement" },
+  { href: "/logistics", label: "Export Documentation" },
+];
+
+const primaryLinks = [
+  { href: "/", label: "Home" },
+  { href: "/products", label: "Products" },
+  { href: "/private-label", label: "Private Label" },
+  { href: "/company", label: "About" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 const localeLabels: Record<string, string> = {
@@ -29,24 +47,25 @@ const localeLabels: Record<string, string> = {
   tr: "Türkçe",
   ar: "العربية",
   ru: "Русский",
+  es: "Español",
+  de: "Deutsch",
+  it: "Italiano",
+  pt: "Português",
 };
 
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+}
+
 export function Navbar() {
-  const t = useTranslations("nav");
   const locale = useLocale();
-  const openDrawer = useRFQStore((s) => s.openDrawer);
+  const pathname = usePathname();
   const itemCount = useRFQStore((s) => s.items.length);
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const switchLocale = (newLocale: string) => {
-    const allLocales = ["en", "tr", "ar", "ru"];
+    const allLocales = ["en", "tr", "ar", "ru", "es", "de", "it", "pt"];
     const parts = window.location.pathname.split("/").filter(Boolean);
     if (allLocales.includes(parts[0])) {
       parts[0] = newLocale;
@@ -56,106 +75,204 @@ export function Navbar() {
     window.location.href = "/" + parts.join("/");
   };
 
+  const homeActive = isActive(pathname, "/");
+  const productsActive = isActive(pathname, "/products");
+  const privateActive = isActive(pathname, "/private-label");
+  const aboutActive = isActive(pathname, "/company");
+  const contactActive = isActive(pathname, "/contact");
+  const categoriesActive = false;
+  const exportActive =
+    isActive(pathname, "/mixed-container") ||
+    isActive(pathname, "/logistics") ||
+    isActive(pathname, "/how-it-works");
+
+  const linkBase =
+    "relative px-2 py-5 text-[13px] font-medium whitespace-nowrap transition-colors xl:px-2.5 xl:text-sm";
+  const linkIdle = "text-white/70 hover:text-white";
+  const linkActive = "text-[oklch(0.78_0.12_80)]";
+  const underline =
+    "after:absolute after:bottom-3 after:left-1/2 after:h-[2px] after:w-6 after:-translate-x-1/2 after:rounded-full after:bg-[oklch(0.78_0.12_80)]";
+
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-[oklch(0.12_0.01_60)]/95 backdrop-blur-md border-b border-[oklch(0.76_0.11_80)]/10 shadow-sm"
-          : "bg-[oklch(0.12_0.01_60)]"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full bg-[oklch(0.18_0.02_80)] text-white shadow-[0_1px_0_rgba(255,255,255,0.06)]">
+      <div className="mx-auto flex h-20 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:gap-4 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src="/images/marassilogo.jpeg"
             alt="Marassi Group"
             width={40}
             height={40}
-            className="h-9 w-9 object-contain"
+            className="h-10 w-10 rounded-md object-contain"
             priority
           />
-          <div className="flex flex-col leading-none">
-            <span className="text-lg font-bold tracking-tight text-[oklch(0.76_0.11_80)]">
+          <div className="hidden flex-col leading-none sm:flex lg:hidden xl:flex">
+            <span className="font-[family-name:var(--font-playfair)] text-base font-bold tracking-tight text-white xl:text-lg">
               MARASSI
             </span>
-            <span className="text-[10px] font-medium tracking-widest text-[oklch(0.76_0.11_80)]/60">
+            <span className="text-[9px] font-medium tracking-[0.28em] text-[oklch(0.78_0.12_80)] xl:text-[10px]">
               GROUP
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden items-center gap-1 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.key}
-              href={link.href}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-[oklch(0.76_0.11_80)]"
-            >
-              {t(link.key)}
-            </Link>
-          ))}
-        </nav>
+        {/* Search — only at xl */}
+        <div className="hidden xl:block">
+          <HeaderSearch variant="dark" />
+        </div>
 
-        {/* Right side */}
-        <div className="flex items-center gap-2">
-          {/* Locale Switcher */}
+        {/* Desktop Nav */}
+        <nav className="hidden flex-1 items-center justify-center gap-0 lg:flex">
+          <Link
+            href="/"
+            className={`${linkBase} ${homeActive ? `${linkActive} ${underline}` : linkIdle}`}
+          >
+            Home
+          </Link>
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="hidden text-white/70 hover:text-[oklch(0.76_0.11_80)] hover:bg-white/10 sm:flex">
-                <Globe className="h-4 w-4" />
-              </Button>
+              <button
+                className={`${linkBase} flex items-center gap-0.5 outline-none ${
+                  categoriesActive ? `${linkActive} ${underline}` : linkIdle
+                }`}
+              >
+                Categories
+                <ChevronDown className="h-3 w-3 opacity-70" />
+              </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {Object.entries(localeLabels).map(([loc, label]) => (
-                <DropdownMenuItem
-                  key={loc}
-                  onClick={() => switchLocale(loc)}
-                  className={locale === loc ? "bg-accent" : ""}
-                >
-                  {label}
+            <DropdownMenuContent align="start" className="w-64">
+              <DropdownMenuItem asChild className="font-semibold">
+                <Link href="/products">All Categories</Link>
+              </DropdownMenuItem>
+              {categoryLinks.map((c) => (
+                <DropdownMenuItem key={c.label} asChild>
+                  <Link href={c.href}>{c.label}</Link>
+                </DropdownMenuItem>
+              ))}
+              <DropdownMenuItem asChild className="font-semibold text-[oklch(0.60_0.12_75)]">
+                <Link href="/products">View All Categories →</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Link
+            href="/products"
+            className={`${linkBase} ${productsActive ? `${linkActive} ${underline}` : linkIdle}`}
+          >
+            Products
+          </Link>
+          <Link
+            href="/private-label"
+            className={`${linkBase} ${privateActive ? `${linkActive} ${underline}` : linkIdle}`}
+          >
+            Private Label
+          </Link>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className={`${linkBase} flex items-center gap-0.5 outline-none ${
+                  exportActive ? `${linkActive} ${underline}` : linkIdle
+                }`}
+              >
+                Export Services
+                <ChevronDown className="h-3 w-3 opacity-70" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56">
+              {exportServiceLinks.map((s) => (
+                <DropdownMenuItem key={s.label} asChild>
+                  <Link href={s.href}>{s.label}</Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* RFQ Button */}
-          <Button
-            onClick={() => openDrawer()}
-            className="hidden bg-[oklch(0.76_0.11_80)] text-[oklch(0.12_0.01_60)] hover:bg-[oklch(0.82_0.11_80)] sm:inline-flex"
-            size="sm"
+          <Link
+            href="/company"
+            className={`${linkBase} ${aboutActive ? `${linkActive} ${underline}` : linkIdle}`}
           >
-            {t("requestQuote")}
-            {itemCount > 0 && (
-              <span className="ml-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary-foreground text-xs font-bold text-primary">
-                {itemCount}
-              </span>
-            )}
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className={`${linkBase} ${contactActive ? `${linkActive} ${underline}` : linkIdle}`}
+          >
+            Contact
+          </Link>
+        </nav>
+
+        {/* Right side */}
+        <div className="flex shrink-0 items-center gap-2">
+          <CustomerSessionBadge variant="dark" />
+
+          {/* Download Catalog — gold outline (only xl) */}
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden h-10 shrink-0 border-[oklch(0.72_0.11_80)]/45 bg-transparent px-3.5 text-[13px] font-medium text-[oklch(0.82_0.11_80)] hover:border-[oklch(0.72_0.11_80)] hover:bg-[oklch(0.72_0.11_80)]/12 hover:text-[oklch(0.82_0.11_80)] xl:inline-flex"
+          >
+            <Download className="mr-1.5 h-4 w-4" />
+            Download
           </Button>
 
-          {/* Mobile Menu */}
+          {/* Request a Quote — coral */}
+          <Button
+            asChild
+            size="sm"
+            className="hidden h-10 shrink-0 bg-[oklch(0.66_0.16_35)] px-4 text-[13px] font-semibold text-white shadow-sm hover:bg-[oklch(0.60_0.17_35)] sm:inline-flex xl:px-5 xl:text-sm"
+          >
+            <Link href="/request-quote">
+              Request a Quote
+              {itemCount > 0 && (
+                <span className="ml-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-white/20 px-1 text-[11px] font-bold text-white">
+                  {itemCount}
+                </span>
+              )}
+            </Link>
+          </Button>
+
+          {/* Mobile menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white/70 hover:text-[oklch(0.76_0.11_80)] hover:bg-white/10 lg:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-9 w-9 text-white/80 hover:bg-white/10 hover:text-white lg:hidden"
+              >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="flex flex-col gap-4 pt-8">
-                {navLinks.map((link) => (
+              <div className="flex flex-col gap-1 pt-8">
+                {primaryLinks.map((l) => (
                   <Link
-                    key={link.key}
-                    href={link.href}
+                    key={l.label}
+                    href={l.href}
                     onClick={() => setMobileOpen(false)}
-                    className="rounded-lg px-3 py-2 text-lg font-medium text-foreground/80 transition-colors hover:bg-[oklch(0.76_0.11_80)]/10 hover:text-[oklch(0.76_0.11_80)]"
+                    className="rounded-lg px-3 py-2 text-base font-medium text-foreground/80 transition-colors hover:bg-[oklch(0.72_0.11_80)]/10 hover:text-[oklch(0.60_0.12_75)]"
                   >
-                    {t(link.key)}
+                    {l.label}
                   </Link>
                 ))}
-                <div className="my-2 border-t" />
-                <div className="flex gap-2">
+                <div className="my-3 border-t" />
+                <p className="px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  Categories
+                </p>
+                {categoryLinks.slice(0, 6).map((c) => (
+                  <Link
+                    key={c.label}
+                    href={c.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-lg px-3 py-1.5 text-sm text-foreground/70 transition-colors hover:bg-muted hover:text-foreground"
+                  >
+                    {c.label}
+                  </Link>
+                ))}
+                <div className="my-3 border-t" />
+                <div className="flex flex-wrap gap-1.5 px-1">
                   {Object.entries(localeLabels).map(([loc, label]) => (
                     <Button
                       key={loc}
@@ -171,18 +288,25 @@ export function Navbar() {
                   ))}
                 </div>
                 <Button
-                  onClick={() => {
-                    openDrawer();
-                    setMobileOpen(false);
-                  }}
-                  className="mt-2"
+                  variant="outline"
+                  className="mt-3 border-[oklch(0.72_0.11_80)] text-[oklch(0.60_0.12_75)] hover:bg-[oklch(0.72_0.11_80)]/10"
                 >
-                  {t("requestQuote")}
-                  {itemCount > 0 && (
-                    <span className="ml-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary-foreground text-xs font-bold text-primary">
-                      {itemCount}
-                    </span>
-                  )}
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Catalog
+                </Button>
+                <Button
+                  asChild
+                  onClick={() => setMobileOpen(false)}
+                  className="bg-[oklch(0.66_0.16_35)] text-white hover:bg-[oklch(0.60_0.17_35)]"
+                >
+                  <Link href="/request-quote">
+                    Request a Quote
+                    {itemCount > 0 && (
+                      <span className="ml-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-xs font-bold text-white">
+                        {itemCount}
+                      </span>
+                    )}
+                  </Link>
                 </Button>
               </div>
             </SheetContent>

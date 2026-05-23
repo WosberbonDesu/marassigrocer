@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { EXTRA_PRODUCTS, placeholderImage } from "./products-extra";
+import { seedAdminMock } from "./mock-admin";
 
 const db = new PrismaClient();
 
@@ -390,13 +392,16 @@ async function main() {
   ];
 
   let productCount = 0;
+  // ── Curated products (replace stub image paths with picsum placeholders) ──
   for (const p of productData) {
     const { categorySlug, brandSlug, ...rest } = p;
+    const images = [placeholderImage(rest.slug)];
     await db.product.upsert({
       where: { slug: rest.slug },
-      update: {},
+      update: { images },
       create: {
         ...rest,
+        images,
         availability: (rest as { availability?: string }).availability ?? "in_stock",
         specs: rest.specs ?? {},
         imagePublicIds: [],
@@ -406,7 +411,37 @@ async function main() {
     });
     productCount++;
   }
-  console.log(`✅ ${productCount} products created`);
+
+  // ── Extra products (products-extra.ts) ──
+  for (const p of EXTRA_PRODUCTS) {
+    const { categorySlug, brandSlug, ...rest } = p;
+    const categoryId = categories[categorySlug];
+    const brandId = brands[brandSlug];
+    if (!categoryId) {
+      console.warn(`⚠️ Skipping ${rest.slug} — unknown category ${categorySlug}`);
+      continue;
+    }
+    const images = [placeholderImage(rest.slug)];
+    await db.product.upsert({
+      where: { slug: rest.slug },
+      update: { images },
+      create: {
+        ...rest,
+        images,
+        availability: rest.availability ?? "in_stock",
+        specs: rest.specs ?? {},
+        imagePublicIds: [],
+        categoryId,
+        brandId: brandId ?? null,
+      },
+    });
+    productCount++;
+  }
+  console.log(`✅ ${productCount} products created (curated + extra)`);
+
+  // ── Admin panel mock data (advantages, markets, certificates, blog, promos, customers, RFQs, pages) ──
+  await seedAdminMock(db);
+
   console.log("🎉 Seed complete!");
 }
 

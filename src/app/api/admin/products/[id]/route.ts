@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { deleteFromCloudinary } from "@/lib/cloudinary";
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { id } = await params;
   const product = await db.product.findUnique({
     where: { id },
@@ -16,11 +16,17 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 }
 
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { id } = await params;
   try {
     const body = await req.json();
+    // Sync legacy `published` boolean with new `status` enum
+    if (body.status && body.published === undefined) {
+      body.published = body.status === "PUBLISHED";
+    } else if (body.published !== undefined && !body.status) {
+      body.status = body.published ? "PUBLISHED" : "DRAFT";
+    }
     const product = await db.product.update({
       where: { id },
       data: {
@@ -36,8 +42,8 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 }
 
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { id } = await params;
   const product = await db.product.findUnique({ where: { id } });
   if (!product) return NextResponse.json({ error: "Not found" }, { status: 404 });

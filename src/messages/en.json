@@ -1,7 +1,10 @@
 {
   "nav": {
     "products": "Products",
+    "quickOrder": "Quick Order",
+    "whyMarassi": "Why Marassi",
     "privateLabel": "Private Label",
+    "mixedContainer": "Mixed Container",
     "howItWorks": "How It Works",
     "logistics": "Logistics & Docs",
     "markets": "Markets",
@@ -12,16 +15,26 @@
     "downloadCatalog": "Download Catalog"
   },
   "hero": {
-    "title": "FMCG Export & Private Label",
-    "subtitle": "Sourcing, mixed containers, documentation, global delivery",
+    "title": "Global FMCG Export, Sourcing & Distribution Solutions",
+    "subtitle": "Marassi Group delivers high-quality food and non-food FMCG products to importers, distributors, wholesalers, and retail chains worldwide through trusted sourcing, private label support, mixed container solutions, and reliable logistics.",
     "cta1": "Request a Quote",
     "cta2": "Download Catalog"
   },
   "proofBar": {
-    "since": "Since 1996",
-    "countries": "50+ Countries",
+    "since": "Since 1996 — 29+ years",
+    "countries": "50+ Countries Served",
     "products": "10,000+ Products",
-    "warehouse": "Warehouse & Logistics Hub"
+    "warehouse": "4,000 m² Warehouse · 75+ Factories"
+  },
+  "globe": {
+    "badge": "Global Reach",
+    "title": "From 8 sourcing countries to 50+ markets worldwide",
+    "subtitle": "Direct factory relationships across Turkey, Egypt, UAE, India, Vietnam, Thailand, China, and Saudi Arabia — shipping to importers, distributors, and retail chains in every region.",
+    "countriesServed": "Countries Served",
+    "sourcing": "Sourcing Hubs",
+    "factories": "Factory Partners",
+    "sourcingHubs": "Sourcing Hubs",
+    "destinations": "Destination Markets"
   },
   "whatWeDo": {
     "title": "What We Do",
@@ -75,12 +88,12 @@
     "subtitle": "Built for serious FMCG buyers",
     "items": {
       "warehouse": {
-        "title": "10,000m² Warehouse",
-        "description": "Dedicated warehouse facilities for consolidation and storage."
+        "title": "4,000 m² Warehouse",
+        "description": "Ready stock of foodstuffs and detergents for fast supply and same-week dispatch."
       },
       "network": {
-        "title": "Factory Network",
-        "description": "Direct relationships with 200+ manufacturers across multiple origins."
+        "title": "75+ Factory Partners",
+        "description": "Direct relationships with manufacturers across Turkey, Egypt, UAE, India, Vietnam, Thailand, China, and Saudi Arabia."
       },
       "compliance": {
         "title": "Compliance Support",
@@ -255,13 +268,13 @@
   },
   "company": {
     "title": "About Marassi Group",
-    "subtitle": "A trusted FMCG export partner since 1996 — serving 50+ countries with 10,000+ products from Turkey & Egypt",
+    "subtitle": "A global FMCG export company with 29+ years of experience — serving 50+ countries with 10,000+ products from trade hubs in Egypt, Turkey, and the UAE.",
     "capabilities": {
       "title": "Our Capabilities",
-      "warehouse": { "title": "Warehouse & Storage", "description": "10,000m² warehouse facilities for consolidation and inventory management." },
-      "network": { "title": "Sourcing Network", "description": "Partnerships with 200+ manufacturers across Turkey, Europe, and Asia." },
+      "warehouse": { "title": "Warehouse Readiness", "description": "4,000 m² warehouse with ready stock of foodstuffs and detergents for rapid dispatch." },
+      "network": { "title": "75+ Factory Network", "description": "Direct sourcing partnerships across Turkey, Egypt, UAE, India, Vietnam, Thailand, China, and Saudi Arabia." },
       "quality": { "title": "Quality Assurance", "description": "Rigorous QA processes from factory inspection to pre-shipment checks." },
-      "compliance": { "title": "Compliance", "description": "Documentation and regulatory expertise for 45+ destination countries." }
+      "compliance": { "title": "Export Compliance", "description": "Full documentation expertise — Commercial Invoice, COO, COA, Health Certificate — for 50+ destinations." }
     },
     "offices": {
       "title": "Our Offices"

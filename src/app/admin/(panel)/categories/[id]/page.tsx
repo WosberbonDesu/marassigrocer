@@ -12,6 +12,7 @@ interface Category {
   description?: string;
   image?: string;
   imagePublicId?: string;
+  parentId?: string | null;
   seoTitle?: string;
   seoDesc?: string;
   featured: boolean;
@@ -57,6 +58,7 @@ export default function EditCategoryPage({ params }: { params: Promise<{ id: str
             name: category.name,
             slug: category.slug,
             description: category.description,
+            parentId: category.parentId ?? "",
             seoTitle: category.seoTitle,
             seoDesc: category.seoDesc,
             featured: category.featured,

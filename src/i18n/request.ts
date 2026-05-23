@@ -7,6 +7,10 @@ const messageImports = {
   tr: () => import("../messages/tr.json"),
   ar: () => import("../messages/ar.json"),
   ru: () => import("../messages/ru.json"),
+  es: () => import("../messages/es.json"),
+  de: () => import("../messages/de.json"),
+  it: () => import("../messages/it.json"),
+  pt: () => import("../messages/pt.json"),
 } as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {

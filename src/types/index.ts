@@ -1,7 +1,22 @@
+export interface PricingTier {
+  minQty: number;
+  casePrice?: number;
+  unitPrice?: number;
+}
+
+export interface NutritionRow {
+  label: string;
+  value: string;
+  per?: string;
+}
+
+export type ProductStatus = "DRAFT" | "PUBLISHED" | "HIDDEN";
+
 export interface Product {
   id: string;
   slug: string;
   name: string;
+  sku?: string;
   brand: Brand;
   category: Category;
   originCountries: string[];
@@ -11,16 +26,40 @@ export interface Product {
     casesPerLayer?: number;
     casesPerPallet?: number;
   } | null;
+  packDescription?: string;
+  unitWeight?: string;
+  weight?: string;
+  dimensions?: string;
+  caseSize?: number | null;
+  unitUpc?: string;
+  caseUpc?: string;
+  variants?: string[];
+  cartonDetails?: string;
+  loadingInfo?: string;
+  exportSuitability?: string;
+  relatedProductIds?: string[];
+  pricingTiers?: PricingTier[];
+  longDescription?: string;
+  ingredients?: string;
+  allergens?: string[];
+  storage?: string;
+  nutrition?: NutritionRow[];
   shelfLifeDaysMin?: number;
   shelfLifeDaysMax?: number;
   availability: "in_stock" | "on_request" | "seasonal" | "discontinued";
   images: string[];
+  imageAlts?: string[];
   documents?: ProductDocument[];
   moqHint?: string;
+  moqQuantity?: number | null;
+  moqUnit?: string;
+  hazmat?: boolean;
+  reeferRequired?: boolean;
   description?: string;
   specs?: Record<string, string>;
   seo?: { title: string; description: string };
   featured?: boolean;
+  status?: ProductStatus;
 }
 
 export interface Category {

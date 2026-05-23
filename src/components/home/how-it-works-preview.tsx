@@ -18,12 +18,30 @@ export function HowItWorksPreview() {
   }));
 
   return (
-    <section className="bg-[oklch(0.12_0.01_60)] py-16 text-white sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
-        <StepsTimeline steps={steps} variant="horizontal" />
-        <div className="mt-10 text-center">
-          <Button variant="outline" asChild>
+    <section className="relative overflow-hidden bg-[oklch(0.18_0.02_80)] py-16 text-white sm:py-24">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(oklch(0.78 0.12 80) 1px, transparent 1px), linear-gradient(90deg, oklch(0.78 0.12 80) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+        }}
+      />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          title={t("title")}
+          subtitle={t("subtitle")}
+          variant="dark"
+          eyebrow="How It Works"
+        />
+        <StepsTimeline steps={steps} variant="horizontal" dark />
+        <div className="mt-12 text-center">
+          <Button
+            variant="outline"
+            asChild
+            className="border-[oklch(0.78_0.12_80)]/40 bg-transparent text-[oklch(0.82_0.11_80)] hover:bg-[oklch(0.78_0.12_80)]/10 hover:text-[oklch(0.85_0.10_80)]"
+          >
             <Link href={`/${locale}/how-it-works`}>
               Learn More
               <ArrowRight className="ml-2 h-4 w-4" />

@@ -1,7 +1,10 @@
 {
   "nav": {
     "products": "Ürünler",
+    "quickOrder": "Hızlı Sipariş",
+    "whyMarassi": "Neden Marassi",
     "privateLabel": "Özel Marka",
+    "mixedContainer": "Karma Konteyner",
     "howItWorks": "Nasıl Çalışır",
     "logistics": "Lojistik & Belgeler",
     "markets": "Pazarlar",
@@ -12,16 +15,26 @@
     "downloadCatalog": "Katalog İndir"
   },
   "hero": {
-    "title": "FMCG İhracat & Özel Marka",
-    "subtitle": "Tedarik, karma konteyner, dokümantasyon, küresel teslimat",
+    "title": "Küresel FMCG İhracat, Tedarik ve Dağıtım Çözümleri",
+    "subtitle": "Marassi Group; ithalatçılara, dağıtıcılara, toptancılara ve perakende zincirlerine güvenilir tedarik, özel marka desteği, karma konteyner çözümleri ve güvenilir lojistik ile yüksek kaliteli gıda ve gıda dışı FMCG ürünler sunar.",
     "cta1": "Teklif İste",
     "cta2": "Katalog İndir"
   },
   "proofBar": {
-    "since": "1996'dan Beri",
+    "since": "1996'dan Beri — 29+ Yıl",
     "countries": "50+ Ülke",
     "products": "10.000+ Ürün",
-    "warehouse": "Depo & Lojistik Merkezi"
+    "warehouse": "4.000 m² Depo · 75+ Fabrika"
+  },
+  "globe": {
+    "badge": "Küresel Erişim",
+    "title": "8 tedarik ülkesinden 50+ pazara",
+    "subtitle": "Türkiye, Mısır, BAE, Hindistan, Vietnam, Tayland, Çin ve Suudi Arabistan'da doğrudan fabrika ilişkileri — her bölgedeki ithalatçılara, dağıtıcılara ve perakende zincirlerine sevkiyat.",
+    "countriesServed": "Ülke",
+    "sourcing": "Tedarik Hub",
+    "factories": "Fabrika Ortağı",
+    "sourcingHubs": "Tedarik Hubları",
+    "destinations": "Hedef Pazarlar"
   },
   "whatWeDo": {
     "title": "Ne Yapıyoruz",
@@ -75,12 +88,12 @@
     "subtitle": "Ciddi FMCG alıcıları için inşa edildi",
     "items": {
       "warehouse": {
-        "title": "10.000m² Depo",
-        "description": "Konsolidasyon ve depolama için özel depo tesisleri."
+        "title": "4.000 m² Depo",
+        "description": "Hızlı tedarik için gıda ve deterjan hazır stoğu."
       },
       "network": {
-        "title": "Fabrika Ağı",
-        "description": "Birden fazla menşe ülkedeki 200+ üreticiyle doğrudan ilişkiler."
+        "title": "75+ Fabrika Ortağı",
+        "description": "Türkiye, Mısır, BAE, Hindistan, Vietnam, Tayland, Çin ve Suudi Arabistan'da doğrudan üretici ilişkileri."
       },
       "compliance": {
         "title": "Uyum Desteği",
@@ -255,13 +268,13 @@
   },
   "company": {
     "title": "Marassi Group Hakkında",
-    "subtitle": "1996'dan beri güvenilir FMCG ihracat ortağı — Türkiye & Mısır'dan 50+ ülkeye 10.000+ ürün",
+    "subtitle": "29+ yıllık deneyime sahip küresel bir FMCG ihracat şirketi — Mısır, Türkiye ve BAE ticaret merkezlerinden 50+ ülkeye 10.000+ ürün.",
     "capabilities": {
       "title": "Yeteneklerimiz",
-      "warehouse": { "title": "Depo & Depolama", "description": "Konsolidasyon ve envanter yönetimi için 10.000m² depo tesisleri." },
-      "network": { "title": "Tedarik Ağı", "description": "Türkiye, Avrupa ve Asya genelinde 200+ üreticiyle ortaklıklar." },
-      "quality": { "title": "Kalite Güvence", "description": "Fabrika denetiminden sevkiyat öncesi kontrollere kadar titiz kalite süreçleri." },
-      "compliance": { "title": "Uyum", "description": "45+ hedef ülke için dokümantasyon ve mevzuat uzmanlığı." }
+      "warehouse": { "title": "Depo Hazırlığı", "description": "Hızlı sevkiyat için gıda ve deterjan hazır stoğuyla 4.000 m² depo." },
+      "network": { "title": "75+ Fabrika Ağı", "description": "Türkiye, Mısır, BAE, Hindistan, Vietnam, Tayland, Çin ve Suudi Arabistan'da doğrudan tedarik ortaklıkları." },
+      "quality": { "title": "Kalite Güvence", "description": "Fabrika denetiminden sevkiyat öncesi kontrollere kadar titiz süreçler." },
+      "compliance": { "title": "İhracat Uyumu", "description": "Ticari Fatura, COO, COA, Sağlık Sertifikası — 50+ varış noktası için tam belge uzmanlığı." }
     },
     "offices": {
       "title": "Ofislerimiz"

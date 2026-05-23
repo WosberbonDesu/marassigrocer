@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
 export async function GET(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { searchParams } = new URL(req.url);
   const search = searchParams.get("search") || "";
@@ -35,16 +35,20 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   try {
     const body = await req.json();
     const {
-      name, slug, description, categoryId, brandId,
-      images, imagePublicIds, originCountries, packaging,
-      shelfLifeMin, shelfLifeMax, moqHint, availability,
-      specs, seoTitle, seoDesc, featured, published, order,
+      name, slug, sku, description, longDescription, ingredients, allergens, storage, nutrition,
+      categoryId, brandId,
+      images, imagePublicIds, imageAlts, originCountries, packaging,
+      packDescription, unitWeight, weight, dimensions, caseSize, unitUpc, caseUpc,
+      variants, cartonDetails, loadingInfo, exportSuitability, relatedProductIds,
+      pricingTiers,
+      shelfLifeMin, shelfLifeMax, moqHint, moqQuantity, moqUnit, hazmat, reeferRequired, availability,
+      specs, seoTitle, seoDesc, featured, published, status, order,
     } = body;
 
     if (!name || !slug || !categoryId) {
@@ -53,13 +57,43 @@ export async function POST(req: NextRequest) {
 
     const product = await db.product.create({
       data: {
-        name, slug, description, categoryId, brandId: brandId || null,
-        images: images || [], imagePublicIds: imagePublicIds || [],
+        name, slug,
+        sku: sku || null,
+        description,
+        longDescription: longDescription || null,
+        ingredients: ingredients || null,
+        allergens: Array.isArray(allergens) ? allergens : [],
+        storage: storage || null,
+        nutrition: nutrition ?? null,
+        categoryId, brandId: brandId || null,
+        images: images || [],
+        imagePublicIds: imagePublicIds || [],
+        imageAlts: Array.isArray(imageAlts) ? imageAlts : [],
         originCountries: originCountries || [], packaging: packaging || null,
+        packDescription: packDescription || null,
+        unitWeight: unitWeight || null,
+        weight: weight || null,
+        dimensions: dimensions || null,
+        caseSize: caseSize != null && caseSize !== "" ? Number(caseSize) : null,
+        unitUpc: unitUpc || null,
+        caseUpc: caseUpc || null,
+        variants: Array.isArray(variants) ? variants : [],
+        cartonDetails: cartonDetails || null,
+        loadingInfo: loadingInfo || null,
+        exportSuitability: exportSuitability || null,
+        relatedProductIds: Array.isArray(relatedProductIds) ? relatedProductIds : [],
+        pricingTiers: pricingTiers ?? null,
         shelfLifeMin: shelfLifeMin || null, shelfLifeMax: shelfLifeMax || null,
-        moqHint, availability: availability || "in_stock",
+        moqHint,
+        moqQuantity: moqQuantity != null && moqQuantity !== "" ? Number(moqQuantity) : null,
+        moqUnit: moqUnit || null,
+        hazmat: !!hazmat,
+        reeferRequired: !!reeferRequired,
+        availability: availability || "in_stock",
         specs: specs || {}, seoTitle, seoDesc,
-        featured: featured ?? false, published: published ?? true,
+        featured: featured ?? false,
+        published: status ? status === "PUBLISHED" : published ?? true,
+        status: status ?? (published === false ? "DRAFT" : "PUBLISHED"),
         order: order ?? 0,
       },
       include: { category: true, brand: true },

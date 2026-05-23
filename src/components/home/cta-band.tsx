@@ -1,43 +1,103 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { ArrowRight, Ship } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useLocale } from "next-intl";
+import { motion } from "framer-motion";
+import { ArrowRight, Download, DollarSign, ShieldCheck, Clock, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useRFQStore } from "@/stores/rfq-store";
+
+const WAREHOUSE_BG = "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=70";
+
+const trustBullets = [
+  { icon: DollarSign, label: "Competitive Pricing" },
+  { icon: ShieldCheck, label: "Quality Assured" },
+  { icon: Clock, label: "Timely Delivery" },
+  { icon: Globe, label: "Global Standards" },
+];
 
 export function CTABand() {
-  const t = useTranslations("ctaBand");
-  const openDrawer = useRFQStore((s) => s.openDrawer);
+  const locale = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[oklch(0.76_0.11_80)] via-[oklch(0.70_0.12_75)] to-[oklch(0.76_0.11_80)]">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImEiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjEiIGZpbGw9InJnYmEoMCwwLDAsMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjYSkiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiLz48L3N2Zz4=')] opacity-30" />
+    <section className="relative overflow-hidden bg-[oklch(0.16_0.02_80)] text-white">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={WAREHOUSE_BG}
+          alt=""
+          fill
+          className="object-cover opacity-30"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.14_0.02_80)]/95 via-[oklch(0.16_0.02_80)]/80 to-[oklch(0.14_0.02_80)]/95" />
+      </div>
 
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-8 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="flex-1">
-          <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-[oklch(0.12_0.01_60)] sm:text-4xl">
-            {t("title")}
-          </h2>
-          <p className="mt-3 max-w-xl text-lg text-[oklch(0.12_0.01_60)]/70">
-            {t("subtitle")}
-          </p>
-          <Button
-            size="lg"
-            onClick={() => openDrawer("quick")}
-            className="mt-6 bg-[oklch(0.12_0.01_60)] text-[oklch(0.76_0.11_80)] hover:bg-[oklch(0.18_0.01_60)] text-base font-semibold"
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_auto]">
+          {/* Left: heading + CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            {t("cta")}
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+              Ready to Source Premium
+              <br className="hidden sm:block" />
+              <span className="text-[oklch(0.72_0.11_80)]"> FMCG Products?</span>
+            </h2>
+            <p className="mt-3 max-w-xl text-base text-white/65 sm:text-lg">
+              Partner with Marassi Group for quality products, competitive pricing, and reliable export support.
+            </p>
+          </motion.div>
+
+          {/* Right: CTAs */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row"
+          >
+            <Button
+              asChild
+              size="lg"
+              className="h-12 bg-[oklch(0.72_0.11_80)] px-7 text-base font-semibold text-[oklch(0.18_0.02_80)] shadow-lg shadow-[oklch(0.72_0.11_80)]/20 hover:bg-[oklch(0.66_0.12_78)]"
+            >
+              <Link href={`/${locale}/request-quote`}>
+                Request a Quote
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="h-12 border-white/25 bg-transparent px-6 text-base text-white hover:bg-white/10"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download Catalog
+            </Button>
+          </motion.div>
         </div>
 
-        {/* Right: shipping icon */}
-        <div className="hidden lg:flex lg:items-center lg:justify-center">
-          <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[oklch(0.12_0.01_60)]/10">
-            <Ship className="h-14 w-14 text-[oklch(0.12_0.01_60)]/60" />
-          </div>
-        </div>
+        {/* Trust bullets row */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-8 sm:grid-cols-4"
+        >
+          {trustBullets.map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center justify-center gap-2 text-sm text-white/80">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[oklch(0.72_0.11_80)]/15 text-[oklch(0.72_0.11_80)]">
+                <Icon className="h-3.5 w-3.5" />
+              </div>
+              <span className="font-medium">{label}</span>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

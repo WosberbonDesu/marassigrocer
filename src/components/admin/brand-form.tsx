@@ -17,6 +17,8 @@ const schema = z.object({
   slug: z.string().min(1).regex(/^[a-z0-9-]+$/),
   origin: z.string().optional(),
   description: z.string().optional(),
+  seoTitle: z.string().optional(),
+  seoDesc: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -120,6 +122,18 @@ export function BrandForm({ brandId, defaultValues }: BrandFormProps) {
       <div className="rounded-2xl border bg-card p-5 space-y-4">
         <h3 className="font-semibold">Brand Logo</h3>
         <ImageUploader value={logo} onChange={setLogo} folder="brands" maxFiles={1} />
+      </div>
+
+      <div className="rounded-2xl border bg-card p-5 space-y-4">
+        <h3 className="font-semibold">SEO</h3>
+        <div className="space-y-2">
+          <Label htmlFor="seoTitle">SEO Title (optional)</Label>
+          <Input id="seoTitle" {...register("seoTitle")} placeholder="Brand-specific title for search results" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="seoDesc">SEO Description (optional)</Label>
+          <Textarea id="seoDesc" {...register("seoDesc")} rows={2} />
+        </div>
       </div>
 
       <Button type="submit" disabled={saving}>

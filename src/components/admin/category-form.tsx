@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +16,7 @@ const schema = z.object({
   name: z.string().min(1, "Name is required"),
   slug: z.string().min(1, "Slug is required").regex(/^[a-z0-9-]+$/),
   description: z.string().optional(),
+  parentId: z.string().optional(),
   seoTitle: z.string().optional(),
   seoDesc: z.string().optional(),
   featured: z.boolean(),
@@ -24,6 +25,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 interface UploadedImage { url: string; publicId: string }
+interface CategoryOption { id: string; name: string; parentId: string | null }
 
 interface CategoryFormProps {
   categoryId?: string;
@@ -35,8 +37,22 @@ export function CategoryForm({ categoryId, defaultValues }: CategoryFormProps) {
   const [image, setImage] = useState<UploadedImage[]>(
     defaultValues?.image ? [defaultValues.image] : []
   );
+  const [parentOptions, setParentOptions] = useState<CategoryOption[]>([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("/api/admin/categories")
+      .then((r) => r.json())
+      .then((d) => {
+        const all = (d.categories ?? []) as CategoryOption[];
+        // Top-level categories only (parents). Exclude self to prevent cycle.
+        setParentOptions(
+          all.filter((c) => !c.parentId && c.id !== categoryId)
+        );
+      })
+      .catch(() => {});
+  }, [categoryId]);
 
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -57,6 +73,7 @@ export function CategoryForm({ categoryId, defaultValues }: CategoryFormProps) {
 
     const payload = {
       ...data,
+      parentId: data.parentId || null,
       image: image[0]?.url ?? null,
       imagePublicId: image[0]?.publicId ?? null,
     };
@@ -113,6 +130,23 @@ export function CategoryForm({ categoryId, defaultValues }: CategoryFormProps) {
         <div className="space-y-2">
           <Label htmlFor="description">Description</Label>
           <Textarea id="description" {...register("description")} rows={3} />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="parentId">Parent Category (optional)</Label>
+          <select
+            id="parentId"
+            {...register("parentId")}
+            className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm"
+          >
+            <option value="">— None (top-level category) —</option>
+            {parentOptions.map((p) => (
+              <option key={p.id} value={p.id}>{p.name}</option>
+            ))}
+          </select>
+          <p className="text-xs text-muted-foreground">
+            Select a parent to make this a subcategory. Leave empty for a top-level category.
+          </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">

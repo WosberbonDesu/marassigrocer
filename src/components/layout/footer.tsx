@@ -3,53 +3,105 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
+import { Mail, MapPin, Linkedin, Facebook, Instagram } from "lucide-react";
 import { offices } from "@/data/offices";
 
 export function Footer() {
   const t = useTranslations("footer");
   const locale = useLocale();
 
+  // Brief footer structure
   const sections = [
     {
       title: t("company"),
       links: [
-        { label: t("about"), href: `/${locale}/company` },
-        { label: t("capabilities"), href: `/${locale}/company` },
+        { label: "About Us", href: `/${locale}/company` },
+        { label: "Why Marassi", href: `/${locale}/why-marassi` },
+        { label: "Export Markets", href: `/${locale}/markets` },
+        { label: "Certificates", href: `/${locale}/certificates` },
       ],
     },
     {
       title: t("products"),
       links: [
-        { label: t("allProducts"), href: `/${locale}/products` },
-        { label: t("categories"), href: `/${locale}/products` },
-        { label: t("brands"), href: `/${locale}/products` },
+        { label: "All Products", href: `/${locale}/products` },
+        { label: "Brands", href: `/${locale}/brands` },
+        { label: "Private Label", href: `/${locale}/private-label` },
+        { label: "Mixed Container", href: `/${locale}/mixed-container` },
       ],
     },
     {
       title: t("resources"),
       links: [
-        { label: t("howItWorks"), href: `/${locale}/how-it-works` },
-        { label: t("logisticsDocs"), href: `/${locale}/logistics` },
-        { label: t("blog"), href: `/${locale}/insights` },
+        { label: "Quick Order", href: `/${locale}/quick-order` },
+        { label: "How It Works", href: `/${locale}/how-it-works` },
+        { label: "Logistics & Docs", href: `/${locale}/logistics` },
+        { label: "Blog & Insights", href: `/${locale}/insights` },
+        { label: t("faq"), href: `/${locale}/faq` },
       ],
     },
   ];
 
+  const legalLinks = [
+    { label: "Privacy Policy", href: `/${locale}/p/privacy` },
+    { label: "Terms & Conditions", href: `/${locale}/p/terms` },
+    { label: "Cookies Policy", href: `/${locale}/p/cookies` },
+  ];
+
   return (
-    <footer className="border-t border-[oklch(0.76_0.11_80)]/10 bg-[oklch(0.12_0.01_60)] text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-[oklch(0.72_0.11_80)]/10 bg-[oklch(0.20_0.02_80)] text-white">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+          {/* Logo + tagline column */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/marassilogo.jpeg"
+                alt="Marassi Group"
+                width={40}
+                height={40}
+                className="h-9 w-9 rounded-lg object-contain"
+              />
+              <div>
+                <p className="text-base font-bold text-white">MARASSI GROUP</p>
+                <p className="text-[10px] tracking-widest text-[oklch(0.78_0.13_35)]">
+                  GLOBAL FMCG EXPORT
+                </p>
+              </div>
+            </div>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
+              {t("tagline")} — Since 1996, serving 50+ countries with 10,000+ products from 75+ factory partners worldwide.
+            </p>
+
+            <div className="mt-5 flex items-center gap-2">
+              {[
+                { icon: Linkedin, label: "LinkedIn", href: "#" },
+                { icon: Facebook, label: "Facebook", href: "#" },
+                { icon: Instagram, label: "Instagram", href: "#" },
+              ].map(({ icon: Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-[oklch(0.78_0.13_35)] hover:text-[oklch(0.78_0.13_35)]"
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
           {sections.map((section) => (
             <div key={section.title}>
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[oklch(0.76_0.11_80)]">
+              <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-white">
                 {section.title}
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/60 transition-colors hover:text-[oklch(0.76_0.11_80)]"
+                      className="text-sm text-white/60 transition-colors hover:text-[oklch(0.78_0.13_35)]"
                     >
                       {link.label}
                     </Link>
@@ -58,50 +110,50 @@ export function Footer() {
               </ul>
             </div>
           ))}
+        </div>
 
-          {/* Contact column */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[oklch(0.76_0.11_80)]">
-              {t("contact")}
-            </h3>
-            <ul className="space-y-3">
-              {offices.map((office) => (
-                <li key={office.id} className="text-sm text-white/60">
-                  <span className="font-medium text-white">
-                    {office.city}
-                  </span>
-                  <br />
-                  {office.email}
-                </li>
-              ))}
-            </ul>
+        {/* Offices strip */}
+        <div className="mt-12 border-t border-white/10 pt-8">
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-white">
+            Global Offices
+          </h3>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {offices.slice(0, 4).map((office) => (
+              <div key={office.id} className="text-sm text-white/60">
+                <div className="flex items-start gap-2">
+                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[oklch(0.78_0.13_35)]" />
+                  <div>
+                    <p className="font-medium text-white">{office.city}, {office.country}</p>
+                    {office.email && (
+                      <a
+                        href={`mailto:${office.email}`}
+                        className="mt-0.5 inline-flex items-center gap-1 text-xs text-white/50 hover:text-[oklch(0.78_0.13_35)]"
+                      >
+                        <Mail className="h-3 w-3" />
+                        {office.email}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-10 border-t border-[oklch(0.76_0.11_80)]/10 pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div className="flex items-center gap-3">
-              <Image
-                src="/images/marassilogo.jpeg"
-                alt="Marassi Group"
-                width={36}
-                height={36}
-                className="h-8 w-8 object-contain"
-              />
-              <div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-lg font-bold text-[oklch(0.76_0.11_80)]">MARASSI</span>
-                  <span className="text-[10px] font-medium tracking-widest text-white/40">GROUP</span>
-                </div>
-                <p className="text-xs text-white/40">
-                  {t("tagline")}
-                </p>
-              </div>
-            </div>
-            <p className="text-xs text-white/40">
-              &copy; {new Date().getFullYear()} {t("copyright")}
-            </p>
-          </div>
+        {/* Bottom bar */}
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
+          <p className="text-xs text-white/40" suppressHydrationWarning>
+            &copy; {new Date().getFullYear()} {t("copyright")}
+          </p>
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-white/40">
+            {legalLinks.map((link) => (
+              <li key={link.label}>
+                <Link href={link.href} className="hover:text-[oklch(0.78_0.13_35)] transition-colors">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

@@ -18,7 +18,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           where: { email: credentials.email as string },
         });
 
-        if (!user) return null;
+        if (!user || !user.active) return null;
 
         const isValid = await bcrypt.compare(
           credentials.password as string,
@@ -31,6 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: user.id,
           email: user.email,
           name: user.name ?? "Admin",
+          role: user.role,
         };
       },
     }),
@@ -42,13 +43,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
     maxAge: 24 * 60 * 60, // 24 hours
   },
+  cookies: {
+    sessionToken: {
+      name: process.env.VERCEL || process.env.NEXTAUTH_URL?.startsWith("https://")
+        ? "__Secure-next-auth.session-token"
+        : "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax" as const,
+        path: "/",
+        secure: !!(process.env.VERCEL || process.env.NEXTAUTH_URL?.startsWith("https://")),
+      },
+    },
+  },
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.id = user.id;
+      if (user) {
+        token.id = user.id as string;
+        if (user.role) token.role = user.role;
+      }
       return token;
     },
     async session({ session, token }) {
-      if (token) session.user.id = token.id as string;
+      if (token) {
+        session.user.id = token.id as string;
+        session.user.role = token.role;
+      }
       return session;
     },
   },

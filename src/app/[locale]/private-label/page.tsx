@@ -71,7 +71,7 @@ export default function PrivateLabelPage() {
       </section>
 
       {/* MOQ & Lead Times — dark section */}
-      <section className="bg-[oklch(0.12_0.01_60)] py-16 text-white">
+      <section className="bg-[oklch(0.20_0.02_80)] py-16 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader title={t("moq.title")} subtitle={t("moq.subtitle")} />
           <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-3">
@@ -81,7 +81,7 @@ export default function PrivateLabelPage() {
               { label: "Sampling", value: t("moq.sampling"), icon: Palette },
             ].map(({ label, value, icon: Icon }) => (
               <div key={label} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
-                <Icon className="mx-auto mb-3 h-8 w-8 text-[oklch(0.76_0.11_80)]" />
+                <Icon className="mx-auto mb-3 h-8 w-8 text-[oklch(0.78_0.13_35)]" />
                 <p className="text-sm text-white/60">{label}</p>
                 <p className="mt-1 text-lg font-semibold text-white">{value}</p>
               </div>
@@ -153,7 +153,7 @@ export default function PrivateLabelPage() {
               <Label>{t("form.notes")}</Label>
               <Textarea {...form.register("notes")} rows={4} placeholder="Reference products, special requirements..." />
             </div>
-            <Button type="submit" size="lg" className="w-full bg-[oklch(0.76_0.11_80)] text-[oklch(0.12_0.01_60)] hover:bg-[oklch(0.70_0.11_80)]" disabled={form.formState.isSubmitting}>
+            <Button type="submit" size="lg" className="w-full bg-[oklch(0.72_0.11_80)] text-white hover:bg-[oklch(0.66_0.12_78)]" disabled={form.formState.isSubmitting}>
               <Send className="mr-2 h-4 w-4" />
               {t("form.submit")}
             </Button>

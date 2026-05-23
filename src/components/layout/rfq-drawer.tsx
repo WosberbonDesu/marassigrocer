@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Trash2, Minus, Plus, ShoppingCart, Send, Package } from "lucide-react";
+import { Trash2, Minus, Plus, ShoppingCart, Send, Package, Ticket, Check, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 import {
@@ -30,9 +31,16 @@ import { Badge } from "@/components/ui/badge";
 import { useRFQStore } from "@/stores/rfq-store";
 import { rfqFormSchema, type RFQFormValues } from "@/lib/validations";
 
+type PromoState =
+  | { status: "idle" }
+  | { status: "checking" }
+  | { status: "valid"; type: "PERCENT" | "AMOUNT"; value: number; description: string | null }
+  | { status: "invalid"; error: string };
+
 export function RFQDrawer() {
   const t = useTranslations("rfqDrawer");
   const store = useRFQStore();
+  const [promo, setPromo] = useState<PromoState>({ status: "idle" });
 
   const form = useForm<RFQFormValues>({
     resolver: zodResolver(rfqFormSchema),
@@ -48,8 +56,35 @@ export function RFQDrawer() {
       targetPrice: "",
       notes: "",
       source: "home",
+      promoCode: "",
     },
   });
+
+  const validatePromo = async () => {
+    const code = form.getValues("promoCode")?.trim();
+    if (!code) {
+      setPromo({ status: "idle" });
+      return;
+    }
+    setPromo({ status: "checking" });
+    const res = await fetch("/api/promos/validate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      setPromo({
+        status: "valid",
+        type: data.type,
+        value: data.value,
+        description: data.description,
+      });
+    } else {
+      const data = await res.json().catch(() => ({}));
+      setPromo({ status: "invalid", error: data.error || "Invalid code" });
+    }
+  };
 
   const onSubmit = async (data: RFQFormValues) => {
     try {
@@ -65,8 +100,11 @@ export function RFQDrawer() {
       if (res.ok) {
         toast.success(t("form.success"));
         form.reset();
+        setPromo({ status: "idle" });
         store.clearItems();
         store.closeDrawer();
+      } else {
+        toast.error("Submission failed. Please try again.");
       }
     } catch {
       toast.error("Something went wrong. Please try again.");
@@ -183,6 +221,48 @@ export function RFQDrawer() {
                       placeholder="Product interests, target price..."
                       className="resize-none"
                     />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label className="text-sm flex items-center gap-1.5">
+                      <Ticket className="h-3.5 w-3.5" />
+                      Promo code (optional)
+                    </Label>
+                    <div className="flex gap-2">
+                      <Input
+                        {...form.register("promoCode")}
+                        placeholder="SUMMER25"
+                        className="h-10 font-mono uppercase"
+                        onChange={(e) => {
+                          form.setValue("promoCode", e.target.value.toUpperCase());
+                          if (promo.status !== "idle") setPromo({ status: "idle" });
+                        }}
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={validatePromo}
+                        disabled={promo.status === "checking"}
+                        className="h-10 shrink-0"
+                      >
+                        {promo.status === "checking" ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : promo.status === "valid" ? (
+                          <Check className="h-4 w-4 text-green-600" />
+                        ) : (
+                          "Apply"
+                        )}
+                      </Button>
+                    </div>
+                    {promo.status === "valid" && (
+                      <p className="text-xs text-green-700">
+                        Applied: {promo.type === "PERCENT" ? `${promo.value}% off` : `$${promo.value.toFixed(2)} off`}
+                        {promo.description ? ` — ${promo.description}` : ""}
+                      </p>
+                    )}
+                    {promo.status === "invalid" && (
+                      <p className="text-xs text-destructive">{promo.error}</p>
+                    )}
                   </div>
                 </div>
 

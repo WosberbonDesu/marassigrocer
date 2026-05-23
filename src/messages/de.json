@@ -1,0 +1,452 @@
+{
+  "nav": {
+    "products": "Produkte",
+    "quickOrder": "Schnellbestellung",
+    "whyMarassi": "Warum Marassi",
+    "privateLabel": "Eigenmarke",
+    "mixedContainer": "Mischcontainer",
+    "howItWorks": "So funktioniert es",
+    "logistics": "Logistik & Docs",
+    "markets": "Märkte",
+    "company": "Unternehmen",
+    "insights": "Einblicke",
+    "contact": "Kontakt",
+    "requestQuote": "Angebot anfordern",
+    "downloadCatalog": "Katalog herunterladen"
+  },
+  "hero": {
+    "title": "Globale FMCG Export-, Beschaffungs- und Vertriebslösungen",
+    "subtitle": "Marassi Group delivers high-quality food and non-food FMCG products to importers, distributors, wholesalers, and retail chains worldwide through trusted sourcing, private label support, mixed container solutions, and reliable logistics.",
+    "cta1": "Angebot anfordern",
+    "cta2": "Katalog herunterladen"
+  },
+  "proofBar": {
+    "since": "Since 1996 — 29+ years",
+    "countries": "50+ Countries Served",
+    "products": "10,000+ Products",
+    "warehouse": "4,000 m² Warehouse · 75+ Factories"
+  },
+  "globe": {
+    "badge": "Globale Reichweite",
+    "title": "Aus 8 Beschaffungsländern in 50+ Märkte weltweit",
+    "subtitle": "Direkte Fabrikbeziehungen in der Türkei, Ägypten, VAE, Indien, Vietnam, Thailand, China und Saudi-Arabien.",
+    "countriesServed": "Länder",
+    "sourcing": "Hubs",
+    "factories": "Fabriken",
+    "sourcingHubs": "Beschaffungs-Hubs",
+    "destinations": "Zielmärkte"
+  },
+  "whatWeDo": {
+    "title": "What We Do",
+    "subtitle": "End-to-end FMCG export solutions for global buyers",
+    "sourcing": {
+      "title": "Sourcing & Procurement",
+      "description": "Multi-origin sourcing network covering dairy, snacks, beverages, cleaning products, and more."
+    },
+    "privateLabel": {
+      "title": "Private Label",
+      "description": "Your brand, our manufacturing network. From formulation to packaging, we handle production."
+    },
+    "logistics": {
+      "title": "Logistics & Documentation",
+      "description": "Mixed container consolidation, full documentation support, and global shipping coverage."
+    }
+  },
+  "topCategories": {
+    "title": "Top Categories",
+    "subtitle": "Browse our most requested product categories",
+    "viewAll": "View All Products"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "From inquiry to delivery in 5 simple steps",
+    "steps": {
+      "step1": {
+        "title": "Submit RFQ",
+        "description": "Tell us your target market, product categories, and volume requirements."
+      },
+      "step2": {
+        "title": "Receive Quote",
+        "description": "Our team prepares a detailed quote within 24-48 hours."
+      },
+      "step3": {
+        "title": "Confirm & Procure",
+        "description": "Once confirmed, we source and consolidate your order."
+      },
+      "step4": {
+        "title": "Quality & Loading",
+        "description": "Supervised loading with full quality control checks."
+      },
+      "step5": {
+        "title": "Ship & Deliver",
+        "description": "Complete documentation, shipping, and after-sales support."
+      }
+    }
+  },
+  "whyMarassi": {
+    "title": "Why Marassi",
+    "subtitle": "Built for serious FMCG buyers",
+    "items": {
+      "warehouse": {
+        "title": "4,000 m² Warehouse",
+        "description": "Ready stock of foodstuffs and detergents for fast supply and same-week dispatch."
+      },
+      "network": {
+        "title": "75+ Factory Partners",
+        "description": "Direct relationships with manufacturers across Turkey, Egypt, UAE, India, Vietnam, Thailand, China, and Saudi Arabia."
+      },
+      "compliance": {
+        "title": "Compliance Support",
+        "description": "Full documentation and regulatory compliance for your target market."
+      },
+      "mixed": {
+        "title": "Mixed Containers",
+        "description": "Consolidate multiple products into single container shipments."
+      }
+    }
+  },
+  "featuredProducts": {
+    "title": "Featured Products",
+    "subtitle": "Most requested FMCG products from our catalog",
+    "viewAll": "View All Products"
+  },
+  "ctaBand": {
+    "title": "Tell us your target market",
+    "subtitle": "Get a competitive quote for your next container",
+    "cta": "Get a Quote"
+  },
+  "products": {
+    "title": "Product Finder",
+    "subtitle": "Browse and add products to your RFQ list",
+    "filters": {
+      "category": "Category",
+      "brand": "Brand",
+      "origin": "Origin",
+      "packaging": "Packaging",
+      "availability": "Availability",
+      "allCategories": "All Categories",
+      "allBrands": "All Brands",
+      "allOrigins": "All Origins",
+      "inStock": "In Stock",
+      "onRequest": "On Request",
+      "clearFilters": "Clear Filters"
+    },
+    "card": {
+      "addToRfq": "Add to RFQ",
+      "addedToRfq": "Added",
+      "moq": "MOQ"
+    },
+    "detail": {
+      "overview": "Overview",
+      "specs": "Specifications",
+      "documents": "Documents",
+      "requestQuote": "Request Quote for This Item",
+      "addToRfq": "Add to RFQ List",
+      "origin": "Origin",
+      "brand": "Brand",
+      "availability": "Availability",
+      "shelfLife": "Shelf Life",
+      "packaging": "Packaging",
+      "inStock": "In Stock",
+      "onRequest": "On Request"
+    },
+    "noResults": "No products found matching your filters.",
+    "showing": "Showing {count} products"
+  },
+  "privateLabel": {
+    "title": "Private Label",
+    "headline": "Your Brand, Our Manufacturing Network",
+    "subtitle": "From concept to shelf — we handle formulation, production, and packaging for your private label products.",
+    "process": {
+      "title": "How It Works",
+      "step1": {
+        "title": "Brief & Concept",
+        "description": "Share your product idea, target market, and brand requirements."
+      },
+      "step2": {
+        "title": "Formulation & Sampling",
+        "description": "We develop product samples with our factory partners."
+      },
+      "step3": {
+        "title": "Packaging & Design",
+        "description": "Choose your packaging format and provide branding assets."
+      },
+      "step4": {
+        "title": "Production & Delivery",
+        "description": "Full production run with quality control and shipping."
+      }
+    },
+    "packaging": {
+      "title": "Packaging Options",
+      "subtitle": "Flexible packaging solutions for your brand"
+    },
+    "moq": {
+      "title": "MOQ & Lead Times",
+      "subtitle": "Typical ranges for private label orders",
+      "moqRange": "5,000 - 50,000 units",
+      "leadTime": "8 - 16 weeks",
+      "sampling": "2 - 4 weeks"
+    },
+    "form": {
+      "title": "Start Your Private Label Project",
+      "targetCountry": "Target Country / Market",
+      "productCategory": "Product Category",
+      "expectedQuantity": "Expected Quantity",
+      "packagingLanguage": "Packaging Language",
+      "targetPriceRange": "Target Price Range (optional)",
+      "timeline": "Timeline",
+      "notes": "Additional Notes",
+      "fileUpload": "Upload Reference Files (logo, packaging)",
+      "submit": "Submit Inquiry"
+    }
+  },
+  "howItWorksPage": {
+    "title": "How It Works",
+    "subtitle": "A transparent process from first inquiry to delivery",
+    "steps": {
+      "step1": {
+        "title": "RFQ Submission",
+        "description": "Submit your request with target market, product categories, volume, and preferred shipping terms.",
+        "fromYou": [
+          "Product categories of interest",
+          "Target country / market",
+          "Estimated volume (containers)",
+          "Contact details"
+        ]
+      },
+      "step2": {
+        "title": "Quote & Confirmation",
+        "description": "Our team reviews your request and prepares a detailed quotation within 24-48 hours.",
+        "fromYou": [
+          "Confirmation of selected products",
+          "Preferred payment terms",
+          "Final quantities"
+        ]
+      },
+      "step3": {
+        "title": "Procurement & Consolidation",
+        "description": "We source products from our network and consolidate them at our warehouse facilities.",
+        "fromYou": [
+          "Any last-minute product changes",
+          "Shipping preference (FCL/LCL)"
+        ]
+      },
+      "step4": {
+        "title": "Loading Supervision",
+        "description": "Quality checks and supervised loading at our facilities with full photo documentation.",
+        "fromYou": [
+          "Special loading instructions (if any)"
+        ]
+      },
+      "step5": {
+        "title": "Shipping & Documentation",
+        "description": "Complete document set prepared: Commercial Invoice, Packing List, COO, B/L, and more.",
+        "fromYou": [
+          "Consignee details",
+          "Any specific document requirements"
+        ]
+      },
+      "step6": {
+        "title": "Delivery & After-Sales",
+        "description": "Cargo tracking, arrival coordination, and after-sales claims process support.",
+        "fromYou": [
+          "Arrival confirmation",
+          "Feedback on shipment quality"
+        ]
+      }
+    },
+    "whatWeNeed": "What we need from you"
+  },
+  "logistics": {
+    "title": "Logistics & Documentation",
+    "subtitle": "Comprehensive shipping and compliance support for global trade",
+    "incoterms": {
+      "title": "Incoterms",
+      "subtitle": "We work with all major trade terms",
+      "fob": {
+        "title": "FOB",
+        "description": "Free On Board — seller delivers goods onto the vessel. Buyer bears shipping costs and risk from that point."
+      },
+      "cif": {
+        "title": "CIF",
+        "description": "Cost, Insurance & Freight — seller covers costs and insurance to destination port. Buyer takes risk at origin port."
+      },
+      "exw": {
+        "title": "EXW",
+        "description": "Ex Works — buyer collects goods from seller's premises and bears all costs and risks."
+      }
+    },
+    "shipping": {
+      "title": "Shipping Types",
+      "fcl": {
+        "title": "FCL (Full Container Load)",
+        "description": "Dedicated 20' or 40' containers for larger orders."
+      },
+      "lcl": {
+        "title": "LCL (Less than Container Load)",
+        "description": "Shared container space for smaller shipments."
+      },
+      "reefer": {
+        "title": "Reefer Containers",
+        "description": "Temperature-controlled containers for perishable FMCG goods."
+      }
+    },
+    "documents": {
+      "title": "Documentation",
+      "subtitle": "Full document set prepared for every shipment",
+      "list": [
+        "Commercial Invoice",
+        "Packing List",
+        "Certificate of Origin (COO)",
+        "Bill of Lading (B/L)",
+        "Certificate of Analysis (COA)",
+        "Health Certificate",
+        "Phytosanitary Certificate",
+        "Insurance Certificate"
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions"
+    }
+  },
+  "markets": {
+    "title": "Markets We Serve",
+    "subtitle": "Experience across major global regions",
+    "popularCategories": "Popular Categories",
+    "regulatoryNotes": "Regulatory Notes",
+    "viewDetails": "View Details"
+  },
+  "company": {
+    "title": "About Marassi Group",
+    "subtitle": "A global FMCG export company with 29+ years of experience — serving 50+ countries with 10,000+ products from trade hubs in Egypt, Turkey, and the UAE.",
+    "capabilities": {
+      "title": "Our Capabilities",
+      "warehouse": {
+        "title": "Warehouse Readiness",
+        "description": "4,000 m² warehouse with ready stock of foodstuffs and detergents for rapid dispatch."
+      },
+      "network": {
+        "title": "75+ Factory Network",
+        "description": "Direct sourcing partnerships across Turkey, Egypt, UAE, India, Vietnam, Thailand, China, and Saudi Arabia."
+      },
+      "quality": {
+        "title": "Quality Assurance",
+        "description": "Rigorous QA processes from factory inspection to pre-shipment checks."
+      },
+      "compliance": {
+        "title": "Export Compliance",
+        "description": "Full documentation expertise — Commercial Invoice, COO, COA, Health Certificate — for 50+ destinations."
+      }
+    },
+    "offices": {
+      "title": "Our Offices"
+    }
+  },
+  "insights": {
+    "title": "Insights & Guides",
+    "subtitle": "Expert resources for FMCG importers and distributors",
+    "readMore": "Read More",
+    "readTime": "{time} read",
+    "allPosts": "All Posts",
+    "backToInsights": "Back to Insights"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our sales team",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone / WhatsApp",
+      "company": "Company Name",
+      "country": "Country",
+      "buyerType": "Buyer Type",
+      "message": "Message",
+      "submit": "Send Message",
+      "success": "Message sent! Our team will get back to you within 24 hours."
+    },
+    "whatsapp": "Chat on WhatsApp",
+    "offices": "Our Offices"
+  },
+  "rfqDrawer": {
+    "title": "Request a Quote",
+    "quickRfq": "Quick RFQ",
+    "rfqList": "RFQ List",
+    "emptyList": "No products added yet. Browse our catalog to add products.",
+    "steps": {
+      "interest": "Interest",
+      "details": "Details",
+      "contact": "Kontakt"
+    },
+    "form": {
+      "country": "Your Country",
+      "categories": "Categories of Interest",
+      "containerEstimate": "Container Size Estimate",
+      "20ft": "20' Container",
+      "40ft": "40' Container",
+      "notSure": "Not Sure",
+      "targetPrice": "Target Price Range (optional)",
+      "notes": "Additional Notes",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone / WhatsApp",
+      "company": "Company Name",
+      "buyerType": "Buyer Type",
+      "distributor": "Distributor / Wholesaler",
+      "retail": "Supermarket / Retail Buyer",
+      "smallBusiness": "Small Business Importer",
+      "brandOwner": "Brand Owner (Private Label)",
+      "partner": "B2B Partner",
+      "submit": "Submit RFQ",
+      "submitting": "Submitting...",
+      "success": "RFQ submitted successfully! We'll get back to you within 24-48 hours."
+    },
+    "items": {
+      "quantity": "Qty",
+      "remove": "Remove",
+      "total": "{count} items in your RFQ list"
+    }
+  },
+  "catalogModal": {
+    "title": "Download Our Catalog",
+    "subtitle": "Get our complete product catalog with pricing ranges",
+    "form": {
+      "email": "Email Address",
+      "company": "Company Name",
+      "country": "Country",
+      "buyerType": "Buyer Type",
+      "submit": "Download Catalog",
+      "success": "Download starting! We've also sent the catalog to your email."
+    }
+  },
+  "footer": {
+    "company": "Unternehmen",
+    "products": "Produkte",
+    "resources": "Resources",
+    "contact": "Kontakt",
+    "about": "About Us",
+    "capabilities": "Capabilities",
+    "careers": "Careers",
+    "allProducts": "All Products",
+    "categories": "Categories",
+    "brands": "Brands",
+    "howItWorks": "So funktioniert es",
+    "logisticsDocs": "Logistics & Docs",
+    "blog": "Insights & Guides",
+    "faq": "FAQ",
+    "getInTouch": "Get in Touch",
+    "whatsapp": "WhatsApp",
+    "copyright": "Marassi Group. All rights reserved.",
+    "tagline": "FMCG Export & Private Label Solutions"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again."
+  }
+}

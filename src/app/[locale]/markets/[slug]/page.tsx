@@ -6,14 +6,12 @@ import { useTranslations, useLocale } from "next-intl";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useRFQStore } from "@/stores/rfq-store";
 import { markets } from "@/data/markets";
 
 export default function MarketDetailPage() {
   const params = useParams();
   const locale = useLocale();
   const t = useTranslations("markets");
-  const openDrawer = useRFQStore((s) => s.openDrawer);
 
   const market = markets.find((m) => m.slug === params.slug);
 
@@ -83,9 +81,11 @@ export default function MarketDetailPage() {
           </div>
 
           <div className="mt-10 text-center">
-            <Button size="lg" onClick={() => openDrawer("quick")}>
-              Get a Quote for {market.name}
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button asChild size="lg">
+              <Link href={`/${locale}/request-quote`}>
+                Get a Quote for {market.name}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>

@@ -7,29 +7,87 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum AdminRole {
+  OWNER
+  ADMIN
+  EDITOR
+  SALES_REP
+  VIEWER
+}
+
 model AdminUser {
-  id        String   @id @default(cuid())
-  email     String   @unique
+  id        String    @id @default(cuid())
+  email     String    @unique
   password  String
   name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  role      AdminRole @default(ADMIN)
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  customersAsRep Customer[] @relation("CustomerSalesRep")
+}
+
+enum CustomerStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+model Customer {
+  id             String         @id @default(cuid())
+  email          String         @unique
+  password       String
+  name           String
+  company        String
+  country        String
+  phone          String?
+  buyerType      String?
+  taxId          String?
+  website        String?
+  applicationMsg String?
+  status         CustomerStatus @default(PENDING)
+  salesRepId     String?
+  salesRep       AdminUser?     @relation("CustomerSalesRep", fields: [salesRepId], references: [id])
+  groupId        String?
+  group          CustomerGroup? @relation(fields: [groupId], references: [id])
+  approvedAt     DateTime?
+  rejectedReason String?
+  internalNotes  String?
+  lastLoginAt    DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model CustomerGroup {
+  id              String     @id @default(cuid())
+  name            String
+  description     String?
+  defaultDiscount Float      @default(0) // % off base prices, e.g. 5 = 5% off
+  active          Boolean    @default(true)
+  customers       Customer[]
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
 }
 
 model Category {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String
-  slug          String    @unique
+  slug          String     @unique
   description   String?
   image         String?
   imagePublicId String?
   seoTitle      String?
   seoDesc       String?
-  featured      Boolean   @default(false)
-  order         Int       @default(0)
+  featured      Boolean    @default(false)
+  order         Int        @default(0)
+  // Self-relation for subcategories
+  parentId      String?
+  parent        Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children      Category[] @relation("CategoryHierarchy")
   products      Product[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
 }
 
 model Brand {
@@ -40,43 +98,235 @@ model Brand {
   logoPublicId String?
   origin       String?
   description  String?
+  seoTitle     String?
+  seoDesc      String?
   products     Product[]
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+}
+
+enum ProductStatus {
+  DRAFT
+  PUBLISHED
+  HIDDEN
 }
 
 model Product {
   id              String   @id @default(cuid())
   name            String
   slug            String   @unique
+  sku             String?
   description     String?
+  longDescription String?  // HTML from rich text editor
+  ingredients     String?
+  allergens       String[] // e.g. ["Wheat", "Milk", "Soy"]
+  storage         String?
+  nutrition       Json?    // [{ label: "Energy", value: "350 kcal", per: "100g" }, ...]
   categoryId      String
   category        Category @relation(fields: [categoryId], references: [id])
   brandId         String?
   brand           Brand?   @relation(fields: [brandId], references: [id])
   images          String[]
   imagePublicIds  String[]
+  imageAlts       String[] // alt text per image (parallel array)
   originCountries String[]
   packaging       Json?
+  packDescription String?  // e.g. "12 / 11 OZ"
+  unitWeight      String?  // e.g. "11 OZ (305.61 g)"
+  weight          String?  // gross/net weight, e.g. "350 g"
+  dimensions      String?  // e.g. "20 × 10 × 5 cm"
+  caseSize        Int?     // units per case, e.g. 12
+  unitUpc         String?
+  caseUpc         String?
+  variants        String[] // e.g. ["250ml", "500ml", "1L", "5L"]
+  cartonDetails   String?
+  loadingInfo     String?
+  exportSuitability String?
+  relatedProductIds String[]
+  pricingTiers    Json?    // [{ minQty: 10, casePrice: 45.00, unitPrice: 3.75 }, ...]
   shelfLifeMin    Int?
   shelfLifeMax    Int?
   moqHint         String?
+  moqQuantity     Int?     // numeric MOQ value (e.g. 100)
+  moqUnit         String?  // "cases" | "pallets" | "containers"
+  hazmat          Boolean  @default(false)
+  reeferRequired  Boolean  @default(false)
   availability    String   @default("in_stock")
   specs           Json?
   seoTitle        String?
   seoDesc         String?
   featured        Boolean  @default(false)
   published       Boolean  @default(true)
+  status          ProductStatus @default(PUBLISHED)
   order           Int      @default(0)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
 
+model Rfq {
+  id                String   @id @default(cuid())
+  name              String
+  email             String
+  phone             String?
+  company           String?
+  country           String
+  buyerType         String
+  containerEstimate String?
+  targetPrice       String?
+  notes             String?
+  source            String?
+  items             Json     @default("[]")
+  // State machine: submitted | quoted | confirmed | locked | cancelled | archived
+  status            String   @default("submitted")
+  confirmedAt       DateTime?
+  lockedAt          DateTime?
+  quoteNotes        String?  // sales rep quote details visible to buyer
+  internalNotes     String?  // admin-only notes
+  promoCode         String?
+  promoType         PromoType?
+  promoValue        Float?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+enum PromoType {
+  PERCENT
+  AMOUNT
+}
+
+model PromoCode {
+  id          String    @id @default(cuid())
+  code        String    @unique
+  description String?
+  type        PromoType
+  value       Float
+  minOrder    Float?
+  maxUses     Int?
+  usedCount   Int       @default(0)
+  validFrom   DateTime?
+  validUntil  DateTime?
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Page {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       Json     // { en: string, tr: string, ar: string }
+  content     Json     // { en: html, tr: html, ar: html }
+  excerpt     String?
+  seoTitle    String?
+  seoDesc     String?
+  ogImage     String?
+  published   Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Certificate {
+  id            String   @id @default(cuid())
+  title         String
+  description   String?
+  issuer        String?
+  issuedDate    DateTime?
+  validUntil    DateTime?
+  fileUrl       String?  // PDF or document
+  filePublicId  String?
+  imageUrl      String?  // certificate badge/logo
+  imagePublicId String?
+  order         Int      @default(0)
+  active        Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model BlogPost {
+  id              String     @id @default(cuid())
+  slug            String     @unique
+  title           Json       // { en, tr, ar, ru }
+  excerpt         Json?      // { en, tr, ar, ru }
+  content         Json       // { en, tr, ar, ru } — HTML from TipTap
+  coverImage      String?
+  coverPublicId   String?
+  author          String?
+  tags            String[]
+  seoTitle        String?
+  seoDesc         String?
+  ogImage         String?
+  status          BlogStatus @default(DRAFT)
+  publishedAt     DateTime?
+  viewCount       Int        @default(0)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model Advantage {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String?  // lucide icon name, e.g. "Trophy"
+  stat        String?  // e.g. "29+", "10,000+", "75+"
+  statLabel   String?  // e.g. "years", "products", "factories"
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Market {
+  id                  String   @id @default(cuid())
+  name                String
+  slug                String   @unique
+  region              String?  // e.g. "GCC", "MENA", "Africa", "Europe"
+  countries           String[]
+  description         String?
+  image               String?
+  imagePublicId       String?
+  featuredCategories  String[]
+  regulatoryNotes     String?
+  order               Int      @default(0)
+  active              Boolean  @default(true)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
 model SiteConfig {
   id          String   @id @default("default")
+
+  // General
   whatsapp    String?
   email       String?
   companyName String?
   offices     Json?
-  updatedAt   DateTime @updatedAt
+
+  // B2B pricing visibility
+  showPricesPublicly Boolean @default(false)
+
+  // SEO defaults
+  siteTitle       String?
+  siteDescription String?
+  ogImage         String?
+
+  // Analytics
+  gtmId       String?
+  metaPixelId String?
+  ga4Id       String?
+
+  // Social
+  facebookUrl  String?
+  instagramUrl String?
+  tiktokUrl    String?
+  linkedinUrl  String?
+  twitterUrl   String?
+  youtubeUrl   String?
+
+  updatedAt DateTime @updatedAt
 }

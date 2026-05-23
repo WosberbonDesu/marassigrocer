@@ -1,82 +1,139 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { ArrowRight, Download } from "lucide-react";
+import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
+import { motion } from "framer-motion";
+import { ArrowRight, Download, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useRFQStore } from "@/stores/rfq-store";
 
-const BANNER_IMAGES = [
-  "https://images.unsplash.com/photo-1740914994657-f1cdffdc418e?auto=format&fit=crop&fm=jpg&q=60&w=800",
-  "https://images.unsplash.com/photo-1768176136613-96a7bfc0049e?auto=format&fit=crop&fm=jpg&q=60&w=800",
-  "https://images.pexels.com/photos/11666903/pexels-photo-11666903.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/30625284/pexels-photo-30625284/free-photo-of-warehouse-interior-with-shelves-and-products.jpeg?auto=compress&cs=tinysrgb&w=800",
-];
+// Hero image: dark cargo port with product showcase in foreground
+const HERO_BG = "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1920&q=70";
+const PRODUCT_SHOWCASE = "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80";
 
 export function Hero() {
   const t = useTranslations("hero");
-  const openDrawer = useRFQStore((s) => s.openDrawer);
+  const locale = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-[oklch(0.12_0.01_60)] text-white">
-      {/* Gold gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.76_0.11_80)]/10 via-transparent to-[oklch(0.76_0.11_80)]/5" />
-      {/* Decorative blurs */}
-      <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[oklch(0.76_0.11_80)]/5 blur-3xl" />
-      <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-[oklch(0.76_0.11_80)]/8 blur-3xl" />
+    <section className="relative overflow-hidden bg-[oklch(0.16_0.02_80)] text-white">
+      {/* Dark port background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={HERO_BG}
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-50"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.14_0.02_80)] via-[oklch(0.14_0.02_80)]/85 to-[oklch(0.14_0.02_80)]/30" />
+      </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-4 py-24 sm:px-6 sm:py-32 lg:flex-row lg:items-center lg:gap-16 lg:px-8 lg:py-36">
+      {/* Subtle animated orb */}
+      <motion.div
+        className="absolute right-[20%] top-1/2 z-0 h-[400px] w-[400px] -translate-y-1/2 rounded-full bg-[oklch(0.72_0.11_80)]/10 blur-3xl"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:flex-row lg:items-center lg:gap-8 lg:px-8 lg:py-28">
         {/* Left: Text content */}
-        <div className="flex-1">
-          <div className="mb-6 h-1 w-16 rounded-full bg-[oklch(0.76_0.11_80)]" />
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl">
-            {t("title")}
+        <motion.div
+          className="flex-1 lg:max-w-2xl"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.72_0.11_80)]"
+          >
+            Global Connections, Trusted Quality
+          </motion.p>
+
+          <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            Global FMCG Export,{" "}
+            <span className="text-[oklch(0.72_0.11_80)]">
+              Sourcing & Private Label
+            </span>{" "}
+            Solutions
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl">
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg"
+          >
             {t("subtitle")}
-          </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
+          >
             <Button
+              asChild
               size="lg"
-              onClick={() => openDrawer("quick")}
-              className="bg-[oklch(0.76_0.11_80)] text-[oklch(0.12_0.01_60)] hover:bg-[oklch(0.82_0.10_80)] text-base font-semibold"
+              className="h-12 bg-[oklch(0.72_0.11_80)] px-7 text-base font-semibold text-[oklch(0.18_0.02_80)] shadow-lg shadow-[oklch(0.72_0.11_80)]/20 hover:bg-[oklch(0.66_0.12_78)]"
             >
-              {t("cta1")}
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href={`/${locale}/request-quote`}>
+                Request a Quote
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="inline-flex"
+                >
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </motion.span>
+              </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-white/20 bg-transparent text-white hover:bg-white/10 text-base"
+              className="h-12 border-white/25 bg-transparent px-6 text-base text-white backdrop-blur-sm hover:bg-white/10"
             >
               <Download className="mr-2 h-4 w-4" />
-              {t("cta2")}
+              Download Catalog
             </Button>
-          </div>
-          <p className="mt-8 text-sm text-white/40">
-            Since 1996 — Trusted by importers in 50+ countries
-          </p>
-        </div>
+          </motion.div>
 
-        {/* Right: 2x2 Product image grid */}
-        <div className="hidden flex-1 lg:block">
-          <div className="grid grid-cols-2 gap-4">
-            {BANNER_IMAGES.map((src, i) => (
-              <div
-                key={i}
-                className="group relative aspect-square overflow-hidden rounded-2xl border border-white/10 shadow-2xl transition-transform duration-300 hover:scale-[1.03]"
-              >
-                <Image
-                  src={src}
-                  alt=""
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </div>
-            ))}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-8 flex items-center gap-2 text-sm text-white/55"
+          >
+            <BadgeCheck className="h-4 w-4 text-[oklch(0.72_0.11_80)]" />
+            Trusted by importers, distributors, and retail buyers worldwide.
+          </motion.div>
+        </motion.div>
+
+        {/* Right: Product showcase */}
+        <motion.div
+          className="relative hidden flex-1 lg:block"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+        >
+          <div className="relative aspect-[4/3] w-full">
+            <Image
+              src={PRODUCT_SHOWCASE}
+              alt="FMCG product range"
+              fill
+              priority
+              className="object-cover rounded-2xl"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            {/* Soft fade-in at bottom */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-[oklch(0.14_0.02_80)]/50 via-transparent to-transparent" />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

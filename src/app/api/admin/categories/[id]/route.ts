@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { deleteFromCloudinary } from "@/lib/cloudinary";
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { id } = await params;
   const category = await db.category.findUnique({ where: { id } });
   if (!category) return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -13,8 +13,8 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 }
 
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { id } = await params;
   try {
     const body = await req.json();
@@ -26,14 +26,18 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 }
 
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { id } = await params;
   const cat = await db.category.findUnique({ where: { id } });
   if (!cat) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const productCount = await db.product.count({ where: { categoryId: id } });
   if (productCount > 0) {
     return NextResponse.json({ error: `Cannot delete: ${productCount} products in this category` }, { status: 409 });
+  }
+  const childCount = await db.category.count({ where: { parentId: id } });
+  if (childCount > 0) {
+    return NextResponse.json({ error: `Cannot delete: ${childCount} subcategories in this category` }, { status: 409 });
   }
   if (cat.imagePublicId) {
     try { await deleteFromCloudinary(cat.imagePublicId); } catch {}

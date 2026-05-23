@@ -27,10 +27,10 @@ export default function InsightsPage() {
               <Link
                 key={post.id}
                 href={`/${locale}/insights/${post.slug}`}
-                className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition-all hover:shadow-lg hover:border-[oklch(0.76_0.11_80)]/30"
+                className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition-all hover:shadow-lg hover:border-[oklch(0.72_0.11_80)]/30"
               >
-                <div className="flex h-48 items-center justify-center bg-[oklch(0.12_0.01_60)]">
-                  <FileText className="h-12 w-12 text-[oklch(0.76_0.11_80)]/30" />
+                <div className="flex h-48 items-center justify-center bg-[oklch(0.20_0.02_80)]">
+                  <FileText className="h-12 w-12 text-[oklch(0.72_0.11_80)]/30" />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-center gap-3 text-xs text-muted-foreground">
@@ -47,7 +47,7 @@ export default function InsightsPage() {
                       {post.readTime}
                     </span>
                   </div>
-                  <h3 className="mt-2 font-[family-name:var(--font-playfair)] text-lg font-semibold leading-tight group-hover:text-[oklch(0.76_0.11_80)]">
+                  <h3 className="mt-2 font-[family-name:var(--font-playfair)] text-lg font-semibold leading-tight group-hover:text-[oklch(0.72_0.11_80)]">
                     {post.title}
                   </h3>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground">
@@ -60,7 +60,7 @@ export default function InsightsPage() {
                       </Badge>
                     ))}
                   </div>
-                  <span className="mt-3 inline-flex items-center text-sm font-medium text-[oklch(0.76_0.11_80)]">
+                  <span className="mt-3 inline-flex items-center text-sm font-medium text-[oklch(0.72_0.11_80)]">
                     {t("readMore")}
                     <ArrowRight className="ml-1 h-3.5 w-3.5" />
                   </span>

@@ -58,7 +58,7 @@ export default function LogisticsPage() {
       </section>
 
       {/* Shipping Types — dark section */}
-      <section className="bg-[oklch(0.12_0.01_60)] py-16 text-white">
+      <section className="bg-[oklch(0.20_0.02_80)] py-16 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-[family-name:var(--font-playfair)] mb-10 text-center text-3xl font-bold tracking-tight sm:text-4xl">
             {t("shipping.title")}
@@ -66,7 +66,7 @@ export default function LogisticsPage() {
           <div className="grid gap-6 sm:grid-cols-3">
             {shippingTypes.map(({ key, icon: Icon }) => (
               <div key={key} className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10">
-                <Icon className="mb-3 h-8 w-8 text-[oklch(0.76_0.11_80)]" />
+                <Icon className="mb-3 h-8 w-8 text-[oklch(0.78_0.13_35)]" />
                 <h3 className="font-semibold">{t(`shipping.${key}.title`)}</h3>
                 <p className="mt-2 text-sm text-white/60">
                   {t(`shipping.${key}.description`)}
@@ -84,8 +84,8 @@ export default function LogisticsPage() {
           <div className="mx-auto max-w-2xl">
             <div className="grid gap-3 sm:grid-cols-2">
               {(t.raw("documents.list") as string[]).map((doc, i) => (
-                <div key={i} className="flex items-center gap-3 rounded-xl border bg-card p-4 transition-all hover:shadow-md hover:border-[oklch(0.76_0.11_80)]/30">
-                  <FileCheck className="h-5 w-5 shrink-0 text-[oklch(0.76_0.11_80)]" />
+                <div key={i} className="flex items-center gap-3 rounded-xl border bg-card p-4 transition-all hover:shadow-md hover:border-[oklch(0.72_0.11_80)]/30">
+                  <FileCheck className="h-5 w-5 shrink-0 text-[oklch(0.72_0.11_80)]" />
                   <span className="text-sm font-medium">{doc}</span>
                 </div>
               ))}
