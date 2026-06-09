@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Plus, Check, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRFQStore } from "@/stores/rfq-store";
@@ -14,6 +14,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const locale = useLocale();
+  const t = useTranslations("productCard");
   const { addItem, hasItem } = useRFQStore();
   const isAdded = hasItem(product.id);
 
@@ -53,7 +54,7 @@ export function ProductCard({ product }: ProductCardProps) {
               : "bg-muted/80 text-muted-foreground ring-1 ring-border/50"
           }`}
         >
-          {isInStock ? "In Stock" : "On Request"}
+          {isInStock ? t("availability.inStock") : t("availability.onRequest")}
         </span>
       </div>
 
@@ -98,12 +99,12 @@ export function ProductCard({ product }: ProductCardProps) {
             {isAdded ? (
               <>
                 <Check className="mr-1.5 h-3.5 w-3.5" />
-                Added to RFQ
+                {t("cta.addedToRfq")}
               </>
             ) : (
               <>
                 <Plus className="mr-1.5 h-3.5 w-3.5" />
-                Add to RFQ
+                {t("cta.addToRfq")}
               </>
             )}
           </Button>

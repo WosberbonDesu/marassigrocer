@@ -2,39 +2,38 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, Globe, Tag, Handshake } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const capabilities = [
   {
+    id: "qualitySourcing",
     icon: ShieldCheck,
-    title: "Quality Sourcing",
-    description: "We work with certified manufacturers to deliver consistent quality.",
   },
   {
+    id: "globalReach",
     icon: Globe,
-    title: "Global Reach",
-    description: "Serving 50+ markets across Asia, Africa, Middle East & beyond.",
   },
   {
+    id: "privateLabel",
     icon: Tag,
-    title: "Private Label Expertise",
-    description: "End-to-end private label support from concept to shelf.",
   },
   {
+    id: "exportSupport",
     icon: Handshake,
-    title: "Reliable Export Support",
-    description: "Transparent communication and on-time delivery you can trust.",
   },
 ] as const;
 
 export function WhyMarassi() {
+  const t = useTranslations("homeAdvantages");
+
   return (
     <section className="bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="mb-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.60_0.12_75)]">
-          Why Marassi Group
+          {t("eyebrow")}
         </p>
         <h2 className="text-center font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
-          Your Trusted Partner in Global Trade
+          {t("heading")}
         </h2>
         <div className="mx-auto mt-4 flex items-center justify-center gap-2">
           <div className="h-px w-12 bg-gradient-to-r from-transparent to-[oklch(0.72_0.11_80)]/70" />
@@ -43,9 +42,9 @@ export function WhyMarassi() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {capabilities.map(({ icon: Icon, title, description }, i) => (
+          {capabilities.map(({ icon: Icon, id }, i) => (
             <motion.div
-              key={title}
+              key={id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -59,9 +58,11 @@ export function WhyMarassi() {
               >
                 <Icon className="h-6 w-6" />
               </motion.div>
-              <h3 className="mt-4 text-base font-semibold leading-snug">{title}</h3>
+              <h3 className="mt-4 text-base font-semibold leading-snug">
+                {t(`items.${id}.title`)}
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {description}
+                {t(`items.${id}.description`)}
               </p>
             </motion.div>
           ))}

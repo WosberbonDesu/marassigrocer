@@ -22,7 +22,7 @@ export default function HowItWorksPage() {
         title={t("title")}
         subtitle={t("subtitle")}
         locale={locale}
-        breadcrumbs={[{ label: "How It Works" }]}
+        breadcrumbs={[{ label: t("title") }]}
       />
 
       <section className="py-16 sm:py-24">
@@ -66,7 +66,7 @@ export default function HowItWorksPage() {
               className="bg-[oklch(0.72_0.11_80)] text-white hover:bg-[oklch(0.85_0.08_85)] font-semibold"
             >
               <a href={`/${locale}/request-quote`}>
-                Start Your RFQ
+                {t("startRfq")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>

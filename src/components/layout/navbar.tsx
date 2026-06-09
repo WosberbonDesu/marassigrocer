@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Menu, Download, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,28 +18,28 @@ import { CustomerSessionBadge } from "@/components/layout/customer-session-badge
 import { HeaderSearch } from "@/components/layout/header-search";
 
 const categoryLinks = [
-  { href: "/products/list?category=biscuits", label: "Biscuits & Confectionery" },
-  { href: "/products/list?category=dairy", label: "Dairy Products" },
-  { href: "/products/list?category=beverages", label: "Beverages" },
-  { href: "/products/list?category=snacks-confectionery", label: "Snacks" },
-  { href: "/products/list?category=oils-condiments", label: "Sauces & Condiments" },
-  { href: "/products/list?category=canned-jarred-foods", label: "Canned & Dry Foods" },
+  { id: "biscuits", href: "/products/list?category=biscuits" },
+  { id: "dairy", href: "/products/list?category=dairy" },
+  { id: "beverages", href: "/products/list?category=beverages" },
+  { id: "snacks", href: "/products/list?category=snacks-confectionery" },
+  { id: "sauces", href: "/products/list?category=oils-condiments" },
+  { id: "canned", href: "/products/list?category=canned-jarred-foods" },
 ];
 
 const exportServiceLinks = [
-  { href: "/private-label", label: "Private Label" },
-  { href: "/mixed-container", label: "Mixed Container" },
-  { href: "/logistics", label: "Logistics & Shipping" },
-  { href: "/how-it-works", label: "Sourcing & Procurement" },
-  { href: "/logistics", label: "Export Documentation" },
+  { id: "privateLabel", href: "/private-label" },
+  { id: "mixedContainer", href: "/mixed-container" },
+  { id: "logisticsShipping", href: "/logistics" },
+  { id: "sourcing", href: "/how-it-works" },
+  { id: "exportDocs", href: "/logistics" },
 ];
 
 const primaryLinks = [
-  { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
-  { href: "/private-label", label: "Private Label" },
-  { href: "/company", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { id: "home", href: "/" },
+  { id: "products", href: "/products" },
+  { id: "privateLabel", href: "/private-label" },
+  { id: "about", href: "/company" },
+  { id: "contact", href: "/contact" },
 ] as const;
 
 const localeLabels: Record<string, string> = {
@@ -59,6 +59,7 @@ function isActive(pathname: string, href: string) {
 }
 
 export function Navbar() {
+  const t = useTranslations("nav");
   const locale = useLocale();
   const pathname = usePathname();
   const itemCount = useRFQStore((s) => s.items.length);
@@ -127,7 +128,7 @@ export function Navbar() {
             href="/"
             className={`${linkBase} ${homeActive ? `${linkActive} ${underline}` : linkIdle}`}
           >
-            Home
+            {t("home")}
           </Link>
 
           <DropdownMenu>
@@ -137,21 +138,21 @@ export function Navbar() {
                   categoriesActive ? `${linkActive} ${underline}` : linkIdle
                 }`}
               >
-                Categories
+                {t("categories")}
                 <ChevronDown className="h-3 w-3 opacity-70" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-64">
               <DropdownMenuItem asChild className="font-semibold">
-                <Link href="/products">All Categories</Link>
+                <Link href="/products">{t("allCategories")}</Link>
               </DropdownMenuItem>
               {categoryLinks.map((c) => (
-                <DropdownMenuItem key={c.label} asChild>
-                  <Link href={c.href}>{c.label}</Link>
+                <DropdownMenuItem key={c.id} asChild>
+                  <Link href={c.href}>{t(`categoryLinks.${c.id}`)}</Link>
                 </DropdownMenuItem>
               ))}
               <DropdownMenuItem asChild className="font-semibold text-[oklch(0.60_0.12_75)]">
-                <Link href="/products">View All Categories →</Link>
+                <Link href="/products">{t("viewAllCategories")}</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -160,13 +161,13 @@ export function Navbar() {
             href="/products"
             className={`${linkBase} ${productsActive ? `${linkActive} ${underline}` : linkIdle}`}
           >
-            Products
+            {t("products")}
           </Link>
           <Link
             href="/private-label"
             className={`${linkBase} ${privateActive ? `${linkActive} ${underline}` : linkIdle}`}
           >
-            Private Label
+            {t("privateLabel")}
           </Link>
 
           <DropdownMenu>
@@ -176,14 +177,14 @@ export function Navbar() {
                   exportActive ? `${linkActive} ${underline}` : linkIdle
                 }`}
               >
-                Export Services
+                {t("exportServices")}
                 <ChevronDown className="h-3 w-3 opacity-70" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-56">
               {exportServiceLinks.map((s) => (
-                <DropdownMenuItem key={s.label} asChild>
-                  <Link href={s.href}>{s.label}</Link>
+                <DropdownMenuItem key={s.id} asChild>
+                  <Link href={s.href}>{t(`exportServiceLinks.${s.id}`)}</Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -193,13 +194,13 @@ export function Navbar() {
             href="/company"
             className={`${linkBase} ${aboutActive ? `${linkActive} ${underline}` : linkIdle}`}
           >
-            About
+            {t("about")}
           </Link>
           <Link
             href="/contact"
             className={`${linkBase} ${contactActive ? `${linkActive} ${underline}` : linkIdle}`}
           >
-            Contact
+            {t("contact")}
           </Link>
         </nav>
 
@@ -214,7 +215,7 @@ export function Navbar() {
             className="hidden h-10 shrink-0 border-[oklch(0.72_0.11_80)]/45 bg-transparent px-3.5 text-[13px] font-medium text-[oklch(0.82_0.11_80)] hover:border-[oklch(0.72_0.11_80)] hover:bg-[oklch(0.72_0.11_80)]/12 hover:text-[oklch(0.82_0.11_80)] xl:inline-flex"
           >
             <Download className="mr-1.5 h-4 w-4" />
-            Download
+            {t("download")}
           </Button>
 
           {/* Request a Quote — coral */}
@@ -224,7 +225,7 @@ export function Navbar() {
             className="hidden h-10 shrink-0 bg-[oklch(0.66_0.16_35)] px-4 text-[13px] font-semibold text-white shadow-sm hover:bg-[oklch(0.60_0.17_35)] sm:inline-flex xl:px-5 xl:text-sm"
           >
             <Link href="/request-quote">
-              Request a Quote
+              {t("requestQuote")}
               {itemCount > 0 && (
                 <span className="ml-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-white/20 px-1 text-[11px] font-bold text-white">
                   {itemCount}
@@ -245,30 +246,30 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
-              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <SheetTitle className="sr-only">{t("navigationMenu")}</SheetTitle>
               <div className="flex flex-col gap-1 pt-8">
                 {primaryLinks.map((l) => (
                   <Link
-                    key={l.label}
+                    key={l.id}
                     href={l.href}
                     onClick={() => setMobileOpen(false)}
                     className="rounded-lg px-3 py-2 text-base font-medium text-foreground/80 transition-colors hover:bg-[oklch(0.72_0.11_80)]/10 hover:text-[oklch(0.60_0.12_75)]"
                   >
-                    {l.label}
+                    {t(`primaryLinks.${l.id}`)}
                   </Link>
                 ))}
                 <div className="my-3 border-t" />
                 <p className="px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  Categories
+                  {t("categories")}
                 </p>
                 {categoryLinks.slice(0, 6).map((c) => (
                   <Link
-                    key={c.label}
+                    key={c.id}
                     href={c.href}
                     onClick={() => setMobileOpen(false)}
                     className="rounded-lg px-3 py-1.5 text-sm text-foreground/70 transition-colors hover:bg-muted hover:text-foreground"
                   >
-                    {c.label}
+                    {t(`categoryLinks.${c.id}`)}
                   </Link>
                 ))}
                 <div className="my-3 border-t" />
@@ -292,7 +293,7 @@ export function Navbar() {
                   className="mt-3 border-[oklch(0.72_0.11_80)] text-[oklch(0.60_0.12_75)] hover:bg-[oklch(0.72_0.11_80)]/10"
                 >
                   <Download className="mr-2 h-4 w-4" />
-                  Download Catalog
+                  {t("downloadCatalog")}
                 </Button>
                 <Button
                   asChild
@@ -300,7 +301,7 @@ export function Navbar() {
                   className="bg-[oklch(0.66_0.16_35)] text-white hover:bg-[oklch(0.60_0.17_35)]"
                 >
                   <Link href="/request-quote">
-                    Request a Quote
+                    {t("requestQuote")}
                     {itemCount > 0 && (
                       <span className="ml-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-xs font-bold text-white">
                         {itemCount}

@@ -33,7 +33,7 @@ export function HowItWorksPreview() {
           title={t("title")}
           subtitle={t("subtitle")}
           variant="dark"
-          eyebrow="How It Works"
+          eyebrow={t("title")}
         />
         <StepsTimeline steps={steps} variant="horizontal" dark />
         <div className="mt-12 text-center">
@@ -43,7 +43,7 @@ export function HowItWorksPreview() {
             className="border-[oklch(0.78_0.12_80)]/40 bg-transparent text-[oklch(0.82_0.11_80)] hover:bg-[oklch(0.78_0.12_80)]/10 hover:text-[oklch(0.85_0.10_80)]"
           >
             <Link href={`/${locale}/how-it-works`}>
-              Learn More
+              {t("learnMore")}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

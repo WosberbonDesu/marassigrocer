@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Award, Globe, Mail, Phone, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
@@ -33,6 +33,7 @@ const localeShort: Record<string, string> = {
 
 export function TopUtilityBar() {
   const locale = useLocale();
+  const t = useTranslations("topBar");
 
   const switchLocale = (newLocale: string) => {
     const allLocales = ["en", "tr", "ar", "ru", "es", "de", "it", "pt"];
@@ -51,11 +52,11 @@ export function TopUtilityBar() {
         <div className="flex items-center gap-6 min-w-0">
           <span className="flex items-center gap-1.5 whitespace-nowrap">
             <Award className="h-3 w-3 text-[oklch(0.78_0.12_80)]" />
-            Trusted FMCG Export Partner Since 1996
+            {t("trustedPartner")}
           </span>
           <span className="hidden items-center gap-1.5 whitespace-nowrap md:inline-flex">
             <Globe className="h-3 w-3 text-[oklch(0.78_0.12_80)]" />
-            Serving 50+ Markets Worldwide
+            {t("marketsWorldwide")}
           </span>
         </div>
         <div className="flex items-center gap-4 shrink-0">

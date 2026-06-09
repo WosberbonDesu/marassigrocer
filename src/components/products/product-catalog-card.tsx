@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Package, Eye, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,17 +14,16 @@ interface Props {
 }
 
 type SecondaryBadge = {
-  label: string;
   tone: "bestSeller" | "topSeller" | "privateLabel" | "bulk";
 };
 
 function pickSecondaryBadge(product: Product): SecondaryBadge | null {
-  if (product.featured) return { label: "Best Seller", tone: "bestSeller" };
+  if (product.featured) return { tone: "bestSeller" };
   if (product.availability === "in_stock") {
-    if ((product.caseSize ?? 0) >= 12) return { label: "Bulk Available", tone: "bulk" };
-    return { label: "Top Seller", tone: "topSeller" };
+    if ((product.caseSize ?? 0) >= 12) return { tone: "bulk" };
+    return { tone: "topSeller" };
   }
-  if (product.availability === "seasonal") return { label: "Private Label", tone: "privateLabel" };
+  if (product.availability === "seasonal") return { tone: "privateLabel" };
   return null;
 }
 
@@ -37,6 +36,7 @@ const badgeTone: Record<SecondaryBadge["tone"], string> = {
 
 export function ProductCatalogCard({ product }: Props) {
   const locale = useLocale();
+  const t = useTranslations("productCatalogCard");
   const { addItem, openDrawer } = useRFQStore();
 
   const detailHref = `/products/${product.slug}`;
@@ -84,7 +84,7 @@ export function ProductCatalogCard({ product }: Props) {
           {exportReady && (
             <span className="inline-flex items-center gap-1 rounded-md bg-[oklch(0.55_0.14_150)] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-white/80" />
-              Export Ready
+              {t("badges.exportReady")}
             </span>
           )}
           {secondary && (
@@ -94,7 +94,7 @@ export function ProductCatalogCard({ product }: Props) {
                 badgeTone[secondary.tone]
               )}
             >
-              {secondary.label}
+              {t(`badges.${secondary.tone}`)}
             </span>
           )}
         </div>
@@ -123,7 +123,7 @@ export function ProductCatalogCard({ product }: Props) {
           {origin && (
             <>
               <span className="text-muted-foreground/45">•</span>
-              <span className="truncate">Origin: {origin}</span>
+              <span className="truncate">{t("originLabel")}: {origin}</span>
             </>
           )}
         </div>
@@ -137,7 +137,7 @@ export function ProductCatalogCard({ product }: Props) {
           >
             <Link href={detailHref} locale={locale}>
               <Eye className="mr-1 h-3.5 w-3.5" />
-              View
+              {t("actions.view")}
             </Link>
           </Button>
           <Button
@@ -146,7 +146,7 @@ export function ProductCatalogCard({ product }: Props) {
             className="h-9 bg-[oklch(0.66_0.16_35)] text-[10.5px] font-semibold uppercase tracking-wider text-white shadow-sm shadow-[oklch(0.66_0.16_35)]/30 hover:bg-[oklch(0.60_0.17_35)]"
           >
             <FileText className="mr-1 h-3.5 w-3.5" />
-            Quote
+            {t("actions.quote")}
           </Button>
         </div>
       </div>

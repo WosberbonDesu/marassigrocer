@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import {
@@ -36,95 +37,82 @@ const PRIVATE_LABEL_BG = "https://images.unsplash.com/photo-1607344645866-009c32
 const PORT_BG = "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=70";
 
 type CategoryCard = {
+  id: string;
   slug: string;
-  name: string;
-  description: string;
   icon: React.ComponentType<{ className?: string }>;
   image: string;
 };
 
 const categories: CategoryCard[] = [
   {
+    id: "biscuits",
     slug: "biscuits",
-    name: "Biscuits & Confectionery",
-    description: "Premium biscuits, chocolates, candies and sweet treats.",
     icon: Cookie,
     image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "dairy",
     slug: "dairy",
-    name: "Dairy Products",
-    description: "Milk, cheese, yogurt, butter and dairy essentials.",
     icon: Milk,
     image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "beverages",
     slug: "beverages",
-    name: "Beverages",
-    description: "Juices, soft drinks, energy drinks and more.",
     icon: CupSoda,
     image: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "snacks",
     slug: "snacks-confectionery",
-    name: "Snacks & Chips",
-    description: "Crunchy snacks, chips, pretzels and more.",
     icon: Package,
     image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "sauces",
     slug: "oils-condiments",
-    name: "Sauces & Condiments",
-    description: "Ketchup, sauces, spreads and seasoning.",
     icon: Soup,
     image: "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "canned",
     slug: "canned-jarred-foods",
-    name: "Canned Foods",
-    description: "Canned vegetables, fruits, meats and more.",
     icon: ConciergeBell,
     image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "dryFoods",
     slug: "pasta-rice-grains",
-    name: "Dry Foods & Staples",
-    description: "Rice, pulses, flour, sugar and everyday staples.",
     icon: Wheat,
     image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "cookingOils",
     slug: "cooking-oils",
-    name: "Cooking Oils",
-    description: "Sunflower, canola, olive oil and other cooking oils.",
     icon: Droplets,
     image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "teaCoffee",
     slug: "tea-coffee",
-    name: "Tea & Coffee",
-    description: "Tea, coffee, instant mixes and hot beverages.",
     icon: Coffee,
     image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "pastaRice",
     slug: "pasta-rice",
-    name: "Pasta & Rice",
-    description: "Pasta, noodles, rice and grain products.",
     icon: ChefHat,
     image: "https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "baby",
     slug: "baby-products",
-    name: "Baby & Family Products",
-    description: "Baby food, diapers, care and family essentials.",
     icon: Baby,
     image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=800&q=80",
   },
   {
+    id: "cleaning",
     slug: "cleaning-products",
-    name: "Cleaning & Household FMCG",
-    description: "Detergents, cleaners, and home care products.",
     icon: SprayCan,
     image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=800&q=80",
   },
@@ -132,40 +120,43 @@ const categories: CategoryCard[] = [
 
 const highDemand = [
   {
-    title: "Dairy & Milk Powder",
+    id: "dairy",
     slug: "dairy",
     image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=700&q=80",
   },
   {
-    title: "Canned & Dry Foods",
+    id: "canned",
     slug: "canned-jarred-foods",
     image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=80",
   },
   {
-    title: "Beverages",
+    id: "beverages",
     slug: "beverages",
     image: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=700&q=80",
   },
   {
-    title: "Snacks & Confectionery",
+    id: "snacks",
     slug: "snacks-confectionery",
     image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=700&q=80",
   },
 ];
 
 const trustBullets = [
-  { icon: Network, label: "Global Sourcing Network" },
-  { icon: Globe, label: "50+ Markets Worldwide" },
-  { icon: ShieldCheck, label: "Quality Assured Products" },
-  { icon: Clock, label: "On-Time Delivery You Can Trust" },
+  { id: "network", icon: Network },
+  { id: "markets", icon: Globe },
+  { id: "quality", icon: ShieldCheck },
+  { id: "delivery", icon: Clock },
 ];
 
 export default function ProductsLandingPage() {
+  const t = useTranslations("productsPage");
   const [search, setSearch] = useState("");
 
   const filtered = search.trim()
     ? categories.filter((c) =>
-        c.name.toLowerCase().includes(search.trim().toLowerCase())
+        t(`categories.items.${c.id}.name`)
+          .toLowerCase()
+          .includes(search.trim().toLowerCase())
       )
     : categories;
 
@@ -203,9 +194,9 @@ export default function ProductsLandingPage() {
             transition={{ duration: 0.6 }}
           >
             <nav className="mb-5 flex items-center gap-2 text-xs text-white/55">
-              <Link href="/" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">Home</Link>
+              <Link href="/" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">{t("hero.breadcrumbHome")}</Link>
               <span className="text-white/30">/</span>
-              <span className="font-medium text-[oklch(0.78_0.12_80)]">Categories</span>
+              <span className="font-medium text-[oklch(0.78_0.12_80)]">{t("hero.breadcrumbCurrent")}</span>
             </nav>
             <motion.p
               initial={{ opacity: 0 }}
@@ -213,15 +204,15 @@ export default function ProductsLandingPage() {
               transition={{ delay: 0.15, duration: 0.5 }}
               className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[oklch(0.78_0.12_80)]"
             >
-              Global FMCG Catalog
+              {t("hero.eyebrow")}
             </motion.p>
             <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.75rem]">
-              Explore Our<br />
-              <span className="text-[oklch(0.78_0.12_80)]">FMCG Product </span>
-              <span>Categories</span>
+              {t("hero.titleStart")}<br />
+              <span className="text-[oklch(0.78_0.12_80)]">{t("hero.titleHighlight")}</span>
+              <span>{t("hero.titleEnd")}</span>
             </h1>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/70 sm:text-base">
-              Discover a wide range of food and non-food FMCG categories sourced for importers, distributors, wholesalers, retailers, and private label partners worldwide.
+              {t("hero.subtitle")}
             </p>
             <motion.div
               initial={{ opacity: 0, width: 0 }}
@@ -255,36 +246,36 @@ export default function ProductsLandingPage() {
             className="rounded-2xl border border-[oklch(0.72_0.11_80)]/20 bg-white p-5 shadow-[0_20px_60px_-15px_oklch(0.20_0.02_80/0.18)] sm:p-6"
           >
             <div className="grid grid-cols-1 gap-x-5 gap-y-4 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr_1fr_auto] lg:items-end">
-              <FilterField label="Search category">
+              <FilterField label={t("filters.searchLabel")}>
                 <div className="relative">
                   <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <input
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search category"
+                    placeholder={t("filters.searchPlaceholder")}
                     className="h-11 w-full rounded-lg border border-border/70 bg-background pl-10 pr-3 text-sm placeholder:text-muted-foreground/60 outline-none transition-all focus:border-[oklch(0.72_0.11_80)] focus:ring-2 focus:ring-[oklch(0.72_0.11_80)]/15"
                   />
                 </div>
               </FilterField>
-              <FilterField label="Market Type">
-                <FilterSelect options={["All Markets", "Asia", "Africa", "Middle East", "Europe"]} />
+              <FilterField label={t("filters.marketType")}>
+                <FilterSelect options={[t("filters.market.all"), t("filters.market.asia"), t("filters.market.africa"), t("filters.market.middleEast"), t("filters.market.europe")]} />
               </FilterField>
-              <FilterField label="Product Type">
-                <FilterSelect options={["All Products", "Food", "Non-Food", "Beverages"]} />
+              <FilterField label={t("filters.productType")}>
+                <FilterSelect options={[t("filters.product.all"), t("filters.product.food"), t("filters.product.nonFood"), t("filters.product.beverages")]} />
               </FilterField>
-              <FilterField label="Private Label Availability">
-                <FilterSelect options={["Any", "Available", "On Request"]} />
+              <FilterField label={t("filters.privateLabelAvailability")}>
+                <FilterSelect options={[t("filters.privateLabel.any"), t("filters.privateLabel.available"), t("filters.privateLabel.onRequest")]} />
               </FilterField>
-              <FilterField label="Country / Origin">
-                <FilterSelect options={["Any Origin", "Turkey", "Egypt", "UAE", "India", "Vietnam"]} />
+              <FilterField label={t("filters.countryOrigin")}>
+                <FilterSelect options={[t("filters.origin.any"), t("filters.origin.turkey"), t("filters.origin.egypt"), t("filters.origin.uae"), t("filters.origin.india"), t("filters.origin.vietnam")]} />
               </FilterField>
               <Link href="/products/list" className="block">
                 <Button
                   size="lg"
                   className="h-11 w-full bg-[oklch(0.66_0.16_35)] px-7 text-sm font-semibold tracking-wide text-white shadow-md shadow-[oklch(0.66_0.16_35)]/20 transition-all hover:bg-[oklch(0.60_0.17_35)] hover:shadow-lg hover:shadow-[oklch(0.66_0.16_35)]/30"
                 >
-                  Find Categories
+                  {t("filters.findCategories")}
                 </Button>
               </Link>
             </div>
@@ -297,10 +288,10 @@ export default function ProductsLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.60_0.12_75)]">
-              Product Categories
+              {t("browse.eyebrow")}
             </p>
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
-              Browse Product Categories
+              {t("browse.heading")}
             </h2>
             <div className="mx-auto mt-4 flex items-center justify-center gap-2">
               <div className="h-px w-14 bg-gradient-to-r from-transparent to-[oklch(0.72_0.11_80)]/70" />
@@ -310,7 +301,7 @@ export default function ProductsLandingPage() {
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {filtered.map(({ slug, name, description, icon: Icon, image }, i) => (
+            {filtered.map(({ id, slug, icon: Icon, image }, i) => (
               <motion.div
                 key={slug}
                 initial={{ opacity: 0, y: 24 }}
@@ -325,7 +316,7 @@ export default function ProductsLandingPage() {
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image
                       src={image}
-                      alt={name}
+                      alt={t(`categories.items.${id}.name`)}
                       fill
                       className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.08]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 18vw"
@@ -340,12 +331,12 @@ export default function ProductsLandingPage() {
                     <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-[oklch(0.78_0.12_80)]/15 text-[oklch(0.78_0.12_80)] ring-1 ring-inset ring-[oklch(0.78_0.12_80)]/25 transition-all duration-300 group-hover:bg-[oklch(0.78_0.12_80)]/25 group-hover:ring-[oklch(0.78_0.12_80)]/50">
                       <Icon className="h-[18px] w-[18px]" />
                     </div>
-                    <h3 className="text-[15px] font-semibold leading-snug tracking-tight">{name}</h3>
+                    <h3 className="text-[15px] font-semibold leading-snug tracking-tight">{t(`categories.items.${id}.name`)}</h3>
                     <p className="mt-2 line-clamp-2 text-[11.5px] leading-relaxed text-white/55">
-                      {description}
+                      {t(`categories.items.${id}.description`)}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-[oklch(0.78_0.12_80)] transition-all group-hover:text-[oklch(0.85_0.10_80)]">
-                      Explore Category
+                      {t("browse.exploreCategory")}
                       <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
                   </div>
@@ -361,10 +352,10 @@ export default function ProductsLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.60_0.12_75)]">
-              Trending Demand
+              {t("highDemand.eyebrow")}
             </p>
             <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl">
-              High-Demand Categories for International Markets
+              {t("highDemand.heading")}
             </h2>
             <div className="mx-auto mt-4 flex items-center justify-center gap-2">
               <div className="h-px w-12 bg-gradient-to-r from-transparent to-[oklch(0.72_0.11_80)]/70" />
@@ -376,7 +367,7 @@ export default function ProductsLandingPage() {
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {highDemand.map((cat, i) => (
               <motion.div
-                key={cat.title}
+                key={cat.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
@@ -388,7 +379,7 @@ export default function ProductsLandingPage() {
                   <div className="relative h-40 w-full overflow-hidden">
                     <Image
                       src={cat.image}
-                      alt={cat.title}
+                      alt={t(`highDemand.items.${cat.id}.title`)}
                       fill
                       className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.06]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -396,28 +387,28 @@ export default function ProductsLandingPage() {
                     <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white via-white/40 to-transparent" />
                     {/* High demand badge */}
                     <div className="absolute right-3 top-3 rounded-full bg-white/95 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[oklch(0.60_0.12_75)] shadow-sm backdrop-blur-sm">
-                      High Demand
+                      {t("highDemand.badge")}
                     </div>
                   </div>
                   <div className="px-5 pb-5 pt-3">
-                    <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold leading-snug tracking-tight">{cat.title}</h3>
+                    <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold leading-snug tracking-tight">{t(`highDemand.items.${cat.id}.title`)}</h3>
                     <ul className="mt-4 space-y-2 text-[12.5px] text-foreground/75">
                       <li className="flex items-center gap-2">
                         <CheckCircle2 className="h-4 w-4 shrink-0 text-[oklch(0.60_0.12_75)]" />
-                        High Demand
+                        {t("highDemand.bullets.highDemand")}
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle2 className="h-4 w-4 shrink-0 text-[oklch(0.60_0.12_75)]" />
-                        Private Label Available
+                        {t("highDemand.bullets.privateLabel")}
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle2 className="h-4 w-4 shrink-0 text-[oklch(0.60_0.12_75)]" />
-                        Bulk Export Ready
+                        {t("highDemand.bullets.bulkExport")}
                       </li>
                     </ul>
                     <div className="mt-4 flex items-center justify-between border-t border-border/60 pt-3">
                       <span className="text-[11px] font-semibold uppercase tracking-wider text-[oklch(0.60_0.12_75)]">
-                        View Products
+                        {t("highDemand.viewProducts")}
                       </span>
                       <ArrowRight className="h-3.5 w-3.5 text-[oklch(0.60_0.12_75)] transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
@@ -444,18 +435,18 @@ export default function ProductsLandingPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-              Need Products Under<br />
-              <span className="text-[oklch(0.78_0.12_80)]">Your Own Brand?</span>
+              {t("privateLabel.titleLine1")}<br />
+              <span className="text-[oklch(0.78_0.12_80)]">{t("privateLabel.titleLine2")}</span>
             </h2>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/65 sm:text-base">
-              Marassi Group supports private label sourcing, packaging adaptation, labeling, and export-ready product selection.
+              {t("privateLabel.description")}
             </p>
             <Link href="/private-label">
               <Button
                 size="lg"
                 className="mt-6 h-12 bg-[oklch(0.66_0.16_35)] px-6 text-sm font-semibold text-white shadow-lg shadow-[oklch(0.66_0.16_35)]/25 hover:bg-[oklch(0.60_0.17_35)]"
               >
-                Explore Private Label
+                {t("privateLabel.cta")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -469,7 +460,7 @@ export default function ProductsLandingPage() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <div className="relative aspect-[4/3] w-full max-w-md">
-              <Image src={PRIVATE_LABEL_BG} alt="Private label products" fill className="rounded-xl object-cover" sizes="500px" />
+              <Image src={PRIVATE_LABEL_BG} alt={t("privateLabel.imageAlt")} fill className="rounded-xl object-cover" sizes="500px" />
               <div className="absolute inset-0 rounded-xl bg-gradient-to-l from-transparent to-[oklch(0.14_0.02_80)]/30" />
             </div>
           </motion.div>
@@ -492,10 +483,10 @@ export default function ProductsLandingPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-                Looking for a Specific<br className="hidden sm:block" /> FMCG Category?
+                {t("sourcing.titleLine1")}<br className="hidden sm:block" /> {t("sourcing.titleLine2")}
               </h2>
               <p className="mt-3 max-w-xl text-sm text-white/65 sm:text-base">
-                Our sourcing team can help you find the right products for your market.
+                {t("sourcing.description")}
               </p>
             </motion.div>
 
@@ -512,7 +503,7 @@ export default function ProductsLandingPage() {
                   className="h-12 bg-[oklch(0.66_0.16_35)] px-6 text-sm font-semibold text-white shadow-lg shadow-[oklch(0.66_0.16_35)]/25 hover:bg-[oklch(0.60_0.17_35)]"
                 >
                   <FileText className="mr-2 h-4 w-4" />
-                  Request Product List
+                  {t("sourcing.requestList")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -523,7 +514,7 @@ export default function ProductsLandingPage() {
                   className="h-12 border-white/25 bg-transparent px-6 text-sm font-medium text-white hover:bg-white/10"
                 >
                   <Phone className="mr-2 h-4 w-4" />
-                  Contact Sourcing Team
+                  {t("sourcing.contactTeam")}
                 </Button>
               </Link>
             </motion.div>
@@ -536,12 +527,12 @@ export default function ProductsLandingPage() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="mt-9 grid grid-cols-2 gap-4 border-t border-white/10 pt-6 sm:grid-cols-4"
           >
-            {trustBullets.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-xs text-white/75 sm:justify-center sm:text-sm">
+            {trustBullets.map(({ id, icon: Icon }) => (
+              <div key={id} className="flex items-center gap-2 text-xs text-white/75 sm:justify-center sm:text-sm">
                 <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[oklch(0.78_0.12_80)]/15 text-[oklch(0.78_0.12_80)]">
                   <Icon className="h-3.5 w-3.5" />
                 </div>
-                <span className="font-medium">{label}</span>
+                <span className="font-medium">{t(`sourcing.trustBullets.${id}`)}</span>
               </div>
             ))}
           </motion.div>

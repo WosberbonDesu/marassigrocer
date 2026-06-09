@@ -51,15 +51,15 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.72_0.11_80)]"
           >
-            Global Connections, Trusted Quality
+            {t("eyebrow")}
           </motion.p>
 
           <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Global FMCG Export,{" "}
+            {t("headlineStart")}{" "}
             <span className="text-[oklch(0.72_0.11_80)]">
-              Sourcing & Private Label
+              {t("headlineHighlight")}
             </span>{" "}
-            Solutions
+            {t("headlineEnd")}
           </h1>
 
           <motion.p
@@ -83,7 +83,7 @@ export function Hero() {
               className="h-12 bg-[oklch(0.72_0.11_80)] px-7 text-base font-semibold text-[oklch(0.18_0.02_80)] shadow-lg shadow-[oklch(0.72_0.11_80)]/20 hover:bg-[oklch(0.66_0.12_78)]"
             >
               <Link href={`/${locale}/request-quote`}>
-                Request a Quote
+                {t("cta1")}
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -99,7 +99,7 @@ export function Hero() {
               className="h-12 border-white/25 bg-transparent px-6 text-base text-white backdrop-blur-sm hover:bg-white/10"
             >
               <Download className="mr-2 h-4 w-4" />
-              Download Catalog
+              {t("cta2")}
             </Button>
           </motion.div>
 
@@ -110,7 +110,7 @@ export function Hero() {
             className="mt-8 flex items-center gap-2 text-sm text-white/55"
           >
             <BadgeCheck className="h-4 w-4 text-[oklch(0.72_0.11_80)]" />
-            Trusted by importers, distributors, and retail buyers worldwide.
+            {t("trustNote")}
           </motion.div>
         </motion.div>
 

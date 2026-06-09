@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, DollarSign, ShieldCheck, Clock, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,14 +10,15 @@ import { Button } from "@/components/ui/button";
 const WAREHOUSE_BG = "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=70";
 
 const trustBullets = [
-  { icon: DollarSign, label: "Competitive Pricing" },
-  { icon: ShieldCheck, label: "Quality Assured" },
-  { icon: Clock, label: "Timely Delivery" },
-  { icon: Globe, label: "Global Standards" },
+  { icon: DollarSign, id: "pricing" },
+  { icon: ShieldCheck, id: "quality" },
+  { icon: Clock, id: "delivery" },
+  { icon: Globe, id: "standards" },
 ];
 
 export function CTABand() {
   const locale = useLocale();
+  const t = useTranslations("homeCta");
 
   return (
     <section className="relative overflow-hidden bg-[oklch(0.16_0.02_80)] text-white">
@@ -43,12 +44,12 @@ export function CTABand() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-              Ready to Source Premium
+              {t("heading.line1")}
               <br className="hidden sm:block" />
-              <span className="text-[oklch(0.72_0.11_80)]"> FMCG Products?</span>
+              <span className="text-[oklch(0.72_0.11_80)]"> {t("heading.line2")}</span>
             </h2>
             <p className="mt-3 max-w-xl text-base text-white/65 sm:text-lg">
-              Partner with Marassi Group for quality products, competitive pricing, and reliable export support.
+              {t("subheading")}
             </p>
           </motion.div>
 
@@ -66,7 +67,7 @@ export function CTABand() {
               className="h-12 bg-[oklch(0.72_0.11_80)] px-7 text-base font-semibold text-[oklch(0.18_0.02_80)] shadow-lg shadow-[oklch(0.72_0.11_80)]/20 hover:bg-[oklch(0.66_0.12_78)]"
             >
               <Link href={`/${locale}/request-quote`}>
-                Request a Quote
+                {t("requestQuote")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -76,7 +77,7 @@ export function CTABand() {
               className="h-12 border-white/25 bg-transparent px-6 text-base text-white hover:bg-white/10"
             >
               <Download className="mr-2 h-4 w-4" />
-              Download Catalog
+              {t("downloadCatalog")}
             </Button>
           </motion.div>
         </div>
@@ -89,12 +90,12 @@ export function CTABand() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-8 sm:grid-cols-4"
         >
-          {trustBullets.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center justify-center gap-2 text-sm text-white/80">
+          {trustBullets.map(({ icon: Icon, id }) => (
+            <div key={id} className="flex items-center justify-center gap-2 text-sm text-white/80">
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[oklch(0.72_0.11_80)]/15 text-[oklch(0.72_0.11_80)]">
                 <Icon className="h-3.5 w-3.5" />
               </div>
-              <span className="font-medium">{label}</span>
+              <span className="font-medium">{t(`trustBullets.${id}`)}</span>
             </div>
           ))}
         </motion.div>

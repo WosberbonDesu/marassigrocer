@@ -1,6 +1,7 @@
 "use client";
 
 import { SearchX } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { ProductB2BCard } from "./product-b2b-card";
 import { Product } from "@/types";
@@ -12,15 +13,17 @@ interface ProductGridProps {
 }
 
 export function ProductGrid({ products, showPricesPublicly = false, onClear }: ProductGridProps) {
+  const t = useTranslations("productGrid");
+
   if (products.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed py-20 text-center">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
           <SearchX className="h-7 w-7 text-muted-foreground/50" />
         </div>
-        <h3 className="mt-4 text-sm font-semibold">No products found</h3>
+        <h3 className="mt-4 text-sm font-semibold">{t("empty.title")}</h3>
         <p className="mt-1 text-sm text-muted-foreground">
-          Try adjusting your filters or search query.
+          {t("empty.description")}
         </p>
         {onClear && (
           <Button
@@ -29,7 +32,7 @@ export function ProductGrid({ products, showPricesPublicly = false, onClear }: P
             onClick={onClear}
             className="mt-4"
           >
-            Clear filters
+            {t("empty.clearFilters")}
           </Button>
         )}
       </div>

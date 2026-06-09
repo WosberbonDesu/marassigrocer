@@ -17,7 +17,7 @@ export default function InsightsPage() {
         title={t("title")}
         subtitle={t("subtitle")}
         locale={locale}
-        breadcrumbs={[{ label: "Insights & Guides" }]}
+        breadcrumbs={[{ label: t("title") }]}
       />
 
       <section className="py-16 sm:py-24">

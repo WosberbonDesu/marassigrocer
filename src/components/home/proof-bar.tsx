@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Briefcase, Globe, Package, Warehouse } from "lucide-react";
 
 const stats = [
-  { key: "since", icon: Briefcase, target: 29, suffix: "+", label: "Years in Business", sub: "Since 1996" },
-  { key: "countries", icon: Globe, target: 50, suffix: "+", label: "Markets Served", sub: "Worldwide" },
-  { key: "products", icon: Package, target: 10000, suffix: "+", label: "Products in Catalog", sub: "Across 20+ Categories" },
-  { key: "warehouse", icon: Warehouse, target: 4000, suffix: " m²", label: "Warehouse Capacity", sub: "Modern & Fully Equipped" },
+  { key: "since", icon: Briefcase, target: 29, suffix: "+" },
+  { key: "countries", icon: Globe, target: 50, suffix: "+" },
+  { key: "products", icon: Package, target: 10000, suffix: "+" },
+  { key: "warehouse", icon: Warehouse, target: 4000, suffix: " m²" },
 ] as const;
 
 function CountUp({ target, durationMs = 1800 }: { target: number; durationMs?: number }) {
@@ -44,13 +45,14 @@ function CountUp({ target, durationMs = 1800 }: { target: number; durationMs?: n
 }
 
 export function ProofBar() {
+  const t = useTranslations("proofBar");
   return (
     <section className="relative bg-background pb-12">
       {/* Raised white card sitting on top of hero edge */}
       <div className="mx-auto -mt-12 max-w-7xl px-4 sm:-mt-14 sm:px-6 lg:px-8">
         <div className="rounded-2xl border border-[oklch(0.72_0.11_80)]/20 bg-white shadow-xl shadow-[oklch(0.20_0.02_80)]/5">
           <div className="grid grid-cols-2 divide-x divide-y divide-border sm:divide-y-0 lg:grid-cols-4">
-            {stats.map(({ key, icon: Icon, target, suffix, label, sub }, i) => (
+            {stats.map(({ key, icon: Icon, target, suffix }, i) => (
               <motion.div
                 key={key}
                 initial={{ opacity: 0, y: 16 }}
@@ -72,9 +74,9 @@ export function ProofBar() {
                     <span className="text-[oklch(0.72_0.11_80)]">{suffix}</span>
                   </div>
                   <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-foreground/80">
-                    {label}
+                    {t(`items.${key}.label`)}
                   </p>
-                  <p className="text-[10px] text-muted-foreground">{sub}</p>
+                  <p className="text-[10px] text-muted-foreground">{t(`items.${key}.sub`)}</p>
                 </div>
               </motion.div>
             ))}

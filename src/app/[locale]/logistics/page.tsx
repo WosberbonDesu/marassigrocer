@@ -35,7 +35,7 @@ export default function LogisticsPage() {
         title={t("title")}
         subtitle={t("subtitle")}
         locale={locale}
-        breadcrumbs={[{ label: "Logistics & Documentation" }]}
+        breadcrumbs={[{ label: t("title") }]}
       />
 
       {/* Incoterms */}

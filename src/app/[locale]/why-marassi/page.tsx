@@ -1,15 +1,20 @@
 import Link from "next/link";
 import * as Icons from "lucide-react";
 import { Trophy } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/shared/page-hero";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 
-export const metadata = {
-  title: "Why Marassi Group",
-  description:
-    "Direct factory pricing, 4,000 m² warehouse, 75+ factory partnerships, and 29+ years of FMCG export experience.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "whyMarassiPage" });
+  return { title: t("meta.title"), description: t("meta.description") };
+}
 
 function pickIcon(name: string | null) {
   if (!name) return Trophy;
@@ -23,6 +28,7 @@ export default async function WhyMarassiPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations("whyMarassiPage");
   let advantages: Array<{
     id: string;
     title: string;
@@ -57,10 +63,10 @@ export default async function WhyMarassiPage({
   return (
     <div>
       <PageHero
-        title="Why Marassi Group"
-        subtitle="Direct sourcing strength. Warehouse readiness. International experience. 29 years and counting."
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
         locale={locale}
-        breadcrumbs={[{ label: "Why Marassi Group" }]}
+        breadcrumbs={[{ label: t("hero.breadcrumb") }]}
       />
 
       <section className="py-16 sm:py-20">
@@ -102,17 +108,17 @@ export default async function WhyMarassiPage({
       <section className="bg-[oklch(0.20_0.02_80)] py-16 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold sm:text-4xl">
-            Ready to source with a proven export partner?
+            {t("cta.title")}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-white/70">
-            Tell us about your market and product needs — our export team will respond with a tailored proposal.
+            {t("cta.subtitle")}
           </p>
           <div className="mt-8 flex justify-center gap-3">
             <Button asChild size="lg" className="bg-[oklch(0.62_0.14_30)] text-white hover:bg-[oklch(0.52_0.14_25)]">
-              <Link href={`/${locale}/contact`}>Contact Export Team</Link>
+              <Link href={`/${locale}/contact`}>{t("cta.contact")}</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white/20 bg-transparent text-white hover:bg-white/10">
-              <Link href={`/${locale}/products`}>Browse Catalog</Link>
+              <Link href={`/${locale}/products`}>{t("cta.browse")}</Link>
             </Button>
           </div>
         </div>

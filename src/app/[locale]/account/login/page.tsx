@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { Loader2, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ import { PageHero } from "@/components/shared/page-hero";
 export default function CustomerLoginPage() {
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations("accountLoginPage");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -32,7 +33,7 @@ export default function CustomerLoginPage() {
       router.refresh();
     } else {
       const d = await res.json().catch(() => ({}));
-      setError(d.error ?? "Login failed");
+      setError(d.error ?? t("error.loginFailed"));
     }
     setLoading(false);
   };
@@ -40,10 +41,10 @@ export default function CustomerLoginPage() {
   return (
     <div>
       <PageHero
-        title="Sign in"
-        subtitle="Trade account access — unlock pricing and the full catalog."
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
         locale={locale}
-        breadcrumbs={[{ label: "Account" }, { label: "Sign in" }]}
+        breadcrumbs={[{ label: t("breadcrumbs.account") }, { label: t("breadcrumbs.signIn") }]}
       />
       <div className="mx-auto max-w-md px-4 py-16">
         <form onSubmit={onSubmit} className="rounded-2xl border bg-card p-6 space-y-4">
@@ -53,7 +54,7 @@ export default function CustomerLoginPage() {
             </div>
           )}
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{t("form.email")}</Label>
             <Input
               id="email"
               type="email"
@@ -64,7 +65,7 @@ export default function CustomerLoginPage() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{t("form.password")}</Label>
             <Input
               id="password"
               type="password"
@@ -80,12 +81,12 @@ export default function CustomerLoginPage() {
             ) : (
               <LogIn className="mr-2 h-4 w-4" />
             )}
-            Sign In
+            {t("form.submit")}
           </Button>
           <p className="text-center text-sm text-muted-foreground">
-            Don't have an account yet?{" "}
+            {t("noAccount.prompt")}{" "}
             <Link href={`/${locale}/account/apply`} className="font-medium underline">
-              Apply for one
+              {t("noAccount.applyLink")}
             </Link>
           </p>
         </form>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Lock, Package, Plus, Minus, Check, Flame, Snowflake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRFQStore } from "@/stores/rfq-store";
@@ -22,6 +22,7 @@ function formatPrice(n: number | undefined) {
 
 export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
   const locale = useLocale();
+  const t = useTranslations("productB2bCard");
   const { addItem, hasItem } = useRFQStore();
   const isAdded = hasItem(product.id);
   const [qty, setQty] = useState(0);
@@ -81,22 +82,22 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
           {product.hazmat && (
             <span
               className="inline-flex shrink-0 items-center gap-1 rounded-full bg-red-500/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-red-300"
-              title="Hazardous material"
+              title={t("badges.hazmatTitle")}
             >
-              <Flame className="h-3 w-3" /> Hazmat
+              <Flame className="h-3 w-3" /> {t("badges.hazmat")}
             </span>
           )}
           {product.reeferRequired && (
             <span
               className="inline-flex shrink-0 items-center gap-1 rounded-full bg-blue-500/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-blue-300"
-              title="Refrigerated container required"
+              title={t("badges.reeferTitle")}
             >
-              <Snowflake className="h-3 w-3" /> Reefer
+              <Snowflake className="h-3 w-3" /> {t("badges.reefer")}
             </span>
           )}
           {(product.moqQuantity || product.moqHint) && (
             <span className="inline-flex shrink-0 items-center rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-medium text-white/70">
-              MOQ:{" "}
+              {t("moq")}:{" "}
               {product.moqQuantity
                 ? `${product.moqQuantity} ${product.moqUnit ?? ""}`
                 : product.moqHint}
@@ -108,19 +109,19 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
         <div className="overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] text-xs">
           <div className="grid grid-cols-2 sm:grid-cols-4">
             <div className="border-b border-r border-white/10 p-2.5 sm:border-b-0">
-              <p className="text-[10px] uppercase tracking-wider text-white/45">Brand</p>
+              <p className="text-[10px] uppercase tracking-wider text-white/45">{t("specs.brand")}</p>
               <p className="mt-0.5 font-medium text-white/90 truncate">{brandName}</p>
             </div>
             <div className="border-b border-white/10 p-2.5 sm:border-b-0 sm:border-r">
-              <p className="text-[10px] uppercase tracking-wider text-white/45">Pack</p>
+              <p className="text-[10px] uppercase tracking-wider text-white/45">{t("specs.pack")}</p>
               <p className="mt-0.5 font-medium text-white/90 truncate">{pack}</p>
             </div>
             <div className="border-r border-white/10 p-2.5">
-              <p className="text-[10px] uppercase tracking-wider text-white/45">Unit UPC</p>
+              <p className="text-[10px] uppercase tracking-wider text-white/45">{t("specs.unitUpc")}</p>
               <p className="mt-0.5 font-medium text-white/90 truncate">{product.unitUpc || "—"}</p>
             </div>
             <div className="p-2.5">
-              <p className="text-[10px] uppercase tracking-wider text-white/45">Case UPC</p>
+              <p className="text-[10px] uppercase tracking-wider text-white/45">{t("specs.caseUpc")}</p>
               <p className="mt-0.5 font-medium text-white/90 truncate">{product.caseUpc || "—"}</p>
             </div>
           </div>
@@ -142,7 +143,7 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
                 </div>
                 <div className="flex items-center justify-between gap-2 border-l border-r border-white/10 px-3 py-2">
                   <span className="text-white/55">
-                    Case Price ({tier.minQty}+)
+                    {t("pricing.casePrice", { minQty: tier.minQty })}
                   </span>
                   <span className="font-semibold text-white">
                     {showPricesPublicly && tier.casePrice != null ? (
@@ -153,7 +154,7 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
                   </span>
                 </div>
                 <div className="flex items-center justify-between gap-2 px-3 py-2">
-                  <span className="text-white/55">Unit Price</span>
+                  <span className="text-white/55">{t("pricing.unitPrice")}</span>
                   <span className="font-semibold text-white">
                     {showPricesPublicly && tier.unitPrice != null ? (
                       `$${formatPrice(tier.unitPrice)}`
@@ -167,7 +168,7 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
           </div>
         ) : (
           <p className="text-xs italic text-white/55">
-            Pricing on request — add to RFQ for a quote.
+            {t("pricing.onRequest")}
           </p>
         )}
       </div>
@@ -176,7 +177,7 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
       <div className="flex flex-col gap-3">
         <div className="space-y-1.5">
           <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/55">
-            Quantity (cases)
+            {t("quantity.label")}
           </p>
           <div className="flex items-center gap-1">
             <button
@@ -184,7 +185,7 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
               onClick={() => setQty((q) => Math.max(0, q - 1))}
               className="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-white/80 transition-colors hover:bg-white/10 hover:text-white disabled:opacity-40"
               disabled={qty <= 0}
-              aria-label="Decrease quantity"
+              aria-label={t("quantity.decrease")}
             >
               <Minus className="h-3.5 w-3.5" />
             </button>
@@ -199,7 +200,7 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
               type="button"
               onClick={() => setQty((q) => q + 1)}
               className="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-              aria-label="Increase quantity"
+              aria-label={t("quantity.increase")}
             >
               <Plus className="h-3.5 w-3.5" />
             </button>
@@ -212,7 +213,7 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
           variant="outline"
           className="h-10 w-full border-white/20 bg-transparent text-sm font-medium text-white hover:border-[oklch(0.78_0.12_80)]/50 hover:bg-white/10 hover:text-white"
         >
-          <Link href={detailHref}>Product Details</Link>
+          <Link href={detailHref}>{t("actions.productDetails")}</Link>
         </Button>
 
         <Button
@@ -228,11 +229,11 @@ export function ProductB2BCard({ product, showPricesPublicly = false }: Props) {
         >
           {isAdded ? (
             <>
-              <Check className="mr-1.5 h-4 w-4" /> Added to RFQ
+              <Check className="mr-1.5 h-4 w-4" /> {t("actions.addedToRfq")}
             </>
           ) : (
             <>
-              <Plus className="mr-1.5 h-4 w-4" /> Add to RFQ
+              <Plus className="mr-1.5 h-4 w-4" /> {t("actions.addToRfq")}
             </>
           )}
         </Button>
