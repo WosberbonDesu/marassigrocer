@@ -82,7 +82,7 @@ export function RFQDrawer() {
       });
     } else {
       const data = await res.json().catch(() => ({}));
-      setPromo({ status: "invalid", error: data.error || "Invalid code" });
+      setPromo({ status: "invalid", error: data.error || t("promo.invalidCode") });
     }
   };
 
@@ -104,10 +104,10 @@ export function RFQDrawer() {
         store.clearItems();
         store.closeDrawer();
       } else {
-        toast.error("Submission failed. Please try again.");
+        toast.error(t("form.submissionFailed"));
       }
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t("form.error"));
     }
   };
 
@@ -129,7 +129,7 @@ export function RFQDrawer() {
                 <div>
                   <SheetTitle className="text-lg">{t("title")}</SheetTitle>
                   <SheetDescription className="text-xs">
-                    Get a quote for your order
+                    {t("description")}
                   </SheetDescription>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export function RFQDrawer() {
                     <Label className="text-sm">{t("form.country")}</Label>
                     <Input
                       {...form.register("country")}
-                      placeholder="e.g. Saudi Arabia"
+                      placeholder={t("form.countryPlaceholder")}
                       className="h-10"
                     />
                     {form.formState.errors.country && (
@@ -218,7 +218,7 @@ export function RFQDrawer() {
                     <Textarea
                       {...form.register("notes")}
                       rows={2}
-                      placeholder="Product interests, target price..."
+                      placeholder={t("form.notesPlaceholder")}
                       className="resize-none"
                     />
                   </div>
@@ -226,12 +226,12 @@ export function RFQDrawer() {
                   <div className="space-y-1.5">
                     <Label className="text-sm flex items-center gap-1.5">
                       <Ticket className="h-3.5 w-3.5" />
-                      Promo code (optional)
+                      {t("promo.label")}
                     </Label>
                     <div className="flex gap-2">
                       <Input
                         {...form.register("promoCode")}
-                        placeholder="SUMMER25"
+                        placeholder={t("promo.placeholder")}
                         className="h-10 font-mono uppercase"
                         onChange={(e) => {
                           form.setValue("promoCode", e.target.value.toUpperCase());
@@ -250,13 +250,16 @@ export function RFQDrawer() {
                         ) : promo.status === "valid" ? (
                           <Check className="h-4 w-4 text-green-600" />
                         ) : (
-                          "Apply"
+                          t("promo.apply")
                         )}
                       </Button>
                     </div>
                     {promo.status === "valid" && (
                       <p className="text-xs text-green-700">
-                        Applied: {promo.type === "PERCENT" ? `${promo.value}% off` : `$${promo.value.toFixed(2)} off`}
+                        {t("promo.applied")}{" "}
+                        {promo.type === "PERCENT"
+                          ? t("promo.percentOff", { value: promo.value })
+                          : t("promo.amountOff", { value: promo.value.toFixed(2) })}
                         {promo.description ? ` — ${promo.description}` : ""}
                       </p>
                     )}
@@ -303,7 +306,7 @@ export function RFQDrawer() {
 
                   <div className="space-y-1.5">
                     <Label className="text-sm">{t("form.phone")}</Label>
-                    <Input {...form.register("phone")} placeholder="+90 ..." className="h-10" />
+                    <Input {...form.register("phone")} placeholder={t("form.phonePlaceholder")} className="h-10" />
                     {form.formState.errors.phone && (
                       <p className="text-xs text-destructive">{form.formState.errors.phone.message}</p>
                     )}
@@ -353,7 +356,7 @@ export function RFQDrawer() {
                     {t("emptyList")}
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground/60">
-                    Browse products and add items to your list
+                    {t("emptyListHint")}
                   </p>
                 </div>
               ) : (
@@ -366,7 +369,7 @@ export function RFQDrawer() {
                       onClick={() => store.clearItems()}
                       className="text-xs text-destructive hover:underline"
                     >
-                      Clear all
+                      {t("items.clearAll")}
                     </button>
                   </div>
 

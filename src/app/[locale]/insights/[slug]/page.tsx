@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { Calendar } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { PageHero } from "@/components/shared/page-hero";
@@ -42,6 +43,7 @@ export default async function BlogPostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  const t = await getTranslations("insightsDetailPage");
   let post: Awaited<ReturnType<typeof db.blogPost.findUnique>> = null;
   try {
     post = await db.blogPost.findUnique({ where: { slug } });
@@ -61,7 +63,7 @@ export default async function BlogPostPage({
         title={title}
         locale={locale}
         breadcrumbs={[
-          { label: "Insights", href: `/${locale}/insights` },
+          { label: t("breadcrumbs.insights"), href: `/${locale}/insights` },
           { label: title },
         ]}
       />
@@ -77,7 +79,7 @@ export default async function BlogPostPage({
               })}
             </span>
           )}
-          {post.author && <span>· By {post.author}</span>}
+          {post.author && <span>· {t("byAuthor")} {post.author}</span>}
         </div>
 
         {post.coverImage && (
@@ -98,7 +100,7 @@ export default async function BlogPostPage({
 
         {post.tags.length > 0 && (
           <div className="mt-12 flex flex-wrap items-center gap-2 border-t pt-6">
-            <span className="text-xs uppercase tracking-wider text-muted-foreground">Tags:</span>
+            <span className="text-xs uppercase tracking-wider text-muted-foreground">{t("tagsLabel")}</span>
             {post.tags.map((tag) => (
               <Badge key={tag} variant="secondary" className="text-xs">
                 {tag}

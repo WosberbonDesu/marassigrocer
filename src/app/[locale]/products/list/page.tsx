@@ -3,8 +3,8 @@
 import { useState, useEffect, useMemo, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -67,6 +67,36 @@ const defaultFilters: Filters = {
 interface FilterCategory { id: string; name: string; slug: string }
 interface FilterBrand { id: string; name: string; slug: string }
 
+const PACKAGING_OPTIONS = [
+  { value: "all", labelKey: "options.packaging.all" },
+  { value: "carton", labelKey: "options.packaging.carton" },
+  { value: "pallet", labelKey: "options.packaging.pallet" },
+  { value: "bulk", labelKey: "options.packaging.bulk" },
+  { value: "case", labelKey: "options.packaging.case" },
+];
+const PRODUCT_TYPE_OPTIONS = [
+  { value: "all", labelKey: "options.productType.all" },
+  { value: "food", labelKey: "options.productType.food" },
+  { value: "non_food", labelKey: "options.productType.nonFood" },
+  { value: "beverages", labelKey: "options.productType.beverages" },
+];
+const EXPORT_READY_OPTIONS = [
+  { value: "all", labelKey: "options.exportReadiness.all" },
+  { value: "ready", labelKey: "options.exportReadiness.ready" },
+  { value: "on_request", labelKey: "options.exportReadiness.onRequest" },
+];
+const PRIVATE_LABEL_OPTIONS = [
+  { value: "all", labelKey: "options.privateLabel.all" },
+  { value: "available", labelKey: "options.privateLabel.available" },
+  { value: "on_request", labelKey: "options.privateLabel.onRequest" },
+];
+const MOQ_OPTIONS = [
+  { value: "all", labelKey: "options.moq.all" },
+  { value: "lt100", labelKey: "options.moq.lt100" },
+  { value: "100to500", labelKey: "options.moq.between" },
+  { value: "gt500", labelKey: "options.moq.gt500" },
+];
+
 export default function ProductsListPage() {
   return (
     <Suspense fallback={null}>
@@ -76,32 +106,11 @@ export default function ProductsListPage() {
 }
 
 function ProductsListInner() {
-  const t = useTranslations("productsCatalog");
-  const tCommon = useTranslations("common");
-  const tBadges = useTranslations("productBadges");
+  const t = useTranslations("productsListPage");
   const searchParams = useSearchParams();
   const initialSearch = searchParams.get("search") ?? "";
   const initialCategory = searchParams.get("category") ?? "all";
   const initialBrand = searchParams.get("brand") ?? "all";
-
-  const PACKAGING_OPTIONS = [
-    { value: "all", label: t("filterOptions.packagingAll") },
-    { value: "carton", label: t("filterOptions.packagingCarton") },
-    { value: "pallet", label: t("filterOptions.packagingPallet") },
-    { value: "bulk", label: t("filterOptions.packagingBulk") },
-    { value: "case", label: t("filterOptions.packagingCase") },
-  ];
-  const PRIVATE_LABEL_OPTIONS = [
-    { value: "all", label: t("filterOptions.privateLabelAll") },
-    { value: "available", label: t("filterOptions.privateLabelAvailable") },
-    { value: "on_request", label: t("filterOptions.privateLabelOnRequest") },
-  ];
-  const MOQ_OPTIONS = [
-    { value: "all", label: t("filterOptions.moqAll") },
-    { value: "lt100", label: t("filterOptions.moqLt100") },
-    { value: "100to500", label: t("filterOptions.moq100to500") },
-    { value: "gt500", label: t("filterOptions.moqGt500") },
-  ];
 
   const [filters, setFilters] = useState<Filters>({
     ...defaultFilters,
@@ -280,7 +289,7 @@ function ProductsListInner() {
             transition={{ duration: 0.5 }}
           >
             <nav className="mb-5 flex items-center gap-2 text-xs text-white/55">
-              <Link href="/" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">{tCommon("home")}</Link>
+              <Link href="/" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">{t("breadcrumb.home")}</Link>
               <span className="text-white/30">/</span>
               <Link href="/products" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">{t("breadcrumb.products")}</Link>
               {currentCategory && (
@@ -295,8 +304,8 @@ function ProductsListInner() {
               {t("hero.eyebrow")}
             </p>
             <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem]">
-              {t("hero.title")}<br />
-              <span className="text-[oklch(0.78_0.12_80)]">{t("hero.titleAccent")}</span>
+              {t("hero.titleLine1")}<br />
+              <span className="text-[oklch(0.78_0.12_80)]">{t("hero.titleLine2")}</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-white/70 sm:text-base">
               {t("hero.subtitle")}
@@ -321,7 +330,7 @@ function ProductsListInner() {
             className="rounded-2xl border border-[oklch(0.72_0.11_80)]/20 bg-white p-5 shadow-[0_24px_60px_-18px_oklch(0.20_0.02_80/0.22)] sm:p-6"
           >
             <div className="grid grid-cols-1 gap-x-5 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-              <CardField label={t("filterCard.search")}>
+              <CardField label={t("filterCard.searchLabel")}>
                 <div className="relative">
                   <input
                     type="text"
@@ -334,51 +343,51 @@ function ProductsListInner() {
                 </div>
               </CardField>
 
-              <CardField label={t("filterCard.category")}>
+              <CardField label={t("filterCard.categoryLabel")}>
                 <SelectBox
                   value={filters.category}
                   onChange={(v) => handleFilterChange("category", v)}
-                  options={[{ value: "all", label: t("filterOptions.allCategories") }, ...categories.map((c) => ({ value: c.slug, label: c.name }))]}
+                  options={[{ value: "all", label: t("options.category.all") }, ...categories.map((c) => ({ value: c.slug, label: c.name }))]}
                 />
               </CardField>
 
-              <CardField label={t("filterCard.brand")}>
+              <CardField label={t("filterCard.brandLabel")}>
                 <SelectBox
                   value={filters.brand}
                   onChange={(v) => handleFilterChange("brand", v)}
-                  options={[{ value: "all", label: t("filterOptions.allBrands") }, ...brands.map((b) => ({ value: b.slug, label: b.name }))]}
+                  options={[{ value: "all", label: t("options.brand.all") }, ...brands.map((b) => ({ value: b.slug, label: b.name }))]}
                 />
               </CardField>
 
-              <CardField label={t("filterCard.country")}>
+              <CardField label={t("filterCard.originLabel")}>
                 <SelectBox
                   value={filters.origin}
                   onChange={(v) => handleFilterChange("origin", v)}
-                  options={[{ value: "all", label: t("filterOptions.allCountries") }, ...origins.map((o) => ({ value: o, label: o }))]}
+                  options={[{ value: "all", label: t("options.origin.all") }, ...origins.map((o) => ({ value: o, label: o }))]}
                 />
               </CardField>
 
-              <CardField label={t("filterCard.packaging")}>
+              <CardField label={t("filterCard.packagingLabel")}>
                 <SelectBox
                   value={filters.packaging}
                   onChange={(v) => handleFilterChange("packaging", v)}
-                  options={PACKAGING_OPTIONS}
+                  options={PACKAGING_OPTIONS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
                 />
               </CardField>
 
-              <CardField label={t("filterCard.privateLabel")}>
+              <CardField label={t("filterCard.privateLabelLabel")}>
                 <SelectBox
                   value={filters.privateLabel}
                   onChange={(v) => handleFilterChange("privateLabel", v)}
-                  options={PRIVATE_LABEL_OPTIONS}
+                  options={PRIVATE_LABEL_OPTIONS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
                 />
               </CardField>
 
-              <CardField label={t("filterCard.moq")}>
+              <CardField label={t("filterCard.moqLabel")}>
                 <SelectBox
                   value={filters.moq}
                   onChange={(v) => handleFilterChange("moq", v)}
-                  options={MOQ_OPTIONS}
+                  options={MOQ_OPTIONS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
                 />
               </CardField>
 
@@ -386,7 +395,7 @@ function ProductsListInner() {
                 <Button
                   type="button"
                   size="lg"
-                  onClick={() => {
+                  onClick={() => { /* filters already applied live; scroll to results */
                     const el = document.getElementById("catalog-results");
                     el?.scrollIntoView({ behavior: "smooth", block: "start" });
                   }}
@@ -419,9 +428,9 @@ function ProductsListInner() {
 
                 {/* Cant find CTA */}
                 <div className="rounded-2xl border border-[oklch(0.72_0.11_80)]/25 bg-[oklch(0.97_0.012_85)] p-5">
-                  <p className="text-sm font-semibold text-foreground">{t("sidebar.cantFind")}</p>
+                  <p className="text-sm font-semibold text-foreground">{t("sidebarCta.title")}</p>
                   <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                    {t("sidebar.cantFindDesc")}
+                    {t("sidebarCta.description")}
                   </p>
                   <Button
                     asChild
@@ -429,7 +438,7 @@ function ProductsListInner() {
                     className="mt-4 h-9 w-full bg-[oklch(0.66_0.16_35)] text-xs font-semibold text-white hover:bg-[oklch(0.60_0.17_35)]"
                   >
                     <Link href="/contact">
-                      {t("sidebar.requestSourcing")}
+                      {t("sidebarCta.button")}
                       <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                     </Link>
                   </Button>
@@ -444,7 +453,7 @@ function ProductsListInner() {
                 <div className="mb-5 rounded-xl border border-[oklch(0.72_0.11_80)]/30 bg-[oklch(0.72_0.11_80)]/8 px-4 py-3 text-sm">
                   <span className="font-semibold text-[oklch(0.50_0.12_75)]">{groupInfo.name}</span>
                   <span className="text-foreground/80">
-                    {" "}— {t("results.groupDiscount", { discount: groupInfo.discount })}
+                    {" "}— {t("groupBanner.discountApplied", { discount: groupInfo.discount })}
                   </span>
                 </div>
               )}
@@ -461,7 +470,7 @@ function ProductsListInner() {
                         className="relative h-10 border-[oklch(0.72_0.11_80)]/40 px-4 text-sm font-medium text-[oklch(0.50_0.12_75)] hover:bg-[oklch(0.72_0.11_80)]/10 lg:hidden"
                       >
                         <SlidersHorizontal className="mr-2 h-4 w-4" />
-                        {t("results.filters")}
+                        {t("results.filtersButton")}
                         {activeFilterCount > 0 && (
                           <span className="ml-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-[oklch(0.72_0.11_80)] px-1 text-[10px] font-bold text-[oklch(0.20_0.02_80)]">
                             {activeFilterCount}
@@ -470,7 +479,7 @@ function ProductsListInner() {
                       </Button>
                     </SheetTrigger>
                     <SheetContent side="left" className="flex w-80 flex-col">
-                      <SheetTitle>{t("sidebar.title")}</SheetTitle>
+                      <SheetTitle>{t("results.sheetTitle")}</SheetTitle>
                       <div className="mt-6 flex-1 overflow-y-auto pr-1">
                         <FilterSidebar
                           filters={filters}
@@ -513,9 +522,9 @@ function ProductsListInner() {
                       onChange={(e) => setSort(e.target.value as typeof sort)}
                       className="h-10 cursor-pointer appearance-none rounded-lg border border-border/70 bg-background pl-9 pr-9 text-sm text-foreground/85 outline-none transition-all focus:border-[oklch(0.72_0.11_80)] focus:ring-2 focus:ring-[oklch(0.72_0.11_80)]/15"
                     >
-                      <option value="latest">{t("results.sortLatest")}</option>
-                      <option value="name_asc">{t("results.sortNameAsc")}</option>
-                      <option value="name_desc">{t("results.sortNameDesc")}</option>
+                      <option value="latest">{t("sort.latest")}</option>
+                      <option value="name_asc">{t("sort.nameAsc")}</option>
+                      <option value="name_desc">{t("sort.nameDesc")}</option>
                     </select>
                     <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   </div>
@@ -525,7 +534,7 @@ function ProductsListInner() {
                     <button
                       type="button"
                       onClick={() => setView("grid")}
-                      aria-label={t("results.viewGrid")}
+                      aria-label={t("results.gridView")}
                       className={`flex h-10 w-10 items-center justify-center text-sm transition-colors ${
                         view === "grid"
                           ? "bg-[oklch(0.78_0.12_80)]/20 text-[oklch(0.40_0.10_75)]"
@@ -537,7 +546,7 @@ function ProductsListInner() {
                     <button
                       type="button"
                       onClick={() => setView("list")}
-                      aria-label={t("results.viewList")}
+                      aria-label={t("results.listView")}
                       className={`flex h-10 w-10 items-center justify-center border-l border-border/70 text-sm transition-colors ${
                         view === "list"
                           ? "bg-[oklch(0.78_0.12_80)]/20 text-[oklch(0.40_0.10_75)]"
@@ -596,13 +605,13 @@ function ProductsListInner() {
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
                     <Search className="h-7 w-7 text-muted-foreground/50" />
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold">{t("results.noResults")}</h3>
+                  <h3 className="mt-4 text-sm font-semibold">{t("empty.title")}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    {t("results.noResultsDesc")}
+                    {t("empty.description")}
                   </p>
                   <Button variant="outline" size="sm" onClick={clearAll} className="mt-4">
                     <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-                    {t("results.clearFilters")}
+                    {t("empty.clearFilters")}
                   </Button>
                 </div>
               ) : view === "grid" ? (
@@ -646,7 +655,7 @@ function ProductsListInner() {
                 <div className="h-px w-10 bg-gradient-to-l from-transparent to-[oklch(0.78_0.12_80)]/70" />
               </div>
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl">
-                {t("featured.title")}
+                {t("featured.heading")}
               </h2>
             </div>
 
@@ -679,7 +688,7 @@ function ProductsListInner() {
                       )}
                       <div className="absolute left-2 top-2">
                         <span className="rounded-md bg-[oklch(0.78_0.12_80)] px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wide text-[oklch(0.18_0.02_80)]">
-                          {tBadges("topSeller")}
+                          {t("featured.topSeller")}
                         </span>
                       </div>
                     </div>
@@ -715,7 +724,7 @@ function ProductsListInner() {
               transition={{ duration: 0.55 }}
             >
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-                {t("bulk.title1")} <span className="text-[oklch(0.78_0.12_80)]">{t("bulk.titleAccent")}</span>
+                {t("bulk.titleStart")} <span className="text-[oklch(0.78_0.12_80)]">{t("bulk.titleHighlight")}</span>
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-white/65 sm:text-base">
                 {t("bulk.subtitle")}
@@ -725,18 +734,18 @@ function ProductsListInner() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <BulkFeature
                 icon={Container}
-                title={t("bulk.mixedContainerTitle")}
-                desc={t("bulk.mixedContainerDesc")}
+                title={t("bulk.items.mixedContainer.title")}
+                desc={t("bulk.items.mixedContainer.desc")}
               />
               <BulkFeature
                 icon={FileText}
-                title={t("bulk.documentationTitle")}
-                desc={t("bulk.documentationDesc")}
+                title={t("bulk.items.exportDocs.title")}
+                desc={t("bulk.items.exportDocs.desc")}
               />
               <BulkFeature
                 icon={Globe}
-                title={t("bulk.marketSpecificTitle")}
-                desc={t("bulk.marketSpecificDesc")}
+                title={t("bulk.items.marketSelection.title")}
+                desc={t("bulk.items.marketSelection.desc")}
               />
             </div>
           </div>
@@ -769,7 +778,7 @@ function ProductsListInner() {
                       Marassi
                     </p>
                     <p className="text-[7px] font-medium tracking-wider text-[oklch(0.78_0.12_80)]">
-                      Product Catalog
+                      {t("catalogCta.cardLabel")}
                     </p>
                   </div>
                 </div>
@@ -777,10 +786,10 @@ function ProductsListInner() {
 
               <div>
                 <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl">
-                  {t("fullCatalog.title")}
+                  {t("catalogCta.title")}
                 </h2>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {t("fullCatalog.subtitle")}
+                  {t("catalogCta.description")}
                 </p>
               </div>
 
@@ -792,7 +801,7 @@ function ProductsListInner() {
                 >
                   <Link href="/contact?subject=catalog">
                     <BookOpen className="mr-2 h-4 w-4" />
-                    {t("fullCatalog.download")}
+                    {t("catalogCta.downloadButton")}
                   </Link>
                 </Button>
                 <Button
@@ -803,7 +812,7 @@ function ProductsListInner() {
                   className="h-12 whitespace-nowrap border-[oklch(0.72_0.11_80)]/40 bg-transparent px-6 text-sm font-semibold text-[oklch(0.40_0.10_75)] hover:bg-[oklch(0.78_0.12_80)]/10"
                 >
                   <Headphones className="mr-2 h-4 w-4" />
-                  {t("fullCatalog.customList")}
+                  {t("catalogCta.requestListButton")}
                 </Button>
               </div>
             </div>
@@ -871,36 +880,7 @@ function FilterSidebar({
   compact?: boolean;
   onAfterChange?: () => void;
 }) {
-  const t = useTranslations("productsCatalog");
-
-  const packagingOptions = [
-    { value: "all", label: t("filterOptions.packagingAll") },
-    { value: "carton", label: t("filterOptions.packagingCarton") },
-    { value: "pallet", label: t("filterOptions.packagingPallet") },
-    { value: "bulk", label: t("filterOptions.packagingBulk") },
-    { value: "case", label: t("filterOptions.packagingCase") },
-  ];
-  const productTypeOptions = [
-    { value: "all", label: t("filterOptions.productTypeAll") },
-    { value: "food", label: t("filterOptions.productTypeFood") },
-    { value: "non_food", label: t("filterOptions.productTypeNonFood") },
-    { value: "beverages", label: t("filterOptions.productTypeBeverages") },
-  ];
-  const exportReadyOptions = [
-    { value: "all", label: t("filterOptions.exportAll") },
-    { value: "ready", label: t("filterOptions.exportReady") },
-    { value: "on_request", label: t("filterOptions.exportOnRequest") },
-  ];
-  const privateLabelOptions = [
-    { value: "all", label: t("filterOptions.privateLabelAll") },
-    { value: "available", label: t("filterOptions.privateLabelAvailable") },
-    { value: "on_request", label: t("filterOptions.privateLabelOnRequest") },
-  ];
-
-  const labelAllCategories = t("filterOptions.allCategories");
-  const labelAllBrands = t("filterOptions.allBrands");
-  const labelAllCountries = t("filterOptions.allCountries");
-
+  const t = useTranslations("productsListPage");
   return (
     <div className={compact ? "" : "rounded-2xl border border-border/70 bg-card shadow-sm"}>
       {!compact && (
@@ -912,7 +892,7 @@ function FilterSidebar({
             onClick={onReset}
             className="text-[11px] font-semibold uppercase tracking-wider text-[oklch(0.66_0.16_35)] transition-colors hover:text-[oklch(0.55_0.17_35)]"
           >
-            {t("sidebar.reset")}
+            {t("sidebar.resetAll")}
           </button>
         </div>
       )}
@@ -920,71 +900,71 @@ function FilterSidebar({
       <div className={compact ? "space-y-2" : "divide-y divide-border/60"}>
         <SidebarSection
           icon={Tags}
-          label={t("sidebar.categories")}
+          label={t("sidebar.sections.categories")}
           value={
             filters.category === "all"
-              ? labelAllCategories
-              : categories.find((c) => c.slug === filters.category)?.name ?? labelAllCategories
+              ? t("options.category.all")
+              : categories.find((c) => c.slug === filters.category)?.name ?? t("options.category.all")
           }
-          options={[{ value: "all", label: labelAllCategories }, ...categories.map((c) => ({ value: c.slug, label: c.name }))]}
+          options={[{ value: "all", label: t("options.category.all") }, ...categories.map((c) => ({ value: c.slug, label: c.name }))]}
           selected={filters.category}
           onSelect={(v) => { onChange("category", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={BadgeCheck}
-          label={t("sidebar.brand")}
+          label={t("sidebar.sections.brand")}
           value={
             filters.brand === "all"
-              ? labelAllBrands
-              : brands.find((b) => b.slug === filters.brand)?.name ?? labelAllBrands
+              ? t("options.brand.all")
+              : brands.find((b) => b.slug === filters.brand)?.name ?? t("options.brand.all")
           }
-          options={[{ value: "all", label: labelAllBrands }, ...brands.map((b) => ({ value: b.slug, label: b.name }))]}
+          options={[{ value: "all", label: t("options.brand.all") }, ...brands.map((b) => ({ value: b.slug, label: b.name }))]}
           selected={filters.brand}
           onSelect={(v) => { onChange("brand", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={Globe2}
-          label={t("sidebar.origin")}
-          value={filters.origin === "all" ? labelAllCountries : filters.origin}
-          options={[{ value: "all", label: labelAllCountries }, ...origins.map((o) => ({ value: o, label: o }))]}
+          label={t("sidebar.sections.origin")}
+          value={filters.origin === "all" ? t("options.origin.all") : filters.origin}
+          options={[{ value: "all", label: t("options.origin.all") }, ...origins.map((o) => ({ value: o, label: o }))]}
           selected={filters.origin}
           onSelect={(v) => { onChange("origin", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={PackageIcon}
-          label={t("sidebar.packaging")}
-          value={packagingOptions.find((o) => o.value === filters.packaging)?.label ?? packagingOptions[0].label}
-          options={packagingOptions}
+          label={t("sidebar.sections.packaging")}
+          value={t(PACKAGING_OPTIONS.find((o) => o.value === filters.packaging)?.labelKey ?? "options.packaging.all")}
+          options={PACKAGING_OPTIONS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
           selected={filters.packaging}
           onSelect={(v) => { onChange("packaging", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={Boxes}
-          label={t("sidebar.productType")}
-          value={productTypeOptions.find((o) => o.value === filters.productType)?.label ?? productTypeOptions[0].label}
-          options={productTypeOptions}
+          label={t("sidebar.sections.productType")}
+          value={t(PRODUCT_TYPE_OPTIONS.find((o) => o.value === filters.productType)?.labelKey ?? "options.productType.all")}
+          options={PRODUCT_TYPE_OPTIONS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
           selected={filters.productType}
           onSelect={(v) => { onChange("productType", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={ShieldCheck}
-          label={t("sidebar.exportReadiness")}
-          value={exportReadyOptions.find((o) => o.value === filters.exportReadiness)?.label ?? exportReadyOptions[0].label}
-          options={exportReadyOptions}
+          label={t("sidebar.sections.exportReadiness")}
+          value={t(EXPORT_READY_OPTIONS.find((o) => o.value === filters.exportReadiness)?.labelKey ?? "options.exportReadiness.all")}
+          options={EXPORT_READY_OPTIONS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
           selected={filters.exportReadiness}
           onSelect={(v) => { onChange("exportReadiness", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={Building2}
-          label={t("sidebar.privateLabelSupport")}
-          value={privateLabelOptions.find((o) => o.value === filters.privateLabel)?.label ?? privateLabelOptions[0].label}
-          options={privateLabelOptions}
+          label={t("sidebar.sections.privateLabel")}
+          value={t(PRIVATE_LABEL_OPTIONS.find((o) => o.value === filters.privateLabel)?.labelKey ?? "options.privateLabel.all")}
+          options={PRIVATE_LABEL_OPTIONS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
           selected={filters.privateLabel}
           onSelect={(v) => { onChange("privateLabel", v); onAfterChange?.(); }}
           compact={compact}

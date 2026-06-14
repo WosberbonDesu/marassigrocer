@@ -1,694 +1,2100 @@
 {
   "nav": {
     "products": "Prodotti",
-    "quickOrder": "Ordine Rapido",
+    "quickOrder": "Ordine rapido",
     "whyMarassi": "Perché Marassi",
-    "privateLabel": "Marchio Privato",
-    "mixedContainer": "Container Misto",
-    "howItWorks": "Come Funziona",
-    "logistics": "Logistica e Doc",
+    "privateLabel": "Private Label",
+    "mixedContainer": "Container misto",
+    "howItWorks": "Come funziona",
+    "logistics": "Logistica e documenti",
     "markets": "Mercati",
     "company": "Azienda",
     "insights": "Approfondimenti",
-    "contact": "Contatto",
-    "requestQuote": "Richiedi Preventivo",
-    "downloadCatalog": "Scarica Catalogo"
-  },
-  "hero": {
-    "title": "Soluzioni globali di esportazione, approvvigionamento e distribuzione FMCG",
-    "subtitle": "Marassi Group delivers high-quality food and non-food FMCG products to importers, distributors, wholesalers, and retail chains worldwide through trusted sourcing, private label support, mixed container solutions, and reliable logistics.",
-    "cta1": "Richiedi Preventivo",
-    "cta2": "Scarica Catalogo"
-  },
-  "proofBar": {
-    "since": "Since 1996 — 29+ years",
-    "countries": "50+ Countries Served",
-    "products": "10,000+ Products",
-    "warehouse": "4,000 m² Warehouse · 75+ Factories"
-  },
-  "globe": {
-    "badge": "Portata Globale",
-    "title": "Da 8 paesi di approvvigionamento a 50+ mercati nel mondo",
-    "subtitle": "Relazioni dirette con fabbriche in Turchia, Egitto, EAU, India, Vietnam, Tailandia, Cina e Arabia Saudita.",
-    "countriesServed": "Paesi",
-    "sourcing": "Hub",
-    "factories": "Fabbriche",
-    "sourcingHubs": "Hub di approvvigionamento",
-    "destinations": "Mercati di destinazione"
-  },
-  "whatWeDo": {
-    "title": "What We Do",
-    "subtitle": "End-to-end FMCG export solutions for global buyers",
-    "sourcing": {
-      "title": "Sourcing & Procurement",
-      "description": "Multi-origin sourcing network covering dairy, snacks, beverages, cleaning products, and more."
+    "contact": "Contatti",
+    "requestQuote": "Richiedi un preventivo",
+    "downloadCatalog": "Scarica il catalogo",
+    "home": "Home",
+    "about": "Chi siamo",
+    "categories": "Categorie",
+    "exportServices": "Servizi di esportazione",
+    "allCategories": "Tutte le categorie",
+    "viewAllCategories": "Vedi tutte le categorie →",
+    "download": "Scarica",
+    "navigationMenu": "Menu di navigazione",
+    "categoryLinks": {
+      "biscuits": "Biscotti e dolciumi",
+      "dairy": "Prodotti lattiero-caseari",
+      "beverages": "Bevande",
+      "snacks": "Snack",
+      "sauces": "Salse e condimenti",
+      "canned": "Conserve e alimenti secchi"
     },
-    "privateLabel": {
-      "title": "Private Label",
-      "description": "Your brand, our manufacturing network. From formulation to packaging, we handle production."
+    "exportServiceLinks": {
+      "privateLabel": "Private label",
+      "mixedContainer": "Container misto",
+      "logisticsShipping": "Logistica e spedizioni",
+      "sourcing": "Approvvigionamento e acquisti",
+      "exportDocs": "Documentazione per l'esportazione"
     },
-    "logistics": {
-      "title": "Logistics & Documentation",
-      "description": "Mixed container consolidation, full documentation support, and global shipping coverage."
+    "primaryLinks": {
+      "home": "Home",
+      "products": "Prodotti",
+      "privateLabel": "Private label",
+      "about": "Chi siamo",
+      "contact": "Contatti"
     }
   },
-  "topCategories": {
-    "title": "Top Categories",
-    "subtitle": "Browse our most requested product categories",
-    "viewAll": "View All Products"
+  "hero": {
+    "title": "Soluzioni globali di export, sourcing e distribuzione FMCG",
+    "subtitle": "Marassi Group fornisce prodotti FMCG food e non-food di alta qualità a importatori, distributori, grossisti e catene retail in tutto il mondo, grazie a un sourcing affidabile, al supporto private label, a soluzioni di container misto e a una logistica solida.",
+    "cta1": "Richiedi un preventivo",
+    "cta2": "Scarica il catalogo",
+    "eyebrow": "Connessioni globali, qualità affidabile",
+    "headlineStart": "Esportazione FMCG globale,",
+    "headlineHighlight": "approvvigionamento e private label",
+    "headlineEnd": "soluzioni",
+    "trustNote": "Scelta di fiducia da importatori, distributori e buyer del retail in tutto il mondo."
   },
-  "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "From inquiry to delivery in 5 simple steps",
-    "steps": {
-      "step1": {
-        "title": "Submit RFQ",
-        "description": "Tell us your target market, product categories, and volume requirements."
+  "proofBar": {
+    "since": "Dal 1996 — oltre 29 anni",
+    "countries": "Oltre 50 Paesi serviti",
+    "products": "Oltre 10.000 prodotti",
+    "warehouse": "Magazzino di 4.000 m² · oltre 75 stabilimenti",
+    "items": {
+      "since": {
+        "label": "Anni di attività",
+        "sub": "Dal 1996"
       },
-      "step2": {
-        "title": "Receive Quote",
-        "description": "Our team prepares a detailed quote within 24-48 hours."
+      "countries": {
+        "label": "Mercati serviti",
+        "sub": "In tutto il mondo"
       },
-      "step3": {
-        "title": "Confirm & Procure",
-        "description": "Once confirmed, we source and consolidate your order."
+      "products": {
+        "label": "Prodotti a catalogo",
+        "sub": "In oltre 20 categorie"
       },
-      "step4": {
-        "title": "Quality & Loading",
-        "description": "Supervised loading with full quality control checks."
-      },
-      "step5": {
-        "title": "Ship & Deliver",
-        "description": "Complete documentation, shipping, and after-sales support."
+      "warehouse": {
+        "label": "Capacità di magazzino",
+        "sub": "Moderno e completamente attrezzato"
       }
     }
   },
+  "globe": {
+    "badge": "Copertura globale",
+    "title": "Da 8 Paesi di sourcing a oltre 50 mercati nel mondo",
+    "subtitle": "Rapporti diretti con gli stabilimenti in Turchia, Egitto, Emirati Arabi Uniti, India, Vietnam, Thailandia, Cina e Arabia Saudita, con spedizioni verso importatori, distributori e catene retail in ogni regione.",
+    "countriesServed": "Paesi serviti",
+    "sourcing": "Hub di sourcing",
+    "factories": "Stabilimenti partner",
+    "sourcingHubs": "Hub di sourcing",
+    "destinations": "Mercati di destinazione"
+  },
+  "whatWeDo": {
+    "title": "Cosa facciamo",
+    "subtitle": "Soluzioni di export FMCG end-to-end per buyer di tutto il mondo",
+    "sourcing": {
+      "title": "Sourcing e approvvigionamento",
+      "description": "Rete di sourcing multi-origine che copre latticini, snack, bevande, prodotti per la pulizia e molto altro."
+    },
+    "privateLabel": {
+      "title": "Private Label",
+      "description": "Il tuo brand, la nostra rete produttiva. Dalla formulazione al packaging, gestiamo l'intera produzione."
+    },
+    "logistics": {
+      "title": "Logistica e documentazione",
+      "description": "Consolidamento in container misto, supporto documentale completo e copertura delle spedizioni a livello globale."
+    }
+  },
+  "topCategories": {
+    "title": "Categorie principali",
+    "subtitle": "Esplora le nostre categorie di prodotti più richieste",
+    "viewAll": "Vedi tutti i prodotti"
+  },
+  "howItWorks": {
+    "title": "Come funziona",
+    "subtitle": "Dalla richiesta alla consegna in 5 semplici passaggi",
+    "steps": {
+      "step1": {
+        "title": "Invia la RFQ",
+        "description": "Indicaci il mercato di destinazione, le categorie di prodotto e i volumi richiesti."
+      },
+      "step2": {
+        "title": "Ricevi il preventivo",
+        "description": "Il nostro team prepara un preventivo dettagliato entro 24-48 ore."
+      },
+      "step3": {
+        "title": "Conferma e approvvigionamento",
+        "description": "Una volta confermato, ci occupiamo del sourcing e del consolidamento del tuo ordine."
+      },
+      "step4": {
+        "title": "Qualità e carico",
+        "description": "Carico supervisionato con controlli qualità completi."
+      },
+      "step5": {
+        "title": "Spedizione e consegna",
+        "description": "Documentazione completa, spedizione e assistenza post-vendita."
+      }
+    },
+    "learnMore": "Scopri di più"
+  },
   "whyMarassi": {
-    "title": "Why Marassi",
-    "subtitle": "Built for serious FMCG buyers",
+    "title": "Perché Marassi",
+    "subtitle": "Pensata per i buyer FMCG più seri e professionali",
     "items": {
       "warehouse": {
-        "title": "4,000 m² Warehouse",
-        "description": "Ready stock of foodstuffs and detergents for fast supply and same-week dispatch."
+        "title": "Magazzino di 4.000 m²",
+        "description": "Stock pronto di prodotti alimentari e detergenti per una fornitura rapida e spedizioni nella stessa settimana."
       },
       "network": {
-        "title": "75+ Factory Partners",
-        "description": "Direct relationships with manufacturers across Turkey, Egypt, UAE, India, Vietnam, Thailand, China, and Saudi Arabia."
+        "title": "Oltre 75 stabilimenti partner",
+        "description": "Rapporti diretti con i produttori in Turchia, Egitto, Emirati Arabi Uniti, India, Vietnam, Thailandia, Cina e Arabia Saudita."
       },
       "compliance": {
-        "title": "Compliance Support",
-        "description": "Full documentation and regulatory compliance for your target market."
+        "title": "Supporto alla compliance",
+        "description": "Documentazione completa e conformità normativa per il tuo mercato di destinazione."
       },
       "mixed": {
-        "title": "Mixed Containers",
-        "description": "Consolidate multiple products into single container shipments."
+        "title": "Container misti",
+        "description": "Consolida più prodotti in un'unica spedizione in container."
       }
     }
   },
   "featuredProducts": {
-    "title": "Featured Products",
-    "subtitle": "Most requested FMCG products from our catalog",
-    "viewAll": "View All Products"
+    "title": "Prodotti in evidenza",
+    "subtitle": "I prodotti FMCG più richiesti del nostro catalogo",
+    "viewAll": "Vedi tutti i prodotti"
   },
   "ctaBand": {
-    "title": "Tell us your target market",
-    "subtitle": "Get a competitive quote for your next container",
-    "cta": "Get a Quote"
+    "title": "Indicaci il tuo mercato di destinazione",
+    "subtitle": "Ottieni un preventivo competitivo per il tuo prossimo container",
+    "cta": "Richiedi un preventivo"
   },
   "products": {
-    "title": "Product Finder",
-    "subtitle": "Browse and add products to your RFQ list",
+    "title": "Ricerca prodotti",
+    "subtitle": "Esplora e aggiungi prodotti alla tua lista RFQ",
     "filters": {
-      "category": "Category",
-      "brand": "Brand",
-      "origin": "Origin",
-      "packaging": "Packaging",
-      "availability": "Availability",
-      "allCategories": "All Categories",
-      "allBrands": "All Brands",
-      "allOrigins": "All Origins",
-      "inStock": "In Stock",
-      "onRequest": "On Request",
-      "clearFilters": "Clear Filters"
+      "category": "Categoria",
+      "brand": "Marca",
+      "origin": "Origine",
+      "packaging": "Imballaggio",
+      "availability": "Disponibilità",
+      "allCategories": "Tutte le categorie",
+      "allBrands": "Tutte le marche",
+      "allOrigins": "Tutte le origini",
+      "inStock": "Disponibile",
+      "onRequest": "Su richiesta",
+      "clearFilters": "Cancella filtri"
     },
     "card": {
-      "addToRfq": "Add to RFQ",
-      "addedToRfq": "Added",
+      "addToRfq": "Aggiungi alla RFQ",
+      "addedToRfq": "Aggiunto",
       "moq": "MOQ"
     },
     "detail": {
-      "overview": "Overview",
-      "specs": "Specifications",
-      "documents": "Documents",
-      "requestQuote": "Request Quote for This Item",
-      "addToRfq": "Add to RFQ List",
-      "origin": "Origin",
-      "brand": "Brand",
-      "availability": "Availability",
-      "shelfLife": "Shelf Life",
-      "packaging": "Packaging",
-      "inStock": "In Stock",
-      "onRequest": "On Request"
+      "overview": "Panoramica",
+      "specs": "Specifiche",
+      "documents": "Documenti",
+      "requestQuote": "Richiedi un preventivo per questo articolo",
+      "addToRfq": "Aggiungi alla lista RFQ",
+      "origin": "Origine",
+      "brand": "Marca",
+      "availability": "Disponibilità",
+      "shelfLife": "Shelf life",
+      "packaging": "Imballaggio",
+      "inStock": "Disponibile",
+      "onRequest": "Su richiesta",
+      "description": "Descrizione",
+      "tabs": {
+        "ingredients": "Ingredienti",
+        "nutrition": "Valori nutrizionali",
+        "storage": "Conservazione e durata",
+        "export": "Informazioni sull'esportazione"
+      },
+      "stockStatus": {
+        "seasonal": "Stagionale",
+        "discontinued": "Fuori produzione"
+      }
     },
-    "noResults": "No products found matching your filters.",
-    "showing": "Showing {count} products"
+    "noResults": "Nessun prodotto corrisponde ai filtri selezionati.",
+    "showing": "Visualizzazione di {count} prodotti",
+    "breadcrumb": {
+      "home": "Home",
+      "products": "Prodotti"
+    },
+    "trustBadges": {
+      "qualityVerified": "Qualità verificata",
+      "exportReady": "Pronto per l'esportazione",
+      "certified": "Certificato"
+    },
+    "badges": {
+      "sku": "SKU",
+      "bestSeller": "Best seller",
+      "hazmat": "Merci pericolose",
+      "reefer": "Reefer"
+    },
+    "quickSpecs": {
+      "pack": "Confezione",
+      "caseSize": "Dimensione cartone",
+      "moq": "MOQ",
+      "shelfLife": "Durata di conservazione",
+      "unitWeight": "Peso unitario",
+      "unitUpc": "UPC unità"
+    },
+    "pricing": {
+      "volumePricing": "Prezzi per volume",
+      "liveQuote": "Preventivo in tempo reale",
+      "loginOrRfq": "Accedi o invia una RFQ per visualizzare",
+      "fromCases": "Da (cartoni)",
+      "casePrice": "Prezzo cartone",
+      "unitPrice": "Prezzo unitario"
+    },
+    "cta": {
+      "requestSpecSheet": "Richiedi scheda tecnica",
+      "viewCertifications": "Visualizza certificazioni"
+    },
+    "logistics": {
+      "title": "Logistica e carico",
+      "casesPerPallet": "Cartoni / pallet",
+      "casesPerLayer": "Cartoni / strato",
+      "dimensions": "Dimensioni",
+      "caseUpc": "UPC cartone",
+      "carton": "Cartone",
+      "loading": "Carico"
+    },
+    "sections": {
+      "ingredients": "Ingredienti",
+      "allergens": "Allergeni",
+      "storageInstructions": "Istruzioni di conservazione",
+      "exportSuitability": "Idoneità all'esportazione",
+      "cartonDetails": "Dettagli del cartone",
+      "loadingInfo": "Informazioni sul carico"
+    },
+    "nutrition": {
+      "nutrient": "Nutriente",
+      "amount": "Quantità",
+      "per": "Per"
+    },
+    "whyStrip": {
+      "verifiedManufacturer": "Produttore verificato",
+      "exportMarkets": "Oltre 50 mercati di esportazione",
+      "containerLcl": "Carico container e LCL",
+      "fullDocumentation": "Documentazione completa"
+    },
+    "related": {
+      "eyebrow": "Potrebbe interessarti anche",
+      "title": "Prodotti correlati",
+      "viewAllIn": "Visualizza tutti in {category}",
+      "origin": "Origine: {country}"
+    },
+    "ctaBand": {
+      "title": "Pronto a importare <product></product>?",
+      "subtitle": "Aggiungilo alla tua lista RFQ e il nostro team di esportazione risponderà con prezzi, MOQ e opzioni di spedizione su misura per il tuo mercato.",
+      "requestDocumentation": "Richiedi documentazione"
+    }
   },
   "privateLabel": {
     "title": "Private Label",
-    "headline": "Your Brand, Our Manufacturing Network",
-    "subtitle": "From concept to shelf — we handle formulation, production, and packaging for your private label products.",
+    "headline": "Il tuo brand, la nostra rete produttiva",
+    "subtitle": "Dall'idea allo scaffale: gestiamo formulazione, produzione e packaging dei tuoi prodotti a marchio privato.",
     "process": {
-      "title": "How It Works",
+      "title": "Come funziona",
       "step1": {
-        "title": "Brief & Concept",
-        "description": "Share your product idea, target market, and brand requirements."
+        "title": "Brief e concept",
+        "description": "Condividi la tua idea di prodotto, il mercato di destinazione e i requisiti del brand."
       },
       "step2": {
-        "title": "Formulation & Sampling",
-        "description": "We develop product samples with our factory partners."
+        "title": "Formulazione e campionatura",
+        "description": "Sviluppiamo i campioni di prodotto insieme ai nostri stabilimenti partner."
       },
       "step3": {
-        "title": "Packaging & Design",
-        "description": "Choose your packaging format and provide branding assets."
+        "title": "Packaging e design",
+        "description": "Scegli il formato di packaging e fornisci i materiali di branding."
       },
       "step4": {
-        "title": "Production & Delivery",
-        "description": "Full production run with quality control and shipping."
+        "title": "Produzione e consegna",
+        "description": "Produzione completa con controllo qualità e spedizione."
       }
     },
     "packaging": {
-      "title": "Packaging Options",
-      "subtitle": "Flexible packaging solutions for your brand"
+      "title": "Opzioni di packaging",
+      "subtitle": "Soluzioni di packaging flessibili per il tuo brand"
     },
     "moq": {
-      "title": "MOQ & Lead Times",
-      "subtitle": "Typical ranges for private label orders",
-      "moqRange": "5,000 - 50,000 units",
-      "leadTime": "8 - 16 weeks",
-      "sampling": "2 - 4 weeks"
+      "title": "MOQ e tempi di consegna",
+      "subtitle": "Intervalli tipici per gli ordini private label",
+      "moqRange": "5.000 - 50.000 unità",
+      "leadTime": "8 - 16 settimane",
+      "sampling": "2 - 4 settimane",
+      "moqRangeLabel": "Intervallo MOQ",
+      "leadTimeLabel": "Tempo di consegna",
+      "samplingLabel": "Campionatura"
     },
     "form": {
-      "title": "Start Your Private Label Project",
-      "targetCountry": "Target Country / Market",
-      "productCategory": "Product Category",
-      "expectedQuantity": "Expected Quantity",
-      "packagingLanguage": "Packaging Language",
-      "targetPriceRange": "Target Price Range (optional)",
-      "timeline": "Timeline",
-      "notes": "Additional Notes",
-      "fileUpload": "Upload Reference Files (logo, packaging)",
-      "submit": "Submit Inquiry"
+      "title": "Avvia il tuo progetto private label",
+      "targetCountry": "Paese / mercato di destinazione",
+      "productCategory": "Categoria di prodotto",
+      "expectedQuantity": "Quantità prevista",
+      "packagingLanguage": "Lingua del packaging",
+      "targetPriceRange": "Fascia di prezzo target (facoltativo)",
+      "timeline": "Tempistiche",
+      "notes": "Note aggiuntive",
+      "fileUpload": "Carica file di riferimento (logo, packaging)",
+      "submit": "Invia la richiesta",
+      "success": "Richiesta inviata con successo! Ti contatteremo entro 48-72 ore.",
+      "error": "Si è verificato un errore. Riprova.",
+      "name": "Nome completo",
+      "company": "Azienda",
+      "email": "E-mail",
+      "phone": "Telefono / WhatsApp",
+      "expectedQuantityPlaceholder": "es. 10.000 unità / 1 container da 40'",
+      "packagingLanguagePlaceholder": "es. inglese, arabo",
+      "timelinePlaceholder": "es. 2° trimestre 2026",
+      "notesPlaceholder": "Prodotti di riferimento, requisiti speciali..."
     }
   },
   "howItWorksPage": {
-    "title": "How It Works",
-    "subtitle": "A transparent process from first inquiry to delivery",
+    "title": "Come funziona",
+    "subtitle": "Un processo trasparente, dalla prima richiesta alla consegna",
     "steps": {
       "step1": {
-        "title": "RFQ Submission",
-        "description": "Submit your request with target market, product categories, volume, and preferred shipping terms.",
+        "title": "Invio della RFQ",
+        "description": "Invia la tua richiesta indicando mercato di destinazione, categorie di prodotto, volumi e condizioni di spedizione preferite.",
         "fromYou": [
-          "Product categories of interest",
-          "Target country / market",
-          "Estimated volume (containers)",
-          "Contact details"
+          "Categorie di prodotto di interesse",
+          "Paese / mercato di destinazione",
+          "Volume stimato (container)",
+          "Dati di contatto"
         ]
       },
       "step2": {
-        "title": "Quote & Confirmation",
-        "description": "Our team reviews your request and prepares a detailed quotation within 24-48 hours.",
+        "title": "Preventivo e conferma",
+        "description": "Il nostro team esamina la tua richiesta e prepara un preventivo dettagliato entro 24-48 ore.",
         "fromYou": [
-          "Confirmation of selected products",
-          "Preferred payment terms",
-          "Final quantities"
+          "Conferma dei prodotti selezionati",
+          "Condizioni di pagamento preferite",
+          "Quantità definitive"
         ]
       },
       "step3": {
-        "title": "Procurement & Consolidation",
-        "description": "We source products from our network and consolidate them at our warehouse facilities.",
+        "title": "Approvvigionamento e consolidamento",
+        "description": "Ci occupiamo del sourcing dei prodotti dalla nostra rete e li consolidiamo presso i nostri magazzini.",
         "fromYou": [
-          "Any last-minute product changes",
-          "Shipping preference (FCL/LCL)"
+          "Eventuali modifiche di prodotto dell'ultimo minuto",
+          "Preferenza di spedizione (FCL/LCL)"
         ]
       },
       "step4": {
-        "title": "Loading Supervision",
-        "description": "Quality checks and supervised loading at our facilities with full photo documentation.",
+        "title": "Supervisione del carico",
+        "description": "Controlli qualità e carico supervisionato presso le nostre strutture, con documentazione fotografica completa.",
         "fromYou": [
-          "Special loading instructions (if any)"
+          "Istruzioni speciali di carico (se presenti)"
         ]
       },
       "step5": {
-        "title": "Shipping & Documentation",
-        "description": "Complete document set prepared: Commercial Invoice, Packing List, COO, B/L, and more.",
+        "title": "Spedizione e documentazione",
+        "description": "Set documentale completo predisposto: Fattura commerciale, Packing List, COO, B/L e altro ancora.",
         "fromYou": [
-          "Consignee details",
-          "Any specific document requirements"
+          "Dati del destinatario (consignee)",
+          "Eventuali requisiti documentali specifici"
         ]
       },
       "step6": {
-        "title": "Delivery & After-Sales",
-        "description": "Cargo tracking, arrival coordination, and after-sales claims process support.",
+        "title": "Consegna e post-vendita",
+        "description": "Tracciamento del carico, coordinamento dell'arrivo e supporto alla gestione dei reclami post-vendita.",
         "fromYou": [
-          "Arrival confirmation",
-          "Feedback on shipment quality"
+          "Conferma dell'arrivo",
+          "Feedback sulla qualità della spedizione"
         ]
       }
     },
-    "whatWeNeed": "What we need from you"
+    "whatWeNeed": "Cosa ci serve da te",
+    "startRfq": "Avvia la tua RFQ"
   },
   "logistics": {
-    "title": "Logistics & Documentation",
-    "subtitle": "Comprehensive shipping and compliance support for global trade",
+    "title": "Logistica e documentazione",
+    "subtitle": "Supporto completo a spedizioni e compliance per il commercio internazionale",
     "incoterms": {
       "title": "Incoterms",
-      "subtitle": "We work with all major trade terms",
+      "subtitle": "Operiamo con tutte le principali condizioni commerciali",
       "fob": {
         "title": "FOB",
-        "description": "Free On Board — seller delivers goods onto the vessel. Buyer bears shipping costs and risk from that point."
+        "description": "Free On Board — il venditore consegna la merce a bordo della nave. Da quel momento i costi di spedizione e i rischi sono a carico dell'acquirente."
       },
       "cif": {
         "title": "CIF",
-        "description": "Cost, Insurance & Freight — seller covers costs and insurance to destination port. Buyer takes risk at origin port."
+        "description": "Cost, Insurance & Freight — il venditore copre costi e assicurazione fino al porto di destinazione. L'acquirente si assume il rischio al porto di origine."
       },
       "exw": {
         "title": "EXW",
-        "description": "Ex Works — buyer collects goods from seller's premises and bears all costs and risks."
+        "description": "Ex Works — l'acquirente ritira la merce presso la sede del venditore e si fa carico di tutti i costi e i rischi."
       }
     },
     "shipping": {
-      "title": "Shipping Types",
+      "title": "Tipologie di spedizione",
       "fcl": {
-        "title": "FCL (Full Container Load)",
-        "description": "Dedicated 20' or 40' containers for larger orders."
+        "title": "FCL (Carico completo del container)",
+        "description": "Container dedicati da 20' o 40' per ordini di maggiori dimensioni."
       },
       "lcl": {
-        "title": "LCL (Less than Container Load)",
-        "description": "Shared container space for smaller shipments."
+        "title": "LCL (Carico parziale del container)",
+        "description": "Spazio container condiviso per spedizioni di dimensioni ridotte."
       },
       "reefer": {
-        "title": "Reefer Containers",
-        "description": "Temperature-controlled containers for perishable FMCG goods."
+        "title": "Container Reefer",
+        "description": "Container a temperatura controllata per prodotti FMCG deperibili."
       }
     },
     "documents": {
-      "title": "Documentation",
-      "subtitle": "Full document set prepared for every shipment",
+      "title": "Documentazione",
+      "subtitle": "Set documentale completo predisposto per ogni spedizione",
       "list": [
-        "Commercial Invoice",
-        "Packing List",
-        "Certificate of Origin (COO)",
-        "Bill of Lading (B/L)",
-        "Certificate of Analysis (COA)",
-        "Health Certificate",
-        "Phytosanitary Certificate",
-        "Insurance Certificate"
+        "Fattura commerciale",
+        "Lista di imballaggio",
+        "Certificato di origine (COO)",
+        "Polizza di carico (B/L)",
+        "Certificato di analisi (COA)",
+        "Certificato sanitario",
+        "Certificato fitosanitario",
+        "Certificato assicurativo"
       ]
     },
     "faq": {
-      "title": "Frequently Asked Questions"
+      "title": "Domande frequenti"
     }
   },
   "markets": {
-    "title": "Markets We Serve",
-    "subtitle": "Experience across major global regions",
-    "popularCategories": "Popular Categories",
-    "regulatoryNotes": "Regulatory Notes",
-    "viewDetails": "View Details"
+    "title": "I mercati che serviamo",
+    "subtitle": "Esperienza nelle principali regioni del mondo",
+    "popularCategories": "Categorie più richieste",
+    "regulatoryNotes": "Note normative",
+    "viewDetails": "Vedi i dettagli",
+    "meta": {
+      "title": "Mercati di export",
+      "description": "Marassi Group serve clienti in oltre 50 Paesi nelle aree GCC, MENA, Africa, Europa e oltre."
+    },
+    "hero": {
+      "title": "Mercati di export",
+      "subtitle": "Oltre 50 Paesi serviti: GCC, MENA, Africa, Europa e oltre. L'approvvigionamento diretto di fabbrica incontra una logistica di export affidabile.",
+      "breadcrumb": "Mercati di export"
+    },
+    "stats": {
+      "countriesServed": "Paesi serviti",
+      "marketRegions": "Regioni di mercato",
+      "sourcingCountries": "Paesi di approvvigionamento"
+    },
+    "empty": {
+      "title": "Mercati in arrivo a breve",
+      "description": "Il nostro team sta ultimando l'elenco dei mercati. Per ora, contattaci per discutere di qualsiasi regione: è probabile che serviamo già clienti in quell'area.",
+      "cta": "Contatta il team export"
+    },
+    "cta": {
+      "title": "Non vedi il tuo mercato?",
+      "description": "Serviamo clienti in {count} Paesi: contattaci per un approvvigionamento e una logistica su misura.",
+      "button": "Parla del tuo mercato"
+    }
   },
   "company": {
-    "title": "About Marassi Group",
-    "subtitle": "A global FMCG export company with 29+ years of experience — serving 50+ countries with 10,000+ products from trade hubs in Egypt, Turkey, and the UAE.",
+    "title": "Chi è Marassi Group",
+    "subtitle": "Un'azienda di export FMCG a livello globale con oltre 29 anni di esperienza, al servizio di oltre 50 Paesi con oltre 10.000 prodotti dagli hub commerciali di Egitto, Turchia ed Emirati Arabi Uniti.",
     "capabilities": {
-      "title": "Our Capabilities",
+      "title": "Le nostre capacità",
       "warehouse": {
-        "title": "Warehouse Readiness",
-        "description": "4,000 m² warehouse with ready stock of foodstuffs and detergents for rapid dispatch."
+        "title": "Prontezza di magazzino",
+        "description": "Magazzino di 4.000 m² con stock pronto di prodotti alimentari e detergenti per spedizioni rapide."
       },
       "network": {
-        "title": "75+ Factory Network",
-        "description": "Direct sourcing partnerships across Turkey, Egypt, UAE, India, Vietnam, Thailand, China, and Saudi Arabia."
+        "title": "Rete di oltre 75 stabilimenti",
+        "description": "Partnership di sourcing diretto in Turchia, Egitto, Emirati Arabi Uniti, India, Vietnam, Thailandia, Cina e Arabia Saudita."
       },
       "quality": {
-        "title": "Quality Assurance",
-        "description": "Rigorous QA processes from factory inspection to pre-shipment checks."
+        "title": "Garanzia di qualità",
+        "description": "Processi di QA rigorosi, dall'ispezione in stabilimento ai controlli pre-spedizione."
       },
       "compliance": {
-        "title": "Export Compliance",
-        "description": "Full documentation expertise — Commercial Invoice, COO, COA, Health Certificate — for 50+ destinations."
+        "title": "Compliance all'export",
+        "description": "Competenza documentale completa — Fattura commerciale, COO, COA, Certificato sanitario — per oltre 50 destinazioni."
       }
     },
     "offices": {
-      "title": "Our Offices"
+      "title": "Le nostre sedi"
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "about": "Chi siamo"
+    },
+    "hero": {
+      "titleLine1": "Partner affidabile per l'export",
+      "titleLine2": "di prodotti FMCG dal 1996",
+      "subtitle": "Marassi Group ha costruito partnership durature con importatori, distributori, grossisti e rivenditori offrendo approvvigionamento affidabile, supporto all'export e soluzioni di prodotti FMCG nei mercati di tutto il mondo.",
+      "productsAlt": "Gamma di prodotti FMCG"
+    },
+    "story": {
+      "eyebrow": "La nostra storia",
+      "titleLine1": "Fondata sulla fiducia. Guidata da",
+      "titleLine2": "partnership globali.",
+      "paragraph1": "Fondata nel 1996, Marassi Group è nata con una visione chiara: diventare un anello di fiducia tra produttori FMCG di qualità e i mercati globali. Dai nostri esordi come partner di approvvigionamento fino a diventare un fornitore pienamente integrato di soluzioni per l'export e il private label, siamo cresciuti grazie all'impegno, all'affidabilità e al successo dei clienti.",
+      "paragraph2": "Oggi collaboriamo con marchi e fornitori leader per offrire un'ampia gamma di prodotti FMCG a oltre 50 mercati nel mondo, garantendo qualità costante, prezzi competitivi e un servizio affidabile.",
+      "cta": "Scopri di più sul nostro percorso",
+      "images": {
+        "warehouse": "Interno del magazzino",
+        "ship": "Nave portacontainer",
+        "handshake": "Partnership",
+        "products": "Gamma di prodotti",
+        "truck": "Camion per le consegne"
+      }
+    },
+    "stats": {
+      "years": "Anni di attività",
+      "markets": "Mercati serviti",
+      "products": "Prodotti",
+      "warehouse": "Magazzino",
+      "network": "Rete di fornitori"
+    },
+    "mvv": {
+      "mission": {
+        "title": "Missione",
+        "body": "Connettere il mondo con prodotti FMCG di qualità attraverso un approvvigionamento affidabile, soluzioni di export efficienti e partnership durature che generano valore per i nostri clienti."
+      },
+      "vision": {
+        "title": "Visione",
+        "body": "Essere un partner leader a livello globale nell'export di prodotti FMCG, riconosciuto per eccellenza, affidabilità e innovazione nel collegare i marchi ai mercati di tutto il mondo."
+      },
+      "values": {
+        "title": "Valori"
+      }
+    },
+    "values": {
+      "items": {
+        "integrity": "Integrità in ogni partnership",
+        "quality": "Qualità in ogni prodotto",
+        "reliability": "Affidabilità in ogni consegna",
+        "growth": "Crescita attraverso la collaborazione"
+      }
+    },
+    "reasons": {
+      "eyebrow": "Perché gli acquirenti si fidano di Marassi",
+      "heading": "6 motivi per cui gli acquirenti globali ci scelgono",
+      "items": {
+        "sourcing": {
+          "title": "Approvvigionamento affidabile dei prodotti",
+          "description": "Collaboriamo con produttori verificati per garantire una qualità costante."
+        },
+        "documentation": {
+          "title": "Competenza nella documentazione per l'export",
+          "description": "Supporto completo per tutti i documenti di export e la conformità."
+        },
+        "network": {
+          "title": "Solida rete di fornitori FMCG",
+          "description": "Accesso a un'ampia gamma di fornitori e marchi globali affidabili."
+        },
+        "privateLabel": {
+          "title": "Supporto per il private label",
+          "description": "Soluzioni di private label personalizzate in base alle esigenze del tuo marchio e del tuo mercato."
+        },
+        "communication": {
+          "title": "Comunicazione trasparente",
+          "description": "Aggiornamenti chiari e puntuali con una gestione dedicata dell'account."
+        },
+        "marketFocused": {
+          "title": "Soluzioni orientate al mercato",
+          "description": "Prodotti e strategie progettati per il successo nel tuo mercato di riferimento."
+        }
+      }
+    },
+    "milestones": {
+      "eyebrow": "Il nostro percorso",
+      "heading": "Tappe di crescita ed eccellenza",
+      "items": {
+        "y1996": "Fondazione dell'azienda",
+        "y2005": "Espansione nell'approvvigionamento FMCG",
+        "y2015": "Ampliamento della rete di export internazionale",
+        "y2020": "Sviluppo del servizio di private label",
+        "y2025": "Crescita dell'export globale"
+      }
+    },
+    "globalReach": {
+      "eyebrow": "Portata globale",
+      "titleLine1": "Colleghiamo i prodotti FMCG",
+      "titleLine2": "con i",
+      "titleLine3": "mercati globali",
+      "description": "La nostra solida rete ci consente di consegnare prodotti FMCG a importatori e rivenditori in tutto il mondo con affidabilità ed efficienza.",
+      "stats": {
+        "markets": "Mercati",
+        "sourcingHubs": "Hub di approvvigionamento",
+        "factories": "Stabilimenti"
+      },
+      "cta": "Scopri i nostri mercati",
+      "regions": {
+        "europe": "Europa",
+        "middleEast": "Medio Oriente",
+        "gulf": "Golfo",
+        "northAfrica": "Nord Africa",
+        "westAfrica": "Africa occidentale",
+        "eastAfrica": "Africa orientale",
+        "southAsia": "Asia meridionale",
+        "seAsia": "Sud-est asiatico",
+        "eastAsia": "Asia orientale"
+      }
+    },
+    "cta": {
+      "titleLine1": "Costruisci la tua filiera FMCG",
+      "titleLine2": "con Marassi Group",
+      "subtitle": "Collabora con un esperto dell'export affidabile per prodotti di qualità, prezzi competitivi e un servizio sicuro nei mercati di tutto il mondo.",
+      "contactUs": "Contattaci",
+      "requestProfile": "Richiedi il profilo aziendale",
+      "bullets": {
+        "pricing": "Prezzi competitivi",
+        "quality": "Qualità garantita",
+        "delivery": "Consegne puntuali",
+        "standards": "Standard globali"
+      }
     }
   },
   "insights": {
-    "title": "Insights & Guides",
-    "subtitle": "Expert resources for FMCG importers and distributors",
-    "readMore": "Read More",
-    "readTime": "{time} read",
-    "allPosts": "All Posts",
-    "backToInsights": "Back to Insights"
+    "title": "Approfondimenti e guide",
+    "subtitle": "Risorse di esperti per importatori e distributori FMCG",
+    "readMore": "Leggi di più",
+    "readTime": "{time} di lettura",
+    "allPosts": "Tutti gli articoli",
+    "backToInsights": "Torna agli approfondimenti"
   },
   "contact": {
-    "title": "Contact Us",
-    "subtitle": "Get in touch with our sales team",
+    "title": "Contattaci",
+    "subtitle": "Mettiti in contatto con il nostro team commerciale",
     "form": {
-      "name": "Full Name",
-      "email": "Email Address",
-      "phone": "Phone / WhatsApp",
-      "company": "Company Name",
-      "country": "Country",
-      "buyerType": "Buyer Type",
-      "message": "Message",
-      "submit": "Send Message",
-      "success": "Message sent! Our team will get back to you within 24 hours."
+      "name": "Nome e cognome",
+      "email": "Indirizzo email",
+      "phone": "Telefono / WhatsApp",
+      "company": "Nome dell'azienda",
+      "country": "Paese",
+      "buyerType": "Tipo di acquirente",
+      "message": "Messaggio",
+      "submit": "Invia il messaggio",
+      "success": "Messaggio inviato! Il nostro team ti risponderà entro 24 ore.",
+      "namePlaceholder": "Inserisci il tuo nome completo",
+      "companyPlaceholder": "Inserisci il nome della tua azienda",
+      "countryPlaceholder": "Seleziona il tuo Paese",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "Inserisci il tuo indirizzo e-mail",
+      "phonePlaceholder": "Inserisci il numero di telefono o WhatsApp",
+      "inquiryType": "Tipo di richiesta",
+      "inquiryTypePlaceholder": "Seleziona il tipo di richiesta",
+      "productCategory": "Categoria di prodotto",
+      "productCategoryPlaceholder": "Seleziona la categoria di prodotto",
+      "subject": "Oggetto",
+      "subjectPlaceholder": "Inserisci l'oggetto",
+      "messagePlaceholder": "Parlaci delle tue esigenze...",
+      "submitting": "Invio in corso...",
+      "securityNote": "Le tue informazioni sono al sicuro e non saranno mai condivise."
     },
-    "whatsapp": "Chat on WhatsApp",
-    "offices": "Our Offices"
+    "whatsapp": "Scrivici su WhatsApp",
+    "offices": "Le nostre sedi",
+    "toast": {
+      "error": "Si è verificato un errore. Riprova."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "contact": "Contatti"
+    },
+    "hero": {
+      "titlePrefix": "Contatta",
+      "subtitle": "Parla con il nostro team export per l'approvvigionamento di prodotti, i progetti di private label, le richieste di catalogo, i preventivi e il supporto alla fornitura internazionale di prodotti FMCG."
+    },
+    "infoCards": {
+      "headOffice": {
+        "label": "Sede centrale"
+      },
+      "phone": {
+        "label": "Telefono"
+      },
+      "email": {
+        "label": "E-mail"
+      },
+      "workingHours": {
+        "label": "Orari di lavoro"
+      }
+    },
+    "getInTouch": {
+      "title": "Mettiti in contatto",
+      "subtitle": "Compila il modulo qui sotto e i nostri specialisti dell'export ti risponderanno tempestivamente."
+    },
+    "support": {
+      "title": "Hai bisogno di assistenza più rapida?",
+      "subtitle": "Il nostro team export è pronto ad assisterti in tutti i fusi orari con risposte rapide e soluzioni affidabili.",
+      "whatsapp": {
+        "title": "Assistenza WhatsApp",
+        "description": "Chatta subito con il nostro team"
+      },
+      "email": {
+        "title": "Scrivi al nostro team",
+        "description": "Inviaci un'e-mail in qualsiasi momento"
+      },
+      "catalog": {
+        "title": "Scarica il catalogo",
+        "description": "Esplora la nostra gamma completa di prodotti"
+      },
+      "responseTime": "Di solito rispondiamo entro",
+      "responseTimeHighlight": "1 ora lavorativa"
+    },
+    "inquiryTypes": {
+      "eyebrow": "Come possiamo aiutarti?",
+      "title": "Tipi di richiesta più comuni",
+      "cards": {
+        "productSourcing": {
+          "title": "Approvvigionamento di prodotti",
+          "description": "Trova i prodotti FMCG giusti per il tuo mercato."
+        },
+        "privateLabel": {
+          "title": "Private label",
+          "description": "Soluzioni di private label personalizzate per il tuo marchio."
+        },
+        "exportDocumentation": {
+          "title": "Documentazione per l'export",
+          "description": "Supporto per documenti, conformità e commercio internazionale."
+        },
+        "catalogRequest": {
+          "title": "Richiesta di catalogo",
+          "description": "Richiedi il nostro ultimo catalogo prodotti."
+        },
+        "bulkOrder": {
+          "title": "Richiesta di ordini all'ingrosso",
+          "description": "Ordini di grandi volumi e preventivi per container."
+        },
+        "partnership": {
+          "title": "Richiesta di partnership",
+          "description": "Esplora partnership e distribuzione a livello globale."
+        }
+      }
+    },
+    "map": {
+      "getDirections": "Ottieni indicazioni stradali",
+      "viewOnGoogleMaps": "Visualizza su Google Maps",
+      "iframeTitle": "Ufficio di Istanbul di Marassi Group",
+      "officeBadge": "UFFICIO DI ISTANBUL"
+    },
+    "faqs": {
+      "eyebrow": "Domande?",
+      "title": "Prima di contattarci",
+      "items": {
+        "mixedContainers": {
+          "question": "Esportate container misti?",
+          "answer": "Sì, il consolidamento di container misti è uno dei nostri punti di forza principali. Combiniamo prodotti di marchi e categorie diversi in un unico container da 20' o 40'."
+        },
+        "privateLabel": {
+          "question": "Offrite supporto per il private label?",
+          "answer": "Sì, offriamo soluzioni di private label complete, dalla formulazione al confezionamento. Il MOQ per il private label parte da 5.000 unità a seconda del prodotto."
+        },
+        "catalog": {
+          "question": "Posso richiedere un catalogo prodotti?",
+          "answer": "Certamente: usa la scorciatoia 'Scarica il catalogo' oppure inviaci un breve messaggio e ti invieremo via e-mail il nostro catalogo completo entro un giorno lavorativo."
+        },
+        "markets": {
+          "question": "Quali mercati servite?",
+          "answer": "Esportiamo in oltre 50 mercati nelle aree MENA, Africa, Europa e parti dell'Asia. Indicaci il tuo Paese di riferimento e ti illustreremo le possibilità."
+        }
+      }
+    },
+    "cta": {
+      "titleStart": "Costruiamo insieme la tua",
+      "titleHighlight": "filiera FMCG",
+      "subtitle": "Collabora con Marassi Group per un approvvigionamento affidabile, prezzi competitivi e un supporto all'export sicuro.",
+      "requestQuote": "Richiedi un preventivo",
+      "note": "Collaboriamo con importatori, distributori e grossisti in tutto il mondo."
+    }
   },
   "rfqDrawer": {
-    "title": "Request a Quote",
-    "quickRfq": "Quick RFQ",
-    "rfqList": "RFQ List",
-    "emptyList": "No products added yet. Browse our catalog to add products.",
+    "title": "Richiedi un preventivo",
+    "quickRfq": "RFQ rapida",
+    "rfqList": "Lista RFQ",
+    "emptyList": "Nessun prodotto ancora aggiunto. Esplora il nostro catalogo per aggiungere prodotti.",
     "steps": {
-      "interest": "Interest",
-      "details": "Details",
-      "contact": "Contatto"
+      "interest": "Interesse",
+      "details": "Dettagli",
+      "contact": "Contatti"
     },
     "form": {
-      "country": "Your Country",
-      "categories": "Categories of Interest",
-      "containerEstimate": "Container Size Estimate",
-      "20ft": "20' Container",
-      "40ft": "40' Container",
-      "notSure": "Not Sure",
-      "targetPrice": "Target Price Range (optional)",
-      "notes": "Additional Notes",
-      "name": "Full Name",
-      "email": "Email Address",
-      "phone": "Phone / WhatsApp",
-      "company": "Company Name",
-      "buyerType": "Buyer Type",
-      "distributor": "Distributor / Wholesaler",
-      "retail": "Supermarket / Retail Buyer",
-      "smallBusiness": "Small Business Importer",
-      "brandOwner": "Brand Owner (Private Label)",
-      "partner": "B2B Partner",
-      "submit": "Submit RFQ",
-      "submitting": "Submitting...",
-      "success": "RFQ submitted successfully! We'll get back to you within 24-48 hours."
+      "country": "Il tuo Paese",
+      "categories": "Categorie di interesse",
+      "containerEstimate": "Stima delle dimensioni del container",
+      "20ft": "Container 20'",
+      "40ft": "Container 40'",
+      "notSure": "Non sono sicuro",
+      "targetPrice": "Fascia di prezzo target (facoltativo)",
+      "notes": "Note aggiuntive",
+      "name": "Nome e cognome",
+      "email": "Indirizzo email",
+      "phone": "Telefono / WhatsApp",
+      "company": "Nome dell'azienda",
+      "buyerType": "Tipo di acquirente",
+      "distributor": "Distributore / Grossista",
+      "retail": "Supermercato / Buyer della GDO",
+      "smallBusiness": "Piccolo importatore",
+      "brandOwner": "Titolare del brand (Private Label)",
+      "partner": "Partner B2B",
+      "submit": "Invia la RFQ",
+      "submitting": "Invio in corso...",
+      "success": "RFQ inviata con successo! Ti risponderemo entro 24-48 ore.",
+      "countryPlaceholder": "es. Arabia Saudita",
+      "notesPlaceholder": "Prodotti di interesse, prezzo obiettivo...",
+      "phonePlaceholder": "+90 ...",
+      "submissionFailed": "Invio non riuscito. Riprova.",
+      "error": "Si è verificato un errore. Riprova."
     },
     "items": {
-      "quantity": "Qty",
-      "remove": "Remove",
-      "total": "{count} items in your RFQ list"
+      "quantity": "Q.tà",
+      "remove": "Rimuovi",
+      "total": "{count} articoli nella tua lista RFQ",
+      "clearAll": "Cancella tutto"
+    },
+    "description": "Ottieni un preventivo per il tuo ordine",
+    "emptyListHint": "Esplora i prodotti e aggiungi articoli alla tua lista",
+    "promo": {
+      "label": "Codice promozionale (facoltativo)",
+      "placeholder": "SUMMER25",
+      "apply": "Applica",
+      "applied": "Applicato:",
+      "percentOff": "{value}% di sconto",
+      "amountOff": "${value} di sconto",
+      "invalidCode": "Codice non valido"
     }
   },
   "catalogModal": {
-    "title": "Download Our Catalog",
-    "subtitle": "Get our complete product catalog with pricing ranges",
+    "title": "Scarica il nostro catalogo",
+    "subtitle": "Ottieni il nostro catalogo prodotti completo con le fasce di prezzo",
     "form": {
-      "email": "Email Address",
-      "company": "Company Name",
-      "country": "Country",
-      "buyerType": "Buyer Type",
-      "submit": "Download Catalog",
-      "success": "Download starting! We've also sent the catalog to your email."
+      "email": "Indirizzo email",
+      "company": "Nome dell'azienda",
+      "country": "Paese",
+      "buyerType": "Tipo di acquirente",
+      "submit": "Scarica il catalogo",
+      "success": "Download in corso! Abbiamo inviato il catalogo anche alla tua email."
     }
   },
   "footer": {
     "company": "Azienda",
     "products": "Prodotti",
-    "resources": "Resources",
-    "contact": "Contatto",
-    "about": "About Us",
-    "capabilities": "Capabilities",
-    "careers": "Careers",
-    "allProducts": "All Products",
-    "categories": "Categories",
-    "brands": "Brands",
-    "howItWorks": "Come Funziona",
-    "logisticsDocs": "Logistics & Docs",
-    "blog": "Insights & Guides",
+    "resources": "Risorse",
+    "contact": "Contatti",
+    "about": "Chi siamo",
+    "capabilities": "Capacità",
+    "careers": "Lavora con noi",
+    "allProducts": "Tutti i prodotti",
+    "categories": "Categorie",
+    "brands": "Marche",
+    "howItWorks": "Come funziona",
+    "logisticsDocs": "Logistica e documenti",
+    "blog": "Approfondimenti e guide",
     "faq": "FAQ",
-    "getInTouch": "Get in Touch",
+    "getInTouch": "Mettiti in contatto",
     "whatsapp": "WhatsApp",
-    "copyright": "Marassi Group. All rights reserved.",
-    "tagline": "FMCG Export & Private Label Solutions"
-  },
-  "common": {
-    "learnMore": "Learn More",
-    "viewAll": "View All",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "close": "Close",
-    "search": "Search",
-    "loading": "Loading...",
-    "error": "Something went wrong. Please try again.",
-    "home": "Home"
-  },
-  "productsCatalog": {
-    "hero": {
-      "eyebrow": "Global Quality. Export Ready.",
-      "title": "FMCG Product Catalog",
-      "titleAccent": "for Global Markets",
-      "subtitle": "Browse export-ready FMCG products sourced from trusted manufacturers and prepared for importers, distributors, wholesalers, and retail chains worldwide."
+    "copyright": "Marassi Group. Tutti i diritti riservati.",
+    "tagline": "Soluzioni di export FMCG e Private Label",
+    "taglineDescription": "Dal 1996, al servizio di oltre 50 Paesi con più di 10.000 prodotti provenienti da oltre 75 stabilimenti partner in tutto il mondo.",
+    "globalFmcgExport": "ESPORTAZIONE FMCG GLOBALE",
+    "globalOffices": "Sedi nel mondo",
+    "links": {
+      "whyMarassi": "Perché Marassi",
+      "exportMarkets": "Mercati di esportazione",
+      "certificates": "Certificazioni",
+      "privateLabel": "Private label",
+      "mixedContainer": "Container misto",
+      "quickOrder": "Ordine rapido",
+      "blogInsights": "Blog e approfondimenti"
     },
-    "filterCard": {
-      "search": "Search products",
-      "searchPlaceholder": "Search by product name…",
-      "category": "Category",
-      "brand": "Brand",
-      "country": "Country of Origin",
-      "packaging": "Packaging Type",
-      "privateLabel": "Private Label",
-      "moq": "MOQ (Minimum Order)",
-      "searchButton": "Search Products"
-    },
-    "filterOptions": {
-      "allCategories": "All Categories",
-      "allBrands": "All Brands",
-      "allCountries": "All Countries",
-      "packagingAll": "All Packaging",
-      "packagingCarton": "Carton",
-      "packagingPallet": "Pallet",
-      "packagingBulk": "Bulk",
-      "packagingCase": "Case",
-      "productTypeAll": "All Product Types",
-      "productTypeFood": "Food",
-      "productTypeNonFood": "Non-Food",
-      "productTypeBeverages": "Beverages",
-      "exportAll": "All Export Options",
-      "exportReady": "Export Ready",
-      "exportOnRequest": "On Request",
-      "privateLabelAll": "All Availability",
-      "privateLabelAvailable": "Available",
-      "privateLabelOnRequest": "On Request",
-      "moqAll": "Any MOQ",
-      "moqLt100": "Under 100 cases",
-      "moq100to500": "100 – 500 cases",
-      "moqGt500": "500+ cases"
-    },
-    "sidebar": {
-      "title": "Filter Products",
-      "reset": "Reset All",
-      "categories": "Categories",
-      "brand": "Brand",
-      "origin": "Origin",
-      "packaging": "Packaging",
-      "productType": "Product Type",
-      "exportReadiness": "Export Readiness",
-      "privateLabelSupport": "Private Label Support",
-      "cantFind": "Can't find what you need?",
-      "cantFindDesc": "Our team can help you source specific products.",
-      "requestSourcing": "Request Product Sourcing",
-      "resetAllFilters": "Reset all filters"
-    },
-    "results": {
-      "showing": "Showing",
-      "of": "of",
-      "products": "products",
-      "sortBy": "Sort by:",
-      "filters": "Filters",
-      "viewGrid": "Grid view",
-      "viewList": "List view",
-      "sortLatest": "Latest Added",
-      "sortNameAsc": "Name: A → Z",
-      "sortNameDesc": "Name: Z → A",
-      "noResults": "No products found",
-      "noResultsDesc": "Try adjusting your filters or search query.",
-      "clearFilters": "Clear filters",
-      "groupDiscount": "{discount}% group discount applied."
-    },
-    "featured": {
-      "title": "Featured Products for Importers"
-    },
-    "bulk": {
-      "title1": "Bulk Orders, Mixed Containers",
-      "titleAccent": "& Export Documentation",
-      "subtitle": "We make global exports simple, efficient, and compliant with your market requirements.",
-      "mixedContainerTitle": "Mixed Container Loading",
-      "mixedContainerDesc": "Combine multiple product lines in one shipment to optimize costs and meet diverse market demands.",
-      "documentationTitle": "Export Documentation",
-      "documentationDesc": "Complete export documentation, certificates, and compliance support for smooth customs clearance.",
-      "marketSpecificTitle": "Market-Specific Product Selection",
-      "marketSpecificDesc": "We help you select the right products tailored to your target market preferences and regulations."
-    },
-    "fullCatalog": {
-      "title": "Need the Full Product Catalog?",
-      "subtitle": "Access our complete range of export-ready FMCG products with detailed specifications, packaging options, and pricing information tailored to your market needs.",
-      "download": "Download Catalog",
-      "customList": "Request Custom Product List"
-    },
-    "breadcrumb": {
-      "products": "Products"
+    "legal": {
+      "privacy": "Informativa sulla privacy",
+      "terms": "Termini e condizioni",
+      "cookies": "Informativa sui cookie"
     }
   },
-  "productBadges": {
-    "exportReady": "Export Ready",
-    "bestSeller": "Best Seller",
-    "topSeller": "Top Seller",
-    "privateLabel": "Private Label",
-    "bulkAvailable": "Bulk Available",
-    "view": "View",
-    "viewDetails": "View Details",
-    "quote": "Quote",
-    "requestQuote": "Request Quote",
-    "origin": "Origin"
+  "common": {
+    "learnMore": "Scopri di più",
+    "viewAll": "Vedi tutto",
+    "back": "Indietro",
+    "next": "Avanti",
+    "previous": "Precedente",
+    "close": "Chiudi",
+    "search": "Cerca",
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore. Riprova."
+  },
+  "homeAdvantages": {
+    "eyebrow": "Perché Marassi Group",
+    "heading": "Il vostro partner di fiducia nel commercio globale",
+    "items": {
+      "qualitySourcing": {
+        "title": "Approvvigionamento di qualità",
+        "description": "Collaboriamo con produttori certificati per garantire una qualità costante."
+      },
+      "globalReach": {
+        "title": "Copertura globale",
+        "description": "Al servizio di oltre 50 mercati in Asia, Africa, Medio Oriente e oltre."
+      },
+      "privateLabel": {
+        "title": "Competenza nel private label",
+        "description": "Supporto private label completo, dal concept allo scaffale."
+      },
+      "exportSupport": {
+        "title": "Supporto all'esportazione affidabile",
+        "description": "Comunicazione trasparente e consegne puntuali su cui potete contare."
+      }
+    }
+  },
+  "homeCta": {
+    "heading": {
+      "line1": "Pronti ad approvvigionare prodotti",
+      "line2": "FMCG di qualità superiore?"
+    },
+    "subheading": "Collaborate con Marassi Group per prodotti di qualità, prezzi competitivi e un supporto all'esportazione affidabile.",
+    "requestQuote": "Richiedi un preventivo",
+    "downloadCatalog": "Scarica il catalogo",
+    "trustBullets": {
+      "pricing": "Prezzi competitivi",
+      "quality": "Qualità garantita",
+      "delivery": "Consegna puntuale",
+      "standards": "Standard globali"
+    }
+  },
+  "trustedMarkets": {
+    "heading": "Scelta di fiducia dei buyer in oltre 50 Paesi",
+    "markets": {
+      "gccMiddleEast": {
+        "region": "GCC e Medio Oriente",
+        "countries": "Emirati Arabi Uniti, Arabia Saudita, Iraq, Kuwait, Qatar"
+      },
+      "africa": {
+        "region": "Africa",
+        "countries": "Libia, Nigeria, Ghana, Senegal, Somalia"
+      },
+      "centralAsia": {
+        "region": "Asia centrale",
+        "countries": "Turkmenistan, Kazakistan, Kirghizistan"
+      },
+      "southeastAsia": {
+        "region": "Sud-est asiatico",
+        "countries": "Malaysia, Indonesia, Vietnam"
+      },
+      "europe": {
+        "region": "Europa",
+        "countries": "Germania, Regno Unito, Paesi Bassi, Romania"
+      },
+      "americas": {
+        "region": "Americhe",
+        "countries": "Stati Uniti, Brasile, Venezuela"
+      }
+    }
+  },
+  "topBar": {
+    "trustedPartner": "Partner affidabile nell'esportazione FMCG dal 1996",
+    "marketsWorldwide": "Al servizio di oltre 50 mercati in tutto il mondo"
+  },
+  "whatsapp": {
+    "status": "Di solito risponde subito",
+    "greeting": "Salve! Benvenuti in Marassi Group. Come possiamo aiutarvi oggi?",
+    "timestamp": "adesso",
+    "startChat": "Avvia la chat",
+    "ariaLabel": "Contattaci su WhatsApp"
+  },
+  "search": {
+    "placeholder": "Cerca prodotti, categorie…",
+    "clear": "Cancella ricerca",
+    "searchAria": "Cerca",
+    "searching": "Ricerca in corso…",
+    "noResults": "Nessun prodotto trovato",
+    "noResultsHint": "Prova con parole chiave diverse o sfoglia il catalogo.",
+    "seeAllResults": "Vedi tutti i risultati per “{query}”"
+  },
+  "customerSession": {
+    "signIn": "Accedi"
+  },
+  "customerLogout": {
+    "signOut": "Esci"
   },
   "certificatesPage": {
     "meta": {
-      "title": "Certificates & Quality | Marassi Group",
-      "description": "Marassi Group's certifications, quality standards, and compliance documentation — ISO, HACCP, Halal, BRC and more for trusted global FMCG export."
+      "title": "Certificati e qualità | Marassi Group",
+      "description": "Certificazioni, standard di qualità e documentazione di conformità di Marassi Group: ISO, HACCP, Halal, BRC e altro ancora per un export FMCG globale affidabile."
     },
     "hero": {
-      "breadcrumb": "Certificates & Quality",
-      "eyebrow": "Trust & Compliance",
-      "title": "Certified Quality.",
-      "titleAccent": "Trusted Globally.",
-      "subtitle": "Every product we source and export is backed by internationally recognized certifications, verified suppliers, and complete documentation tailored to your market's regulatory requirements."
+      "breadcrumbHome": "Home",
+      "breadcrumbCurrent": "Certificati e qualità",
+      "eyebrow": "Fiducia e conformità",
+      "titleLine1": "Qualità certificata.",
+      "titleLine2": "Affidabilità globale.",
+      "subtitle": "Ogni prodotto che approvvigioniamo ed esportiamo è supportato da certificazioni riconosciute a livello internazionale, fornitori verificati e una documentazione completa, adattata ai requisiti normativi del tuo mercato."
     },
     "stats": {
-      "verifiedSuppliers": "Verified Suppliers",
-      "yearsCompliance": "Years of Compliance",
-      "exportMarkets": "Export Markets",
-      "documentedSkus": "Documented SKUs"
+      "verifiedSuppliers": "Fornitori verificati",
+      "yearsCompliance": "Anni di conformità",
+      "exportMarkets": "Mercati di export",
+      "documentedSkus": "SKU documentati"
     },
     "standards": {
-      "eyebrow": "Compliance Framework",
-      "title": "Standards We Follow",
-      "subtitle": "We work with manufacturers who hold and maintain internationally accredited certifications across food safety, hygiene, and ethical sourcing.",
-      "active": "Active",
-      "iso": {
-        "name": "ISO 22000",
-        "tagline": "Food Safety Management",
-        "description": "Internationally recognized food safety management system standard."
-      },
-      "haccp": {
-        "name": "HACCP",
-        "tagline": "Hazard Analysis",
-        "description": "Systematic preventive approach to food safety from raw material to consumer."
-      },
-      "halal": {
-        "name": "Halal",
-        "tagline": "Halal Certified",
-        "description": "Compliance with Islamic dietary laws — sourcing-to-shipment traceability."
-      },
-      "brc": {
-        "name": "BRC / IFS",
-        "tagline": "Global Standards",
-        "description": "Internationally accepted standards for global food trade and retail."
-      },
-      "gmp": {
-        "name": "GMP",
-        "tagline": "Good Manufacturing",
-        "description": "Quality-assured production environments and process discipline."
-      },
-      "kosher": {
-        "name": "Kosher",
-        "tagline": "Kosher Certified",
-        "description": "Available on-request for selected product lines and private label."
+      "eyebrow": "Quadro di conformità",
+      "title": "Gli standard che seguiamo",
+      "subtitle": "Collaboriamo con produttori che possiedono e mantengono certificazioni accreditate a livello internazionale in materia di sicurezza alimentare, igiene e approvvigionamento etico.",
+      "activeBadge": "Attivo",
+      "items": {
+        "iso22000": {
+          "tagline": "Gestione della sicurezza alimentare",
+          "description": "Standard del sistema di gestione della sicurezza alimentare riconosciuto a livello internazionale."
+        },
+        "haccp": {
+          "tagline": "Analisi dei rischi",
+          "description": "Approccio preventivo e sistematico alla sicurezza alimentare, dalla materia prima al consumatore."
+        },
+        "halal": {
+          "tagline": "Certificazione Halal",
+          "description": "Conformità alle norme alimentari islamiche, con tracciabilità dall'approvvigionamento alla spedizione."
+        },
+        "brcIfs": {
+          "tagline": "Standard globali",
+          "description": "Standard accettati a livello internazionale per il commercio alimentare globale e la vendita al dettaglio."
+        },
+        "gmp": {
+          "tagline": "Buone pratiche di produzione",
+          "description": "Ambienti di produzione con qualità garantita e disciplina dei processi."
+        },
+        "kosher": {
+          "tagline": "Certificazione Kosher",
+          "description": "Disponibile su richiesta per linee di prodotti selezionate e private label."
+        }
       }
     },
     "process": {
-      "eyebrow": "Our Quality Process",
-      "title": "From Source to Shipment —",
-      "titleAccent": "Verified",
-      "subtitle": "A four-stage quality and compliance protocol ensures every container leaving our network meets target-market requirements.",
-      "step1Title": "Supplier Vetting",
-      "step1Desc": "Every manufacturer is audited for facility hygiene, certifications, and traceability before onboarding.",
-      "step2Title": "Product Testing",
-      "step2Desc": "Pre-shipment lab testing for microbial, chemical, and physical safety parameters where required.",
-      "step3Title": "Documentation Review",
-      "step3Desc": "COA, COO, health, and halal certificates verified for each shipment and target market.",
-      "step4Title": "Compliant Delivery",
-      "step4Desc": "Full export documentation, labelling, and customs paperwork tailored to destination regulations."
+      "eyebrow": "Il nostro processo di qualità",
+      "titleStart": "Dalla fonte alla spedizione:",
+      "titleHighlight": "verificato",
+      "subtitle": "Un protocollo di qualità e conformità in quattro fasi garantisce che ogni container in uscita dalla nostra rete soddisfi i requisiti del mercato di destinazione.",
+      "items": {
+        "supplierVetting": {
+          "title": "Selezione dei fornitori",
+          "desc": "Ogni produttore viene sottoposto ad audit su igiene degli impianti, certificazioni e tracciabilità prima dell'inserimento."
+        },
+        "productTesting": {
+          "title": "Test di prodotto",
+          "desc": "Test di laboratorio pre-spedizione sui parametri di sicurezza microbiologica, chimica e fisica ove richiesto."
+        },
+        "documentationReview": {
+          "title": "Revisione della documentazione",
+          "desc": "Certificati COA, COO, sanitari e halal verificati per ogni spedizione e mercato di destinazione."
+        },
+        "compliantDelivery": {
+          "title": "Consegna conforme",
+          "desc": "Documentazione completa per l'export, etichettatura e pratiche doganali adattate alle normative di destinazione."
+        }
+      }
     },
-    "library": {
-      "eyebrow": "Active Certifications",
-      "title": "Our Live Certificate Library",
-      "subtitle": "Browse and download current certifications. Need product-level documentation? Contact our quality team.",
-      "requestSpecific": "Request a Specific Certificate",
-      "comingSoonTitle": "Certificates publishing soon",
-      "comingSoonDesc": "Our quality team is compiling and translating the latest certificate scans. In the meantime, request any specific document via our contact form.",
-      "comingSoonCta": "Request Documentation",
-      "issuedBy": "Issued by",
-      "valid": "Valid",
-      "download": "Download Certificate",
-      "requestDocument": "Request Document"
+    "gallery": {
+      "eyebrow": "Certificazioni attive",
+      "title": "La nostra raccolta di certificati aggiornati",
+      "subtitle": "Sfoglia e scarica le certificazioni in vigore. Hai bisogno di documentazione a livello di prodotto? Contatta il nostro team qualità.",
+      "requestSpecific": "Richiedi un certificato specifico",
+      "emptyTitle": "Certificati in pubblicazione a breve",
+      "emptyDescription": "Il nostro team qualità sta raccogliendo e traducendo le ultime scansioni dei certificati. Nel frattempo, richiedi qualsiasi documento specifico tramite il nostro modulo di contatto.",
+      "requestDocumentation": "Richiedi documentazione",
+      "validBadge": "Valido",
+      "downloadCertificate": "Scarica il certificato",
+      "requestDocument": "Richiedi il documento"
     },
     "documents": {
-      "eyebrow": "Per-Shipment Documents",
-      "title": "Every Shipment.",
-      "titleAccent": "Fully Documented.",
-      "subtitle": "We prepare a complete export documentation package for every container — tailored to your destination's customs and regulatory requirements.",
-      "list": [
-        "Certificate of Origin (COO)",
-        "Certificate of Analysis (COA)",
-        "Health Certificate",
-        "Halal Certificate",
-        "Phytosanitary Certificate",
-        "Free Sale Certificate",
-        "Packing List & Commercial Invoice",
-        "Material Safety Data Sheet (MSDS)"
-      ]
+      "eyebrow": "Documenti per ogni spedizione",
+      "titleLine1": "Ogni spedizione.",
+      "titleLine2": "Completamente documentata.",
+      "subtitle": "Prepariamo un pacchetto completo di documentazione per l'export per ogni container, adattato ai requisiti doganali e normativi della tua destinazione.",
+      "items": {
+        "coo": "Certificato di origine (COO)",
+        "coa": "Certificato di analisi (COA)",
+        "health": "Certificato sanitario",
+        "halal": "Certificato Halal",
+        "phytosanitary": "Certificato fitosanitario",
+        "freeSale": "Certificato di libera vendita",
+        "packingInvoice": "Distinta di imballaggio e fattura commerciale",
+        "msds": "Scheda di sicurezza dei materiali (MSDS)"
+      }
     },
     "cta": {
-      "title": "Need a specific certificate or test report for a shipment?",
-      "subtitle": "Our quality team can provide product-level COA, health certificates, and certificates of origin on request — usually within 48 hours.",
-      "request": "Request Documentation",
-      "about": "About Our Company"
+      "title": "Hai bisogno di un certificato o di un rapporto di prova specifico per una spedizione?",
+      "subtitle": "Il nostro team qualità può fornire su richiesta COA, certificati sanitari e certificati di origine a livello di prodotto, di norma entro 48 ore.",
+      "requestDocumentation": "Richiedi documentazione",
+      "aboutCompany": "Informazioni sulla nostra azienda"
     }
   },
-  "footerLinks": {
-    "company": "Company",
-    "products": "Products",
-    "resources": "Resources",
-    "support": "Support",
-    "quickLinks": "Quick Links",
-    "home": "Home",
-    "categories": "Categories",
-    "productsAll": "Products",
-    "privateLabel": "Private Label",
-    "exportServices": "Export Services",
-    "about": "About Us",
-    "contact": "Contact",
-    "faqs": "FAQs",
-    "shippingDelivery": "Shipping & Delivery",
-    "documentation": "Documentation",
-    "qualityAssurance": "Quality Assurance",
-    "termsConditions": "Terms & Conditions",
-    "productCatalog": "Product Catalog",
-    "downloads": "Downloads",
-    "newsInsights": "News & Insights",
-    "careers": "Careers",
-    "globalReach": "Global Reach",
-    "marketsCount": "50+ Markets",
-    "trustedSince": "Trusted Since 1996",
-    "tagline": "Global FMCG export, sourcing, private label, and logistics solutions for international businesses since 1996.",
-    "rights": "All rights reserved."
+  "mixedContainerPage": {
+    "meta": {
+      "title": "Soluzioni di container misti",
+      "description": "Fino a 50 prodotti diversi in un'unica spedizione. Fornitura in container misti su misura per distributori, catene di supermercati e grossisti in crescita."
+    },
+    "hero": {
+      "title": "Soluzioni di container misti",
+      "subtitle": "Fino a 50 prodotti diversi in un'unica spedizione: un vantaggio fondamentale per distributori, catene di supermercati e grossisti in crescita.",
+      "breadcrumb": "Container misto"
+    },
+    "stat": {
+      "caption": "Prodotti diversi. Un solo container. Una sola fattura commerciale. Un solo arrivo."
+    },
+    "benefits": {
+      "heading": "Perché scegliere le spedizioni miste?",
+      "description": "Il tradizionale modello \"un prodotto per container\" ti costringe a impegnarti su volumi che non riesci a vendere o a campionare prodotti che non puoi provare. Le spedizioni miste risolvono entrambi i problemi.",
+      "items": {
+        "products": {
+          "title": "Fino a 50 prodotti in un unico container",
+          "description": "Combina più categorie FMCG (alimenti, bevande, prodotti per la casa, cura della persona) in un'unica spedizione ottimizzata."
+        },
+        "moq": {
+          "title": "MOQ ridotto per SKU",
+          "description": "Una quantità minima inferiore per prodotto ti consente di testare nuove linee senza impegnarti su un container intero di un solo articolo."
+        },
+        "timeToShelf": {
+          "title": "Tempi più rapidi verso lo scaffale",
+          "description": "Una sola prenotazione consolidata, un solo set di documenti, un solo arrivo. Nessuna necessità di coordinare decine di fornitori separatamente."
+        },
+        "loading": {
+          "title": "Carico ottimizzato",
+          "description": "La pallettizzazione supervisionata garantisce il massimo utilizzo del volume e la sicurezza dei prodotti durante tutto il viaggio."
+        }
+      }
+    },
+    "specs": {
+      "heading": "Capacità del container",
+      "description": "Scegli la dimensione adatta al tuo volume. Il nostro team ti aiuta a massimizzare il tasso di riempimento senza superare i limiti di peso.",
+      "pallets": "Pallet",
+      "cube": "Volume",
+      "maxWeight": "Peso massimo"
+    },
+    "process": {
+      "heading": "Come funziona",
+      "items": {
+        "shoppingList": {
+          "title": "Condividi la tua lista della spesa",
+          "desc": "Incolla gli SKU o invia un elenco di prodotti tramite RFQ. Il nostro team definisce i prezzi e conferma la disponibilità entro 48 ore."
+        },
+        "loadingPlan": {
+          "title": "Ottimizziamo il piano di carico",
+          "desc": "Pallet, cartoni per strato, distribuzione del peso e separazione della catena del freddo se è necessario un reefer."
+        },
+        "invoice": {
+          "title": "Fattura unica consolidata",
+          "desc": "Una sola fattura commerciale, una sola distinta di imballaggio, una sola polizza di carico. Documentazione semplice per la dogana."
+        },
+        "supervisedLoading": {
+          "title": "Carico supervisionato presso il nostro magazzino",
+          "desc": "Il nostro impianto di 4.000 m² a Doral garantisce che ogni container venga caricato sotto supervisione prima della sigillatura."
+        },
+        "tracking": {
+          "title": "Tracciamento e arrivo",
+          "desc": "Aggiornamenti di tracciamento online dalla partenza al porto di scarico. Contatto diretto con il nostro team export in ogni fase."
+        }
+      }
+    },
+    "included": {
+      "heading": "Cosa è incluso",
+      "items": {
+        "commercialInvoice": "Fattura commerciale unica",
+        "packingList": "Distinta di imballaggio unica",
+        "billOfLading": "Polizza di carico consolidata",
+        "certificateOfOrigin": "Certificato di origine",
+        "healthCertification": "Certificazione sanitaria (ove applicabile)",
+        "labeling": "Etichettatura opzionale in arabo / multilingua",
+        "palletWeight": "Verifica del peso dei pallet",
+        "loadingPhotos": "Foto del carico del container su richiesta",
+        "tracking": "Tracciamento online delle spedizioni",
+        "salesRep": "Contatto dedicato con un rappresentante commerciale"
+      }
+    },
+    "cta": {
+      "heading": "Pronto a comporre il tuo container misto?",
+      "description": "Inviaci la tua lista della spesa o inizia con il nostro strumento Ordine rapido con incolla-elenco: ti risponderemo con un piano di carico del container e un preventivo entro 48 ore.",
+      "tryQuickOrder": "Prova l'Ordine rapido",
+      "talkToTeam": "Parla con il team export"
+    }
+  },
+  "whyMarassiPage": {
+    "meta": {
+      "title": "Perché Marassi Group",
+      "description": "Prezzi diretti di fabbrica, magazzino di 4.000 m², oltre 75 partnership con stabilimenti produttivi e oltre 29 anni di esperienza nell'export FMCG."
+    },
+    "hero": {
+      "title": "Perché Marassi Group",
+      "subtitle": "Forza nell'approvvigionamento diretto. Magazzino sempre pronto. Esperienza internazionale. 29 anni e non si ferma.",
+      "breadcrumb": "Perché Marassi Group"
+    },
+    "cta": {
+      "title": "Pronto ad approvvigionarti con un partner di export affermato?",
+      "subtitle": "Parlaci del tuo mercato e delle tue esigenze di prodotto: il nostro team export ti risponderà con una proposta su misura.",
+      "contact": "Contatta il team export",
+      "browse": "Sfoglia il catalogo"
+    }
+  },
+  "faqPage": {
+    "hero": {
+      "title": "Domande frequenti",
+      "subtitle": "Risposte alle domande più comuni su approvvigionamento, spedizioni, documentazione e private label con Marassi Group.",
+      "breadcrumb": "FAQ"
+    },
+    "categories": {
+      "general": {
+        "label": "Generale",
+        "description": "Collaborare con Marassi, preventivi e termini di pagamento."
+      },
+      "products": {
+        "label": "Prodotti e approvvigionamento",
+        "description": "MOQ, campioni e capacità di approvvigionamento."
+      },
+      "logistics": {
+        "label": "Logistica e documentazione",
+        "description": "Incoterms, tempi di spedizione e documenti di export."
+      },
+      "private_label": {
+        "label": "Private label",
+        "description": "Formulazione personalizzata, confezionamento e tempi di consegna."
+      }
+    },
+    "questionsCount": "{count} domande",
+    "searchPlaceholder": "Cerca domande…",
+    "allFilter": "Tutte ({count})",
+    "empty": {
+      "title": "Nessuna domanda trovata",
+      "description": "Prova una parola chiave diversa o azzera il filtro per categoria.",
+      "reset": "Reimposta i filtri"
+    },
+    "cta": {
+      "eyebrow": "Hai ancora domande?",
+      "headingLine1": "Parla con il nostro team export",
+      "headingLine2": "per una risposta su misura.",
+      "description": "Il nostro team commerciale risponde alla maggior parte delle richieste entro 24 ore: RFQ, richieste di campioni, brief per il private label e domande sulle spedizioni.",
+      "requestQuote": "Richiedi un preventivo",
+      "contactSales": "Contatta il team commerciale"
+    },
+    "contact": {
+      "emailLabel": "E-mail",
+      "phoneLabel": "Ufficio di Istanbul",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "Chatta con il team commerciale"
+    }
+  },
+  "brandsPage": {
+    "meta": {
+      "title": "Marchi",
+      "description": "Marchi FMCG internazionali distribuiti da Marassi Group: oltre 200 marchi nei settori alimentare, bevande, prodotti per la casa e cura della persona."
+    },
+    "hero": {
+      "title": "I nostri marchi",
+      "subtitle": "Marchi FMCG internazionali e regionali distribuiti da Marassi Group in oltre 50 mercati."
+    },
+    "breadcrumb": {
+      "brands": "Marchi"
+    },
+    "empty": {
+      "title": "Marchi in arrivo a breve",
+      "description": "Il nostro team sta curando il catalogo dei marchi: contattaci per discutere dei marchi specifici che desideri importare.",
+      "contactUs": "Contattaci"
+    },
+    "card": {
+      "products": "prodotti",
+      "viewBrand": "Visualizza il marchio"
+    }
+  },
+  "brandDetailPage": {
+    "hero": {
+      "subtitle": "Distribuito in tutto il mondo da Marassi Group",
+      "subtitleWithOrigin": "{origin} — distribuito in tutto il mondo da Marassi Group"
+    },
+    "breadcrumbs": {
+      "brands": "Marchi"
+    },
+    "header": {
+      "productsCount": "{count}+ prodotti"
+    },
+    "products": {
+      "heading": "Prodotti di {brand}",
+      "allBrands": "Tutti i marchi"
+    },
+    "empty": {
+      "title": "Nessun prodotto ancora elencato",
+      "description": "Il nostro catalogo per questo marchio è in preparazione. Contattaci per disponibilità e prezzi.",
+      "requestQuote": "Richiedi un preventivo"
+    },
+    "product": {
+      "inStock": "Disponibile",
+      "onRequest": "Su richiesta",
+      "moq": "MOQ"
+    }
+  },
+  "marketDetailPage": {
+    "notFound": "Mercato non trovato.",
+    "backToMarkets": "Torna ai mercati",
+    "getQuoteFor": "Richiedi un preventivo per {market}"
+  },
+  "insightsDetailPage": {
+    "breadcrumbs": {
+      "insights": "Approfondimenti"
+    },
+    "byAuthor": "Di",
+    "tagsLabel": "Tag:"
+  },
+  "accountApplyPage": {
+    "breadcrumbs": {
+      "account": "Account",
+      "apply": "Richiedi"
+    },
+    "hero": {
+      "title": "Richiedi un account commerciale",
+      "subtitle": "Acquirenti B2B — distributori, catene di supermercati, grossisti e dettaglianti. L'approvazione sblocca i prezzi e l'intero catalogo."
+    },
+    "success": {
+      "heroTitle": "Richiesta ricevuta",
+      "heading": "Grazie per la tua richiesta",
+      "body": "Il nostro team commerciale esamina personalmente ogni richiesta. Riceverai un'email all'indirizzo fornito una volta approvato il tuo account — solitamente entro un giorno lavorativo.",
+      "backToHome": "Torna alla home"
+    },
+    "toast": {
+      "error": "Richiesta non riuscita"
+    },
+    "credentials": {
+      "heading": "Credenziali di accesso",
+      "email": "Email aziendale *",
+      "password": "Password *",
+      "confirmPassword": "Conferma password *"
+    },
+    "company": {
+      "heading": "Azienda",
+      "contactName": "Nome del referente *",
+      "companyName": "Ragione sociale *",
+      "country": "Paese *",
+      "countryPlaceholder": "Arabia Saudita",
+      "phone": "Telefono",
+      "buyerType": "Tipo di acquirente *",
+      "taxId": "Codice fiscale / Partita IVA / Numero di registrazione",
+      "website": "Sito web",
+      "aboutBusiness": "Parlaci della tua attività",
+      "aboutBusinessPlaceholder": "Quali prodotti ti interessano di più? Volume? Mercati serviti?"
+    },
+    "buyerTypes": {
+      "distributor": "Distributore",
+      "retail": "Vendita al dettaglio / Supermercato",
+      "smallBusiness": "Piccola impresa",
+      "brandOwner": "Titolare del marchio",
+      "partner": "Partner / Altro"
+    },
+    "submit": "Invia richiesta",
+    "alreadyApproved": "Già approvato?",
+    "signIn": "Accedi"
+  },
+  "productsListPage": {
+    "breadcrumb": {
+      "home": "Home",
+      "products": "Prodotti"
+    },
+    "hero": {
+      "eyebrow": "Qualità globale. Pronto per l'esportazione.",
+      "titleLine1": "Catalogo prodotti FMCG",
+      "titleLine2": "per i mercati globali",
+      "subtitle": "Esplora prodotti FMCG pronti per l'esportazione, provenienti da produttori affidabili e preparati per importatori, distributori, grossisti e catene di vendita al dettaglio in tutto il mondo."
+    },
+    "filterCard": {
+      "searchLabel": "Cerca prodotti",
+      "searchPlaceholder": "Cerca per nome del prodotto…",
+      "categoryLabel": "Categoria",
+      "brandLabel": "Marchio",
+      "originLabel": "Paese di origine",
+      "packagingLabel": "Tipo di imballaggio",
+      "privateLabelLabel": "Marchio del distributore",
+      "moqLabel": "MOQ (ordine minimo)",
+      "searchButton": "Cerca prodotti"
+    },
+    "options": {
+      "category": {
+        "all": "Tutte le categorie"
+      },
+      "brand": {
+        "all": "Tutti i marchi"
+      },
+      "origin": {
+        "all": "Tutti i paesi"
+      },
+      "packaging": {
+        "all": "Tutti gli imballaggi",
+        "carton": "Cartone",
+        "pallet": "Pallet",
+        "bulk": "Sfuso",
+        "case": "Cartone collettivo"
+      },
+      "productType": {
+        "all": "Tutti i tipi di prodotto",
+        "food": "Alimentari",
+        "nonFood": "Non alimentari",
+        "beverages": "Bevande"
+      },
+      "exportReadiness": {
+        "all": "Tutte le opzioni di esportazione",
+        "ready": "Pronto per l'esportazione",
+        "onRequest": "Su richiesta"
+      },
+      "privateLabel": {
+        "all": "Tutta la disponibilità",
+        "available": "Disponibile",
+        "onRequest": "Su richiesta"
+      },
+      "moq": {
+        "all": "Qualsiasi MOQ",
+        "lt100": "Meno di 100 cartoni",
+        "between": "100 – 500 cartoni",
+        "gt500": "Oltre 500 cartoni"
+      }
+    },
+    "sidebarCta": {
+      "title": "Non trovi ciò che cerchi?",
+      "description": "Il nostro team può aiutarti a reperire prodotti specifici.",
+      "button": "Richiedi approvvigionamento prodotti"
+    },
+    "groupBanner": {
+      "discountApplied": "Sconto di gruppo del {discount}% applicato."
+    },
+    "results": {
+      "filtersButton": "Filtri",
+      "sheetTitle": "Filtra prodotti",
+      "showing": "Visualizzazione",
+      "of": "di",
+      "products": "prodotti",
+      "sortBy": "Ordina per:",
+      "gridView": "Vista griglia",
+      "listView": "Vista elenco"
+    },
+    "sort": {
+      "latest": "Aggiunti di recente",
+      "nameAsc": "Nome: A → Z",
+      "nameDesc": "Nome: Z → A"
+    },
+    "empty": {
+      "title": "Nessun prodotto trovato",
+      "description": "Prova a modificare i filtri o la query di ricerca.",
+      "clearFilters": "Cancella filtri"
+    },
+    "featured": {
+      "heading": "Prodotti in evidenza per importatori",
+      "topSeller": "Più venduto"
+    },
+    "bulk": {
+      "titleStart": "Ordini all'ingrosso, container misti",
+      "titleHighlight": "e documentazione di esportazione",
+      "subtitle": "Rendiamo le esportazioni globali semplici, efficienti e conformi ai requisiti del tuo mercato.",
+      "items": {
+        "mixedContainer": {
+          "title": "Carico container misto",
+          "desc": "Combina più linee di prodotto in un'unica spedizione per ottimizzare i costi e soddisfare le diverse esigenze del mercato."
+        },
+        "exportDocs": {
+          "title": "Documentazione di esportazione",
+          "desc": "Documentazione di esportazione completa, certificati e supporto alla conformità per uno sdoganamento senza intoppi."
+        },
+        "marketSelection": {
+          "title": "Selezione di prodotti specifica per il mercato",
+          "desc": "Ti aiutiamo a selezionare i prodotti giusti, su misura per le preferenze e le normative del tuo mercato di riferimento."
+        }
+      }
+    },
+    "catalogCta": {
+      "cardLabel": "Catalogo prodotti",
+      "title": "Hai bisogno del catalogo prodotti completo?",
+      "description": "Accedi alla nostra gamma completa di prodotti FMCG pronti per l'esportazione, con specifiche dettagliate, opzioni di imballaggio e informazioni sui prezzi su misura per le esigenze del tuo mercato.",
+      "downloadButton": "Scarica catalogo",
+      "requestListButton": "Richiedi elenco prodotti personalizzato"
+    },
+    "sidebar": {
+      "title": "Filtra prodotti",
+      "resetAll": "Reimposta tutto",
+      "resetAllFilters": "Reimposta tutti i filtri",
+      "sections": {
+        "categories": "Categorie",
+        "brand": "Marchio",
+        "origin": "Origine",
+        "packaging": "Imballaggio",
+        "productType": "Tipo di prodotto",
+        "exportReadiness": "Idoneità all'esportazione",
+        "privateLabel": "Supporto marchio del distributore"
+      }
+    }
+  },
+  "requestQuotePage": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Richiedi un preventivo"
+    },
+    "hero": {
+      "titleStart": "Richiedi un preventivo",
+      "titleHighlight": "FMCG personalizzato",
+      "subtitle": "Indicaci di quali prodotti hai bisogno, il tuo mercato di riferimento e i requisiti del tuo ordine. Il nostro team di esportazione preparerà una proposta di approvvigionamento e quotazione su misura."
+    },
+    "rfqList": {
+      "summary": "Dalla tua lista RFQ — {count} {count, plural, one {articolo} other {articoli}}"
+    },
+    "sections": {
+      "company": {
+        "title": "Informazioni aziendali"
+      },
+      "product": {
+        "title": "Requisiti del prodotto"
+      },
+      "export": {
+        "title": "Dettagli di esportazione"
+      },
+      "message": {
+        "title": "Messaggio e caricamento"
+      }
+    },
+    "fields": {
+      "fullName": {
+        "label": "Nome completo",
+        "placeholder": "Inserisci il tuo nome completo"
+      },
+      "companyName": {
+        "label": "Ragione sociale",
+        "placeholder": "Inserisci la ragione sociale"
+      },
+      "country": {
+        "label": "Paese",
+        "placeholder": "Seleziona il paese"
+      },
+      "city": {
+        "label": "Città",
+        "placeholder": "Inserisci la città"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Inserisci l'indirizzo email"
+      },
+      "phone": {
+        "label": "Telefono / WhatsApp"
+      },
+      "buyerType": {
+        "label": "Tipo di acquirente",
+        "placeholder": "Seleziona il tipo di acquirente"
+      },
+      "productCategories": {
+        "label": "Categorie di prodotto",
+        "placeholder": "Seleziona le categorie di prodotto"
+      },
+      "productNames": {
+        "label": "Nomi di prodotto specifici",
+        "placeholder": "es. Latte in polvere NIDO, Ketchup Heinz"
+      },
+      "brandPreference": {
+        "label": "Preferenza di marchio",
+        "placeholder": "Qualsiasi marchio o specifica"
+      },
+      "quantityMoq": {
+        "label": "Quantità / MOQ",
+        "placeholder": "es. 1 x container da 40 piedi / 20 pallet"
+      },
+      "packagingType": {
+        "label": "Tipo di imballaggio",
+        "placeholder": "Seleziona il tipo di imballaggio"
+      },
+      "privateLabel": {
+        "label": "Marchio del distributore richiesto?"
+      },
+      "targetPrice": {
+        "label": "Prezzo obiettivo, se disponibile",
+        "placeholder": "es. USD 1,00 – 2,00 per unità"
+      },
+      "destinationCountry": {
+        "label": "Paese di destinazione",
+        "placeholder": "Seleziona il paese di destinazione"
+      },
+      "shippingMethod": {
+        "label": "Metodo di spedizione preferito",
+        "placeholder": "Seleziona il metodo di spedizione"
+      },
+      "mixedContainer": {
+        "label": "Container misto richiesto?"
+      },
+      "requiredDocuments": {
+        "label": "Documenti richiesti",
+        "placeholder": "Seleziona i documenti richiesti"
+      },
+      "timeline": {
+        "label": "Tempistica / Urgenza",
+        "placeholder": "Seleziona la tempistica"
+      },
+      "notes": {
+        "label": "Note aggiuntive",
+        "placeholder": "Eventuali requisiti specifici, dettagli del prodotto o istruzioni speciali..."
+      },
+      "upload": {
+        "label": "Carica l'elenco prodotti o un file di riferimento"
+      }
+    },
+    "countries": {
+      "egypt": "Egitto",
+      "turkey": "Turchia",
+      "uae": "Emirati Arabi Uniti",
+      "saudiArabia": "Arabia Saudita",
+      "iraq": "Iraq",
+      "jordan": "Giordania",
+      "libya": "Libia",
+      "sudan": "Sudan",
+      "nigeria": "Nigeria",
+      "kenya": "Kenya",
+      "ghana": "Ghana",
+      "senegal": "Senegal",
+      "germany": "Germania",
+      "uk": "Regno Unito",
+      "france": "Francia",
+      "italy": "Italia",
+      "spain": "Spagna",
+      "algeria": "Algeria",
+      "morocco": "Marocco",
+      "tunisia": "Tunisia",
+      "qatar": "Qatar",
+      "kuwait": "Kuwait",
+      "oman": "Oman",
+      "bahrain": "Bahrein",
+      "other": "Altro"
+    },
+    "buyerTypes": {
+      "importer": "Importatore",
+      "distributor": "Distributore",
+      "wholesaler": "Grossista",
+      "retailer": "Dettagliante",
+      "privateLabelBuyer": "Acquirente di marchio del distributore",
+      "hotelHoreca": "Hotel / HORECA",
+      "cateringFoodService": "Catering / Ristorazione",
+      "other": "Altro"
+    },
+    "buyerRoles": {
+      "importer": "Importatore",
+      "distributor": "Distributore",
+      "wholesaler": "Grossista",
+      "retailer": "Dettagliante",
+      "privateLabelBuyer": "Acquirente di marchio del distributore",
+      "other": "Altro"
+    },
+    "productCategories": {
+      "biscuits": "Biscotti e dolciumi",
+      "dairy": "Prodotti lattiero-caseari",
+      "beverages": "Bevande",
+      "snacks": "Snack e dolciumi",
+      "oils": "Oli e condimenti",
+      "canned": "Alimenti in scatola e secchi",
+      "cleaning": "Prodotti per la pulizia",
+      "personalCare": "Cura della persona",
+      "babyFood": "Alimenti per l'infanzia",
+      "other": "Altro"
+    },
+    "packagingTypes": {
+      "cartonBox": "Scatola di cartone",
+      "plasticBottle": "Bottiglia di plastica",
+      "glassJar": "Vasetto di vetro",
+      "tinCan": "Lattina",
+      "pouchSachet": "Busta / Bustina",
+      "bulkBag": "Sacco sfuso",
+      "tetraPak": "Tetra Pak",
+      "custom": "Personalizzato"
+    },
+    "shippingMethods": {
+      "fob": "FOB (Free on Board)",
+      "cif": "CIF (Cost, Insurance, Freight)",
+      "exw": "EXW (Ex Works)",
+      "cfr": "CFR (Cost & Freight)",
+      "ddp": "DDP (Delivered Duty Paid)",
+      "notSure": "Non saprei"
+    },
+    "requiredDocs": {
+      "commercialInvoice": "Fattura commerciale",
+      "packingList": "Distinta di imballaggio",
+      "coo": "Certificato di origine (COO)",
+      "bl": "Polizza di carico (B/L)",
+      "coa": "Certificato di analisi (COA)",
+      "healthPhyto": "Certificato sanitario / fitosanitario",
+      "fullSet": "Set completo di documentazione di esportazione"
+    },
+    "timelines": {
+      "urgent": "Urgente — entro 2 settimane",
+      "oneMonth": "1 mese",
+      "oneToTwoMonths": "1–2 mesi",
+      "threeMonths": "3 mesi",
+      "flexible": "Flessibile / pianificazione anticipata"
+    },
+    "yesNo": {
+      "yes": "sì",
+      "no": "no"
+    },
+    "upload": {
+      "click": "Clicca per caricare",
+      "dragDrop": "o trascina e rilascia",
+      "formats": "PDF, Excel o Word (max 10 MB)",
+      "removeFile": "Rimuovi file"
+    },
+    "submit": {
+      "label": "Invia richiesta di preventivo",
+      "submitting": "Invio in corso...",
+      "securityNote": "Le tue informazioni sono al sicuro e verranno utilizzate esclusivamente per elaborare la tua richiesta."
+    },
+    "toast": {
+      "success": "Richiesta di preventivo inviata! Il nostro team risponderà entro 24 ore.",
+      "failed": "Invio non riuscito. Controlla i campi obbligatori.",
+      "error": "Si è verificato un errore. Riprova."
+    },
+    "whyCard": {
+      "titleLine1": "Perché richiedere un preventivo",
+      "titleLine2": "a Marassi?",
+      "note": "Rispondiamo rapidamente e con professionalità, offrendo quotazioni su misura che corrispondono esattamente alle tue esigenze.",
+      "priority": "Il tuo successo è la nostra priorità."
+    },
+    "reasons": {
+      "sourcing": {
+        "title": "Rete di approvvigionamento affidabile",
+        "description": "Collaboriamo con produttori certificati e marchi FMCG di primo piano per garantire prodotti autentici e di alta qualità."
+      },
+      "documentation": {
+        "title": "Supporto alla documentazione di esportazione",
+        "description": "Documentazione completa di esportazione e conformità per garantire un commercio internazionale senza intoppi."
+      },
+      "mixedContainer": {
+        "title": "Opzioni di container misto",
+        "description": "Combina più prodotti e marchi in un unico container per ottimizzare costi e logistica."
+      },
+      "privateLabel": {
+        "title": "Soluzioni di marchio del distributore",
+        "description": "Produzione e branding personalizzati a marchio del distributore, su misura per le esigenze del tuo mercato."
+      },
+      "globalExperience": {
+        "title": "Esperienza nei mercati globali",
+        "description": "Serviamo oltre 50 mercati in tutto il mondo con comprovata competenza e partnership a lungo termine."
+      }
+    },
+    "process": {
+      "eyebrow": "Il nostro processo",
+      "heading": "Cosa succede dopo",
+      "steps": {
+        "inquiryReview": {
+          "title": "Esame della richiesta",
+          "description": "Il nostro team esamina la tua richiesta e raccoglie tutti i dettagli necessari."
+        },
+        "productMatching": {
+          "title": "Abbinamento dei prodotti",
+          "description": "Abbiniamo le tue esigenze ai migliori prodotti e fornitori della nostra rete."
+        },
+        "quotationPreparation": {
+          "title": "Preparazione della quotazione",
+          "description": "Prepariamo una quotazione competitiva su misura per le tue esigenze."
+        },
+        "confirmation": {
+          "title": "Conferma",
+          "description": "Esamini e confermi la quotazione, i termini e le condizioni."
+        },
+        "exportCoordination": {
+          "title": "Coordinamento dell'esportazione",
+          "description": "Gestiamo esportazione, logistica e documentazione fino alla consegna."
+        }
+      }
+    },
+    "helpCta": {
+      "title": "Hai bisogno di aiuto per preparare il tuo elenco prodotti?",
+      "subtitle": "Contatta il nostro team di esportazione per una guida sulla selezione dei prodotti, l'approvvigionamento e la creazione dell'ordine perfetto per il tuo mercato.",
+      "button": "Contatta il team di esportazione"
+    }
+  },
+  "productsPage": {
+    "hero": {
+      "breadcrumbHome": "Home",
+      "breadcrumbCurrent": "Categorie",
+      "eyebrow": "Catalogo FMCG globale",
+      "titleStart": "Esplora le nostre",
+      "titleHighlight": "categorie di prodotti ",
+      "titleEnd": "FMCG",
+      "subtitle": "Scopri un'ampia gamma di categorie FMCG alimentari e non alimentari, selezionate per importatori, distributori, grossisti, dettaglianti e partner di marchio del distributore in tutto il mondo."
+    },
+    "filters": {
+      "searchLabel": "Cerca categoria",
+      "searchPlaceholder": "Cerca categoria",
+      "marketType": "Tipo di mercato",
+      "market": {
+        "all": "Tutti i mercati",
+        "asia": "Asia",
+        "africa": "Africa",
+        "middleEast": "Medio Oriente",
+        "europe": "Europa"
+      },
+      "productType": "Tipo di prodotto",
+      "product": {
+        "all": "Tutti i prodotti",
+        "food": "Alimentari",
+        "nonFood": "Non alimentari",
+        "beverages": "Bevande"
+      },
+      "privateLabelAvailability": "Disponibilità marchio del distributore",
+      "privateLabel": {
+        "any": "Qualsiasi",
+        "available": "Disponibile",
+        "onRequest": "Su richiesta"
+      },
+      "countryOrigin": "Paese / Origine",
+      "origin": {
+        "any": "Qualsiasi origine",
+        "turkey": "Turchia",
+        "egypt": "Egitto",
+        "uae": "Emirati Arabi Uniti",
+        "india": "India",
+        "vietnam": "Vietnam"
+      },
+      "findCategories": "Trova categorie"
+    },
+    "browse": {
+      "eyebrow": "Categorie di prodotto",
+      "heading": "Sfoglia le categorie di prodotto",
+      "exploreCategory": "Esplora categoria"
+    },
+    "categories": {
+      "items": {
+        "biscuits": {
+          "name": "Biscotti e dolciumi",
+          "description": "Biscotti, cioccolato, caramelle e dolci di qualità premium."
+        },
+        "dairy": {
+          "name": "Prodotti lattiero-caseari",
+          "description": "Latte, formaggio, yogurt, burro e prodotti lattiero-caseari essenziali."
+        },
+        "beverages": {
+          "name": "Bevande",
+          "description": "Succhi, bibite, energy drink e altro ancora."
+        },
+        "snacks": {
+          "name": "Snack e patatine",
+          "description": "Snack croccanti, patatine, salatini e altro ancora."
+        },
+        "sauces": {
+          "name": "Salse e condimenti",
+          "description": "Ketchup, salse, creme spalmabili e condimenti."
+        },
+        "canned": {
+          "name": "Alimenti in scatola",
+          "description": "Verdure, frutta, carni in scatola e altro ancora."
+        },
+        "dryFoods": {
+          "name": "Alimenti secchi e di base",
+          "description": "Riso, legumi, farina, zucchero e prodotti di base per ogni giorno."
+        },
+        "cookingOils": {
+          "name": "Oli da cucina",
+          "description": "Olio di girasole, di colza, d'oliva e altri oli da cucina."
+        },
+        "teaCoffee": {
+          "name": "Tè e caffè",
+          "description": "Tè, caffè, miscele istantanee e bevande calde."
+        },
+        "pastaRice": {
+          "name": "Pasta e riso",
+          "description": "Pasta, noodle, riso e prodotti a base di cereali."
+        },
+        "baby": {
+          "name": "Prodotti per bambini e famiglia",
+          "description": "Alimenti per l'infanzia, pannolini, cura e prodotti essenziali per la famiglia."
+        },
+        "cleaning": {
+          "name": "Pulizia e FMCG per la casa",
+          "description": "Detersivi, detergenti e prodotti per la cura della casa."
+        }
+      }
+    },
+    "highDemand": {
+      "eyebrow": "Domanda in crescita",
+      "heading": "Categorie ad alta domanda per i mercati internazionali",
+      "badge": "Alta domanda",
+      "bullets": {
+        "highDemand": "Alta domanda",
+        "privateLabel": "Marchio del distributore disponibile",
+        "bulkExport": "Pronto per l'esportazione all'ingrosso"
+      },
+      "viewProducts": "Visualizza prodotti",
+      "items": {
+        "dairy": {
+          "title": "Latticini e latte in polvere"
+        },
+        "canned": {
+          "title": "Alimenti in scatola e secchi"
+        },
+        "beverages": {
+          "title": "Bevande"
+        },
+        "snacks": {
+          "title": "Snack e dolciumi"
+        }
+      }
+    },
+    "privateLabel": {
+      "titleLine1": "Hai bisogno di prodotti con",
+      "titleLine2": "il tuo marchio?",
+      "description": "Marassi Group supporta l'approvvigionamento a marchio del distributore, l'adattamento dell'imballaggio, l'etichettatura e la selezione di prodotti pronti per l'esportazione.",
+      "cta": "Scopri il marchio del distributore",
+      "imageAlt": "Prodotti a marchio del distributore"
+    },
+    "sourcing": {
+      "titleLine1": "Cerchi una categoria",
+      "titleLine2": "FMCG specifica?",
+      "description": "Il nostro team di approvvigionamento può aiutarti a trovare i prodotti giusti per il tuo mercato.",
+      "requestList": "Richiedi elenco prodotti",
+      "contactTeam": "Contatta il team di approvvigionamento",
+      "trustBullets": {
+        "network": "Rete di approvvigionamento globale",
+        "markets": "Oltre 50 mercati in tutto il mondo",
+        "quality": "Prodotti di qualità garantita",
+        "delivery": "Consegne puntuali su cui puoi contare"
+      }
+    }
+  },
+  "quickOrderPage": {
+    "hero": {
+      "title": "Ordine rapido",
+      "subtitle": "Incolla SKU, slug o UPC per creare una RFQ in pochi secondi. Un prodotto per riga, quantità facoltativa alla fine.",
+      "breadcrumb": "Ordine rapido"
+    },
+    "input": {
+      "heading": "Incolla il tuo elenco",
+      "formatHelp": "Formato: <code>identificatore, quantità</code> per riga. L'identificatore può essere lo slug di un prodotto, l'UPC unità o l'UPC cartone. La quantità predefinita è 1.",
+      "lookUp": "Cerca",
+      "uploadCsv": "Carica CSV",
+      "clear": "Cancella"
+    },
+    "matches": {
+      "heading": "{count, plural, one {# corrispondenza} other {# corrispondenze}}",
+      "addAll": "Aggiungi tutto alla RFQ",
+      "added": "Aggiunto",
+      "add": "Aggiungi"
+    },
+    "notFound": {
+      "heading": "{count} senza corrispondenza",
+      "description": "Questi identificatori non corrispondono ad alcun prodotto pubblicato. Verifica lo SKU/UPC oppure contatta il reparto vendite per aggiungerli."
+    },
+    "sidebar": {
+      "rfqTitle": "La tua lista RFQ",
+      "rfqDescription": "Una volta aggiunti i prodotti, apri la tua lista RFQ per inviare una richiesta di preventivo.",
+      "openDrawer": "Apri pannello RFQ"
+    },
+    "tips": {
+      "heading": "Suggerimenti",
+      "comments": "Le righe che iniziano con <code>#</code> vengono ignorate — usale per le intestazioni.",
+      "separator": "Il separatore può essere una virgola, una tabulazione o uno spazio.",
+      "limit": "Fino a 200 articoli per ricerca.",
+      "csvFormats": "Il caricamento CSV accetta file <code>.csv</code> o <code>.txt</code>."
+    },
+    "toast": {
+      "pasteAtLeastOne": "Incolla almeno uno SKU o UPC",
+      "lookupFailed": "Ricerca non riuscita",
+      "noMatchingProducts": "Nessun prodotto corrispondente trovato",
+      "matched": "Corrispondenze {matched} / {total}",
+      "unmatchedSuffix": " ({count} senza corrispondenza)",
+      "networkError": "Errore di rete",
+      "addedToRfq": "{count, plural, one {Aggiunto # prodotto alla RFQ} other {Aggiunti # prodotti alla RFQ}}"
+    }
+  },
+  "accountPage": {
+    "breadcrumb": {
+      "account": "Account"
+    },
+    "cards": {
+      "browseCatalog": {
+        "title": "Sfoglia catalogo",
+        "description": "Catalogo prodotti completo con i tuoi prezzi"
+      },
+      "quickOrder": {
+        "title": "Ordine rapido",
+        "description": "Incolla gli SKU per creare una RFQ in pochi secondi"
+      },
+      "account": {
+        "title": "Account"
+      }
+    },
+    "comingSoon": "La cronologia degli ordini e le liste salvate saranno presto disponibili."
+  },
+  "accountLoginPage": {
+    "error": {
+      "loginFailed": "Accesso non riuscito"
+    },
+    "hero": {
+      "title": "Accedi",
+      "subtitle": "Accesso all'account commerciale — sblocca i prezzi e l'intero catalogo."
+    },
+    "breadcrumbs": {
+      "account": "Account",
+      "signIn": "Accedi"
+    },
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "submit": "Accedi"
+    },
+    "noAccount": {
+      "prompt": "Non hai ancora un account?",
+      "applyLink": "Richiedine uno"
+    }
+  },
+  "productB2bCard": {
+    "badges": {
+      "hazmat": "Merci pericolose",
+      "hazmatTitle": "Materiale pericoloso",
+      "reefer": "Reefer",
+      "reeferTitle": "Container refrigerato richiesto"
+    },
+    "moq": "MOQ",
+    "specs": {
+      "brand": "Marchio",
+      "pack": "Confezione",
+      "unitUpc": "UPC unità",
+      "caseUpc": "UPC cartone"
+    },
+    "pricing": {
+      "casePrice": "Prezzo cartone ({minQty}+)",
+      "unitPrice": "Prezzo unitario",
+      "onRequest": "Prezzi su richiesta — aggiungi alla RFQ per un preventivo."
+    },
+    "quantity": {
+      "label": "Quantità (cartoni)",
+      "decrease": "Diminuisci quantità",
+      "increase": "Aumenta quantità"
+    },
+    "actions": {
+      "productDetails": "Dettagli prodotto",
+      "addedToRfq": "Aggiunto alla RFQ",
+      "addToRfq": "Aggiungi alla RFQ"
+    }
+  },
+  "productCatalogCard": {
+    "badges": {
+      "exportReady": "Pronto per l'esportazione",
+      "bestSeller": "Best seller",
+      "bulk": "Disponibile all'ingrosso",
+      "topSeller": "Più venduto",
+      "privateLabel": "Marchio del distributore"
+    },
+    "originLabel": "Origine",
+    "actions": {
+      "view": "Visualizza",
+      "quote": "Preventivo"
+    }
+  },
+  "productCard": {
+    "availability": {
+      "inStock": "Disponibile",
+      "onRequest": "Su richiesta"
+    },
+    "cta": {
+      "addedToRfq": "Aggiunto alla RFQ",
+      "addToRfq": "Aggiungi alla RFQ"
+    }
+  },
+  "productGrid": {
+    "empty": {
+      "title": "Nessun prodotto trovato",
+      "description": "Prova a modificare i filtri o la query di ricerca.",
+      "clearFilters": "Cancella filtri"
+    }
+  },
+  "productGallery": {
+    "imageAlt": "{productName} immagine {index}",
+    "previousImage": "Immagine precedente",
+    "nextImage": "Immagine successiva",
+    "viewImage": "Visualizza immagine {index}"
   }
 }

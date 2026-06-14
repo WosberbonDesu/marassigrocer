@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
 import {
   Award,
   FileText,
@@ -20,6 +19,7 @@ import {
 } from "lucide-react";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -27,10 +27,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "certificatesPage.meta" });
+  const t = await getTranslations({ locale, namespace: "certificatesPage" });
   return {
-    title: t("title"),
-    description: t("description"),
+    title: t("meta.title"),
+    description: t("meta.description"),
   };
 }
 
@@ -41,10 +41,32 @@ const PORT_BG =
 const LAB_BG =
   "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=900&q=80";
 
-const STANDARD_ICONS = [ShieldCheck, BadgeCheck, Sparkles, Globe2, ClipboardCheck, Award];
-const STANDARD_KEYS = ["iso", "haccp", "halal", "brc", "gmp", "kosher"] as const;
+const standards = [
+  { id: "iso22000", icon: ShieldCheck, name: "ISO 22000" },
+  { id: "haccp", icon: BadgeCheck, name: "HACCP" },
+  { id: "halal", icon: Sparkles, name: "Halal" },
+  { id: "brcIfs", icon: Globe2, name: "BRC / IFS" },
+  { id: "gmp", icon: ClipboardCheck, name: "GMP" },
+  { id: "kosher", icon: Award, name: "Kosher" },
+];
 
-const PROCESS_ICONS = [Microscope, Beaker, ClipboardCheck, Truck];
+const qualityProcess = [
+  { step: 1, id: "supplierVetting", icon: Microscope },
+  { step: 2, id: "productTesting", icon: Beaker },
+  { step: 3, id: "documentationReview", icon: ClipboardCheck },
+  { step: 4, id: "compliantDelivery", icon: Truck },
+];
+
+const documentTypes = [
+  "coo",
+  "coa",
+  "health",
+  "halal",
+  "phytosanitary",
+  "freeSale",
+  "packingInvoice",
+  "msds",
+];
 
 export default async function CertificatesPage({
   params,
@@ -52,24 +74,7 @@ export default async function CertificatesPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "certificatesPage" });
-  const tCommon = await getTranslations({ locale, namespace: "common" });
-
-  const standards = STANDARD_KEYS.map((key, i) => ({
-    icon: STANDARD_ICONS[i],
-    name: t(`standards.${key}.name`),
-    tagline: t(`standards.${key}.tagline`),
-    description: t(`standards.${key}.description`),
-  }));
-
-  const qualityProcess = [1, 2, 3, 4].map((step, i) => ({
-    step,
-    icon: PROCESS_ICONS[i],
-    title: t(`process.step${step}Title`),
-    desc: t(`process.step${step}Desc`),
-  }));
-
-  const documentTypes = t.raw("documents.list") as string[];
+  const t = await getTranslations("certificatesPage");
 
   let certificates: Array<{
     id: string;
@@ -128,18 +133,18 @@ export default async function CertificatesPage({
         <div className="relative z-10 mx-auto max-w-7xl px-4 pb-28 pt-14 sm:px-6 sm:pb-32 sm:pt-20 lg:px-8 lg:pb-36 lg:pt-24">
           <nav className="mb-5 flex items-center gap-2 text-xs text-white/55">
             <Link href="/" locale={locale} className="transition-colors hover:text-[oklch(0.78_0.12_80)]">
-              {tCommon("home")}
+              {t("hero.breadcrumbHome")}
             </Link>
             <span className="text-white/30">/</span>
-            <span className="font-medium text-[oklch(0.78_0.12_80)]">{t("hero.breadcrumb")}</span>
+            <span className="font-medium text-[oklch(0.78_0.12_80)]">{t("hero.breadcrumbCurrent")}</span>
           </nav>
 
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.78_0.12_80)]">
             {t("hero.eyebrow")}
           </p>
           <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem]">
-            {t("hero.title")}<br />
-            <span className="text-[oklch(0.78_0.12_80)]">{t("hero.titleAccent")}</span>
+            {t("hero.titleLine1")}<br />
+            <span className="text-[oklch(0.78_0.12_80)]">{t("hero.titleLine2")}</span>
           </h1>
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-white/70 sm:text-base">
             {t("hero.subtitle")}
@@ -154,17 +159,17 @@ export default async function CertificatesPage({
           <div className="rounded-2xl border border-[oklch(0.72_0.11_80)]/20 bg-white p-6 shadow-[0_24px_60px_-18px_oklch(0.20_0.02_80/0.18)] sm:p-8">
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
               {[
-                { value: "100%", label: t("stats.verifiedSuppliers") },
-                { value: "29+", label: t("stats.yearsCompliance") },
-                { value: "50+", label: t("stats.exportMarkets") },
-                { value: "10k+", label: t("stats.documentedSkus") },
+                { id: "verifiedSuppliers", value: "100%" },
+                { id: "yearsCompliance", value: "29+" },
+                { id: "exportMarkets", value: "50+" },
+                { id: "documentedSkus", value: "10k+" },
               ].map((s) => (
-                <div key={s.label} className="text-center">
+                <div key={s.id} className="text-center">
                   <p className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-none text-[oklch(0.50_0.12_75)] sm:text-4xl">
                     {s.value}
                   </p>
                   <p className="mt-2 text-[11px] font-semibold uppercase tracking-wider text-foreground/70">
-                    {s.label}
+                    {t(`stats.${s.id}`)}
                   </p>
                 </div>
               ))}
@@ -194,9 +199,9 @@ export default async function CertificatesPage({
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {standards.map(({ icon: Icon, name, tagline, description }) => (
+            {standards.map(({ id, icon: Icon, name }) => (
               <div
-                key={name}
+                key={id}
                 className="group relative overflow-hidden rounded-2xl border border-[oklch(0.72_0.11_80)]/15 bg-card p-6 transition-all hover:-translate-y-1 hover:border-[oklch(0.72_0.11_80)]/45 hover:shadow-[0_20px_40px_-18px_oklch(0.20_0.02_80/0.25)]"
               >
                 <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[oklch(0.78_0.12_80)]/8 blur-2xl transition-opacity group-hover:opacity-100" />
@@ -207,7 +212,7 @@ export default async function CertificatesPage({
                   <span className="rounded-full bg-[oklch(0.55_0.14_150)]/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[oklch(0.40_0.14_150)]">
                     <span className="inline-flex items-center gap-1">
                       <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.55_0.14_150)]" />
-                      {t("standards.active")}
+                      {t("standards.activeBadge")}
                     </span>
                   </span>
                 </div>
@@ -215,10 +220,10 @@ export default async function CertificatesPage({
                   {name}
                 </h3>
                 <p className="relative mt-1 text-[11px] font-semibold uppercase tracking-wider text-[oklch(0.50_0.12_75)]">
-                  {tagline}
+                  {t(`standards.items.${id}.tagline`)}
                 </p>
                 <p className="relative mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {description}
+                  {t(`standards.items.${id}.description`)}
                 </p>
               </div>
             ))}
@@ -248,7 +253,7 @@ export default async function CertificatesPage({
               {t("process.eyebrow")}
             </p>
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              {t("process.title")} <span className="text-[oklch(0.78_0.12_80)]">{t("process.titleAccent")}</span>
+              {t("process.titleStart")} <span className="text-[oklch(0.78_0.12_80)]">{t("process.titleHighlight")}</span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/65 sm:text-base">
               {t("process.subtitle")}
@@ -256,7 +261,7 @@ export default async function CertificatesPage({
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {qualityProcess.map(({ step, icon: Icon, title, desc }) => (
+            {qualityProcess.map(({ step, id, icon: Icon }) => (
               <div
                 key={step}
                 className="group relative rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-[oklch(0.78_0.12_80)]/40 hover:bg-white/[0.07]"
@@ -269,8 +274,8 @@ export default async function CertificatesPage({
                     0{step}
                   </span>
                 </div>
-                <h3 className="mt-4 text-lg font-semibold tracking-tight">{title}</h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-white/65">{desc}</p>
+                <h3 className="mt-4 text-lg font-semibold tracking-tight">{t(`process.items.${id}.title`)}</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-white/65">{t(`process.items.${id}.desc`)}</p>
               </div>
             ))}
           </div>
@@ -283,13 +288,13 @@ export default async function CertificatesPage({
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.60_0.12_75)]">
-                {t("library.eyebrow")}
+                {t("gallery.eyebrow")}
               </p>
               <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
-                {t("library.title")}
+                {t("gallery.title")}
               </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {t("library.subtitle")}
+                {t("gallery.subtitle")}
               </p>
             </div>
             <Button
@@ -298,7 +303,7 @@ export default async function CertificatesPage({
               className="border-[oklch(0.72_0.11_80)]/40 bg-transparent text-sm font-medium text-[oklch(0.40_0.10_75)] hover:bg-[oklch(0.78_0.12_80)]/10"
             >
               <Link href="/contact" locale={locale}>
-                {t("library.requestSpecific")}
+                {t("gallery.requestSpecific")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -310,10 +315,10 @@ export default async function CertificatesPage({
                 <Award className="h-8 w-8" />
               </div>
               <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-xl font-bold">
-                {t("library.comingSoonTitle")}
+                {t("gallery.emptyTitle")}
               </h3>
               <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-                {t("library.comingSoonDesc")}
+                {t("gallery.emptyDescription")}
               </p>
               <Button
                 asChild
@@ -321,7 +326,7 @@ export default async function CertificatesPage({
               >
                 <Link href="/contact" locale={locale}>
                   <FileText className="mr-2 h-4 w-4" />
-                  {t("library.comingSoonCta")}
+                  {t("gallery.requestDocumentation")}
                 </Link>
               </Button>
             </div>
@@ -356,7 +361,7 @@ export default async function CertificatesPage({
                       {validStr && (
                         <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-md bg-[oklch(0.55_0.14_150)]/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
                           <CheckCircle2 className="h-3 w-3" />
-                          {t("library.valid")}
+                          {t("gallery.validBadge")}
                         </span>
                       )}
                     </div>
@@ -368,7 +373,7 @@ export default async function CertificatesPage({
                       {c.issuer && (
                         <p className="mt-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-[oklch(0.50_0.12_75)]">
                           <Building2 className="h-3 w-3" />
-                          {t("library.issuedBy")} {c.issuer}
+                          {c.issuer}
                         </p>
                       )}
                       {c.description && (
@@ -397,7 +402,7 @@ export default async function CertificatesPage({
                           >
                             <a href={c.fileUrl} target="_blank" rel="noopener noreferrer">
                               <Download className="mr-1.5 h-3.5 w-3.5" />
-                              {t("library.download")}
+                              {t("gallery.downloadCertificate")}
                             </a>
                           </Button>
                         ) : (
@@ -408,7 +413,7 @@ export default async function CertificatesPage({
                             className="h-9 w-full border-[oklch(0.72_0.11_80)]/40 text-xs font-semibold text-[oklch(0.40_0.10_75)] hover:bg-[oklch(0.78_0.12_80)]/10"
                           >
                             <Link href="/contact" locale={locale}>
-                              {t("library.requestDocument")}
+                              {t("gallery.requestDocument")}
                               <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                             </Link>
                           </Button>
@@ -432,8 +437,8 @@ export default async function CertificatesPage({
                 {t("documents.eyebrow")}
               </p>
               <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-                {t("documents.title")}<br />
-                <span className="text-[oklch(0.50_0.12_75)]">{t("documents.titleAccent")}</span>
+                {t("documents.titleLine1")}<br />
+                <span className="text-[oklch(0.50_0.12_75)]">{t("documents.titleLine2")}</span>
               </h2>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {t("documents.subtitle")}
@@ -449,7 +454,7 @@ export default async function CertificatesPage({
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[oklch(0.78_0.12_80)]/15 text-[oklch(0.50_0.12_75)]">
                     <FileText className="h-4 w-4" />
                   </div>
-                  <p className="text-sm font-medium leading-tight">{doc}</p>
+                  <p className="text-sm font-medium leading-tight">{t(`documents.items.${doc}`)}</p>
                 </div>
               ))}
             </div>
@@ -483,7 +488,7 @@ export default async function CertificatesPage({
               >
                 <Link href="/contact" locale={locale}>
                   <FileText className="mr-2 h-4 w-4" />
-                  {t("cta.request")}
+                  {t("cta.requestDocumentation")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -494,7 +499,7 @@ export default async function CertificatesPage({
                 className="h-12 border-white/25 bg-transparent px-6 text-sm font-medium text-white hover:bg-white/10"
               >
                 <Link href="/company" locale={locale}>
-                  {t("cta.about")}
+                  {t("cta.aboutCompany")}
                 </Link>
               </Button>
             </div>

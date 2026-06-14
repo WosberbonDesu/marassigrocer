@@ -15,37 +15,37 @@ export function Footer() {
     {
       title: t("company"),
       links: [
-        { label: "About Us", href: `/${locale}/company` },
-        { label: "Why Marassi", href: `/${locale}/why-marassi` },
-        { label: "Export Markets", href: `/${locale}/markets` },
-        { label: "Certificates", href: `/${locale}/certificates` },
+        { label: t("about"), href: `/${locale}/company` },
+        { label: t("links.whyMarassi"), href: `/${locale}/why-marassi` },
+        { label: t("links.exportMarkets"), href: `/${locale}/markets` },
+        { label: t("links.certificates"), href: `/${locale}/certificates` },
       ],
     },
     {
       title: t("products"),
       links: [
-        { label: "All Products", href: `/${locale}/products` },
-        { label: "Brands", href: `/${locale}/brands` },
-        { label: "Private Label", href: `/${locale}/private-label` },
-        { label: "Mixed Container", href: `/${locale}/mixed-container` },
+        { label: t("allProducts"), href: `/${locale}/products` },
+        { label: t("brands"), href: `/${locale}/brands` },
+        { label: t("links.privateLabel"), href: `/${locale}/private-label` },
+        { label: t("links.mixedContainer"), href: `/${locale}/mixed-container` },
       ],
     },
     {
       title: t("resources"),
       links: [
-        { label: "Quick Order", href: `/${locale}/quick-order` },
-        { label: "How It Works", href: `/${locale}/how-it-works` },
-        { label: "Logistics & Docs", href: `/${locale}/logistics` },
-        { label: "Blog & Insights", href: `/${locale}/insights` },
+        { label: t("links.quickOrder"), href: `/${locale}/quick-order` },
+        { label: t("howItWorks"), href: `/${locale}/how-it-works` },
+        { label: t("logisticsDocs"), href: `/${locale}/logistics` },
+        { label: t("links.blogInsights"), href: `/${locale}/insights` },
         { label: t("faq"), href: `/${locale}/faq` },
       ],
     },
   ];
 
   const legalLinks = [
-    { label: "Privacy Policy", href: `/${locale}/p/privacy` },
-    { label: "Terms & Conditions", href: `/${locale}/p/terms` },
-    { label: "Cookies Policy", href: `/${locale}/p/cookies` },
+    { label: t("legal.privacy"), href: `/${locale}/p/privacy` },
+    { label: t("legal.terms"), href: `/${locale}/p/terms` },
+    { label: t("legal.cookies"), href: `/${locale}/p/cookies` },
   ];
 
   return (
@@ -65,12 +65,12 @@ export function Footer() {
               <div>
                 <p className="text-base font-bold text-white">MARASSI GROUP</p>
                 <p className="text-[10px] tracking-widest text-[oklch(0.78_0.13_35)]">
-                  GLOBAL FMCG EXPORT
+                  {t("globalFmcgExport")}
                 </p>
               </div>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
-              {t("tagline")} — Since 1996, serving 50+ countries with 10,000+ products from 75+ factory partners worldwide.
+              {t("tagline")} — {t("taglineDescription")}
             </p>
 
             <div className="mt-5 flex items-center gap-2">
@@ -115,7 +115,7 @@ export function Footer() {
         {/* Offices strip */}
         <div className="mt-12 border-t border-white/10 pt-8">
           <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-white">
-            Global Offices
+            {t("globalOffices")}
           </h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {offices.slice(0, 4).map((office) => (

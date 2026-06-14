@@ -12,17 +12,18 @@ export default function MarketDetailPage() {
   const params = useParams();
   const locale = useLocale();
   const t = useTranslations("markets");
+  const td = useTranslations("marketDetailPage");
 
   const market = markets.find((m) => m.slug === params.slug);
 
   if (!market) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center">
-        <p className="text-muted-foreground">Market not found.</p>
+        <p className="text-muted-foreground">{td("notFound")}</p>
         <Button variant="outline" asChild className="mt-4">
           <Link href={`/${locale}/markets`}>
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Markets
+            {td("backToMarkets")}
           </Link>
         </Button>
       </div>
@@ -38,7 +39,7 @@ export default function MarketDetailPage() {
             className="mb-4 inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="mr-1.5 h-4 w-4" />
-            Back to Markets
+            {td("backToMarkets")}
           </Link>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             {market.name}
@@ -83,7 +84,7 @@ export default function MarketDetailPage() {
           <div className="mt-10 text-center">
             <Button asChild size="lg">
               <Link href={`/${locale}/request-quote`}>
-                Get a Quote for {market.name}
+                {td("getQuoteFor", { market: market.name })}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

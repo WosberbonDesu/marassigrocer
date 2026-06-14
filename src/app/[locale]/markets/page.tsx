@@ -4,12 +4,17 @@ import { ArrowRight, Globe, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { PageHero } from "@/components/shared/page-hero";
 import { db } from "@/lib/db";
+import { getTranslations } from "next-intl/server";
 
-export const metadata = {
-  title: "Export Markets",
-  description:
-    "Marassi Group serves clients in 50+ countries across GCC, MENA, Africa, Europe and beyond.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "markets" });
+  return { title: t("meta.title"), description: t("meta.description") };
+}
 
 export default async function MarketsPage({
   params,
@@ -17,6 +22,7 @@ export default async function MarketsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations("markets");
 
   let markets: Array<{
     id: string;
@@ -52,10 +58,10 @@ export default async function MarketsPage({
   return (
     <div>
       <PageHero
-        title="Export Markets"
-        subtitle="50+ countries served — GCC, MENA, Africa, Europe and beyond. Direct factory sourcing meets reliable export logistics."
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
         locale={locale}
-        breadcrumbs={[{ label: "Export Markets" }]}
+        breadcrumbs={[{ label: t("hero.breadcrumb") }]}
       />
 
       {/* Stats bar */}
@@ -66,7 +72,7 @@ export default async function MarketsPage({
               50+
             </p>
             <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
-              Countries Served
+              {t("stats.countriesServed")}
             </p>
           </div>
           <div>
@@ -74,7 +80,7 @@ export default async function MarketsPage({
               {markets.length || "—"}
             </p>
             <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
-              Market Regions
+              {t("stats.marketRegions")}
             </p>
           </div>
           <div>
@@ -82,7 +88,7 @@ export default async function MarketsPage({
               8+
             </p>
             <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
-              Sourcing Countries
+              {t("stats.sourcingCountries")}
             </p>
           </div>
         </div>
@@ -93,15 +99,15 @@ export default async function MarketsPage({
           {markets.length === 0 ? (
             <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed py-20 text-center">
               <Globe className="h-12 w-12 text-muted-foreground/40" />
-              <h3 className="mt-4 text-lg font-semibold">Markets coming soon</h3>
+              <h3 className="mt-4 text-lg font-semibold">{t("empty.title")}</h3>
               <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                Our team is finalizing the market list. For now, reach out to discuss any region — we likely already serve clients there.
+                {t("empty.description")}
               </p>
               <Link
                 href={`/${locale}/contact`}
                 className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
               >
-                Contact Export Team
+                {t("empty.cta")}
               </Link>
             </div>
           ) : (
@@ -161,16 +167,18 @@ export default async function MarketsPage({
       <section className="bg-[oklch(0.20_0.02_80)] py-16 text-white">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold sm:text-4xl">
-            Don't see your market?
+            {t("cta.title")}
           </h2>
           <p className="mt-3 text-lg text-white/70">
-            We serve clients in {totalCountries > 0 ? `${totalCountries}+` : "50+"} countries — reach out for tailored sourcing & logistics.
+            {t("cta.description", {
+              count: totalCountries > 0 ? `${totalCountries}+` : "50+",
+            })}
           </p>
           <Link
             href={`/${locale}/contact`}
             className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[oklch(0.62_0.14_30)] px-6 py-3 text-sm font-medium text-white hover:bg-[oklch(0.52_0.14_25)]"
           >
-            Discuss Your Market
+            {t("cta.button")}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

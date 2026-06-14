@@ -7,6 +7,7 @@ import { PageHero } from "@/components/shared/page-hero";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { db } from "@/lib/db";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -42,6 +43,7 @@ export default async function BrandDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  const t = await getTranslations("brandDetailPage");
 
   let brand: Awaited<ReturnType<typeof db.brand.findUnique>> = null;
   try {
@@ -87,12 +89,12 @@ export default async function BrandDetailPage({
         title={brand.name}
         subtitle={
           brand.origin
-            ? `${brand.origin} — distributed worldwide by Marassi Group`
-            : "Distributed worldwide by Marassi Group"
+            ? t("hero.subtitleWithOrigin", { origin: brand.origin })
+            : t("hero.subtitle")
         }
         locale={locale}
         breadcrumbs={[
-          { label: "Brands", href: `/${locale}/brands` },
+          { label: t("breadcrumbs.brands"), href: `/${locale}/brands` },
           { label: brand.name },
         ]}
       />
@@ -134,7 +136,7 @@ export default async function BrandDetailPage({
                   )}
                   <Badge variant="secondary" className="gap-1">
                     <Package className="h-3 w-3" />
-                    {products.length}+ products
+                    {t("header.productsCount", { count: products.length })}
                   </Badge>
                 </div>
                 {brand.description && (
@@ -150,12 +152,12 @@ export default async function BrandDetailPage({
           <div className="mt-12">
             <div className="mb-6 flex items-center justify-between">
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold">
-                Products from {brand.name}
+                {t("products.heading", { brand: brand.name })}
               </h2>
               <Button variant="ghost" size="sm" asChild>
                 <Link href={`/${locale}/brands`}>
                   <ArrowLeft className="mr-2 h-3.5 w-3.5" />
-                  All Brands
+                  {t("products.allBrands")}
                 </Link>
               </Button>
             </div>
@@ -163,12 +165,12 @@ export default async function BrandDetailPage({
             {products.length === 0 ? (
               <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed py-16 text-center">
                 <Package className="h-10 w-10 text-muted-foreground/40" />
-                <p className="mt-3 text-sm font-medium">No products listed yet</p>
+                <p className="mt-3 text-sm font-medium">{t("empty.title")}</p>
                 <p className="mt-1 max-w-md text-xs text-muted-foreground">
-                  Our catalog for this brand is being prepared. Contact us for availability and pricing.
+                  {t("empty.description")}
                 </p>
                 <Button asChild size="sm" className="mt-5">
-                  <Link href={`/${locale}/contact`}>Request Quote</Link>
+                  <Link href={`/${locale}/contact`}>{t("empty.requestQuote")}</Link>
                 </Button>
               </div>
             ) : (
@@ -207,16 +209,16 @@ export default async function BrandDetailPage({
                       <div className="mt-3 flex items-center justify-between">
                         {p.availability === "in_stock" ? (
                           <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-700">
-                            In Stock
+                            {t("product.inStock")}
                           </span>
                         ) : (
                           <span className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-                            On Request
+                            {t("product.onRequest")}
                           </span>
                         )}
                         {p.moqHint && (
                           <span className="text-[10px] text-muted-foreground">
-                            MOQ: {p.moqHint}
+                            {t("product.moq")}: {p.moqHint}
                           </span>
                         )}
                       </div>

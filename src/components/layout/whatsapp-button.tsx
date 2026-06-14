@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const WHATSAPP_URL =
   "https://wa.me/201050483361?text=Hi!%20I'm%20interested%20in%20your%20FMCG%20products.%20Can%20I%20get%20a%20catalog%20and%20pricing%3F";
 
 export function WhatsAppButton() {
   const [expanded, setExpanded] = useState(false);
+  const t = useTranslations("whatsapp");
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
@@ -21,7 +23,7 @@ export function WhatsAppButton() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold text-white">Marassi Group</p>
-              <p className="text-xs text-white/70">Typically replies instantly</p>
+              <p className="text-xs text-white/70">{t("status")}</p>
             </div>
             <button
               onClick={() => setExpanded(false)}
@@ -35,9 +37,9 @@ export function WhatsAppButton() {
           <div className="px-4 py-4 bg-[#ECE5DD]">
             <div className="bg-white rounded-lg rounded-tl-none px-3 py-2 shadow-sm max-w-[85%]">
               <p className="text-sm text-gray-800">
-                Hello! Welcome to Marassi Group. How can we help you today?
+                {t("greeting")}
               </p>
-              <p className="text-[10px] text-gray-400 text-right mt-1">just now</p>
+              <p className="text-[10px] text-gray-400 text-right mt-1">{t("timestamp")}</p>
             </div>
           </div>
 
@@ -50,7 +52,7 @@ export function WhatsAppButton() {
               className="flex items-center justify-center gap-2 w-full rounded-full bg-[#25D366] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#1EBE5B] active:bg-[#1AA94F]"
             >
               <WhatsAppIcon className="h-5 w-5" />
-              Start Chat
+              {t("startChat")}
             </a>
           </div>
         </div>
@@ -59,7 +61,7 @@ export function WhatsAppButton() {
       {/* Floating button */}
       <button
         onClick={() => setExpanded(!expanded)}
-        aria-label="Contact us on WhatsApp"
+        aria-label={t("ariaLabel")}
         className="group relative flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95"
       >
         {/* Pulse ring */}

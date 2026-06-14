@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import {
   Zap, Upload, Trash2, Check, AlertTriangle, Loader2, Send, ShoppingCart, Package,
@@ -51,6 +51,7 @@ function parsePastedLines(raw: string): { identifier: string; quantity: number }
 
 export default function QuickOrderPage() {
   const locale = useLocale();
+  const t = useTranslations("quickOrderPage");
   const [paste, setPaste] = useState("");
   const [loading, setLoading] = useState(false);
   const [matches, setMatches] = useState<Match[]>([]);
@@ -61,7 +62,7 @@ export default function QuickOrderPage() {
   const lookup = async () => {
     const items = parsePastedLines(paste).filter((i) => i.identifier);
     if (items.length === 0) {
-      toast.error("Paste at least one SKU or UPC");
+      toast.error(t("toast.pasteAtLeastOne"));
       return;
     }
     setLoading(true);
@@ -73,23 +74,27 @@ export default function QuickOrderPage() {
       });
       const data = await res.json();
       if (!res.ok) {
-        toast.error(data.error ?? "Lookup failed");
+        toast.error(data.error ?? t("toast.lookupFailed"));
         return;
       }
       setMatches(data.matches ?? []);
       setNotFound(data.notFound ?? []);
       setAddedIds(new Set());
       if ((data.matches ?? []).length === 0) {
-        toast.error("No matching products found");
+        toast.error(t("toast.noMatchingProducts"));
       } else {
         toast.success(
-          `Matched ${data.matches.length} / ${items.length}${
-            data.notFound.length > 0 ? ` (${data.notFound.length} unmatched)` : ""
-          }`
+          t("toast.matched", {
+            matched: data.matches.length,
+            total: items.length,
+          }) +
+            (data.notFound.length > 0
+              ? t("toast.unmatchedSuffix", { count: data.notFound.length })
+              : "")
         );
       }
     } catch {
-      toast.error("Network error");
+      toast.error(t("toast.networkError"));
     } finally {
       setLoading(false);
     }
@@ -113,7 +118,7 @@ export default function QuickOrderPage() {
       added++;
     }
     setAddedIds(new Set(matches.map((m) => m.product.id)));
-    toast.success(`Added ${added} product${added === 1 ? "" : "s"} to RFQ`);
+    toast.success(t("toast.addedToRfq", { count: added }));
   };
 
   const addOne = (m: Match) => {
@@ -136,10 +141,10 @@ export default function QuickOrderPage() {
   return (
     <div>
       <PageHero
-        title="Quick Order"
-        subtitle="Paste SKUs, slugs, or UPCs to build an RFQ in seconds. One product per line, optional quantity at end."
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
         locale={locale}
-        breadcrumbs={[{ label: "Quick Order" }]}
+        breadcrumbs={[{ label: t("hero.breadcrumb") }]}
       />
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
@@ -148,7 +153,7 @@ export default function QuickOrderPage() {
             <div className="rounded-2xl border bg-card p-5 space-y-4">
               <div className="flex items-center gap-2">
                 <Zap className="h-4 w-4 text-[oklch(0.72_0.11_80)]" />
-                <h2 className="font-semibold">Paste your list</h2>
+                <h2 className="font-semibold">{t("input.heading")}</h2>
               </div>
               <Textarea
                 value={paste}
@@ -160,7 +165,11 @@ froot-loops-12`}
                 className="font-mono text-sm"
               />
               <p className="text-xs text-muted-foreground">
-                Format: <code className="rounded bg-muted px-1">identifier, quantity</code> per line. Identifier can be a product slug, Unit UPC, or Case UPC. Quantity defaults to 1.
+                {t.rich("input.formatHelp", {
+                  code: (chunks) => (
+                    <code className="rounded bg-muted px-1">{chunks}</code>
+                  ),
+                })}
               </p>
 
               <div className="flex flex-wrap items-center gap-2">
@@ -170,12 +179,12 @@ froot-loops-12`}
                   ) : (
                     <Zap className="mr-2 h-4 w-4" />
                   )}
-                  Look Up
+                  {t("input.lookUp")}
                 </Button>
 
                 <label className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-input bg-background px-3 py-2 text-sm font-medium transition-colors hover:bg-muted">
                   <Upload className="h-4 w-4" />
-                  Upload CSV
+                  {t("input.uploadCsv")}
                   <input
                     type="file"
                     accept=".csv,.txt,text/csv,text/plain"
@@ -191,7 +200,7 @@ froot-loops-12`}
                 {(paste || matches.length > 0) && (
                   <Button variant="ghost" size="sm" onClick={clearAll}>
                     <Trash2 className="mr-1.5 h-3.5 w-3.5" />
-                    Clear
+                    {t("input.clear")}
                   </Button>
                 )}
               </div>
@@ -203,14 +212,14 @@ froot-loops-12`}
                 <div className="flex items-center justify-between">
                   <h2 className="font-semibold flex items-center gap-2">
                     <Check className="h-4 w-4 text-emerald-600" />
-                    {matches.length} match{matches.length === 1 ? "" : "es"}
+                    {t("matches.heading", { count: matches.length })}
                   </h2>
                   <Button
                     size="sm"
                     onClick={addAllMatches}
                     disabled={matches.every((m) => addedIds.has(m.product.id))}
                   >
-                    Add all to RFQ
+                    {t("matches.addAll")}
                   </Button>
                 </div>
                 <div className="space-y-2">
@@ -254,10 +263,10 @@ froot-loops-12`}
                         >
                           {added ? (
                             <>
-                              <Check className="mr-1 h-3.5 w-3.5" /> Added
+                              <Check className="mr-1 h-3.5 w-3.5" /> {t("matches.added")}
                             </>
                           ) : (
-                            "Add"
+                            t("matches.add")
                           )}
                         </Button>
                       </div>
@@ -273,11 +282,11 @@ froot-loops-12`}
                 <div className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-amber-600" />
                   <h2 className="font-semibold text-amber-700">
-                    {notFound.length} not matched
+                    {t("notFound.heading", { count: notFound.length })}
                   </h2>
                 </div>
                 <p className="text-xs text-amber-700/80">
-                  These identifiers didn't match a published product. Double-check the SKU/UPC or contact sales to add them.
+                  {t("notFound.description")}
                 </p>
                 <ul className="space-y-1 text-sm font-mono">
                   {notFound.map((n, i) => (
@@ -296,27 +305,37 @@ froot-loops-12`}
             <div className="rounded-2xl border bg-card p-5 space-y-3">
               <h3 className="font-semibold flex items-center gap-2">
                 <ShoppingCart className="h-4 w-4 text-[oklch(0.72_0.11_80)]" />
-                Your RFQ list
+                {t("sidebar.rfqTitle")}
               </h3>
               <p className="text-sm text-muted-foreground">
-                Once you've added products, open your RFQ list to submit a quote request.
+                {t("sidebar.rfqDescription")}
               </p>
               <Button
                 className="w-full"
                 onClick={() => openDrawer("list")}
               >
                 <Send className="mr-2 h-4 w-4" />
-                Open RFQ Drawer
+                {t("sidebar.openDrawer")}
               </Button>
             </div>
 
             <div className="rounded-2xl border border-dashed bg-muted/20 p-5 space-y-2">
-              <h3 className="text-sm font-semibold">Tips</h3>
+              <h3 className="text-sm font-semibold">{t("tips.heading")}</h3>
               <ul className="space-y-1.5 text-xs text-muted-foreground">
-                <li>• Lines starting with <code>#</code> are ignored — use for headers.</li>
-                <li>• Separator can be comma, tab, or whitespace.</li>
-                <li>• Up to 200 items per lookup.</li>
-                <li>• CSV upload accepts <code>.csv</code> or <code>.txt</code> files.</li>
+                <li>
+                  •{" "}
+                  {t.rich("tips.comments", {
+                    code: (chunks) => <code>{chunks}</code>,
+                  })}
+                </li>
+                <li>• {t("tips.separator")}</li>
+                <li>• {t("tips.limit")}</li>
+                <li>
+                  •{" "}
+                  {t.rich("tips.csvFormats", {
+                    code: (chunks) => <code>{chunks}</code>,
+                  })}
+                </li>
               </ul>
             </div>
           </aside>

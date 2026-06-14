@@ -42,11 +42,11 @@ export default function PrivateLabelPage() {
         body: JSON.stringify(data),
       });
       if (res.ok) {
-        toast.success("Inquiry submitted successfully! We'll be in touch within 48-72 hours.");
+        toast.success(t("form.success"));
         form.reset();
       }
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t("form.error"));
     }
   };
 
@@ -56,7 +56,7 @@ export default function PrivateLabelPage() {
       <PageHero
         title={t("headline")}
         subtitle={t("subtitle")}
-        breadcrumbs={[{ label: "Private Label" }]}
+        breadcrumbs={[{ label: t("title") }]}
         locale={locale as string}
       />
 
@@ -76,9 +76,9 @@ export default function PrivateLabelPage() {
           <SectionHeader title={t("moq.title")} subtitle={t("moq.subtitle")} />
           <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-3">
             {[
-              { label: "MOQ Range", value: t("moq.moqRange"), icon: Package },
-              { label: "Lead Time", value: t("moq.leadTime"), icon: Truck },
-              { label: "Sampling", value: t("moq.sampling"), icon: Palette },
+              { label: t("moq.moqRangeLabel"), value: t("moq.moqRange"), icon: Package },
+              { label: t("moq.leadTimeLabel"), value: t("moq.leadTime"), icon: Truck },
+              { label: t("moq.samplingLabel"), value: t("moq.sampling"), icon: Palette },
             ].map(({ label, value, icon: Icon }) => (
               <div key={label} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
                 <Icon className="mx-auto mb-3 h-8 w-8 text-[oklch(0.78_0.13_35)]" />
@@ -97,24 +97,24 @@ export default function PrivateLabelPage() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label>Full Name</Label>
+                <Label>{t("form.name")}</Label>
                 <Input {...form.register("name")} />
                 {form.formState.errors.name && <p className="mt-1 text-xs text-destructive">{form.formState.errors.name.message}</p>}
               </div>
               <div>
-                <Label>Company</Label>
+                <Label>{t("form.company")}</Label>
                 <Input {...form.register("company")} />
                 {form.formState.errors.company && <p className="mt-1 text-xs text-destructive">{form.formState.errors.company.message}</p>}
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label>Email</Label>
+                <Label>{t("form.email")}</Label>
                 <Input type="email" {...form.register("email")} />
                 {form.formState.errors.email && <p className="mt-1 text-xs text-destructive">{form.formState.errors.email.message}</p>}
               </div>
               <div>
-                <Label>Phone / WhatsApp</Label>
+                <Label>{t("form.phone")}</Label>
                 <Input {...form.register("phone")} />
                 {form.formState.errors.phone && <p className="mt-1 text-xs text-destructive">{form.formState.errors.phone.message}</p>}
               </div>
@@ -132,11 +132,11 @@ export default function PrivateLabelPage() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label>{t("form.expectedQuantity")}</Label>
-                <Input {...form.register("expectedQuantity")} placeholder="e.g. 10,000 units / 1x40' container" />
+                <Input {...form.register("expectedQuantity")} placeholder={t("form.expectedQuantityPlaceholder")} />
               </div>
               <div>
                 <Label>{t("form.packagingLanguage")}</Label>
-                <Input {...form.register("packagingLanguage")} placeholder="e.g. English, Arabic" />
+                <Input {...form.register("packagingLanguage")} placeholder={t("form.packagingLanguagePlaceholder")} />
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -146,12 +146,12 @@ export default function PrivateLabelPage() {
               </div>
               <div>
                 <Label>{t("form.timeline")}</Label>
-                <Input {...form.register("timeline")} placeholder="e.g. Q2 2026" />
+                <Input {...form.register("timeline")} placeholder={t("form.timelinePlaceholder")} />
               </div>
             </div>
             <div>
               <Label>{t("form.notes")}</Label>
-              <Textarea {...form.register("notes")} rows={4} placeholder="Reference products, special requirements..." />
+              <Textarea {...form.register("notes")} rows={4} placeholder={t("form.notesPlaceholder")} />
             </div>
             <Button type="submit" size="lg" className="w-full bg-[oklch(0.72_0.11_80)] text-white hover:bg-[oklch(0.66_0.12_78)]" disabled={form.formState.isSubmitting}>
               <Send className="mr-2 h-4 w-4" />

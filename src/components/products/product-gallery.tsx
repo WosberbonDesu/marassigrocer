@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Package, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 type Props = {
   images: string[];
@@ -12,9 +13,11 @@ type Props = {
 };
 
 export function ProductGallery({ images, alts = [], productName }: Props) {
+  const t = useTranslations("productGallery");
   const [activeIndex, setActiveIndex] = useState(0);
   const safeImages = images.length > 0 ? images : [];
-  const altFor = (i: number) => alts[i] || `${productName} image ${i + 1}`;
+  const altFor = (i: number) =>
+    alts[i] || t("imageAlt", { productName, index: i + 1 });
 
   const next = () =>
     setActiveIndex((i) => (i + 1) % Math.max(1, safeImages.length));
@@ -58,7 +61,7 @@ export function ProductGallery({ images, alts = [], productName }: Props) {
             <button
               type="button"
               onClick={prev}
-              aria-label="Previous image"
+              aria-label={t("previousImage")}
               className="absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md backdrop-blur transition hover:scale-105 hover:bg-white"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -66,7 +69,7 @@ export function ProductGallery({ images, alts = [], productName }: Props) {
             <button
               type="button"
               onClick={next}
-              aria-label="Next image"
+              aria-label={t("nextImage")}
               className="absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md backdrop-blur transition hover:scale-105 hover:bg-white"
             >
               <ChevronRight className="h-5 w-5" />
@@ -94,7 +97,7 @@ export function ProductGallery({ images, alts = [], productName }: Props) {
                   ? "border-primary ring-2 ring-primary/20"
                   : "border-border hover:border-primary/40"
               }`}
-              aria-label={`View image ${i + 1}`}
+              aria-label={t("viewImage", { index: i + 1 })}
             >
               <Image
                 src={src}

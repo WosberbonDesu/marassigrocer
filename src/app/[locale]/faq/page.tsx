@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -28,36 +28,26 @@ import type { FAQ } from "@/types";
 
 const CATEGORIES: {
   id: string;
-  label: string;
-  description: string;
   icon: React.ComponentType<{ className?: string }>;
   tag: FAQ["tags"][number];
 }[] = [
   {
     id: "general",
-    label: "General",
-    description: "Working with Marassi, quotations and payment terms.",
     icon: HelpCircle,
     tag: "general",
   },
   {
     id: "products",
-    label: "Products & Sourcing",
-    description: "MOQ, samples and sourcing capabilities.",
     icon: Package,
     tag: "products",
   },
   {
     id: "logistics",
-    label: "Logistics & Documentation",
-    description: "Incoterms, shipping times and export documents.",
     icon: Ship,
     tag: "logistics",
   },
   {
     id: "private_label",
-    label: "Private Label",
-    description: "Custom formulation, packaging and lead times.",
     icon: Tag,
     tag: "private_label",
   },
@@ -65,6 +55,7 @@ const CATEGORIES: {
 
 export default function FAQPage() {
   const locale = useLocale();
+  const t = useTranslations("faqPage");
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [query, setQuery] = useState("");
 
@@ -92,9 +83,9 @@ export default function FAQPage() {
   return (
     <div className="bg-background">
       <PageHero
-        title="Frequently Asked Questions"
-        subtitle="Answers to the most common questions about sourcing, shipping, documentation and private label with Marassi Group."
-        breadcrumbs={[{ label: "FAQ" }]}
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+        breadcrumbs={[{ label: t("hero.breadcrumb") }]}
         locale={locale}
       />
 
@@ -132,13 +123,13 @@ export default function FAQPage() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="font-[family-name:var(--font-playfair)] text-lg font-semibold leading-tight">
-                    {cat.label}
+                    {t(`categories.${cat.id}.label`)}
                   </h3>
                   <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                    {cat.description}
+                    {t(`categories.${cat.id}.description`)}
                   </p>
                   <span className="mt-3 inline-flex items-center rounded-full bg-[oklch(0.72_0.11_80)]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[oklch(0.50_0.12_75)]">
-                    {categoryCounts[cat.id]} questions
+                    {t("questionsCount", { count: categoryCounts[cat.id] })}
                   </span>
                 </motion.button>
               );
@@ -157,7 +148,7 @@ export default function FAQPage() {
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search questions…"
+                placeholder={t("searchPlaceholder")}
                 className="h-11 pl-9"
               />
             </div>
@@ -171,11 +162,11 @@ export default function FAQPage() {
                     : "bg-muted text-muted-foreground hover:bg-[oklch(0.72_0.11_80)]/10 hover:text-[oklch(0.50_0.12_75)]"
                 }`}
               >
-                All ({categoryCounts.all})
+                {t("allFilter", { count: categoryCounts.all })}
               </button>
               {activeCategory !== "all" && (
                 <span className="rounded-full bg-[oklch(0.72_0.11_80)]/10 px-3 py-1.5 font-semibold text-[oklch(0.50_0.12_75)]">
-                  {CATEGORIES.find((c) => c.id === activeCategory)?.label}
+                  {t(`categories.${activeCategory}.label`)}
                 </span>
               )}
             </div>
@@ -205,9 +196,9 @@ export default function FAQPage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted">
                   <Search className="h-5 w-5 text-muted-foreground" />
                 </div>
-                <p className="text-sm font-medium">No questions found</p>
+                <p className="text-sm font-medium">{t("empty.title")}</p>
                 <p className="max-w-xs text-xs text-muted-foreground">
-                  Try a different keyword or clear the category filter.
+                  {t("empty.description")}
                 </p>
                 <Button
                   variant="outline"
@@ -217,7 +208,7 @@ export default function FAQPage() {
                     setActiveCategory("all");
                   }}
                 >
-                  Reset filters
+                  {t("empty.reset")}
                 </Button>
               </div>
             )}
@@ -239,16 +230,15 @@ export default function FAQPage() {
               transition={{ duration: 0.6 }}
             >
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.78_0.12_80)]">
-                Still have questions?
+                {t("cta.eyebrow")}
               </p>
               <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-                Talk to our export team
+                {t("cta.headingLine1")}
                 <br className="hidden sm:block" />
-                for a tailored answer.
+                {t("cta.headingLine2")}
               </h2>
               <p className="mt-4 max-w-xl text-base text-white/65">
-                Our sales team replies to most inquiries within 24 hours — RFQ, sample requests,
-                private label briefs and shipping questions.
+                {t("cta.description")}
               </p>
             </motion.div>
 
@@ -265,7 +255,7 @@ export default function FAQPage() {
                 className="h-12 bg-[oklch(0.66_0.16_35)] px-7 text-base font-semibold text-white shadow-lg shadow-[oklch(0.66_0.16_35)]/20 hover:bg-[oklch(0.60_0.17_35)]"
               >
                 <a href={`/${locale}/request-quote`}>
-                  Request a Quote
+                  {t("cta.requestQuote")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
@@ -277,7 +267,7 @@ export default function FAQPage() {
               >
                 <a href={`/${locale}/contact`}>
                   <MessageSquare className="mr-2 h-4 w-4" />
-                  Contact Sales
+                  {t("cta.contactSales")}
                 </a>
               </Button>
             </motion.div>
@@ -298,7 +288,7 @@ export default function FAQPage() {
                 <Mail className="h-4 w-4" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs uppercase tracking-wider text-white/50">Email</p>
+                <p className="text-xs uppercase tracking-wider text-white/50">{t("contact.emailLabel")}</p>
                 <p className="truncate text-sm font-medium text-white">export@marassigroup.com</p>
               </div>
             </a>
@@ -310,7 +300,7 @@ export default function FAQPage() {
                 <Phone className="h-4 w-4" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs uppercase tracking-wider text-white/50">Istanbul Office</p>
+                <p className="text-xs uppercase tracking-wider text-white/50">{t("contact.phoneLabel")}</p>
                 <p className="truncate text-sm font-medium text-white">+90 (551) 262 38 59</p>
               </div>
             </a>
@@ -324,8 +314,8 @@ export default function FAQPage() {
                 <MessageSquare className="h-4 w-4" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs uppercase tracking-wider text-white/50">WhatsApp</p>
-                <p className="truncate text-sm font-medium text-white">Chat with sales</p>
+                <p className="text-xs uppercase tracking-wider text-white/50">{t("contact.whatsappLabel")}</p>
+                <p className="truncate text-sm font-medium text-white">{t("contact.whatsappValue")}</p>
               </div>
             </a>
           </motion.div>

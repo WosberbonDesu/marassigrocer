@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import { Search, X, Loader2, Package } from "lucide-react";
@@ -19,6 +19,7 @@ interface SearchResult {
 
 export function HeaderSearch({ variant = "light" }: { variant?: "light" | "dark" } = {}) {
   const locale = useLocale();
+  const t = useTranslations("search");
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
@@ -110,7 +111,7 @@ export function HeaderSearch({ variant = "light" }: { variant?: "light" | "dark"
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
-          placeholder="Search products, categories…"
+          placeholder={t("placeholder")}
           className={
             isDark
               ? "h-10 w-56 rounded-full border border-white/15 bg-white/[0.06] pl-4 pr-11 text-sm text-white placeholder:text-white/45 outline-none transition-all focus:w-72 focus:border-[oklch(0.72_0.11_80)]/50 focus:bg-white/[0.10] focus:ring-2 focus:ring-[oklch(0.72_0.11_80)]/25 lg:w-64"
@@ -133,7 +134,7 @@ export function HeaderSearch({ variant = "light" }: { variant?: "light" | "dark"
                 ? "absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 text-white/60 hover:bg-white/10 hover:text-white"
                 : "absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
             }
-            aria-label="Clear search"
+            aria-label={t("clear")}
           >
             <X className="h-3.5 w-3.5" />
           </button>
@@ -141,7 +142,7 @@ export function HeaderSearch({ variant = "light" }: { variant?: "light" | "dark"
           <button
             type="button"
             onClick={goToResults}
-            aria-label="Search"
+            aria-label={t("searchAria")}
             className="absolute right-1.5 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[oklch(0.72_0.11_80)] transition-colors hover:bg-[oklch(0.72_0.11_80)]/15"
           >
             <Search className="h-3.5 w-3.5" />
@@ -158,14 +159,14 @@ export function HeaderSearch({ variant = "light" }: { variant?: "light" | "dark"
         <div className="absolute left-0 right-0 top-full z-50 mt-2 w-[min(28rem,90vw)] overflow-hidden rounded-xl border bg-popover shadow-2xl">
           {loading ? (
             <div className="flex items-center justify-center py-8 text-sm text-muted-foreground">
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Searching…
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t("searching")}
             </div>
           ) : results.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-8 text-center">
               <Package className="h-6 w-6 text-muted-foreground/40" />
-              <p className="mt-2 text-sm font-medium">No products found</p>
+              <p className="mt-2 text-sm font-medium">{t("noResults")}</p>
               <p className="mt-0.5 text-xs text-muted-foreground">
-                Try different keywords or browse the catalog.
+                {t("noResultsHint")}
               </p>
             </div>
           ) : (
@@ -210,7 +211,7 @@ export function HeaderSearch({ variant = "light" }: { variant?: "light" | "dark"
                 onClick={goToResults}
                 className="block w-full border-t bg-muted/30 px-4 py-2.5 text-center text-xs font-medium text-primary hover:bg-muted"
               >
-                See all results for &ldquo;{query}&rdquo; →
+                {t("seeAllResults", { query })} →
               </button>
             </>
           )}

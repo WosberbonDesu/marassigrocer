@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDropzone } from "react-dropzone";
@@ -51,10 +52,31 @@ const CTA_BG =
   "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1920&q=70";
 
 const COUNTRIES = [
-  "Egypt", "Turkey", "United Arab Emirates", "Saudi Arabia", "Iraq", "Jordan",
-  "Libya", "Sudan", "Nigeria", "Kenya", "Ghana", "Senegal",
-  "Germany", "United Kingdom", "France", "Italy", "Spain",
-  "Algeria", "Morocco", "Tunisia", "Qatar", "Kuwait", "Oman", "Bahrain", "Other",
+  { id: "egypt", value: "Egypt" },
+  { id: "turkey", value: "Turkey" },
+  { id: "uae", value: "United Arab Emirates" },
+  { id: "saudiArabia", value: "Saudi Arabia" },
+  { id: "iraq", value: "Iraq" },
+  { id: "jordan", value: "Jordan" },
+  { id: "libya", value: "Libya" },
+  { id: "sudan", value: "Sudan" },
+  { id: "nigeria", value: "Nigeria" },
+  { id: "kenya", value: "Kenya" },
+  { id: "ghana", value: "Ghana" },
+  { id: "senegal", value: "Senegal" },
+  { id: "germany", value: "Germany" },
+  { id: "uk", value: "United Kingdom" },
+  { id: "france", value: "France" },
+  { id: "italy", value: "Italy" },
+  { id: "spain", value: "Spain" },
+  { id: "algeria", value: "Algeria" },
+  { id: "morocco", value: "Morocco" },
+  { id: "tunisia", value: "Tunisia" },
+  { id: "qatar", value: "Qatar" },
+  { id: "kuwait", value: "Kuwait" },
+  { id: "oman", value: "Oman" },
+  { id: "bahrain", value: "Bahrain" },
+  { id: "other", value: "Other" },
 ];
 
 const PHONE_CODES = [
@@ -70,103 +92,94 @@ const PHONE_CODES = [
 ];
 
 const BUYER_TYPES = [
-  "Importer", "Distributor", "Wholesaler", "Retailer", "Private Label Buyer",
-  "Hotel / HORECA", "Catering / Food Service", "Other",
+  { id: "importer", value: "Importer" },
+  { id: "distributor", value: "Distributor" },
+  { id: "wholesaler", value: "Wholesaler" },
+  { id: "retailer", value: "Retailer" },
+  { id: "privateLabelBuyer", value: "Private Label Buyer" },
+  { id: "hotelHoreca", value: "Hotel / HORECA" },
+  { id: "cateringFoodService", value: "Catering / Food Service" },
+  { id: "other", value: "Other" },
 ];
 
 const BUYER_ROLES = [
-  "Importer", "Distributor", "Wholesaler", "Retailer", "Private Label Buyer", "Other",
+  { id: "importer", value: "Importer" },
+  { id: "distributor", value: "Distributor" },
+  { id: "wholesaler", value: "Wholesaler" },
+  { id: "retailer", value: "Retailer" },
+  { id: "privateLabelBuyer", value: "Private Label Buyer" },
+  { id: "other", value: "Other" },
 ];
 
 const PRODUCT_CATEGORIES = [
-  "Biscuits & Confectionery", "Dairy Products", "Beverages",
-  "Snacks & Confectionery", "Oils & Condiments", "Canned & Dry Foods",
-  "Cleaning Products", "Personal Care", "Baby Food", "Other",
+  { id: "biscuits", value: "Biscuits & Confectionery" },
+  { id: "dairy", value: "Dairy Products" },
+  { id: "beverages", value: "Beverages" },
+  { id: "snacks", value: "Snacks & Confectionery" },
+  { id: "oils", value: "Oils & Condiments" },
+  { id: "canned", value: "Canned & Dry Foods" },
+  { id: "cleaning", value: "Cleaning Products" },
+  { id: "personalCare", value: "Personal Care" },
+  { id: "babyFood", value: "Baby Food" },
+  { id: "other", value: "Other" },
 ];
 
 const PACKAGING_TYPES = [
-  "Carton Box", "Plastic Bottle", "Glass Jar", "Tin Can",
-  "Pouch / Sachet", "Bulk Bag", "Tetra Pak", "Custom",
+  { id: "cartonBox", value: "Carton Box" },
+  { id: "plasticBottle", value: "Plastic Bottle" },
+  { id: "glassJar", value: "Glass Jar" },
+  { id: "tinCan", value: "Tin Can" },
+  { id: "pouchSachet", value: "Pouch / Sachet" },
+  { id: "bulkBag", value: "Bulk Bag" },
+  { id: "tetraPak", value: "Tetra Pak" },
+  { id: "custom", value: "Custom" },
 ];
 
 const SHIPPING_METHODS = [
-  "FOB (Free on Board)", "CIF (Cost, Insurance, Freight)", "EXW (Ex Works)",
-  "CFR (Cost & Freight)", "DDP (Delivered Duty Paid)", "Not sure",
+  { id: "fob", value: "FOB (Free on Board)" },
+  { id: "cif", value: "CIF (Cost, Insurance, Freight)" },
+  { id: "exw", value: "EXW (Ex Works)" },
+  { id: "cfr", value: "CFR (Cost & Freight)" },
+  { id: "ddp", value: "DDP (Delivered Duty Paid)" },
+  { id: "notSure", value: "Not sure" },
 ];
 
 const REQUIRED_DOCS = [
-  "Commercial Invoice", "Packing List", "Certificate of Origin (COO)",
-  "Bill of Lading (B/L)", "Certificate of Analysis (COA)",
-  "Health / Phytosanitary Certificate", "Full export documentation set",
+  { id: "commercialInvoice", value: "Commercial Invoice" },
+  { id: "packingList", value: "Packing List" },
+  { id: "coo", value: "Certificate of Origin (COO)" },
+  { id: "bl", value: "Bill of Lading (B/L)" },
+  { id: "coa", value: "Certificate of Analysis (COA)" },
+  { id: "healthPhyto", value: "Health / Phytosanitary Certificate" },
+  { id: "fullSet", value: "Full export documentation set" },
 ];
 
 const TIMELINES = [
-  "Urgent — within 2 weeks", "1 month", "1–2 months",
-  "3 months", "Flexible / planning ahead",
+  { id: "urgent", value: "Urgent — within 2 weeks" },
+  { id: "oneMonth", value: "1 month" },
+  { id: "oneToTwoMonths", value: "1–2 months" },
+  { id: "threeMonths", value: "3 months" },
+  { id: "flexible", value: "Flexible / planning ahead" },
 ];
 
 const REASONS = [
-  {
-    icon: Users,
-    title: "Trusted Sourcing Network",
-    description:
-      "We work with certified manufacturers and top FMCG brands to ensure authentic, high-quality products.",
-  },
-  {
-    icon: FileBadge2,
-    title: "Export Documentation Support",
-    description:
-      "Complete export and compliance documentation to ensure smooth international trade.",
-  },
-  {
-    icon: Container,
-    title: "Mixed Container Options",
-    description:
-      "Combine multiple products and brands in one container to optimize cost and logistics.",
-  },
-  {
-    icon: Tag,
-    title: "Private Label Solutions",
-    description:
-      "Custom private label manufacturing and branding tailored to your market needs.",
-  },
-  {
-    icon: Globe2,
-    title: "Global Market Experience",
-    description:
-      "Serving 50+ markets worldwide with proven expertise and long-term partnerships.",
-  },
+  { id: "sourcing", icon: Users },
+  { id: "documentation", icon: FileBadge2 },
+  { id: "mixedContainer", icon: Container },
+  { id: "privateLabel", icon: Tag },
+  { id: "globalExperience", icon: Globe2 },
 ];
 
 const PROCESS_STEPS = [
-  {
-    icon: ClipboardCheck,
-    title: "Inquiry Review",
-    description: "Our team reviews your request and gathers all necessary details.",
-  },
-  {
-    icon: PackageSearch,
-    title: "Product Matching",
-    description: "We match your requirements with the best products and suppliers from our network.",
-  },
-  {
-    icon: FileText,
-    title: "Quotation Preparation",
-    description: "We prepare a competitive quotation tailored to your needs.",
-  },
-  {
-    icon: Handshake,
-    title: "Confirmation",
-    description: "You review and confirm the quotation, terms, and conditions.",
-  },
-  {
-    icon: Ship,
-    title: "Export Coordination",
-    description: "We handle export, logistics, and documentation until delivery.",
-  },
+  { id: "inquiryReview", icon: ClipboardCheck },
+  { id: "productMatching", icon: PackageSearch },
+  { id: "quotationPreparation", icon: FileText },
+  { id: "confirmation", icon: Handshake },
+  { id: "exportCoordination", icon: Ship },
 ];
 
 export default function RequestQuotePage() {
+  const t = useTranslations("requestQuotePage");
   const { locale } = useParams();
   const items = useRFQStore((s) => s.items);
   const clearItems = useRFQStore((s) => s.clearItems);
@@ -250,15 +263,15 @@ export default function RequestQuotePage() {
       });
 
       if (res.ok) {
-        toast.success("Quote request submitted! Our team will respond within 24 hours.");
+        toast.success(t("toast.success"));
         form.reset();
         setFiles([]);
         clearItems();
       } else {
-        toast.error("Submission failed. Please check the required fields.");
+        toast.error(t("toast.failed"));
       }
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t("toast.error"));
     }
   };
 
@@ -275,10 +288,10 @@ export default function RequestQuotePage() {
           <nav className="mb-6 flex items-center gap-1.5 text-xs text-white/55">
             <Link href={`/${locale}`} className="flex items-center gap-1 hover:text-[oklch(0.78_0.12_80)]">
               <Home className="h-3.5 w-3.5" />
-              Home
+              {t("breadcrumb.home")}
             </Link>
             <ChevronRight className="h-3 w-3" />
-            <span className="text-white/80">Request a Quote</span>
+            <span className="text-white/80">{t("breadcrumb.current")}</span>
           </nav>
 
           <motion.div
@@ -288,13 +301,12 @@ export default function RequestQuotePage() {
             className="max-w-2xl"
           >
             <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Request a Custom
+              {t("hero.titleStart")}
               <br />
-              <span className="text-[oklch(0.78_0.12_80)]">FMCG Quote</span>
+              <span className="text-[oklch(0.78_0.12_80)]">{t("hero.titleHighlight")}</span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65">
-              Tell us what products you need, your target market, and your order requirements.
-              Our export team will prepare a tailored sourcing and quotation proposal.
+              {t("hero.subtitle")}
             </p>
             <div className="mt-6 h-[3px] w-16 rounded-full bg-[oklch(0.78_0.12_80)]" />
           </motion.div>
@@ -314,7 +326,7 @@ export default function RequestQuotePage() {
               {items.length > 0 && (
                 <div className="mb-8 rounded-xl border border-[oklch(0.72_0.11_80)]/40 bg-[oklch(0.72_0.11_80)]/8 p-4">
                   <p className="text-xs font-semibold uppercase tracking-wider text-[oklch(0.50_0.12_75)]">
-                    From your RFQ list — {items.length} item{items.length > 1 ? "s" : ""}
+                    {t("rfqList.summary", { count: items.length })}
                   </p>
                   <ul className="mt-2 flex flex-wrap gap-1.5">
                     {items.map((it) => (
@@ -330,62 +342,62 @@ export default function RequestQuotePage() {
               )}
 
               {/* SECTION 1: Company Information */}
-              <FormSection number={1} title="Company Information">
+              <FormSection number={1} title={t("sections.company.title")}>
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Full Name" required error={form.formState.errors.fullName?.message}>
+                  <Field label={t("fields.fullName.label")} required error={form.formState.errors.fullName?.message}>
                     <Input
                       {...form.register("fullName")}
-                      placeholder="Enter your full name"
+                      placeholder={t("fields.fullName.placeholder")}
                       className="h-11"
                     />
                   </Field>
-                  <Field label="Company Name" required error={form.formState.errors.companyName?.message}>
+                  <Field label={t("fields.companyName.label")} required error={form.formState.errors.companyName?.message}>
                     <Input
                       {...form.register("companyName")}
-                      placeholder="Enter company name"
+                      placeholder={t("fields.companyName.placeholder")}
                       className="h-11"
                     />
                   </Field>
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Country" required error={form.formState.errors.country?.message}>
+                  <Field label={t("fields.country.label")} required error={form.formState.errors.country?.message}>
                     <Controller
                       control={form.control}
                       name="country"
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select country" />
+                            <SelectValue placeholder={t("fields.country.placeholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {COUNTRIES.map((c) => (
-                              <SelectItem key={c} value={c}>{c}</SelectItem>
+                              <SelectItem key={c.id} value={c.value}>{t(`countries.${c.id}`)}</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
                       )}
                     />
                   </Field>
-                  <Field label="City">
+                  <Field label={t("fields.city.label")}>
                     <Input
                       {...form.register("city")}
-                      placeholder="Enter city"
+                      placeholder={t("fields.city.placeholder")}
                       className="h-11"
                     />
                   </Field>
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Email" required error={form.formState.errors.email?.message}>
+                  <Field label={t("fields.email.label")} required error={form.formState.errors.email?.message}>
                     <Input
                       type="email"
                       {...form.register("email")}
-                      placeholder="Enter email address"
+                      placeholder={t("fields.email.placeholder")}
                       className="h-11"
                     />
                   </Field>
-                  <Field label="Phone / WhatsApp" required error={form.formState.errors.phone?.message}>
+                  <Field label={t("fields.phone.label")} required error={form.formState.errors.phone?.message}>
                     <div className="flex gap-2">
                       <Controller
                         control={form.control}
@@ -415,18 +427,18 @@ export default function RequestQuotePage() {
                   </Field>
                 </div>
 
-                <Field label="Buyer Type" required error={form.formState.errors.buyerType?.message}>
+                <Field label={t("fields.buyerType.label")} required error={form.formState.errors.buyerType?.message}>
                   <Controller
                     control={form.control}
                     name="buyerType"
                     render={({ field }) => (
                       <Select value={field.value} onValueChange={field.onChange}>
                         <SelectTrigger className="h-11 w-full">
-                          <SelectValue placeholder="Select buyer type" />
+                          <SelectValue placeholder={t("fields.buyerType.placeholder")} />
                         </SelectTrigger>
                         <SelectContent>
                           {BUYER_TYPES.map((b) => (
-                            <SelectItem key={b} value={b}>{b}</SelectItem>
+                            <SelectItem key={b.id} value={b.value}>{t(`buyerTypes.${b.id}`)}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -441,12 +453,12 @@ export default function RequestQuotePage() {
                   render={({ field }) => (
                     <div className="flex flex-wrap gap-2">
                       {BUYER_ROLES.map((role) => {
-                        const active = field.value === role;
+                        const active = field.value === role.value;
                         return (
                           <button
                             type="button"
-                            key={role}
-                            onClick={() => field.onChange(active ? "" : role)}
+                            key={role.id}
+                            onClick={() => field.onChange(active ? "" : role.value)}
                             className={`group flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium transition-all ${
                               active
                                 ? "border-[oklch(0.66_0.16_35)] bg-[oklch(0.66_0.16_35)]/8 text-[oklch(0.55_0.16_35)]"
@@ -462,7 +474,7 @@ export default function RequestQuotePage() {
                             >
                               {active && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
                             </span>
-                            {role}
+                            {t(`buyerRoles.${role.id}`)}
                           </button>
                         );
                       })}
@@ -474,72 +486,72 @@ export default function RequestQuotePage() {
               <SectionDivider />
 
               {/* SECTION 2: Product Requirements */}
-              <FormSection number={2} title="Product Requirements">
+              <FormSection number={2} title={t("sections.product.title")}>
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Product Categories" required={false}>
+                  <Field label={t("fields.productCategories.label")} required={false}>
                     <Controller
                       control={form.control}
                       name="productCategories"
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select product categories" />
+                            <SelectValue placeholder={t("fields.productCategories.placeholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {PRODUCT_CATEGORIES.map((c) => (
-                              <SelectItem key={c} value={c}>{c}</SelectItem>
+                              <SelectItem key={c.id} value={c.value}>{t(`productCategories.${c.id}`)}</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
                       )}
                     />
                   </Field>
-                  <Field label="Specific Product Names">
+                  <Field label={t("fields.productNames.label")}>
                     <Input
                       {...form.register("productNames")}
-                      placeholder="e.g. NIDO Milk Powder, Heinz Ketchup"
+                      placeholder={t("fields.productNames.placeholder")}
                       className="h-11"
                     />
                   </Field>
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Brand Preference">
+                  <Field label={t("fields.brandPreference.label")}>
                     <Input
                       {...form.register("brandPreference")}
-                      placeholder="Any brand or specify"
+                      placeholder={t("fields.brandPreference.placeholder")}
                       className="h-11"
                     />
                   </Field>
-                  <Field label="Quantity / MOQ">
+                  <Field label={t("fields.quantityMoq.label")}>
                     <Input
                       {...form.register("quantityMoq")}
-                      placeholder="e.g. 1 x 40ft Container / 20 Pallets"
+                      placeholder={t("fields.quantityMoq.placeholder")}
                       className="h-11"
                     />
                   </Field>
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Packaging Type">
+                  <Field label={t("fields.packagingType.label")}>
                     <Controller
                       control={form.control}
                       name="packagingType"
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select packaging type" />
+                            <SelectValue placeholder={t("fields.packagingType.placeholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {PACKAGING_TYPES.map((p) => (
-                              <SelectItem key={p} value={p}>{p}</SelectItem>
+                              <SelectItem key={p.id} value={p.value}>{t(`packagingTypes.${p.id}`)}</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
                       )}
                     />
                   </Field>
-                  <Field label="Private Label Required?">
+                  <Field label={t("fields.privateLabel.label")}>
                     <Controller
                       control={form.control}
                       name="privateLabel"
@@ -550,10 +562,10 @@ export default function RequestQuotePage() {
                   </Field>
                 </div>
 
-                <Field label="Target Price if available">
+                <Field label={t("fields.targetPrice.label")}>
                   <Input
                     {...form.register("targetPrice")}
-                    placeholder="e.g. USD 1.00 – 2.00 per unit"
+                    placeholder={t("fields.targetPrice.placeholder")}
                     className="h-11"
                   />
                 </Field>
@@ -562,38 +574,38 @@ export default function RequestQuotePage() {
               <SectionDivider />
 
               {/* SECTION 3: Export Details */}
-              <FormSection number={3} title="Export Details">
+              <FormSection number={3} title={t("sections.export.title")}>
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Destination Country" required error={form.formState.errors.destinationCountry?.message}>
+                  <Field label={t("fields.destinationCountry.label")} required error={form.formState.errors.destinationCountry?.message}>
                     <Controller
                       control={form.control}
                       name="destinationCountry"
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select destination country" />
+                            <SelectValue placeholder={t("fields.destinationCountry.placeholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {COUNTRIES.map((c) => (
-                              <SelectItem key={c} value={c}>{c}</SelectItem>
+                              <SelectItem key={c.id} value={c.value}>{t(`countries.${c.id}`)}</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
                       )}
                     />
                   </Field>
-                  <Field label="Preferred Shipping Method">
+                  <Field label={t("fields.shippingMethod.label")}>
                     <Controller
                       control={form.control}
                       name="shippingMethod"
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select shipping method" />
+                            <SelectValue placeholder={t("fields.shippingMethod.placeholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {SHIPPING_METHODS.map((s) => (
-                              <SelectItem key={s} value={s}>{s}</SelectItem>
+                              <SelectItem key={s.id} value={s.value}>{t(`shippingMethods.${s.id}`)}</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
@@ -603,7 +615,7 @@ export default function RequestQuotePage() {
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Mixed Container Required?">
+                  <Field label={t("fields.mixedContainer.label")}>
                     <Controller
                       control={form.control}
                       name="mixedContainer"
@@ -612,18 +624,18 @@ export default function RequestQuotePage() {
                       )}
                     />
                   </Field>
-                  <Field label="Required Documents">
+                  <Field label={t("fields.requiredDocuments.label")}>
                     <Controller
                       control={form.control}
                       name="requiredDocuments"
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select required documents" />
+                            <SelectValue placeholder={t("fields.requiredDocuments.placeholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {REQUIRED_DOCS.map((d) => (
-                              <SelectItem key={d} value={d}>{d}</SelectItem>
+                              <SelectItem key={d.id} value={d.value}>{t(`requiredDocs.${d.id}`)}</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
@@ -632,18 +644,18 @@ export default function RequestQuotePage() {
                   </Field>
                 </div>
 
-                <Field label="Timeline / Urgency">
+                <Field label={t("fields.timeline.label")}>
                   <Controller
                     control={form.control}
                     name="timeline"
                     render={({ field }) => (
                       <Select value={field.value} onValueChange={field.onChange}>
                         <SelectTrigger className="h-11 w-full">
-                          <SelectValue placeholder="Select timeline" />
+                          <SelectValue placeholder={t("fields.timeline.placeholder")} />
                         </SelectTrigger>
                         <SelectContent>
-                          {TIMELINES.map((t) => (
-                            <SelectItem key={t} value={t}>{t}</SelectItem>
+                          {TIMELINES.map((tl) => (
+                            <SelectItem key={tl.id} value={tl.value}>{t(`timelines.${tl.id}`)}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -655,18 +667,18 @@ export default function RequestQuotePage() {
               <SectionDivider />
 
               {/* SECTION 4: Message & Upload */}
-              <FormSection number={4} title="Message & Upload">
+              <FormSection number={4} title={t("sections.message.title")}>
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Additional Notes">
+                  <Field label={t("fields.notes.label")}>
                     <Textarea
                       {...form.register("notes")}
                       rows={4}
-                      placeholder="Any specific requirements, product details, or special instructions..."
+                      placeholder={t("fields.notes.placeholder")}
                       className="resize-none"
                     />
                   </Field>
 
-                  <Field label="Upload Product List or Reference File">
+                  <Field label={t("fields.upload.label")}>
                     <div
                       {...getRootProps()}
                       className={`flex h-[120px] cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed p-4 text-center transition-colors ${
@@ -678,11 +690,11 @@ export default function RequestQuotePage() {
                       <input {...getInputProps()} />
                       <UploadCloud className="h-7 w-7 text-[oklch(0.66_0.16_35)]" />
                       <p className="mt-2 text-xs">
-                        <span className="font-semibold text-[oklch(0.55_0.16_35)]">Click to upload</span>{" "}
-                        <span className="text-muted-foreground">or drag &amp; drop</span>
+                        <span className="font-semibold text-[oklch(0.55_0.16_35)]">{t("upload.click")}</span>{" "}
+                        <span className="text-muted-foreground">{t("upload.dragDrop")}</span>
                       </p>
                       <p className="mt-0.5 text-[10px] text-muted-foreground">
-                        PDF, Excel, or Word (Max 10MB)
+                        {t("upload.formats")}
                       </p>
                     </div>
 
@@ -700,7 +712,7 @@ export default function RequestQuotePage() {
                                 setFiles((prev) => prev.filter((_, k) => k !== i))
                               }
                               className="text-muted-foreground hover:text-destructive"
-                              aria-label="Remove file"
+                              aria-label={t("upload.removeFile")}
                             >
                               <X className="h-3.5 w-3.5" />
                             </button>
@@ -720,11 +732,11 @@ export default function RequestQuotePage() {
                   className="h-12 w-full bg-[oklch(0.66_0.16_35)] text-sm font-semibold text-white shadow-md shadow-[oklch(0.66_0.16_35)]/25 hover:bg-[oklch(0.60_0.17_35)]"
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  {form.formState.isSubmitting ? "Submitting..." : "Submit Quote Request"}
+                  {form.formState.isSubmitting ? t("submit.submitting") : t("submit.label")}
                 </Button>
                 <p className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
                   <Lock className="h-3 w-3" />
-                  Your information is secure and will only be used to process your request.
+                  {t("submit.securityNote")}
                 </p>
               </div>
             </form>
@@ -741,9 +753,9 @@ export default function RequestQuotePage() {
 
               <div className="relative">
                 <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold leading-tight sm:text-2xl">
-                  Why Request a Quote
+                  {t("whyCard.titleLine1")}
                   <br />
-                  from Marassi?
+                  {t("whyCard.titleLine2")}
                 </h3>
                 <div className="mt-3 h-[3px] w-12 rounded-full bg-[oklch(0.78_0.12_80)]" />
 
@@ -751,14 +763,14 @@ export default function RequestQuotePage() {
                   {REASONS.map((r) => {
                     const Icon = r.icon;
                     return (
-                      <li key={r.title} className="flex items-start gap-4">
+                      <li key={r.id} className="flex items-start gap-4">
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[oklch(0.78_0.12_80)]/40 bg-[oklch(0.78_0.12_80)]/10 text-[oklch(0.78_0.12_80)]">
                           <Icon className="h-5 w-5" />
                         </div>
                         <div className="min-w-0">
-                          <p className="text-sm font-semibold text-white">{r.title}</p>
+                          <p className="text-sm font-semibold text-white">{t(`reasons.${r.id}.title`)}</p>
                           <p className="mt-1.5 text-xs leading-relaxed text-white/60">
-                            {r.description}
+                            {t(`reasons.${r.id}.description`)}
                           </p>
                         </div>
                       </li>
@@ -773,11 +785,10 @@ export default function RequestQuotePage() {
                     </div>
                     <div className="text-xs leading-relaxed text-white/65">
                       <p>
-                        We respond quickly and professionally with tailored quotations that match
-                        your exact requirements.
+                        {t("whyCard.note")}
                       </p>
                       <p className="mt-2 font-semibold text-[oklch(0.82_0.11_80)]">
-                        Your success is our priority.
+                        {t("whyCard.priority")}
                       </p>
                     </div>
                   </div>
@@ -793,10 +804,10 @@ export default function RequestQuotePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.60_0.12_75)]">
-              Our Process
+              {t("process.eyebrow")}
             </p>
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
-              What Happens Next
+              {t("process.heading")}
             </h2>
           </div>
 
@@ -816,7 +827,7 @@ export default function RequestQuotePage() {
                 const Icon = step.icon;
                 return (
                   <motion.li
-                    key={step.title}
+                    key={step.id}
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
@@ -827,10 +838,10 @@ export default function RequestQuotePage() {
                       <Icon className="h-6 w-6" />
                     </div>
                     <p className="mt-4 text-sm font-semibold">
-                      {i + 1}. {step.title}
+                      {i + 1}. {t(`process.steps.${step.id}.title`)}
                     </p>
                     <p className="mt-1.5 max-w-[180px] text-xs leading-relaxed text-muted-foreground">
-                      {step.description}
+                      {t(`process.steps.${step.id}.description`)}
                     </p>
                   </motion.li>
                 );
@@ -855,11 +866,10 @@ export default function RequestQuotePage() {
               </div>
               <div>
                 <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl">
-                  Need Help Preparing Your Product List?
+                  {t("helpCta.title")}
                 </h3>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/65">
-                  Contact our export team for guidance on product selection, sourcing, and building
-                  the perfect order for your market.
+                  {t("helpCta.subtitle")}
                 </p>
               </div>
             </div>
@@ -871,7 +881,7 @@ export default function RequestQuotePage() {
             >
               <Link href={`/${locale}/contact`}>
                 <Mail className="mr-2 h-4 w-4" />
-                Contact Export Team
+                {t("helpCta.button")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -942,6 +952,7 @@ function RadioYesNo({
   value: "yes" | "no";
   onChange: (v: "yes" | "no") => void;
 }) {
+  const t = useTranslations("requestQuotePage");
   return (
     <div className="flex h-11 items-center gap-6 rounded-md border border-input bg-white px-3">
       {(["yes", "no"] as const).map((opt) => {
@@ -962,7 +973,7 @@ function RadioYesNo({
             >
               {active && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
             </span>
-            <span className={active ? "text-foreground" : "text-muted-foreground"}>{opt}</span>
+            <span className={active ? "text-foreground" : "text-muted-foreground"}>{t(`yesNo.${opt}`)}</span>
           </button>
         );
       })}

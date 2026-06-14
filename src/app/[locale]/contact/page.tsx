@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -100,36 +101,12 @@ const PRODUCT_CATEGORIES = [
 ];
 
 const INQUIRY_CARDS = [
-  {
-    icon: PackageSearch,
-    title: "Product Sourcing",
-    description: "Find the right FMCG products for your market.",
-  },
-  {
-    icon: Tag,
-    title: "Private Label",
-    description: "Custom private label solutions for your brand.",
-  },
-  {
-    icon: FileBadge2,
-    title: "Export Documentation",
-    description: "Support for docs, compliance and international trade.",
-  },
-  {
-    icon: BookOpen,
-    title: "Catalog Request",
-    description: "Request our latest product catalog.",
-  },
-  {
-    icon: Boxes,
-    title: "Bulk Order Inquiry",
-    description: "Large volume orders and container quotes.",
-  },
-  {
-    icon: Handshake,
-    title: "Partnership Request",
-    description: "Explore global partnership and distribution.",
-  },
+  { id: "productSourcing", icon: PackageSearch },
+  { id: "privateLabel", icon: Tag },
+  { id: "exportDocumentation", icon: FileBadge2 },
+  { id: "catalogRequest", icon: BookOpen },
+  { id: "bulkOrder", icon: Boxes },
+  { id: "partnership", icon: Handshake },
 ];
 
 const PRIMARY_OFFICE = {
@@ -147,51 +124,40 @@ const PRIMARY_OFFICE = {
 };
 
 const PRE_CONTACT_FAQS = [
-  {
-    q: "Do you export mixed containers?",
-    a: "Yes — mixed container consolidation is one of our core strengths. We combine products from different brands and categories into a single 20' or 40' container.",
-  },
-  {
-    q: "Do you support private label?",
-    a: "Yes — we offer end-to-end private label solutions from formulation to packaging. MOQ for private label starts from 5,000 units depending on the product.",
-  },
-  {
-    q: "Can I request a product catalog?",
-    a: "Absolutely — use the 'Download Catalog' shortcut or send us a quick message and we'll email our complete catalog within one business day.",
-  },
-  {
-    q: "Which markets do you serve?",
-    a: "We export to 50+ markets across MENA, Africa, Europe and parts of Asia. Tell us your target country and we'll outline what's possible.",
-  },
+  { id: "mixedContainers" },
+  { id: "privateLabel" },
+  { id: "catalog" },
+  { id: "markets" },
 ];
 
 const INFO_CARDS = [
   {
+    id: "headOffice",
     icon: Building2,
-    label: "Head Office",
     lines: ["Marassi Group", "Pendik, Istanbul", "Turkey"],
   },
   {
+    id: "phone",
     icon: Phone,
-    label: "Phone",
     lines: ["+90 (551) 262 38 59", "Mon – Fri, 9:00 AM – 6:00 PM", "(GMT+3)"],
     href: "tel:+905512623859",
   },
   {
+    id: "email",
     icon: Mail,
-    label: "Email",
     lines: ["export@marassigroup.com", "sales@marassigroup.com"],
     href: "mailto:export@marassigroup.com",
   },
   {
+    id: "workingHours",
     icon: Clock,
-    label: "Working Hours",
     lines: ["Monday – Friday", "9:00 AM – 6:00 PM", "(GMT+3)"],
   },
 ];
 
 export default function ContactPage() {
   const { locale } = useParams();
+  const t = useTranslations("contact");
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -229,13 +195,13 @@ export default function ContactPage() {
         }),
       });
       if (res.ok) {
-        toast.success("Message sent! Our team will get back to you within 24 hours.");
+        toast.success(t("form.success"));
         form.reset();
       } else {
-        toast.error("Something went wrong. Please try again.");
+        toast.error(t("toast.error"));
       }
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t("toast.error"));
     }
   };
 
@@ -256,10 +222,10 @@ export default function ContactPage() {
           <nav className="mb-6 flex items-center gap-1.5 text-xs text-white/55">
             <Link href={`/${locale}`} className="flex items-center gap-1 hover:text-[oklch(0.78_0.12_80)]">
               <Home className="h-3.5 w-3.5" />
-              Home
+              {t("breadcrumb.home")}
             </Link>
             <ChevronRight className="h-3 w-3" />
-            <span className="text-white/80">Contact</span>
+            <span className="text-white/80">{t("breadcrumb.contact")}</span>
           </nav>
 
           <motion.div
@@ -269,11 +235,10 @@ export default function ContactPage() {
             className="max-w-3xl"
           >
             <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Contact <span className="text-[oklch(0.78_0.12_80)]">Marassi Group</span>
+              {t("hero.titlePrefix")} <span className="text-[oklch(0.78_0.12_80)]">Marassi Group</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
-              Speak with our export team for product sourcing, private label projects, catalog
-              requests, pricing inquiries and international FMCG supply support.
+              {t("hero.subtitle")}
             </p>
             <div className="mt-6 h-[3px] w-16 rounded-full bg-[oklch(0.78_0.12_80)]" />
           </motion.div>
@@ -292,7 +257,7 @@ export default function ContactPage() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-foreground">{card.label}</p>
+                    <p className="text-sm font-semibold text-foreground">{t(`infoCards.${card.id}.label`)}</p>
                     <div className="mt-1.5 space-y-0.5 text-xs leading-relaxed text-muted-foreground">
                       {card.lines.map((l, k) => (
                         <p key={k} className="truncate">
@@ -305,7 +270,7 @@ export default function ContactPage() {
               );
               return (
                 <motion.div
-                  key={card.label}
+                  key={card.id}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -339,26 +304,26 @@ export default function ContactPage() {
               className="rounded-2xl border border-border bg-white p-6 shadow-sm shadow-[oklch(0.20_0.02_80)]/5 sm:p-8 lg:col-span-2"
             >
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl">
-                Get in Touch
+                {t("getInTouch.title")}
               </h2>
               <p className="mt-1.5 text-sm text-muted-foreground">
-                Fill out the form below and our export specialists will get back to you promptly.
+                {t("getInTouch.subtitle")}
               </p>
 
               <form onSubmit={form.handleSubmit(onSubmit)} className="mt-7 space-y-5">
                 {/* Row 1: Name + Company */}
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Full Name" required error={form.formState.errors.name?.message}>
+                  <Field label={t("form.name")} required error={form.formState.errors.name?.message}>
                     <Input
                       {...form.register("name")}
-                      placeholder="Enter your full name"
+                      placeholder={t("form.namePlaceholder")}
                       className="h-11"
                     />
                   </Field>
-                  <Field label="Company Name" required error={form.formState.errors.company?.message}>
+                  <Field label={t("form.company")} required error={form.formState.errors.company?.message}>
                     <Input
                       {...form.register("company")}
-                      placeholder="Enter your company name"
+                      placeholder={t("form.companyPlaceholder")}
                       className="h-11"
                     />
                   </Field>
@@ -366,14 +331,14 @@ export default function ContactPage() {
 
                 {/* Row 2: Country + Email */}
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Country" required error={form.formState.errors.country?.message}>
+                  <Field label={t("form.country")} required error={form.formState.errors.country?.message}>
                     <Controller
                       control={form.control}
                       name="country"
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select your country" />
+                            <SelectValue placeholder={t("form.countryPlaceholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {COUNTRY_OPTIONS.map((c) => (
@@ -386,11 +351,11 @@ export default function ContactPage() {
                       )}
                     />
                   </Field>
-                  <Field label="Email" required error={form.formState.errors.email?.message}>
+                  <Field label={t("form.emailLabel")} required error={form.formState.errors.email?.message}>
                     <Input
                       type="email"
                       {...form.register("email")}
-                      placeholder="Enter your email address"
+                      placeholder={t("form.emailPlaceholder")}
                       className="h-11"
                     />
                   </Field>
@@ -398,15 +363,15 @@ export default function ContactPage() {
 
                 {/* Row 3: Phone + Inquiry Type */}
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Phone / WhatsApp" required error={form.formState.errors.phone?.message}>
+                  <Field label={t("form.phone")} required error={form.formState.errors.phone?.message}>
                     <Input
                       {...form.register("phone")}
-                      placeholder="Enter phone or WhatsApp number"
+                      placeholder={t("form.phonePlaceholder")}
                       className="h-11"
                     />
                   </Field>
                   <Field
-                    label="Inquiry Type"
+                    label={t("form.inquiryType")}
                     required
                     error={form.formState.errors.inquiryType?.message}
                   >
@@ -416,7 +381,7 @@ export default function ContactPage() {
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select inquiry type" />
+                            <SelectValue placeholder={t("form.inquiryTypePlaceholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {INQUIRY_TYPES.map((c) => (
@@ -433,14 +398,14 @@ export default function ContactPage() {
 
                 {/* Row 4: Product Category + Subject */}
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Product Category">
+                  <Field label={t("form.productCategory")}>
                     <Controller
                       control={form.control}
                       name="productCategory"
                       render={({ field }) => (
                         <Select value={field.value} onValueChange={field.onChange}>
                           <SelectTrigger className="h-11 w-full">
-                            <SelectValue placeholder="Select product category" />
+                            <SelectValue placeholder={t("form.productCategoryPlaceholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {PRODUCT_CATEGORIES.map((c) => (
@@ -453,21 +418,21 @@ export default function ContactPage() {
                       )}
                     />
                   </Field>
-                  <Field label="Subject">
+                  <Field label={t("form.subject")}>
                     <Input
                       {...form.register("subject")}
-                      placeholder="Enter subject"
+                      placeholder={t("form.subjectPlaceholder")}
                       className="h-11"
                     />
                   </Field>
                 </div>
 
                 {/* Message */}
-                <Field label="Message" required error={form.formState.errors.message?.message}>
+                <Field label={t("form.message")} required error={form.formState.errors.message?.message}>
                   <Textarea
                     {...form.register("message")}
                     rows={5}
-                    placeholder="Tell us about your requirements..."
+                    placeholder={t("form.messagePlaceholder")}
                     className="resize-none"
                   />
                 </Field>
@@ -480,11 +445,11 @@ export default function ContactPage() {
                     className="h-12 bg-[oklch(0.66_0.16_35)] px-7 text-sm font-semibold text-white shadow-md shadow-[oklch(0.66_0.16_35)]/25 hover:bg-[oklch(0.60_0.17_35)]"
                   >
                     <Send className="mr-2 h-4 w-4" />
-                    {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+                    {form.formState.isSubmitting ? t("form.submitting") : t("form.submit")}
                   </Button>
                   <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
                     <Lock className="h-3 w-3" />
-                    Your information is secure and will never be shared.
+                    {t("form.securityNote")}
                   </p>
                 </div>
               </form>
@@ -505,33 +470,32 @@ export default function ContactPage() {
                   <Headphones className="h-6 w-6" />
                 </div>
                 <h3 className="mt-5 text-center font-[family-name:var(--font-playfair)] text-xl font-bold sm:text-2xl">
-                  Need Faster Support?
+                  {t("support.title")}
                 </h3>
                 <p className="mx-auto mt-2 max-w-xs text-center text-sm leading-relaxed text-white/60">
-                  Our export team is ready to assist you across time zones with quick responses and
-                  reliable solutions.
+                  {t("support.subtitle")}
                 </p>
 
                 <div className="mt-7 space-y-3">
                   <QuickAction
                     href="https://wa.me/c/23859113816087?text=Hi!%20Can%20I%20get%20your%20product%20catalog%20and%20information%20about%20shipping%3F"
-                    title="WhatsApp Support"
-                    description="Chat with our team instantly"
+                    title={t("support.whatsapp.title")}
+                    description={t("support.whatsapp.description")}
                     icon={<WhatsAppIcon className="h-4 w-4 text-white" />}
                     iconBg="bg-[#25D366]"
                     external
                   />
                   <QuickAction
                     href="mailto:export@marassigroup.com"
-                    title="Email Our Team"
-                    description="Drop us an email anytime"
+                    title={t("support.email.title")}
+                    description={t("support.email.description")}
                     icon={<Mail className="h-4 w-4 text-[oklch(0.78_0.12_80)]" />}
                     iconBg="bg-[oklch(0.78_0.12_80)]/15"
                   />
                   <QuickAction
                     href={`/${locale}/products`}
-                    title="Download Catalog"
-                    description="Explore our full product range"
+                    title={t("support.catalog.title")}
+                    description={t("support.catalog.description")}
                     icon={<Download className="h-4 w-4 text-[oklch(0.78_0.12_80)]" />}
                     iconBg="bg-[oklch(0.78_0.12_80)]/15"
                   />
@@ -540,8 +504,8 @@ export default function ContactPage() {
                 <div className="mt-6 flex items-center justify-center gap-2 rounded-xl border border-[oklch(0.78_0.12_80)]/25 bg-[oklch(0.78_0.12_80)]/8 px-4 py-3 text-xs text-white/75">
                   <Zap className="h-3.5 w-3.5 text-[oklch(0.78_0.12_80)]" />
                   <span>
-                    We typically respond within{" "}
-                    <span className="font-semibold text-[oklch(0.78_0.12_80)]">1 business hour</span>
+                    {t("support.responseTime")}{" "}
+                    <span className="font-semibold text-[oklch(0.78_0.12_80)]">{t("support.responseTimeHighlight")}</span>
                   </span>
                 </div>
               </div>
@@ -555,10 +519,10 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.60_0.12_75)]">
-              How Can We Help?
+              {t("inquiryTypes.eyebrow")}
             </p>
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
-              Common Inquiry Types
+              {t("inquiryTypes.title")}
             </h2>
           </div>
 
@@ -567,7 +531,7 @@ export default function ContactPage() {
               const Icon = card.icon;
               return (
                 <motion.div
-                  key={card.title}
+                  key={card.id}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -578,10 +542,10 @@ export default function ContactPage() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="font-[family-name:var(--font-playfair)] text-sm font-semibold leading-snug">
-                    {card.title}
+                    {t(`inquiryTypes.cards.${card.id}.title`)}
                   </h3>
                   <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">
-                    {card.description}
+                    {t(`inquiryTypes.cards.${card.id}.description`)}
                   </p>
                 </motion.div>
               );
@@ -629,7 +593,7 @@ export default function ContactPage() {
                     >
                       <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
                         <Navigation className="mr-2 h-4 w-4" />
-                        Get Directions
+                        {t("map.getDirections")}
                       </a>
                     </Button>
                     <Button
@@ -638,7 +602,7 @@ export default function ContactPage() {
                       className="h-11 border-white/20 bg-transparent text-sm font-medium text-white hover:border-white/40 hover:bg-white/8 hover:text-white"
                     >
                       <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
-                        View on Google Maps
+                        {t("map.viewOnGoogleMaps")}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </a>
                     </Button>
@@ -676,13 +640,13 @@ export default function ContactPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Marassi Group Istanbul Office"
+                  title={t("map.iframeTitle")}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-[oklch(0.14_0.02_80)]/15 mix-blend-multiply" />
                 <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full">
                   <div className="flex flex-col items-center">
                     <div className="rounded-md bg-[oklch(0.16_0.02_80)]/95 px-2 py-1 text-[10px] font-semibold text-[oklch(0.78_0.12_80)] shadow-lg">
-                      ISTANBUL OFFICE
+                      {t("map.officeBadge")}
                     </div>
                     <div className="mt-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-[oklch(0.78_0.12_80)] text-[oklch(0.16_0.02_80)] shadow-[0_0_18px_oklch(0.78_0.12_80)]/60">
                       <MapPin className="h-5 w-5" />
@@ -700,17 +664,17 @@ export default function ContactPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.60_0.12_75)]">
-              Questions?
+              {t("faqs.eyebrow")}
             </p>
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
-              Before You Contact Us
+              {t("faqs.title")}
             </h2>
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {PRE_CONTACT_FAQS.map((faq, i) => (
               <motion.div
-                key={faq.q}
+                key={faq.id}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -720,13 +684,13 @@ export default function ContactPage() {
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value={`faq-${i}`} className="border-0">
                     <AccordionTrigger className="px-5 text-left text-sm font-medium hover:no-underline [&>svg]:hidden [&[data-state=open]_.faq-plus]:rotate-45 [&[data-state=open]_.faq-plus]:bg-[oklch(0.72_0.11_80)] [&[data-state=open]_.faq-plus]:text-white">
-                      <span className="flex-1 pr-3">{faq.q}</span>
+                      <span className="flex-1 pr-3">{t(`faqs.items.${faq.id}.question`)}</span>
                       <span className="faq-plus flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[oklch(0.72_0.11_80)]/35 bg-[oklch(0.72_0.11_80)]/10 text-[oklch(0.60_0.12_75)] transition-all duration-200">
                         <Plus className="h-3.5 w-3.5" />
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="px-5 text-sm leading-relaxed text-muted-foreground">
-                      {faq.a}
+                      {t(`faqs.items.${faq.id}.answer`)}
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -752,12 +716,11 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-                Let&apos;s Build Your<br className="hidden sm:block" />{" "}
-                <span className="text-[oklch(0.78_0.12_80)]">FMCG Supply Chain</span>
+                {t("cta.titleStart")}<br className="hidden sm:block" />{" "}
+                <span className="text-[oklch(0.78_0.12_80)]">{t("cta.titleHighlight")}</span>
               </h2>
               <p className="mt-4 max-w-xl text-base text-white/65">
-                Partner with Marassi Group for trusted sourcing, competitive prices and reliable
-                export support.
+                {t("cta.subtitle")}
               </p>
             </motion.div>
 
@@ -773,7 +736,7 @@ export default function ContactPage() {
                 className="h-12 bg-[oklch(0.66_0.16_35)] px-8 text-base font-semibold text-white shadow-lg shadow-[oklch(0.66_0.16_35)]/25 hover:bg-[oklch(0.60_0.17_35)]"
               >
                 <Link href={`/${locale}/contact`}>
-                  Request a Quote
+                  {t("cta.requestQuote")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -790,7 +753,7 @@ export default function ContactPage() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[oklch(0.78_0.12_80)]/15 text-[oklch(0.78_0.12_80)]">
               <Zap className="h-3 w-3" />
             </span>
-            Working with importers, distributors, and wholesalers worldwide.
+            {t("cta.note")}
           </motion.div>
         </div>
       </section>

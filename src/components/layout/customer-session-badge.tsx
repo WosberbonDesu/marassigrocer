@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { UserCircle, LogIn } from "lucide-react";
 
 export function CustomerSessionBadge({
   variant = "light",
 }: { variant?: "light" | "dark" } = {}) {
   const locale = useLocale();
+  const t = useTranslations("customerSession");
   const [name, setName] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -39,7 +40,7 @@ export function CustomerSessionBadge({
   return (
     <Link href={`/${locale}/account/login`} className={cls}>
       <LogIn className="h-4 w-4" />
-      <span className="hidden xl:inline">Sign In</span>
+      <span className="hidden xl:inline">{t("signIn")}</span>
     </Link>
   );
 }

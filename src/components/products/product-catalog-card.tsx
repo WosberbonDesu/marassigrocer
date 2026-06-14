@@ -13,35 +13,30 @@ interface Props {
   product: Product;
 }
 
-type BadgeTone = "bestSeller" | "topSeller" | "privateLabel" | "bulk";
+type SecondaryBadge = {
+  tone: "bestSeller" | "topSeller" | "privateLabel" | "bulk";
+};
 
-function pickSecondaryTone(product: Product): BadgeTone | null {
-  if (product.featured) return "bestSeller";
+function pickSecondaryBadge(product: Product): SecondaryBadge | null {
+  if (product.featured) return { tone: "bestSeller" };
   if (product.availability === "in_stock") {
-    if ((product.caseSize ?? 0) >= 12) return "bulk";
-    return "topSeller";
+    if ((product.caseSize ?? 0) >= 12) return { tone: "bulk" };
+    return { tone: "topSeller" };
   }
-  if (product.availability === "seasonal") return "privateLabel";
+  if (product.availability === "seasonal") return { tone: "privateLabel" };
   return null;
 }
 
-const toneClass: Record<BadgeTone, string> = {
+const badgeTone: Record<SecondaryBadge["tone"], string> = {
   bestSeller: "bg-[oklch(0.66_0.16_35)] text-white",
   topSeller: "bg-[oklch(0.78_0.12_80)] text-[oklch(0.18_0.02_80)]",
   privateLabel: "bg-white text-[oklch(0.20_0.02_80)] ring-1 ring-inset ring-[oklch(0.78_0.12_80)]/40",
   bulk: "bg-[oklch(0.34_0.05_75)] text-[oklch(0.92_0.06_80)] ring-1 ring-inset ring-[oklch(0.78_0.12_80)]/30",
 };
 
-const toneToKey: Record<BadgeTone, string> = {
-  bestSeller: "bestSeller",
-  topSeller: "topSeller",
-  privateLabel: "privateLabel",
-  bulk: "bulkAvailable",
-};
-
 export function ProductCatalogCard({ product }: Props) {
   const locale = useLocale();
-  const t = useTranslations("productBadges");
+  const t = useTranslations("productCatalogCard");
   const { addItem, openDrawer } = useRFQStore();
 
   const detailHref = `/products/${product.slug}`;
@@ -59,7 +54,7 @@ export function ProductCatalogCard({ product }: Props) {
 
   const exportReady =
     product.availability === "in_stock" || product.availability === "seasonal";
-  const secondaryTone = pickSecondaryTone(product);
+  const secondary = pickSecondaryBadge(product);
   const origin = product.originCountries[0];
 
   return (
@@ -89,17 +84,17 @@ export function ProductCatalogCard({ product }: Props) {
           {exportReady && (
             <span className="inline-flex items-center gap-1 rounded-md bg-[oklch(0.55_0.14_150)] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-white/80" />
-              {t("exportReady")}
+              {t("badges.exportReady")}
             </span>
           )}
-          {secondaryTone && (
+          {secondary && (
             <span
               className={cn(
                 "rounded-md px-2 py-1 text-[10px] font-bold uppercase tracking-wide shadow-sm",
-                toneClass[secondaryTone]
+                badgeTone[secondary.tone]
               )}
             >
-              {t(toneToKey[secondaryTone] as "bestSeller" | "topSeller" | "privateLabel" | "bulkAvailable")}
+              {t(`badges.${secondary.tone}`)}
             </span>
           )}
         </div>
@@ -128,7 +123,7 @@ export function ProductCatalogCard({ product }: Props) {
           {origin && (
             <>
               <span className="text-muted-foreground/45">•</span>
-              <span className="truncate">{t("origin")}: {origin}</span>
+              <span className="truncate">{t("originLabel")}: {origin}</span>
             </>
           )}
         </div>
@@ -142,7 +137,7 @@ export function ProductCatalogCard({ product }: Props) {
           >
             <Link href={detailHref} locale={locale}>
               <Eye className="mr-1 h-3.5 w-3.5" />
-              {t("view")}
+              {t("actions.view")}
             </Link>
           </Button>
           <Button
@@ -151,7 +146,7 @@ export function ProductCatalogCard({ product }: Props) {
             className="h-9 bg-[oklch(0.66_0.16_35)] text-[10.5px] font-semibold uppercase tracking-wider text-white shadow-sm shadow-[oklch(0.66_0.16_35)]/30 hover:bg-[oklch(0.60_0.17_35)]"
           >
             <FileText className="mr-1 h-3.5 w-3.5" />
-            {t("quote")}
+            {t("actions.quote")}
           </Button>
         </div>
       </div>

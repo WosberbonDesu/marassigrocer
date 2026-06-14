@@ -56,19 +56,20 @@ export async function generateMetadata({ params }: PageProps) {
 function availabilityMeta(value: string) {
   switch (value) {
     case "in_stock":
-      return { label: "In Stock", tone: "bg-[oklch(0.55_0.14_150)]/15 text-[oklch(0.40_0.14_150)] ring-[oklch(0.55_0.14_150)]/30" };
+      return { labelKey: "inStock", tone: "bg-[oklch(0.55_0.14_150)]/15 text-[oklch(0.40_0.14_150)] ring-[oklch(0.55_0.14_150)]/30" };
     case "seasonal":
-      return { label: "Seasonal", tone: "bg-amber-500/15 text-amber-700 ring-amber-500/30" };
+      return { labelKey: "stockStatus.seasonal", tone: "bg-amber-500/15 text-amber-700 ring-amber-500/30" };
     case "on_request":
-      return { label: "On Request", tone: "bg-[oklch(0.78_0.12_80)]/15 text-[oklch(0.50_0.12_75)] ring-[oklch(0.78_0.12_80)]/30" };
+      return { labelKey: "onRequest", tone: "bg-[oklch(0.78_0.12_80)]/15 text-[oklch(0.50_0.12_75)] ring-[oklch(0.78_0.12_80)]/30" };
     default:
-      return { label: "Discontinued", tone: "bg-muted text-muted-foreground ring-border" };
+      return { labelKey: "stockStatus.discontinued", tone: "bg-muted text-muted-foreground ring-border" };
   }
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { locale, slug } = await params;
   const t = await getTranslations("products.detail");
+  const tp = await getTranslations("products");
 
   const product = await db.product.findUnique({
     where: { slug, published: true },
@@ -125,12 +126,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const availMeta = availabilityMeta(product.availability);
 
   const tabs: { value: string; label: string; available: boolean }[] = [
-    { value: "description", label: t("description") ?? "Description", available: !!product.longDescription || !!product.description },
-    { value: "ingredients", label: "Ingredients", available: !!product.ingredients || allergens.length > 0 },
-    { value: "nutrition", label: "Nutrition", available: nutrition.length > 0 },
-    { value: "storage", label: "Storage & Shelf Life", available: !!product.storage || !!product.shelfLifeMin },
+    { value: "description", label: t("description"), available: !!product.longDescription || !!product.description },
+    { value: "ingredients", label: t("tabs.ingredients"), available: !!product.ingredients || allergens.length > 0 },
+    { value: "nutrition", label: t("tabs.nutrition"), available: nutrition.length > 0 },
+    { value: "storage", label: t("tabs.storage"), available: !!product.storage || !!product.shelfLifeMin },
     { value: "specs", label: t("specs"), available: Object.keys(specs).length > 0 },
-    { value: "export", label: "Export Info", available: !!product.exportSuitability || !!product.cartonDetails || !!product.loadingInfo },
+    { value: "export", label: t("tabs.export"), available: !!product.exportSuitability || !!product.cartonDetails || !!product.loadingInfo },
   ].filter((tab) => tab.available);
   const firstTab = tabs[0]?.value ?? "description";
 
@@ -141,11 +142,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <nav className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
             <Link href="/" locale={locale} className="transition-colors hover:text-[oklch(0.50_0.12_75)]">
-              Home
+              {tp("breadcrumb.home")}
             </Link>
             <span className="text-muted-foreground/40">/</span>
             <Link href="/products" locale={locale} className="transition-colors hover:text-[oklch(0.50_0.12_75)]">
-              Products
+              {tp("breadcrumb.products")}
             </Link>
             <span className="text-muted-foreground/40">/</span>
             <Link
@@ -175,16 +176,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
             {/* Trust badges under gallery */}
             <div className="mt-5 grid grid-cols-3 gap-2">
               {[
-                { icon: ShieldCheck, label: "Quality Verified" },
-                { icon: Globe, label: "Export Ready" },
-                { icon: Award, label: "Certified" },
-              ].map(({ icon: Icon, label }) => (
+                { icon: ShieldCheck, id: "qualityVerified" },
+                { icon: Globe, id: "exportReady" },
+                { icon: Award, id: "certified" },
+              ].map(({ icon: Icon, id }) => (
                 <div
-                  key={label}
+                  key={id}
                   className="flex items-center justify-center gap-1.5 rounded-lg border border-[oklch(0.72_0.11_80)]/20 bg-white px-2 py-2.5 text-[11px] font-semibold text-[oklch(0.50_0.12_75)]"
                 >
                   <Icon className="h-3.5 w-3.5 shrink-0" />
-                  <span className="truncate">{label}</span>
+                  <span className="truncate">{tp(`trustBadges.${id}`)}</span>
                 </div>
               ))}
             </div>
@@ -204,7 +205,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               {product.sku && (
                 <>
                   <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
-                  <span className="font-mono text-muted-foreground">SKU: {product.sku}</span>
+                  <span className="font-mono text-muted-foreground">{tp("badges.sku")}: {product.sku}</span>
                 </>
               )}
             </div>
@@ -229,24 +230,24 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide ring-1 ring-inset ${availMeta.tone}`}
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-current" />
-                {availMeta.label}
+                {t(availMeta.labelKey)}
               </span>
               {product.featured && (
                 <span className="inline-flex items-center gap-1 rounded-md bg-[oklch(0.66_0.16_35)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
                   <Tag className="h-3 w-3" />
-                  Best Seller
+                  {tp("badges.bestSeller")}
                 </span>
               )}
               {product.hazmat && (
                 <span className="inline-flex items-center gap-1 rounded-md bg-red-500/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-red-700 ring-1 ring-inset ring-red-500/30">
                   <Flame className="h-3 w-3" />
-                  Hazmat
+                  {tp("badges.hazmat")}
                 </span>
               )}
               {product.reeferRequired && (
                 <span className="inline-flex items-center gap-1 rounded-md bg-blue-500/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-blue-700 ring-1 ring-inset ring-blue-500/30">
                   <Snowflake className="h-3 w-3" />
-                  Reefer
+                  {tp("badges.reefer")}
                 </span>
               )}
               {product.originCountries.slice(0, 3).map((c) => (
@@ -272,26 +273,26 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="grid grid-cols-2 divide-x divide-y divide-[oklch(0.72_0.11_80)]/12 sm:grid-cols-3">
                 <SpecCell
                   icon={Boxes}
-                  label="Pack"
+                  label={tp("quickSpecs.pack")}
                   value={product.packDescription || packaging?.caseSize || "—"}
                 />
                 <SpecCell
                   icon={Layers}
-                  label="Case Size"
+                  label={tp("quickSpecs.caseSize")}
                   value={product.caseSize ? `${product.caseSize} units` : "—"}
                 />
                 <SpecCell
                   icon={PackageIcon}
-                  label="MOQ"
+                  label={tp("quickSpecs.moq")}
                   value={
                     product.moqQuantity
                       ? `${product.moqQuantity} ${product.moqUnit ?? ""}`.trim()
-                      : product.moqHint || "On Request"
+                      : product.moqHint || t("onRequest")
                   }
                 />
                 <SpecCell
                   icon={Clock}
-                  label="Shelf Life"
+                  label={tp("quickSpecs.shelfLife")}
                   value={
                     product.shelfLifeMin && product.shelfLifeMax
                       ? `${product.shelfLifeMin}–${product.shelfLifeMax} days`
@@ -302,12 +303,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 />
                 <SpecCell
                   icon={Ruler}
-                  label="Unit Weight"
+                  label={tp("quickSpecs.unitWeight")}
                   value={product.unitWeight || product.weight || "—"}
                 />
                 <SpecCell
                   icon={Barcode}
-                  label="Unit UPC"
+                  label={tp("quickSpecs.unitUpc")}
                   value={product.unitUpc || "—"}
                   mono
                 />
@@ -319,15 +320,15 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="mt-5 overflow-hidden rounded-2xl border border-[oklch(0.72_0.11_80)]/20 bg-white">
                 <div className="border-b border-[oklch(0.72_0.11_80)]/15 bg-[oklch(0.78_0.12_80)]/8 px-4 py-2.5">
                   <p className="text-[11px] font-bold uppercase tracking-wider text-[oklch(0.40_0.10_75)]">
-                    Volume Pricing — {showPricesPublicly ? "Live Quote" : "Login or RFQ to view"}
+                    {tp("pricing.volumePricing")} — {showPricesPublicly ? tp("pricing.liveQuote") : tp("pricing.loginOrRfq")}
                   </p>
                 </div>
                 <table className="w-full text-sm">
                   <thead className="bg-muted/30 text-[11px] uppercase tracking-wider text-muted-foreground">
                     <tr>
-                      <th className="px-4 py-2 text-left font-semibold">From (cases)</th>
-                      <th className="px-4 py-2 text-right font-semibold">Case Price</th>
-                      <th className="px-4 py-2 text-right font-semibold">Unit Price</th>
+                      <th className="px-4 py-2 text-left font-semibold">{tp("pricing.fromCases")}</th>
+                      <th className="px-4 py-2 text-right font-semibold">{tp("pricing.casePrice")}</th>
+                      <th className="px-4 py-2 text-right font-semibold">{tp("pricing.unitPrice")}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-border/60">
@@ -368,7 +369,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[oklch(0.50_0.12_75)] transition-colors hover:text-[oklch(0.40_0.10_75)]"
               >
                 <FileText className="h-3.5 w-3.5" />
-                Request Spec Sheet
+                {tp("cta.requestSpecSheet")}
               </Link>
               <span className="h-3 w-px bg-border" />
               <Link
@@ -377,7 +378,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[oklch(0.50_0.12_75)] transition-colors hover:text-[oklch(0.40_0.10_75)]"
               >
                 <ShieldCheck className="h-3.5 w-3.5" />
-                View Certifications
+                {tp("cta.viewCertifications")}
               </Link>
             </div>
 
@@ -386,42 +387,42 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="mt-6 rounded-2xl border border-border bg-card p-5">
                 <p className="mb-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-foreground">
                   <Truck className="h-3.5 w-3.5 text-[oklch(0.50_0.12_75)]" />
-                  Logistics &amp; Loading
+                  {tp("logistics.title")}
                 </p>
                 <dl className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
                   {packaging?.casesPerPallet && (
                     <div className="flex justify-between gap-3">
-                      <dt className="text-muted-foreground">Cases / pallet</dt>
+                      <dt className="text-muted-foreground">{tp("logistics.casesPerPallet")}</dt>
                       <dd className="font-medium">{packaging.casesPerPallet}</dd>
                     </div>
                   )}
                   {packaging?.casesPerLayer && (
                     <div className="flex justify-between gap-3">
-                      <dt className="text-muted-foreground">Cases / layer</dt>
+                      <dt className="text-muted-foreground">{tp("logistics.casesPerLayer")}</dt>
                       <dd className="font-medium">{packaging.casesPerLayer}</dd>
                     </div>
                   )}
                   {product.dimensions && (
                     <div className="flex justify-between gap-3">
-                      <dt className="text-muted-foreground">Dimensions</dt>
+                      <dt className="text-muted-foreground">{tp("logistics.dimensions")}</dt>
                       <dd className="font-medium">{product.dimensions}</dd>
                     </div>
                   )}
                   {product.caseUpc && (
                     <div className="flex justify-between gap-3">
-                      <dt className="text-muted-foreground">Case UPC</dt>
+                      <dt className="text-muted-foreground">{tp("logistics.caseUpc")}</dt>
                       <dd className="font-mono text-xs font-medium">{product.caseUpc}</dd>
                     </div>
                   )}
                   {product.cartonDetails && (
                     <div className="sm:col-span-2">
-                      <dt className="text-muted-foreground">Carton</dt>
+                      <dt className="text-muted-foreground">{tp("logistics.carton")}</dt>
                       <dd className="mt-1 text-sm">{product.cartonDetails}</dd>
                     </div>
                   )}
                   {product.loadingInfo && (
                     <div className="sm:col-span-2">
-                      <dt className="text-muted-foreground">Loading</dt>
+                      <dt className="text-muted-foreground">{tp("logistics.loading")}</dt>
                       <dd className="mt-1 text-sm">{product.loadingInfo}</dd>
                     </div>
                   )}
@@ -470,7 +471,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     {product.ingredients && (
                       <div>
                         <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-foreground/80">
-                          Ingredients
+                          {tp("sections.ingredients")}
                         </h3>
                         <p className="text-sm leading-relaxed text-foreground/75">
                           {product.ingredients}
@@ -480,7 +481,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     {allergens.length > 0 && (
                       <div>
                         <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-foreground/80">
-                          Allergens
+                          {tp("sections.allergens")}
                         </h3>
                         <div className="flex flex-wrap gap-1.5">
                           {allergens.map((a) => (
@@ -504,9 +505,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     <table className="w-full text-sm">
                       <thead className="bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground">
                         <tr>
-                          <th className="px-5 py-3 text-left font-semibold">Nutrient</th>
-                          <th className="px-5 py-3 text-left font-semibold">Amount</th>
-                          <th className="px-5 py-3 text-left font-semibold">Per</th>
+                          <th className="px-5 py-3 text-left font-semibold">{tp("nutrition.nutrient")}</th>
+                          <th className="px-5 py-3 text-left font-semibold">{tp("nutrition.amount")}</th>
+                          <th className="px-5 py-3 text-left font-semibold">{tp("nutrition.per")}</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-border/60">
@@ -531,7 +532,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                         <Clock className="h-5 w-5 shrink-0 text-[oklch(0.50_0.12_75)]" />
                         <div>
                           <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-                            Shelf Life
+                            {tp("quickSpecs.shelfLife")}
                           </p>
                           <p className="text-base font-semibold">
                             {product.shelfLifeMax
@@ -544,7 +545,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     {product.storage && (
                       <div>
                         <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-foreground/80">
-                          Storage Instructions
+                          {tp("sections.storageInstructions")}
                         </h3>
                         <p className="text-sm leading-relaxed text-foreground/75">{product.storage}</p>
                       </div>
@@ -577,7 +578,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     {product.exportSuitability && (
                       <div>
                         <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-foreground/80">
-                          Export Suitability
+                          {tp("sections.exportSuitability")}
                         </h3>
                         <p className="text-sm leading-relaxed text-foreground/75">
                           {product.exportSuitability}
@@ -587,7 +588,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     {product.cartonDetails && (
                       <div>
                         <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-foreground/80">
-                          Carton Details
+                          {tp("sections.cartonDetails")}
                         </h3>
                         <p className="text-sm leading-relaxed text-foreground/75">
                           {product.cartonDetails}
@@ -597,7 +598,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     {product.loadingInfo && (
                       <div>
                         <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-foreground/80">
-                          Loading Info
+                          {tp("sections.loadingInfo")}
                         </h3>
                         <p className="text-sm leading-relaxed text-foreground/75">
                           {product.loadingInfo}
@@ -614,16 +615,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
         {/* ───────── WHY MARASSI STRIP ───────── */}
         <div className="mt-16 grid grid-cols-2 gap-3 rounded-2xl border border-[oklch(0.72_0.11_80)]/20 bg-gradient-to-br from-[oklch(0.97_0.012_85)] to-white p-6 sm:grid-cols-4 sm:gap-4">
           {[
-            { icon: ShieldCheck, label: "Verified Manufacturer" },
-            { icon: Globe, label: "50+ Export Markets" },
-            { icon: Truck, label: "Container & LCL Loading" },
-            { icon: CheckCircle2, label: "Full Documentation" },
-          ].map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-3">
+            { icon: ShieldCheck, id: "verifiedManufacturer" },
+            { icon: Globe, id: "exportMarkets" },
+            { icon: Truck, id: "containerLcl" },
+            { icon: CheckCircle2, id: "fullDocumentation" },
+          ].map(({ icon: Icon, id }) => (
+            <div key={id} className="flex items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[oklch(0.78_0.12_80)]/15 text-[oklch(0.50_0.12_75)] ring-1 ring-inset ring-[oklch(0.78_0.12_80)]/25">
                 <Icon className="h-5 w-5" />
               </div>
-              <p className="text-[13px] font-semibold leading-snug">{label}</p>
+              <p className="text-[13px] font-semibold leading-snug">{tp(`whyStrip.${id}`)}</p>
             </div>
           ))}
         </div>
@@ -634,10 +635,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className="flex items-end justify-between">
               <div>
                 <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.60_0.12_75)]">
-                  You may also like
+                  {tp("related.eyebrow")}
                 </p>
                 <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl">
-                  Related Products
+                  {tp("related.title")}
                 </h2>
               </div>
               <Button
@@ -646,7 +647,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 className="hidden border-[oklch(0.72_0.11_80)]/40 bg-transparent text-sm font-medium text-[oklch(0.40_0.10_75)] hover:bg-[oklch(0.78_0.12_80)]/10 sm:inline-flex"
               >
                 <Link href={`/products/list?category=${product.category.slug}`} locale={locale}>
-                  View All in {product.category.name}
+                  {tp("related.viewAllIn", { category: product.category.name })}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -685,7 +686,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       {p.name}
                     </h3>
                     <p className="mt-1.5 text-[11px] text-muted-foreground">
-                      {p.originCountries[0] && `Origin: ${p.originCountries[0]}`}
+                      {p.originCountries[0] && tp("related.origin", { country: p.originCountries[0] })}
                     </p>
                   </div>
                 </Link>
@@ -710,10 +711,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="grid items-center gap-6 lg:grid-cols-[1.5fr_auto]">
             <div>
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-                Ready to import <span className="text-[oklch(0.78_0.12_80)]">{product.name}</span>?
+                {tp.rich("ctaBand.title", {
+                  product: () => (
+                    <span className="text-[oklch(0.78_0.12_80)]">{product.name}</span>
+                  ),
+                })}
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/65">
-                Add to your RFQ list and our export team will respond with pricing, MOQs, and shipment options tailored to your market.
+                {tp("ctaBand.subtitle")}
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -725,7 +730,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               >
                 <Link href="/contact" locale={locale}>
                   <Download className="mr-2 h-4 w-4" />
-                  Request Documentation
+                  {tp("ctaBand.requestDocumentation")}
                 </Link>
               </Button>
             </div>

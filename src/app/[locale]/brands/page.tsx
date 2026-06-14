@@ -1,15 +1,22 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Award, ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/shared/page-hero";
 import { db } from "@/lib/db";
 
-export const metadata: Metadata = {
-  title: "Brands",
-  description:
-    "International FMCG brands distributed by Marassi Group — 200+ brands across food, beverages, household, and personal care.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "brandsPage" });
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+  };
+}
 
 export default async function BrandsListPage({
   params,
@@ -17,6 +24,7 @@ export default async function BrandsListPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations("brandsPage");
 
   let brands: Array<{
     id: string;
@@ -47,10 +55,10 @@ export default async function BrandsListPage({
   return (
     <div>
       <PageHero
-        title="Our Brands"
-        subtitle="International and regional FMCG brands distributed by Marassi Group across 50+ markets."
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
         locale={locale}
-        breadcrumbs={[{ label: "Brands" }]}
+        breadcrumbs={[{ label: t("breadcrumb.brands") }]}
       />
 
       <section className="py-16 sm:py-20">
@@ -58,15 +66,15 @@ export default async function BrandsListPage({
           {brands.length === 0 ? (
             <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed py-20 text-center">
               <Award className="h-12 w-12 text-muted-foreground/40" />
-              <h3 className="mt-4 text-lg font-semibold">Brands coming soon</h3>
+              <h3 className="mt-4 text-lg font-semibold">{t("empty.title")}</h3>
               <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                Our team is curating the brand catalog — reach out to discuss specific brands you'd like to import.
+                {t("empty.description")}
               </p>
               <Link
                 href={`/${locale}/contact`}
                 className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
               >
-                Contact Us
+                {t("empty.contactUs")}
               </Link>
             </div>
           ) : (
@@ -100,10 +108,10 @@ export default async function BrandsListPage({
                   )}
                   <p className="mt-3 text-xs text-muted-foreground">
                     <span className="font-semibold text-foreground">{b._count.products}</span>{" "}
-                    products
+                    {t("card.products")}
                   </p>
                   <span className="mt-3 inline-flex items-center text-xs font-medium text-primary group-hover:gap-2 transition-all">
-                    View brand
+                    {t("card.viewBrand")}
                     <ArrowRight className="ml-1 h-3 w-3" />
                   </span>
                 </Link>
