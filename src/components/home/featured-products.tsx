@@ -47,12 +47,7 @@ export function FeaturedProducts() {
         }}
       />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          title={t("title")}
-          subtitle={t("subtitle")}
-          variant="dark"
-          eyebrow="Featured Products"
-        />
+        <SectionHeader title={t("title")} subtitle={t("subtitle")} variant="dark" />
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {featured.map((product) => {
             const isAdded = hasItem(product.id);

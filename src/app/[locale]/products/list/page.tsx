@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -66,36 +67,6 @@ const defaultFilters: Filters = {
 interface FilterCategory { id: string; name: string; slug: string }
 interface FilterBrand { id: string; name: string; slug: string }
 
-const PACKAGING_OPTIONS = [
-  { value: "all", label: "All Packaging" },
-  { value: "carton", label: "Carton" },
-  { value: "pallet", label: "Pallet" },
-  { value: "bulk", label: "Bulk" },
-  { value: "case", label: "Case" },
-];
-const PRODUCT_TYPE_OPTIONS = [
-  { value: "all", label: "All Product Types" },
-  { value: "food", label: "Food" },
-  { value: "non_food", label: "Non-Food" },
-  { value: "beverages", label: "Beverages" },
-];
-const EXPORT_READY_OPTIONS = [
-  { value: "all", label: "All Export Options" },
-  { value: "ready", label: "Export Ready" },
-  { value: "on_request", label: "On Request" },
-];
-const PRIVATE_LABEL_OPTIONS = [
-  { value: "all", label: "All Availability" },
-  { value: "available", label: "Available" },
-  { value: "on_request", label: "On Request" },
-];
-const MOQ_OPTIONS = [
-  { value: "all", label: "Any MOQ" },
-  { value: "lt100", label: "Under 100 cases" },
-  { value: "100to500", label: "100 – 500 cases" },
-  { value: "gt500", label: "500+ cases" },
-];
-
 export default function ProductsListPage() {
   return (
     <Suspense fallback={null}>
@@ -105,10 +76,32 @@ export default function ProductsListPage() {
 }
 
 function ProductsListInner() {
+  const t = useTranslations("productsCatalog");
+  const tCommon = useTranslations("common");
+  const tBadges = useTranslations("productBadges");
   const searchParams = useSearchParams();
   const initialSearch = searchParams.get("search") ?? "";
   const initialCategory = searchParams.get("category") ?? "all";
   const initialBrand = searchParams.get("brand") ?? "all";
+
+  const PACKAGING_OPTIONS = [
+    { value: "all", label: t("filterOptions.packagingAll") },
+    { value: "carton", label: t("filterOptions.packagingCarton") },
+    { value: "pallet", label: t("filterOptions.packagingPallet") },
+    { value: "bulk", label: t("filterOptions.packagingBulk") },
+    { value: "case", label: t("filterOptions.packagingCase") },
+  ];
+  const PRIVATE_LABEL_OPTIONS = [
+    { value: "all", label: t("filterOptions.privateLabelAll") },
+    { value: "available", label: t("filterOptions.privateLabelAvailable") },
+    { value: "on_request", label: t("filterOptions.privateLabelOnRequest") },
+  ];
+  const MOQ_OPTIONS = [
+    { value: "all", label: t("filterOptions.moqAll") },
+    { value: "lt100", label: t("filterOptions.moqLt100") },
+    { value: "100to500", label: t("filterOptions.moq100to500") },
+    { value: "gt500", label: t("filterOptions.moqGt500") },
+  ];
 
   const [filters, setFilters] = useState<Filters>({
     ...defaultFilters,
@@ -287,9 +280,9 @@ function ProductsListInner() {
             transition={{ duration: 0.5 }}
           >
             <nav className="mb-5 flex items-center gap-2 text-xs text-white/55">
-              <Link href="/" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">Home</Link>
+              <Link href="/" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">{tCommon("home")}</Link>
               <span className="text-white/30">/</span>
-              <Link href="/products" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">Products</Link>
+              <Link href="/products" className="transition-colors hover:text-[oklch(0.78_0.12_80)]">{t("breadcrumb.products")}</Link>
               {currentCategory && (
                 <>
                   <span className="text-white/30">/</span>
@@ -299,14 +292,14 @@ function ProductsListInner() {
             </nav>
 
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.78_0.12_80)]">
-              Global Quality. Export Ready.
+              {t("hero.eyebrow")}
             </p>
             <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem]">
-              FMCG Product Catalog<br />
-              <span className="text-[oklch(0.78_0.12_80)]">for Global Markets</span>
+              {t("hero.title")}<br />
+              <span className="text-[oklch(0.78_0.12_80)]">{t("hero.titleAccent")}</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-white/70 sm:text-base">
-              Browse export-ready FMCG products sourced from trusted manufacturers and prepared for importers, distributors, wholesalers, and retail chains worldwide.
+              {t("hero.subtitle")}
             </p>
             <motion.div
               initial={{ opacity: 0, width: 0 }}
@@ -328,44 +321,44 @@ function ProductsListInner() {
             className="rounded-2xl border border-[oklch(0.72_0.11_80)]/20 bg-white p-5 shadow-[0_24px_60px_-18px_oklch(0.20_0.02_80/0.22)] sm:p-6"
           >
             <div className="grid grid-cols-1 gap-x-5 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-              <CardField label="Search products">
+              <CardField label={t("filterCard.search")}>
                 <div className="relative">
                   <input
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search by product name…"
+                    placeholder={t("filterCard.searchPlaceholder")}
                     className="h-11 w-full rounded-lg border border-border/70 bg-background pl-3.5 pr-10 text-sm placeholder:text-muted-foreground/60 outline-none transition-all focus:border-[oklch(0.72_0.11_80)] focus:ring-2 focus:ring-[oklch(0.72_0.11_80)]/15"
                   />
                   <Search className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 </div>
               </CardField>
 
-              <CardField label="Category">
+              <CardField label={t("filterCard.category")}>
                 <SelectBox
                   value={filters.category}
                   onChange={(v) => handleFilterChange("category", v)}
-                  options={[{ value: "all", label: "All Categories" }, ...categories.map((c) => ({ value: c.slug, label: c.name }))]}
+                  options={[{ value: "all", label: t("filterOptions.allCategories") }, ...categories.map((c) => ({ value: c.slug, label: c.name }))]}
                 />
               </CardField>
 
-              <CardField label="Brand">
+              <CardField label={t("filterCard.brand")}>
                 <SelectBox
                   value={filters.brand}
                   onChange={(v) => handleFilterChange("brand", v)}
-                  options={[{ value: "all", label: "All Brands" }, ...brands.map((b) => ({ value: b.slug, label: b.name }))]}
+                  options={[{ value: "all", label: t("filterOptions.allBrands") }, ...brands.map((b) => ({ value: b.slug, label: b.name }))]}
                 />
               </CardField>
 
-              <CardField label="Country of Origin">
+              <CardField label={t("filterCard.country")}>
                 <SelectBox
                   value={filters.origin}
                   onChange={(v) => handleFilterChange("origin", v)}
-                  options={[{ value: "all", label: "All Countries" }, ...origins.map((o) => ({ value: o, label: o }))]}
+                  options={[{ value: "all", label: t("filterOptions.allCountries") }, ...origins.map((o) => ({ value: o, label: o }))]}
                 />
               </CardField>
 
-              <CardField label="Packaging Type">
+              <CardField label={t("filterCard.packaging")}>
                 <SelectBox
                   value={filters.packaging}
                   onChange={(v) => handleFilterChange("packaging", v)}
@@ -373,7 +366,7 @@ function ProductsListInner() {
                 />
               </CardField>
 
-              <CardField label="Private Label">
+              <CardField label={t("filterCard.privateLabel")}>
                 <SelectBox
                   value={filters.privateLabel}
                   onChange={(v) => handleFilterChange("privateLabel", v)}
@@ -381,7 +374,7 @@ function ProductsListInner() {
                 />
               </CardField>
 
-              <CardField label="MOQ (Minimum Order)">
+              <CardField label={t("filterCard.moq")}>
                 <SelectBox
                   value={filters.moq}
                   onChange={(v) => handleFilterChange("moq", v)}
@@ -393,14 +386,14 @@ function ProductsListInner() {
                 <Button
                   type="button"
                   size="lg"
-                  onClick={() => { /* filters already applied live; scroll to results */
+                  onClick={() => {
                     const el = document.getElementById("catalog-results");
                     el?.scrollIntoView({ behavior: "smooth", block: "start" });
                   }}
                   className="h-11 w-full bg-[oklch(0.66_0.16_35)] px-6 text-sm font-semibold tracking-wide text-white shadow-md shadow-[oklch(0.66_0.16_35)]/25 transition-all hover:bg-[oklch(0.60_0.17_35)] hover:shadow-lg hover:shadow-[oklch(0.66_0.16_35)]/30"
                 >
                   <Search className="mr-2 h-4 w-4" />
-                  Search Products
+                  {t("filterCard.searchButton")}
                 </Button>
               </div>
             </div>
@@ -426,9 +419,9 @@ function ProductsListInner() {
 
                 {/* Cant find CTA */}
                 <div className="rounded-2xl border border-[oklch(0.72_0.11_80)]/25 bg-[oklch(0.97_0.012_85)] p-5">
-                  <p className="text-sm font-semibold text-foreground">Can&apos;t find what you need?</p>
+                  <p className="text-sm font-semibold text-foreground">{t("sidebar.cantFind")}</p>
                   <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                    Our team can help you source specific products.
+                    {t("sidebar.cantFindDesc")}
                   </p>
                   <Button
                     asChild
@@ -436,7 +429,7 @@ function ProductsListInner() {
                     className="mt-4 h-9 w-full bg-[oklch(0.66_0.16_35)] text-xs font-semibold text-white hover:bg-[oklch(0.60_0.17_35)]"
                   >
                     <Link href="/contact">
-                      Request Product Sourcing
+                      {t("sidebar.requestSourcing")}
                       <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                     </Link>
                   </Button>
@@ -451,7 +444,7 @@ function ProductsListInner() {
                 <div className="mb-5 rounded-xl border border-[oklch(0.72_0.11_80)]/30 bg-[oklch(0.72_0.11_80)]/8 px-4 py-3 text-sm">
                   <span className="font-semibold text-[oklch(0.50_0.12_75)]">{groupInfo.name}</span>
                   <span className="text-foreground/80">
-                    {" "}— {groupInfo.discount}% group discount applied.
+                    {" "}— {t("results.groupDiscount", { discount: groupInfo.discount })}
                   </span>
                 </div>
               )}
@@ -468,7 +461,7 @@ function ProductsListInner() {
                         className="relative h-10 border-[oklch(0.72_0.11_80)]/40 px-4 text-sm font-medium text-[oklch(0.50_0.12_75)] hover:bg-[oklch(0.72_0.11_80)]/10 lg:hidden"
                       >
                         <SlidersHorizontal className="mr-2 h-4 w-4" />
-                        Filters
+                        {t("results.filters")}
                         {activeFilterCount > 0 && (
                           <span className="ml-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-[oklch(0.72_0.11_80)] px-1 text-[10px] font-bold text-[oklch(0.20_0.02_80)]">
                             {activeFilterCount}
@@ -477,7 +470,7 @@ function ProductsListInner() {
                       </Button>
                     </SheetTrigger>
                     <SheetContent side="left" className="flex w-80 flex-col">
-                      <SheetTitle>Filter Products</SheetTitle>
+                      <SheetTitle>{t("sidebar.title")}</SheetTitle>
                       <div className="mt-6 flex-1 overflow-y-auto pr-1">
                         <FilterSidebar
                           filters={filters}
@@ -495,15 +488,15 @@ function ProductsListInner() {
 
                   {!loading && (
                     <p className="text-sm text-muted-foreground">
-                      Showing{" "}
+                      {t("results.showing")}{" "}
                       <span className="font-semibold text-foreground">{products.length}</span>
                       {products.length !== allProducts.length && (
                         <>
-                          {" "}of{" "}
+                          {" "}{t("results.of")}{" "}
                           <span className="font-semibold text-foreground">{allProducts.length}</span>
                         </>
                       )}
-                      {" "}products
+                      {" "}{t("results.products")}
                     </p>
                   )}
                 </div>
@@ -512,7 +505,7 @@ function ProductsListInner() {
                   {/* Sort */}
                   <div className="relative">
                     <span className="pointer-events-none absolute -top-4 left-0 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/70">
-                      Sort by:
+                      {t("results.sortBy")}
                     </span>
                     <ArrowUpDown className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
                     <select
@@ -520,9 +513,9 @@ function ProductsListInner() {
                       onChange={(e) => setSort(e.target.value as typeof sort)}
                       className="h-10 cursor-pointer appearance-none rounded-lg border border-border/70 bg-background pl-9 pr-9 text-sm text-foreground/85 outline-none transition-all focus:border-[oklch(0.72_0.11_80)] focus:ring-2 focus:ring-[oklch(0.72_0.11_80)]/15"
                     >
-                      <option value="latest">Latest Added</option>
-                      <option value="name_asc">Name: A → Z</option>
-                      <option value="name_desc">Name: Z → A</option>
+                      <option value="latest">{t("results.sortLatest")}</option>
+                      <option value="name_asc">{t("results.sortNameAsc")}</option>
+                      <option value="name_desc">{t("results.sortNameDesc")}</option>
                     </select>
                     <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   </div>
@@ -532,7 +525,7 @@ function ProductsListInner() {
                     <button
                       type="button"
                       onClick={() => setView("grid")}
-                      aria-label="Grid view"
+                      aria-label={t("results.viewGrid")}
                       className={`flex h-10 w-10 items-center justify-center text-sm transition-colors ${
                         view === "grid"
                           ? "bg-[oklch(0.78_0.12_80)]/20 text-[oklch(0.40_0.10_75)]"
@@ -544,7 +537,7 @@ function ProductsListInner() {
                     <button
                       type="button"
                       onClick={() => setView("list")}
-                      aria-label="List view"
+                      aria-label={t("results.viewList")}
                       className={`flex h-10 w-10 items-center justify-center border-l border-border/70 text-sm transition-colors ${
                         view === "list"
                           ? "bg-[oklch(0.78_0.12_80)]/20 text-[oklch(0.40_0.10_75)]"
@@ -603,13 +596,13 @@ function ProductsListInner() {
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
                     <Search className="h-7 w-7 text-muted-foreground/50" />
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold">No products found</h3>
+                  <h3 className="mt-4 text-sm font-semibold">{t("results.noResults")}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Try adjusting your filters or search query.
+                    {t("results.noResultsDesc")}
                   </p>
                   <Button variant="outline" size="sm" onClick={clearAll} className="mt-4">
                     <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-                    Clear filters
+                    {t("results.clearFilters")}
                   </Button>
                 </div>
               ) : view === "grid" ? (
@@ -653,7 +646,7 @@ function ProductsListInner() {
                 <div className="h-px w-10 bg-gradient-to-l from-transparent to-[oklch(0.78_0.12_80)]/70" />
               </div>
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl">
-                Featured Products for Importers
+                {t("featured.title")}
               </h2>
             </div>
 
@@ -686,7 +679,7 @@ function ProductsListInner() {
                       )}
                       <div className="absolute left-2 top-2">
                         <span className="rounded-md bg-[oklch(0.78_0.12_80)] px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wide text-[oklch(0.18_0.02_80)]">
-                          Top Seller
+                          {tBadges("topSeller")}
                         </span>
                       </div>
                     </div>
@@ -722,28 +715,28 @@ function ProductsListInner() {
               transition={{ duration: 0.55 }}
             >
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-                Bulk Orders, Mixed Containers <span className="text-[oklch(0.78_0.12_80)]">&amp; Export Documentation</span>
+                {t("bulk.title1")} <span className="text-[oklch(0.78_0.12_80)]">{t("bulk.titleAccent")}</span>
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-white/65 sm:text-base">
-                We make global exports simple, efficient, and compliant with your market requirements.
+                {t("bulk.subtitle")}
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <BulkFeature
                 icon={Container}
-                title="Mixed Container Loading"
-                desc="Combine multiple product lines in one shipment to optimize costs and meet diverse market demands."
+                title={t("bulk.mixedContainerTitle")}
+                desc={t("bulk.mixedContainerDesc")}
               />
               <BulkFeature
                 icon={FileText}
-                title="Export Documentation"
-                desc="Complete export documentation, certificates, and compliance support for smooth customs clearance."
+                title={t("bulk.documentationTitle")}
+                desc={t("bulk.documentationDesc")}
               />
               <BulkFeature
                 icon={Globe}
-                title="Market-Specific Product Selection"
-                desc="We help you select the right products tailored to your target market preferences and regulations."
+                title={t("bulk.marketSpecificTitle")}
+                desc={t("bulk.marketSpecificDesc")}
               />
             </div>
           </div>
@@ -784,10 +777,10 @@ function ProductsListInner() {
 
               <div>
                 <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl">
-                  Need the Full Product Catalog?
+                  {t("fullCatalog.title")}
                 </h2>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  Access our complete range of export-ready FMCG products with detailed specifications, packaging options, and pricing information tailored to your market needs.
+                  {t("fullCatalog.subtitle")}
                 </p>
               </div>
 
@@ -799,7 +792,7 @@ function ProductsListInner() {
                 >
                   <Link href="/contact?subject=catalog">
                     <BookOpen className="mr-2 h-4 w-4" />
-                    Download Catalog
+                    {t("fullCatalog.download")}
                   </Link>
                 </Button>
                 <Button
@@ -810,7 +803,7 @@ function ProductsListInner() {
                   className="h-12 whitespace-nowrap border-[oklch(0.72_0.11_80)]/40 bg-transparent px-6 text-sm font-semibold text-[oklch(0.40_0.10_75)] hover:bg-[oklch(0.78_0.12_80)]/10"
                 >
                   <Headphones className="mr-2 h-4 w-4" />
-                  Request Custom Product List
+                  {t("fullCatalog.customList")}
                 </Button>
               </div>
             </div>
@@ -878,18 +871,48 @@ function FilterSidebar({
   compact?: boolean;
   onAfterChange?: () => void;
 }) {
+  const t = useTranslations("productsCatalog");
+
+  const packagingOptions = [
+    { value: "all", label: t("filterOptions.packagingAll") },
+    { value: "carton", label: t("filterOptions.packagingCarton") },
+    { value: "pallet", label: t("filterOptions.packagingPallet") },
+    { value: "bulk", label: t("filterOptions.packagingBulk") },
+    { value: "case", label: t("filterOptions.packagingCase") },
+  ];
+  const productTypeOptions = [
+    { value: "all", label: t("filterOptions.productTypeAll") },
+    { value: "food", label: t("filterOptions.productTypeFood") },
+    { value: "non_food", label: t("filterOptions.productTypeNonFood") },
+    { value: "beverages", label: t("filterOptions.productTypeBeverages") },
+  ];
+  const exportReadyOptions = [
+    { value: "all", label: t("filterOptions.exportAll") },
+    { value: "ready", label: t("filterOptions.exportReady") },
+    { value: "on_request", label: t("filterOptions.exportOnRequest") },
+  ];
+  const privateLabelOptions = [
+    { value: "all", label: t("filterOptions.privateLabelAll") },
+    { value: "available", label: t("filterOptions.privateLabelAvailable") },
+    { value: "on_request", label: t("filterOptions.privateLabelOnRequest") },
+  ];
+
+  const labelAllCategories = t("filterOptions.allCategories");
+  const labelAllBrands = t("filterOptions.allBrands");
+  const labelAllCountries = t("filterOptions.allCountries");
+
   return (
     <div className={compact ? "" : "rounded-2xl border border-border/70 bg-card shadow-sm"}>
       {!compact && (
         <div className="flex items-center justify-between border-b border-border/60 px-5 py-4">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-foreground">
-            Filter Products
+            {t("sidebar.title")}
           </p>
           <button
             onClick={onReset}
             className="text-[11px] font-semibold uppercase tracking-wider text-[oklch(0.66_0.16_35)] transition-colors hover:text-[oklch(0.55_0.17_35)]"
           >
-            Reset All
+            {t("sidebar.reset")}
           </button>
         </div>
       )}
@@ -897,71 +920,71 @@ function FilterSidebar({
       <div className={compact ? "space-y-2" : "divide-y divide-border/60"}>
         <SidebarSection
           icon={Tags}
-          label="Categories"
+          label={t("sidebar.categories")}
           value={
             filters.category === "all"
-              ? "All Categories"
-              : categories.find((c) => c.slug === filters.category)?.name ?? "All Categories"
+              ? labelAllCategories
+              : categories.find((c) => c.slug === filters.category)?.name ?? labelAllCategories
           }
-          options={[{ value: "all", label: "All Categories" }, ...categories.map((c) => ({ value: c.slug, label: c.name }))]}
+          options={[{ value: "all", label: labelAllCategories }, ...categories.map((c) => ({ value: c.slug, label: c.name }))]}
           selected={filters.category}
           onSelect={(v) => { onChange("category", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={BadgeCheck}
-          label="Brand"
+          label={t("sidebar.brand")}
           value={
             filters.brand === "all"
-              ? "All Brands"
-              : brands.find((b) => b.slug === filters.brand)?.name ?? "All Brands"
+              ? labelAllBrands
+              : brands.find((b) => b.slug === filters.brand)?.name ?? labelAllBrands
           }
-          options={[{ value: "all", label: "All Brands" }, ...brands.map((b) => ({ value: b.slug, label: b.name }))]}
+          options={[{ value: "all", label: labelAllBrands }, ...brands.map((b) => ({ value: b.slug, label: b.name }))]}
           selected={filters.brand}
           onSelect={(v) => { onChange("brand", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={Globe2}
-          label="Origin"
-          value={filters.origin === "all" ? "All Countries" : filters.origin}
-          options={[{ value: "all", label: "All Countries" }, ...origins.map((o) => ({ value: o, label: o }))]}
+          label={t("sidebar.origin")}
+          value={filters.origin === "all" ? labelAllCountries : filters.origin}
+          options={[{ value: "all", label: labelAllCountries }, ...origins.map((o) => ({ value: o, label: o }))]}
           selected={filters.origin}
           onSelect={(v) => { onChange("origin", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={PackageIcon}
-          label="Packaging"
-          value={PACKAGING_OPTIONS.find((o) => o.value === filters.packaging)?.label ?? "All Packaging"}
-          options={PACKAGING_OPTIONS}
+          label={t("sidebar.packaging")}
+          value={packagingOptions.find((o) => o.value === filters.packaging)?.label ?? packagingOptions[0].label}
+          options={packagingOptions}
           selected={filters.packaging}
           onSelect={(v) => { onChange("packaging", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={Boxes}
-          label="Product Type"
-          value={PRODUCT_TYPE_OPTIONS.find((o) => o.value === filters.productType)?.label ?? "All Product Types"}
-          options={PRODUCT_TYPE_OPTIONS}
+          label={t("sidebar.productType")}
+          value={productTypeOptions.find((o) => o.value === filters.productType)?.label ?? productTypeOptions[0].label}
+          options={productTypeOptions}
           selected={filters.productType}
           onSelect={(v) => { onChange("productType", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={ShieldCheck}
-          label="Export Readiness"
-          value={EXPORT_READY_OPTIONS.find((o) => o.value === filters.exportReadiness)?.label ?? "All Export Options"}
-          options={EXPORT_READY_OPTIONS}
+          label={t("sidebar.exportReadiness")}
+          value={exportReadyOptions.find((o) => o.value === filters.exportReadiness)?.label ?? exportReadyOptions[0].label}
+          options={exportReadyOptions}
           selected={filters.exportReadiness}
           onSelect={(v) => { onChange("exportReadiness", v); onAfterChange?.(); }}
           compact={compact}
         />
         <SidebarSection
           icon={Building2}
-          label="Private Label Support"
-          value={PRIVATE_LABEL_OPTIONS.find((o) => o.value === filters.privateLabel)?.label ?? "All Availability"}
-          options={PRIVATE_LABEL_OPTIONS}
+          label={t("sidebar.privateLabelSupport")}
+          value={privateLabelOptions.find((o) => o.value === filters.privateLabel)?.label ?? privateLabelOptions[0].label}
+          options={privateLabelOptions}
           selected={filters.privateLabel}
           onSelect={(v) => { onChange("privateLabel", v); onAfterChange?.(); }}
           compact={compact}
@@ -976,7 +999,7 @@ function FilterSidebar({
           className="mt-4 w-full border-[oklch(0.72_0.11_80)]/40 text-[oklch(0.50_0.12_75)] hover:bg-[oklch(0.72_0.11_80)]/10"
         >
           <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-          Reset all filters
+          {t("sidebar.resetAllFilters")}
         </Button>
       )}
     </div>

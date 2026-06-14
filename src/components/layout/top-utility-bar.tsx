@@ -18,6 +18,7 @@ const localeLabels: Record<string, string> = {
   de: "Deutsch",
   it: "Italiano",
   pt: "Português",
+  fr: "Français",
 };
 
 const localeShort: Record<string, string> = {
@@ -29,6 +30,7 @@ const localeShort: Record<string, string> = {
   de: "DE",
   it: "IT",
   pt: "PT",
+  fr: "FR",
 };
 
 export function TopUtilityBar() {

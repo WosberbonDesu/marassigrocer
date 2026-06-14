@@ -17,11 +17,7 @@ export function WhatWeDo() {
   return (
     <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          title={t("title")}
-          subtitle={t("subtitle")}
-          eyebrow="What We Do"
-        />
+        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
         <div className="grid gap-6 sm:grid-cols-3">
           {services.map(({ key, icon: Icon }, i) => (
             <motion.div

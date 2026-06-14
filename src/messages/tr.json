@@ -385,6 +385,248 @@
     "close": "Kapat",
     "search": "Ara",
     "loading": "Yükleniyor...",
-    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "home": "Anasayfa"
+  },
+  "productsCatalog": {
+    "hero": {
+      "eyebrow": "Küresel Kalite. İhracata Hazır.",
+      "title": "FMCG Ürün Kataloğu",
+      "titleAccent": "Küresel Pazarlar İçin",
+      "subtitle": "Güvenilir üreticilerden tedarik edilen ve dünya genelindeki ithalatçılar, distribütörler, toptancılar ve perakende zincirleri için hazırlanan ihracata hazır FMCG ürünlerine göz atın."
+    },
+    "filterCard": {
+      "search": "Ürünlerde ara",
+      "searchPlaceholder": "Ürün adına göre ara…",
+      "category": "Kategori",
+      "brand": "Marka",
+      "country": "Menşe Ülke",
+      "packaging": "Ambalaj Tipi",
+      "privateLabel": "Özel Marka",
+      "moq": "MOQ (Min. Sipariş)",
+      "searchButton": "Ürün Ara"
+    },
+    "filterOptions": {
+      "allCategories": "Tüm Kategoriler",
+      "allBrands": "Tüm Markalar",
+      "allCountries": "Tüm Ülkeler",
+      "packagingAll": "Tüm Ambalajlar",
+      "packagingCarton": "Karton",
+      "packagingPallet": "Palet",
+      "packagingBulk": "Dökme",
+      "packagingCase": "Koli",
+      "productTypeAll": "Tüm Ürün Türleri",
+      "productTypeFood": "Gıda",
+      "productTypeNonFood": "Gıda Dışı",
+      "productTypeBeverages": "İçecek",
+      "exportAll": "Tüm İhracat Seçenekleri",
+      "exportReady": "İhracata Hazır",
+      "exportOnRequest": "Talep Üzerine",
+      "privateLabelAll": "Tüm Durumlar",
+      "privateLabelAvailable": "Mevcut",
+      "privateLabelOnRequest": "Talep Üzerine",
+      "moqAll": "Herhangi MOQ",
+      "moqLt100": "100 koliden az",
+      "moq100to500": "100 – 500 koli",
+      "moqGt500": "500+ koli"
+    },
+    "sidebar": {
+      "title": "Ürünleri Filtrele",
+      "reset": "Tümünü Sıfırla",
+      "categories": "Kategoriler",
+      "brand": "Marka",
+      "origin": "Menşe",
+      "packaging": "Ambalaj",
+      "productType": "Ürün Türü",
+      "exportReadiness": "İhracat Hazırlığı",
+      "privateLabelSupport": "Özel Marka Desteği",
+      "cantFind": "Aradığınızı bulamadınız mı?",
+      "cantFindDesc": "Ekibimiz belirli ürünleri tedarik etmenize yardımcı olabilir.",
+      "requestSourcing": "Ürün Tedariki İste",
+      "resetAllFilters": "Tüm filtreleri sıfırla"
+    },
+    "results": {
+      "showing": "Gösterilen",
+      "of": "/",
+      "products": "ürün",
+      "sortBy": "Sırala:",
+      "filters": "Filtreler",
+      "viewGrid": "Izgara görünümü",
+      "viewList": "Liste görünümü",
+      "sortLatest": "En Son Eklenen",
+      "sortNameAsc": "İsim: A → Z",
+      "sortNameDesc": "İsim: Z → A",
+      "noResults": "Ürün bulunamadı",
+      "noResultsDesc": "Filtrelerinizi veya aramayı değiştirmeyi deneyin.",
+      "clearFilters": "Filtreleri temizle",
+      "groupDiscount": "Tüm fiyatlara %{discount} grup indirimi uygulandı."
+    },
+    "featured": {
+      "title": "İthalatçılar İçin Öne Çıkan Ürünler"
+    },
+    "bulk": {
+      "title1": "Toplu Sipariş, Karma Konteyner",
+      "titleAccent": "ve İhracat Belgeleri",
+      "subtitle": "Küresel ihracatı, pazar gereksinimlerinize uygun şekilde basit, verimli ve uyumlu hale getiriyoruz.",
+      "mixedContainerTitle": "Karma Konteyner Yükleme",
+      "mixedContainerDesc": "Maliyetleri optimize etmek ve farklı pazar taleplerini karşılamak için birden fazla ürün grubunu tek sevkiyatta birleştirin.",
+      "documentationTitle": "İhracat Belgeleri",
+      "documentationDesc": "Sorunsuz gümrük geçişi için eksiksiz ihracat belgeleri, sertifikalar ve uyum desteği.",
+      "marketSpecificTitle": "Pazara Özel Ürün Seçimi",
+      "marketSpecificDesc": "Hedef pazarınızın tercih ve mevzuatına uygun doğru ürünleri seçmenize yardımcı oluyoruz."
+    },
+    "fullCatalog": {
+      "title": "Eksiksiz Ürün Kataloğunu mu Lazım?",
+      "subtitle": "Pazarınıza özel hazırlanmış detaylı spesifikasyonlar, ambalaj seçenekleri ve fiyat bilgileri ile ihracata hazır tüm FMCG ürünlerimize erişin.",
+      "download": "Katalog İndir",
+      "customList": "Özel Ürün Listesi İste"
+    },
+    "breadcrumb": {
+      "products": "Ürünler"
+    }
+  },
+  "productBadges": {
+    "exportReady": "İhracata Hazır",
+    "bestSeller": "Çok Satan",
+    "topSeller": "En Çok Tercih",
+    "privateLabel": "Özel Marka",
+    "bulkAvailable": "Dökme Mevcut",
+    "view": "Görüntüle",
+    "viewDetails": "Detayları Gör",
+    "quote": "Teklif",
+    "requestQuote": "Teklif İste",
+    "origin": "Menşe"
+  },
+  "certificatesPage": {
+    "meta": {
+      "title": "Sertifikalar ve Kalite | Marassi Group",
+      "description": "Marassi Group'un sertifikaları, kalite standartları ve uyum belgeleri — ISO, HACCP, Helal, BRC ve güvenilir küresel FMCG ihracatı için daha fazlası."
+    },
+    "hero": {
+      "breadcrumb": "Sertifikalar ve Kalite",
+      "eyebrow": "Güven ve Uyum",
+      "title": "Sertifikalı Kalite.",
+      "titleAccent": "Küresel Güven.",
+      "subtitle": "Tedarik edip ihraç ettiğimiz her ürün, uluslararası tanınmış sertifikalar, doğrulanmış tedarikçiler ve pazarınızın mevzuat gereksinimlerine uygun eksiksiz belgelerle desteklenir."
+    },
+    "stats": {
+      "verifiedSuppliers": "Doğrulanmış Tedarikçi",
+      "yearsCompliance": "Yıllık Uyum Deneyimi",
+      "exportMarkets": "İhracat Pazarı",
+      "documentedSkus": "Belgeli SKU"
+    },
+    "standards": {
+      "eyebrow": "Uyum Çerçevesi",
+      "title": "Uyguladığımız Standartlar",
+      "subtitle": "Gıda güvenliği, hijyen ve etik tedarik alanlarında uluslararası akredite sertifikalara sahip ve bunları sürdüren üreticilerle çalışıyoruz.",
+      "active": "Aktif",
+      "iso": {
+        "name": "ISO 22000",
+        "tagline": "Gıda Güvenliği Yönetimi",
+        "description": "Uluslararası tanınmış gıda güvenliği yönetim sistemi standardı."
+      },
+      "haccp": {
+        "name": "HACCP",
+        "tagline": "Tehlike Analizi",
+        "description": "Hammaddeden tüketiciye kadar sistematik gıda güvenliği önleme yaklaşımı."
+      },
+      "halal": {
+        "name": "Helal",
+        "tagline": "Helal Sertifikalı",
+        "description": "İslami beslenme kurallarına uyum — tedarikten sevkiyata izlenebilirlik."
+      },
+      "brc": {
+        "name": "BRC / IFS",
+        "tagline": "Küresel Standartlar",
+        "description": "Küresel gıda ticareti ve perakende için uluslararası kabul görmüş standartlar."
+      },
+      "gmp": {
+        "name": "GMP",
+        "tagline": "İyi Üretim Uygulamaları",
+        "description": "Kaliteye dayalı üretim ortamları ve süreç disiplini."
+      },
+      "kosher": {
+        "name": "Koşer",
+        "tagline": "Koşer Sertifikalı",
+        "description": "Seçili ürün hatları ve özel marka için talep üzerine mevcut."
+      }
+    },
+    "process": {
+      "eyebrow": "Kalite Sürecimiz",
+      "title": "Kaynaktan Sevkiyata —",
+      "titleAccent": "Doğrulandı",
+      "subtitle": "Dört aşamalı kalite ve uyum protokolü, ağımızdan çıkan her konteynerin hedef pazar gereksinimlerini karşılamasını sağlar.",
+      "step1Title": "Tedarikçi İncelemesi",
+      "step1Desc": "Her üretici, sürece katılmadan önce tesis hijyeni, sertifikalar ve izlenebilirlik açısından denetlenir.",
+      "step2Title": "Ürün Testi",
+      "step2Desc": "Gereken durumlarda mikrobiyolojik, kimyasal ve fiziksel güvenlik parametreleri için sevkiyat öncesi lab testleri.",
+      "step3Title": "Belge İncelemesi",
+      "step3Desc": "COA, COO, sağlık ve helal sertifikaları her sevkiyat ve hedef pazar için doğrulanır.",
+      "step4Title": "Uyumlu Teslimat",
+      "step4Desc": "Varış noktası mevzuatına uygun eksiksiz ihracat belgeleri, etiketleme ve gümrük evrakları."
+    },
+    "library": {
+      "eyebrow": "Aktif Sertifikalar",
+      "title": "Canlı Sertifika Arşivimiz",
+      "subtitle": "Güncel sertifikaları görüntüleyin ve indirin. Ürün bazlı belge mi lazım? Kalite ekibimizle iletişime geçin.",
+      "requestSpecific": "Belirli Bir Sertifika İste",
+      "comingSoonTitle": "Sertifikalar yakında yayımlanıyor",
+      "comingSoonDesc": "Kalite ekibimiz en güncel sertifika taramalarını derliyor ve çeviriyor. Bu arada herhangi bir belgeyi iletişim formumuzdan talep edebilirsiniz.",
+      "comingSoonCta": "Belge Talep Et",
+      "issuedBy": "Veren kurum",
+      "valid": "Geçerli",
+      "download": "Sertifikayı İndir",
+      "requestDocument": "Belge Talep Et"
+    },
+    "documents": {
+      "eyebrow": "Sevkiyat Başına Belgeler",
+      "title": "Her Sevkiyat.",
+      "titleAccent": "Eksiksiz Belgeli.",
+      "subtitle": "Her konteyner için varış noktanızın gümrük ve mevzuat gereksinimlerine göre uyarlanmış eksiksiz bir ihracat belge paketi hazırlıyoruz.",
+      "list": [
+        "Menşe Şahadetnamesi (COO)",
+        "Analiz Sertifikası (COA)",
+        "Sağlık Sertifikası",
+        "Helal Sertifikası",
+        "Bitki Sağlık Sertifikası",
+        "Serbest Satış Sertifikası",
+        "Çeki Listesi ve Ticari Fatura",
+        "Malzeme Güvenlik Veri Sayfası (MSDS)"
+      ]
+    },
+    "cta": {
+      "title": "Bir sevkiyat için belirli bir sertifika veya test raporu mu gerekli?",
+      "subtitle": "Kalite ekibimiz talep üzerine ürün bazlı COA, sağlık sertifikası ve menşe şahadetnamesi sağlayabilir — genelde 48 saat içinde.",
+      "request": "Belge Talep Et",
+      "about": "Şirketimiz Hakkında"
+    }
+  },
+  "footerLinks": {
+    "company": "Şirket",
+    "products": "Ürünler",
+    "resources": "Kaynaklar",
+    "support": "Destek",
+    "quickLinks": "Hızlı Bağlantılar",
+    "home": "Anasayfa",
+    "categories": "Kategoriler",
+    "productsAll": "Ürünler",
+    "privateLabel": "Özel Marka",
+    "exportServices": "İhracat Hizmetleri",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "faqs": "SSS",
+    "shippingDelivery": "Sevkiyat ve Teslimat",
+    "documentation": "Dokümantasyon",
+    "qualityAssurance": "Kalite Güvence",
+    "termsConditions": "Şartlar ve Koşullar",
+    "productCatalog": "Ürün Kataloğu",
+    "downloads": "İndirilebilirler",
+    "newsInsights": "Haberler ve İçerikler",
+    "careers": "Kariyer",
+    "globalReach": "Küresel Erişim",
+    "marketsCount": "50+ Pazar",
+    "trustedSince": "1996'dan Beri Güvenilir",
+    "tagline": "1996'dan beri uluslararası işletmeler için küresel FMCG ihracat, tedarik, özel marka ve lojistik çözümleri.",
+    "rights": "Tüm hakları saklıdır."
   }
 }

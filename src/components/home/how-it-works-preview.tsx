@@ -29,12 +29,7 @@ export function HowItWorksPreview() {
         }}
       />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          title={t("title")}
-          subtitle={t("subtitle")}
-          variant="dark"
-          eyebrow="How It Works"
-        />
+        <SectionHeader title={t("title")} subtitle={t("subtitle")} variant="dark" />
         <StepsTimeline steps={steps} variant="horizontal" dark />
         <div className="mt-12 text-center">
           <Button

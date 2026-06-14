@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import {
   Award,
   FileText,
@@ -20,11 +21,18 @@ import {
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 
-export const metadata = {
-  title: "Certificates & Quality | Marassi Group",
-  description:
-    "Marassi Group's certifications, quality standards, and compliance documentation — ISO, HACCP, Halal, BRC and more for trusted global FMCG export.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "certificatesPage.meta" });
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 const HERO_BG =
   "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=1920&q=70";
@@ -33,82 +41,10 @@ const PORT_BG =
 const LAB_BG =
   "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=900&q=80";
 
-const standards = [
-  {
-    icon: ShieldCheck,
-    name: "ISO 22000",
-    tagline: "Food Safety Management",
-    description: "Internationally recognized food safety management system standard.",
-  },
-  {
-    icon: BadgeCheck,
-    name: "HACCP",
-    tagline: "Hazard Analysis",
-    description: "Systematic preventive approach to food safety from raw material to consumer.",
-  },
-  {
-    icon: Sparkles,
-    name: "Halal",
-    tagline: "Halal Certified",
-    description: "Compliance with Islamic dietary laws — sourcing-to-shipment traceability.",
-  },
-  {
-    icon: Globe2,
-    name: "BRC / IFS",
-    tagline: "Global Standards",
-    description: "Internationally accepted standards for global food trade and retail.",
-  },
-  {
-    icon: ClipboardCheck,
-    name: "GMP",
-    tagline: "Good Manufacturing",
-    description: "Quality-assured production environments and process discipline.",
-  },
-  {
-    icon: Award,
-    name: "Kosher",
-    tagline: "Kosher Certified",
-    description: "Available on-request for selected product lines and private label.",
-  },
-];
+const STANDARD_ICONS = [ShieldCheck, BadgeCheck, Sparkles, Globe2, ClipboardCheck, Award];
+const STANDARD_KEYS = ["iso", "haccp", "halal", "brc", "gmp", "kosher"] as const;
 
-const qualityProcess = [
-  {
-    step: 1,
-    icon: Microscope,
-    title: "Supplier Vetting",
-    desc: "Every manufacturer is audited for facility hygiene, certifications, and traceability before onboarding.",
-  },
-  {
-    step: 2,
-    icon: Beaker,
-    title: "Product Testing",
-    desc: "Pre-shipment lab testing for microbial, chemical, and physical safety parameters where required.",
-  },
-  {
-    step: 3,
-    icon: ClipboardCheck,
-    title: "Documentation Review",
-    desc: "COA, COO, health, and halal certificates verified for each shipment and target market.",
-  },
-  {
-    step: 4,
-    icon: Truck,
-    title: "Compliant Delivery",
-    desc: "Full export documentation, labelling, and customs paperwork tailored to destination regulations.",
-  },
-];
-
-const documentTypes = [
-  "Certificate of Origin (COO)",
-  "Certificate of Analysis (COA)",
-  "Health Certificate",
-  "Halal Certificate",
-  "Phytosanitary Certificate",
-  "Free Sale Certificate",
-  "Packing List & Commercial Invoice",
-  "Material Safety Data Sheet (MSDS)",
-];
+const PROCESS_ICONS = [Microscope, Beaker, ClipboardCheck, Truck];
 
 export default async function CertificatesPage({
   params,
@@ -116,6 +52,24 @@ export default async function CertificatesPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "certificatesPage" });
+  const tCommon = await getTranslations({ locale, namespace: "common" });
+
+  const standards = STANDARD_KEYS.map((key, i) => ({
+    icon: STANDARD_ICONS[i],
+    name: t(`standards.${key}.name`),
+    tagline: t(`standards.${key}.tagline`),
+    description: t(`standards.${key}.description`),
+  }));
+
+  const qualityProcess = [1, 2, 3, 4].map((step, i) => ({
+    step,
+    icon: PROCESS_ICONS[i],
+    title: t(`process.step${step}Title`),
+    desc: t(`process.step${step}Desc`),
+  }));
+
+  const documentTypes = t.raw("documents.list") as string[];
 
   let certificates: Array<{
     id: string;
@@ -174,21 +128,21 @@ export default async function CertificatesPage({
         <div className="relative z-10 mx-auto max-w-7xl px-4 pb-28 pt-14 sm:px-6 sm:pb-32 sm:pt-20 lg:px-8 lg:pb-36 lg:pt-24">
           <nav className="mb-5 flex items-center gap-2 text-xs text-white/55">
             <Link href="/" locale={locale} className="transition-colors hover:text-[oklch(0.78_0.12_80)]">
-              Home
+              {tCommon("home")}
             </Link>
             <span className="text-white/30">/</span>
-            <span className="font-medium text-[oklch(0.78_0.12_80)]">Certificates &amp; Quality</span>
+            <span className="font-medium text-[oklch(0.78_0.12_80)]">{t("hero.breadcrumb")}</span>
           </nav>
 
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.78_0.12_80)]">
-            Trust &amp; Compliance
+            {t("hero.eyebrow")}
           </p>
           <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem]">
-            Certified Quality.<br />
-            <span className="text-[oklch(0.78_0.12_80)]">Trusted Globally.</span>
+            {t("hero.title")}<br />
+            <span className="text-[oklch(0.78_0.12_80)]">{t("hero.titleAccent")}</span>
           </h1>
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-white/70 sm:text-base">
-            Every product we source and export is backed by internationally recognized certifications, verified suppliers, and complete documentation tailored to your market&apos;s regulatory requirements.
+            {t("hero.subtitle")}
           </p>
           <div className="mt-7 h-[3px] w-16 rounded-full bg-[oklch(0.78_0.12_80)]" />
         </div>
@@ -200,10 +154,10 @@ export default async function CertificatesPage({
           <div className="rounded-2xl border border-[oklch(0.72_0.11_80)]/20 bg-white p-6 shadow-[0_24px_60px_-18px_oklch(0.20_0.02_80/0.18)] sm:p-8">
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
               {[
-                { value: "100%", label: "Verified Suppliers" },
-                { value: "29+", label: "Years of Compliance" },
-                { value: "50+", label: "Export Markets" },
-                { value: "10k+", label: "Documented SKUs" },
+                { value: "100%", label: t("stats.verifiedSuppliers") },
+                { value: "29+", label: t("stats.yearsCompliance") },
+                { value: "50+", label: t("stats.exportMarkets") },
+                { value: "10k+", label: t("stats.documentedSkus") },
               ].map((s) => (
                 <div key={s.label} className="text-center">
                   <p className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-none text-[oklch(0.50_0.12_75)] sm:text-4xl">
@@ -224,10 +178,10 @@ export default async function CertificatesPage({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.60_0.12_75)]">
-              Compliance Framework
+              {t("standards.eyebrow")}
             </p>
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
-              Standards We Follow
+              {t("standards.title")}
             </h2>
             <div className="mx-auto mt-4 flex items-center justify-center gap-2">
               <div className="h-px w-12 bg-gradient-to-r from-transparent to-[oklch(0.72_0.11_80)]/70" />
@@ -235,7 +189,7 @@ export default async function CertificatesPage({
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-[oklch(0.72_0.11_80)]/70" />
             </div>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              We work with manufacturers who hold and maintain internationally accredited certifications across food safety, hygiene, and ethical sourcing.
+              {t("standards.subtitle")}
             </p>
           </div>
 
@@ -253,7 +207,7 @@ export default async function CertificatesPage({
                   <span className="rounded-full bg-[oklch(0.55_0.14_150)]/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[oklch(0.40_0.14_150)]">
                     <span className="inline-flex items-center gap-1">
                       <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.55_0.14_150)]" />
-                      Active
+                      {t("standards.active")}
                     </span>
                   </span>
                 </div>
@@ -291,13 +245,13 @@ export default async function CertificatesPage({
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.78_0.12_80)]">
-              Our Quality Process
+              {t("process.eyebrow")}
             </p>
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              From Source to Shipment — <span className="text-[oklch(0.78_0.12_80)]">Verified</span>
+              {t("process.title")} <span className="text-[oklch(0.78_0.12_80)]">{t("process.titleAccent")}</span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/65 sm:text-base">
-              A four-stage quality and compliance protocol ensures every container leaving our network meets target-market requirements.
+              {t("process.subtitle")}
             </p>
           </div>
 
@@ -329,13 +283,13 @@ export default async function CertificatesPage({
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.60_0.12_75)]">
-                Active Certifications
+                {t("library.eyebrow")}
               </p>
               <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
-                Our Live Certificate Library
+                {t("library.title")}
               </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                Browse and download current certifications. Need product-level documentation? Contact our quality team.
+                {t("library.subtitle")}
               </p>
             </div>
             <Button
@@ -344,7 +298,7 @@ export default async function CertificatesPage({
               className="border-[oklch(0.72_0.11_80)]/40 bg-transparent text-sm font-medium text-[oklch(0.40_0.10_75)] hover:bg-[oklch(0.78_0.12_80)]/10"
             >
               <Link href="/contact" locale={locale}>
-                Request a Specific Certificate
+                {t("library.requestSpecific")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -356,10 +310,10 @@ export default async function CertificatesPage({
                 <Award className="h-8 w-8" />
               </div>
               <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-xl font-bold">
-                Certificates publishing soon
+                {t("library.comingSoonTitle")}
               </h3>
               <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-                Our quality team is compiling and translating the latest certificate scans. In the meantime, request any specific document via our contact form.
+                {t("library.comingSoonDesc")}
               </p>
               <Button
                 asChild
@@ -367,7 +321,7 @@ export default async function CertificatesPage({
               >
                 <Link href="/contact" locale={locale}>
                   <FileText className="mr-2 h-4 w-4" />
-                  Request Documentation
+                  {t("library.comingSoonCta")}
                 </Link>
               </Button>
             </div>
@@ -402,7 +356,7 @@ export default async function CertificatesPage({
                       {validStr && (
                         <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-md bg-[oklch(0.55_0.14_150)]/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
                           <CheckCircle2 className="h-3 w-3" />
-                          Valid
+                          {t("library.valid")}
                         </span>
                       )}
                     </div>
@@ -414,7 +368,7 @@ export default async function CertificatesPage({
                       {c.issuer && (
                         <p className="mt-1.5 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-[oklch(0.50_0.12_75)]">
                           <Building2 className="h-3 w-3" />
-                          {c.issuer}
+                          {t("library.issuedBy")} {c.issuer}
                         </p>
                       )}
                       {c.description && (
@@ -443,7 +397,7 @@ export default async function CertificatesPage({
                           >
                             <a href={c.fileUrl} target="_blank" rel="noopener noreferrer">
                               <Download className="mr-1.5 h-3.5 w-3.5" />
-                              Download Certificate
+                              {t("library.download")}
                             </a>
                           </Button>
                         ) : (
@@ -454,7 +408,7 @@ export default async function CertificatesPage({
                             className="h-9 w-full border-[oklch(0.72_0.11_80)]/40 text-xs font-semibold text-[oklch(0.40_0.10_75)] hover:bg-[oklch(0.78_0.12_80)]/10"
                           >
                             <Link href="/contact" locale={locale}>
-                              Request Document
+                              {t("library.requestDocument")}
                               <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                             </Link>
                           </Button>
@@ -475,14 +429,14 @@ export default async function CertificatesPage({
           <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.4fr]">
             <div>
               <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[oklch(0.60_0.12_75)]">
-                Per-Shipment Documents
+                {t("documents.eyebrow")}
               </p>
               <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-                Every Shipment.<br />
-                <span className="text-[oklch(0.50_0.12_75)]">Fully Documented.</span>
+                {t("documents.title")}<br />
+                <span className="text-[oklch(0.50_0.12_75)]">{t("documents.titleAccent")}</span>
               </h2>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
-                We prepare a complete export documentation package for every container — tailored to your destination&apos;s customs and regulatory requirements.
+                {t("documents.subtitle")}
               </p>
             </div>
 
@@ -514,10 +468,10 @@ export default async function CertificatesPage({
           <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_auto]">
             <div>
               <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-                Need a specific certificate or test report for a shipment?
+                {t("cta.title")}
               </h2>
               <p className="mt-3 max-w-2xl text-sm text-white/65 sm:text-base">
-                Our quality team can provide product-level COA, health certificates, and certificates of origin on request — usually within 48 hours.
+                {t("cta.subtitle")}
               </p>
             </div>
 
@@ -529,7 +483,7 @@ export default async function CertificatesPage({
               >
                 <Link href="/contact" locale={locale}>
                   <FileText className="mr-2 h-4 w-4" />
-                  Request Documentation
+                  {t("cta.request")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -540,7 +494,7 @@ export default async function CertificatesPage({
                 className="h-12 border-white/25 bg-transparent px-6 text-sm font-medium text-white hover:bg-white/10"
               >
                 <Link href="/company" locale={locale}>
-                  About Our Company
+                  {t("cta.about")}
                 </Link>
               </Button>
             </div>

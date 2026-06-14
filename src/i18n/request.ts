@@ -11,6 +11,7 @@ const messageImports = {
   de: () => import("../messages/de.json"),
   it: () => import("../messages/it.json"),
   pt: () => import("../messages/pt.json"),
+  fr: () => import("../messages/fr.json"),
 } as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {

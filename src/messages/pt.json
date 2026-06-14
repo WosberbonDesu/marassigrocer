@@ -447,6 +447,248 @@
     "close": "Close",
     "search": "Search",
     "loading": "Loading...",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "home": "Home"
+  },
+  "productsCatalog": {
+    "hero": {
+      "eyebrow": "Global Quality. Export Ready.",
+      "title": "FMCG Product Catalog",
+      "titleAccent": "for Global Markets",
+      "subtitle": "Browse export-ready FMCG products sourced from trusted manufacturers and prepared for importers, distributors, wholesalers, and retail chains worldwide."
+    },
+    "filterCard": {
+      "search": "Search products",
+      "searchPlaceholder": "Search by product name…",
+      "category": "Category",
+      "brand": "Brand",
+      "country": "Country of Origin",
+      "packaging": "Packaging Type",
+      "privateLabel": "Private Label",
+      "moq": "MOQ (Minimum Order)",
+      "searchButton": "Search Products"
+    },
+    "filterOptions": {
+      "allCategories": "All Categories",
+      "allBrands": "All Brands",
+      "allCountries": "All Countries",
+      "packagingAll": "All Packaging",
+      "packagingCarton": "Carton",
+      "packagingPallet": "Pallet",
+      "packagingBulk": "Bulk",
+      "packagingCase": "Case",
+      "productTypeAll": "All Product Types",
+      "productTypeFood": "Food",
+      "productTypeNonFood": "Non-Food",
+      "productTypeBeverages": "Beverages",
+      "exportAll": "All Export Options",
+      "exportReady": "Export Ready",
+      "exportOnRequest": "On Request",
+      "privateLabelAll": "All Availability",
+      "privateLabelAvailable": "Available",
+      "privateLabelOnRequest": "On Request",
+      "moqAll": "Any MOQ",
+      "moqLt100": "Under 100 cases",
+      "moq100to500": "100 – 500 cases",
+      "moqGt500": "500+ cases"
+    },
+    "sidebar": {
+      "title": "Filter Products",
+      "reset": "Reset All",
+      "categories": "Categories",
+      "brand": "Brand",
+      "origin": "Origin",
+      "packaging": "Packaging",
+      "productType": "Product Type",
+      "exportReadiness": "Export Readiness",
+      "privateLabelSupport": "Private Label Support",
+      "cantFind": "Can't find what you need?",
+      "cantFindDesc": "Our team can help you source specific products.",
+      "requestSourcing": "Request Product Sourcing",
+      "resetAllFilters": "Reset all filters"
+    },
+    "results": {
+      "showing": "Showing",
+      "of": "of",
+      "products": "products",
+      "sortBy": "Sort by:",
+      "filters": "Filters",
+      "viewGrid": "Grid view",
+      "viewList": "List view",
+      "sortLatest": "Latest Added",
+      "sortNameAsc": "Name: A → Z",
+      "sortNameDesc": "Name: Z → A",
+      "noResults": "No products found",
+      "noResultsDesc": "Try adjusting your filters or search query.",
+      "clearFilters": "Clear filters",
+      "groupDiscount": "{discount}% group discount applied."
+    },
+    "featured": {
+      "title": "Featured Products for Importers"
+    },
+    "bulk": {
+      "title1": "Bulk Orders, Mixed Containers",
+      "titleAccent": "& Export Documentation",
+      "subtitle": "We make global exports simple, efficient, and compliant with your market requirements.",
+      "mixedContainerTitle": "Mixed Container Loading",
+      "mixedContainerDesc": "Combine multiple product lines in one shipment to optimize costs and meet diverse market demands.",
+      "documentationTitle": "Export Documentation",
+      "documentationDesc": "Complete export documentation, certificates, and compliance support for smooth customs clearance.",
+      "marketSpecificTitle": "Market-Specific Product Selection",
+      "marketSpecificDesc": "We help you select the right products tailored to your target market preferences and regulations."
+    },
+    "fullCatalog": {
+      "title": "Need the Full Product Catalog?",
+      "subtitle": "Access our complete range of export-ready FMCG products with detailed specifications, packaging options, and pricing information tailored to your market needs.",
+      "download": "Download Catalog",
+      "customList": "Request Custom Product List"
+    },
+    "breadcrumb": {
+      "products": "Products"
+    }
+  },
+  "productBadges": {
+    "exportReady": "Export Ready",
+    "bestSeller": "Best Seller",
+    "topSeller": "Top Seller",
+    "privateLabel": "Private Label",
+    "bulkAvailable": "Bulk Available",
+    "view": "View",
+    "viewDetails": "View Details",
+    "quote": "Quote",
+    "requestQuote": "Request Quote",
+    "origin": "Origin"
+  },
+  "certificatesPage": {
+    "meta": {
+      "title": "Certificates & Quality | Marassi Group",
+      "description": "Marassi Group's certifications, quality standards, and compliance documentation — ISO, HACCP, Halal, BRC and more for trusted global FMCG export."
+    },
+    "hero": {
+      "breadcrumb": "Certificates & Quality",
+      "eyebrow": "Trust & Compliance",
+      "title": "Certified Quality.",
+      "titleAccent": "Trusted Globally.",
+      "subtitle": "Every product we source and export is backed by internationally recognized certifications, verified suppliers, and complete documentation tailored to your market's regulatory requirements."
+    },
+    "stats": {
+      "verifiedSuppliers": "Verified Suppliers",
+      "yearsCompliance": "Years of Compliance",
+      "exportMarkets": "Export Markets",
+      "documentedSkus": "Documented SKUs"
+    },
+    "standards": {
+      "eyebrow": "Compliance Framework",
+      "title": "Standards We Follow",
+      "subtitle": "We work with manufacturers who hold and maintain internationally accredited certifications across food safety, hygiene, and ethical sourcing.",
+      "active": "Active",
+      "iso": {
+        "name": "ISO 22000",
+        "tagline": "Food Safety Management",
+        "description": "Internationally recognized food safety management system standard."
+      },
+      "haccp": {
+        "name": "HACCP",
+        "tagline": "Hazard Analysis",
+        "description": "Systematic preventive approach to food safety from raw material to consumer."
+      },
+      "halal": {
+        "name": "Halal",
+        "tagline": "Halal Certified",
+        "description": "Compliance with Islamic dietary laws — sourcing-to-shipment traceability."
+      },
+      "brc": {
+        "name": "BRC / IFS",
+        "tagline": "Global Standards",
+        "description": "Internationally accepted standards for global food trade and retail."
+      },
+      "gmp": {
+        "name": "GMP",
+        "tagline": "Good Manufacturing",
+        "description": "Quality-assured production environments and process discipline."
+      },
+      "kosher": {
+        "name": "Kosher",
+        "tagline": "Kosher Certified",
+        "description": "Available on-request for selected product lines and private label."
+      }
+    },
+    "process": {
+      "eyebrow": "Our Quality Process",
+      "title": "From Source to Shipment —",
+      "titleAccent": "Verified",
+      "subtitle": "A four-stage quality and compliance protocol ensures every container leaving our network meets target-market requirements.",
+      "step1Title": "Supplier Vetting",
+      "step1Desc": "Every manufacturer is audited for facility hygiene, certifications, and traceability before onboarding.",
+      "step2Title": "Product Testing",
+      "step2Desc": "Pre-shipment lab testing for microbial, chemical, and physical safety parameters where required.",
+      "step3Title": "Documentation Review",
+      "step3Desc": "COA, COO, health, and halal certificates verified for each shipment and target market.",
+      "step4Title": "Compliant Delivery",
+      "step4Desc": "Full export documentation, labelling, and customs paperwork tailored to destination regulations."
+    },
+    "library": {
+      "eyebrow": "Active Certifications",
+      "title": "Our Live Certificate Library",
+      "subtitle": "Browse and download current certifications. Need product-level documentation? Contact our quality team.",
+      "requestSpecific": "Request a Specific Certificate",
+      "comingSoonTitle": "Certificates publishing soon",
+      "comingSoonDesc": "Our quality team is compiling and translating the latest certificate scans. In the meantime, request any specific document via our contact form.",
+      "comingSoonCta": "Request Documentation",
+      "issuedBy": "Issued by",
+      "valid": "Valid",
+      "download": "Download Certificate",
+      "requestDocument": "Request Document"
+    },
+    "documents": {
+      "eyebrow": "Per-Shipment Documents",
+      "title": "Every Shipment.",
+      "titleAccent": "Fully Documented.",
+      "subtitle": "We prepare a complete export documentation package for every container — tailored to your destination's customs and regulatory requirements.",
+      "list": [
+        "Certificate of Origin (COO)",
+        "Certificate of Analysis (COA)",
+        "Health Certificate",
+        "Halal Certificate",
+        "Phytosanitary Certificate",
+        "Free Sale Certificate",
+        "Packing List & Commercial Invoice",
+        "Material Safety Data Sheet (MSDS)"
+      ]
+    },
+    "cta": {
+      "title": "Need a specific certificate or test report for a shipment?",
+      "subtitle": "Our quality team can provide product-level COA, health certificates, and certificates of origin on request — usually within 48 hours.",
+      "request": "Request Documentation",
+      "about": "About Our Company"
+    }
+  },
+  "footerLinks": {
+    "company": "Company",
+    "products": "Products",
+    "resources": "Resources",
+    "support": "Support",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "categories": "Categories",
+    "productsAll": "Products",
+    "privateLabel": "Private Label",
+    "exportServices": "Export Services",
+    "about": "About Us",
+    "contact": "Contact",
+    "faqs": "FAQs",
+    "shippingDelivery": "Shipping & Delivery",
+    "documentation": "Documentation",
+    "qualityAssurance": "Quality Assurance",
+    "termsConditions": "Terms & Conditions",
+    "productCatalog": "Product Catalog",
+    "downloads": "Downloads",
+    "newsInsights": "News & Insights",
+    "careers": "Careers",
+    "globalReach": "Global Reach",
+    "marketsCount": "50+ Markets",
+    "trustedSince": "Trusted Since 1996",
+    "tagline": "Global FMCG export, sourcing, private label, and logistics solutions for international businesses since 1996.",
+    "rights": "All rights reserved."
   }
 }

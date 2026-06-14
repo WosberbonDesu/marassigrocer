@@ -51,6 +51,7 @@ const localeLabels: Record<string, string> = {
   de: "Deutsch",
   it: "Italiano",
   pt: "Português",
+  fr: "Français",
 };
 
 function isActive(pathname: string, href: string) {
