@@ -46,12 +46,12 @@ const STORY_IMAGES = {
 };
 
 const stats = [
-  { id: "years", icon: Briefcase, value: "29+" },
-  { id: "markets", icon: Globe, value: "50+" },
-  { id: "products", icon: Package, value: "10,000+" },
-  { id: "warehouse", icon: Warehouse, value: "4,000 m²" },
-  { id: "network", icon: Users, value: "Global" },
-];
+  { id: "years", icon: Briefcase },
+  { id: "markets", icon: Globe },
+  { id: "products", icon: Package },
+  { id: "warehouse", icon: Warehouse },
+  { id: "network", icon: Users },
+] as const;
 
 const reasons = [
   { id: "sourcing", icon: PackageSearch },
@@ -209,14 +209,14 @@ export default function CompanyPage() {
             className="rounded-2xl border border-[oklch(0.72_0.11_80)]/25 bg-white shadow-xl shadow-[oklch(0.20_0.02_80)]/5"
           >
             <div className="grid grid-cols-2 divide-x divide-y divide-border sm:divide-y-0 sm:grid-cols-3 lg:grid-cols-5">
-              {stats.map(({ id, icon: Icon, value }) => (
+              {stats.map(({ id, icon: Icon }) => (
                 <div key={id} className="flex items-center gap-3 px-5 py-6">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[oklch(0.72_0.11_80)]/12 text-[oklch(0.60_0.12_75)]">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">
                     <p className="font-[family-name:var(--font-playfair)] text-xl font-bold leading-tight text-foreground sm:text-2xl">
-                      {value}
+                      {t(`stats.values.${id}`)}
                     </p>
                     <p className="text-[11px] font-medium leading-tight text-muted-foreground">
                       {t(`stats.${id}`)}

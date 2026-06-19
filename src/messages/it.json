@@ -56,10 +56,6 @@
     "trustNote": "Scelta di fiducia da importatori, distributori e buyer del retail in tutto il mondo."
   },
   "proofBar": {
-    "since": "Dal 1996 — oltre 29 anni",
-    "countries": "Oltre 50 Paesi serviti",
-    "products": "Oltre 10.000 prodotti",
-    "warehouse": "Magazzino di 4.000 m² · oltre 75 stabilimenti",
     "items": {
       "since": {
         "label": "Anni di attività",
@@ -137,37 +133,10 @@
     },
     "learnMore": "Scopri di più"
   },
-  "whyMarassi": {
-    "title": "Perché Marassi",
-    "subtitle": "Pensata per i buyer FMCG più seri e professionali",
-    "items": {
-      "warehouse": {
-        "title": "Magazzino di 4.000 m²",
-        "description": "Stock pronto di prodotti alimentari e detergenti per una fornitura rapida e spedizioni nella stessa settimana."
-      },
-      "network": {
-        "title": "Oltre 75 stabilimenti partner",
-        "description": "Rapporti diretti con i produttori in Turchia, Egitto, Emirati Arabi Uniti, India, Vietnam, Thailandia, Cina e Arabia Saudita."
-      },
-      "compliance": {
-        "title": "Supporto alla compliance",
-        "description": "Documentazione completa e conformità normativa per il tuo mercato di destinazione."
-      },
-      "mixed": {
-        "title": "Container misti",
-        "description": "Consolida più prodotti in un'unica spedizione in container."
-      }
-    }
-  },
   "featuredProducts": {
     "title": "Prodotti in evidenza",
     "subtitle": "I prodotti FMCG più richiesti del nostro catalogo",
     "viewAll": "Vedi tutti i prodotti"
-  },
-  "ctaBand": {
-    "title": "Indicaci il tuo mercato di destinazione",
-    "subtitle": "Ottieni un preventivo competitivo per il tuo prossimo container",
-    "cta": "Richiedi un preventivo"
   },
   "products": {
     "title": "Ricerca prodotti",
@@ -200,7 +169,6 @@
       "brand": "Marca",
       "availability": "Disponibilità",
       "shelfLife": "Shelf life",
-      "packaging": "Imballaggio",
       "inStock": "Disponibile",
       "onRequest": "Su richiesta",
       "description": "Descrizione",
@@ -213,6 +181,15 @@
       "stockStatus": {
         "seasonal": "Stagionale",
         "discontinued": "Fuori produzione"
+      },
+      "quickSpecs": {
+        "caseSizeValue": "{count, plural, one {# unità} other {# unità}}",
+        "shelfLifeRange": "{min}–{max} giorni",
+        "shelfLifeMin": "{min}+ giorni"
+      },
+      "storage": {
+        "shelfLifeRange": "{min} – {max} giorni",
+        "shelfLifeMin": "{min}+ giorni"
       }
     },
     "noResults": "Nessun prodotto corrisponde ai filtri selezionati.",
@@ -463,11 +440,8 @@
     }
   },
   "markets": {
-    "title": "I mercati che serviamo",
-    "subtitle": "Esperienza nelle principali regioni del mondo",
     "popularCategories": "Categorie più richieste",
     "regulatoryNotes": "Note normative",
-    "viewDetails": "Vedi i dettagli",
     "meta": {
       "title": "Mercati di export",
       "description": "Marassi Group serve clienti in oltre 50 Paesi nelle aree GCC, MENA, Africa, Europa e oltre."
@@ -548,7 +522,14 @@
       "markets": "Mercati serviti",
       "products": "Prodotti",
       "warehouse": "Magazzino",
-      "network": "Rete di fornitori"
+      "network": "Rete di fornitori",
+      "values": {
+        "years": "29+",
+        "markets": "50+",
+        "products": "10.000+",
+        "warehouse": "4.000 m²",
+        "network": "Globale"
+      }
     },
     "mvv": {
       "mission": {
@@ -667,7 +648,6 @@
       "phone": "Telefono / WhatsApp",
       "company": "Nome dell'azienda",
       "country": "Paese",
-      "buyerType": "Tipo di acquirente",
       "message": "Messaggio",
       "submit": "Invia il messaggio",
       "success": "Messaggio inviato! Il nostro team ti risponderà entro 24 ore.",
@@ -687,7 +667,6 @@
       "submitting": "Invio in corso...",
       "securityNote": "Le tue informazioni sono al sicuro e non saranno mai condivise."
     },
-    "whatsapp": "Scrivici su WhatsApp",
     "offices": {
       "eyebrow": "Uffici Globali",
       "title": "I Nostri Uffici"
@@ -818,6 +797,48 @@
       "title": "Contatta Direttamente il Nostro Team",
       "subtitle": "Invia un'email o chiama uno dei membri del nostro team. Il contatto principale è il destinatario predefinito dei moduli inviati da questo sito.",
       "primary": "Principale"
+    },
+    "countries": {
+      "egypt": "Egitto",
+      "turkey": "Turchia",
+      "uae": "Emirati Arabi Uniti",
+      "saudiArabia": "Arabia Saudita",
+      "iraq": "Iraq",
+      "jordan": "Giordania",
+      "libya": "Libia",
+      "sudan": "Sudan",
+      "nigeria": "Nigeria",
+      "kenya": "Kenya",
+      "ghana": "Ghana",
+      "senegal": "Senegal",
+      "germany": "Germania",
+      "uk": "Regno Unito",
+      "france": "Francia",
+      "italy": "Italia",
+      "spain": "Spagna",
+      "other": "Altro"
+    },
+    "inquiryOptions": {
+      "productSourcing": "Sourcing Prodotti",
+      "privateLabel": "Marca Privata",
+      "exportDocumentation": "Documentazione Export",
+      "catalogRequest": "Richiesta Catalogo",
+      "bulkOrderInquiry": "Richiesta Ordine all'Ingrosso",
+      "partnershipRequest": "Richiesta di Partnership",
+      "mixedContainer": "Container Misto",
+      "generalInquiry": "Richiesta Generale"
+    },
+    "productCategoryOptions": {
+      "biscuits": "Biscotti e Dolciumi",
+      "dairy": "Latticini",
+      "beverages": "Bevande",
+      "snacksConfectionery": "Snack e Dolciumi",
+      "oilsCondiments": "Oli e Condimenti",
+      "cannedDry": "Cibi in Scatola e Secchi",
+      "cleaning": "Prodotti per la Pulizia",
+      "personalCare": "Cura della Persona",
+      "babyFood": "Alimenti per Bambini",
+      "other": "Altro"
     }
   },
   "rfqDrawer": {
@@ -827,17 +848,14 @@
     "emptyList": "Nessun prodotto ancora aggiunto. Esplora il nostro catalogo per aggiungere prodotti.",
     "steps": {
       "interest": "Interesse",
-      "details": "Dettagli",
       "contact": "Contatti"
     },
     "form": {
       "country": "Il tuo Paese",
-      "categories": "Categorie di interesse",
       "containerEstimate": "Stima delle dimensioni del container",
       "20ft": "Container 20'",
       "40ft": "Container 40'",
       "notSure": "Non sono sicuro",
-      "targetPrice": "Fascia di prezzo target (facoltativo)",
       "notes": "Note aggiuntive",
       "name": "Nome e cognome",
       "email": "Indirizzo email",
@@ -859,7 +877,6 @@
       "error": "Si è verificato un errore. Riprova."
     },
     "items": {
-      "quantity": "Q.tà",
       "remove": "Rimuovi",
       "total": "{count} articoli nella tua lista RFQ",
       "clearAll": "Cancella tutto"
@@ -874,18 +891,6 @@
       "percentOff": "{value}% di sconto",
       "amountOff": "${value} di sconto",
       "invalidCode": "Codice non valido"
-    }
-  },
-  "catalogModal": {
-    "title": "Scarica il nostro catalogo",
-    "subtitle": "Ottieni il nostro catalogo prodotti completo con le fasce di prezzo",
-    "form": {
-      "email": "Indirizzo email",
-      "company": "Nome dell'azienda",
-      "country": "Paese",
-      "buyerType": "Tipo di acquirente",
-      "submit": "Scarica il catalogo",
-      "success": "Download in corso! Abbiamo inviato il catalogo anche alla tua email."
     }
   },
   "footer": {
@@ -924,17 +929,6 @@
       "terms": "Termini e condizioni",
       "cookies": "Informativa sui cookie"
     }
-  },
-  "common": {
-    "learnMore": "Scopri di più",
-    "viewAll": "Vedi tutto",
-    "back": "Indietro",
-    "next": "Avanti",
-    "previous": "Precedente",
-    "close": "Chiudi",
-    "search": "Cerca",
-    "loading": "Caricamento...",
-    "error": "Si è verificato un errore. Riprova."
   },
   "homeAdvantages": {
     "eyebrow": "Perché Marassi Group",
@@ -1055,27 +1049,33 @@
       "items": {
         "iso22000": {
           "tagline": "Gestione della sicurezza alimentare",
-          "description": "Standard del sistema di gestione della sicurezza alimentare riconosciuto a livello internazionale."
+          "description": "Standard del sistema di gestione della sicurezza alimentare riconosciuto a livello internazionale.",
+          "name": "ISO 22000"
         },
         "haccp": {
           "tagline": "Analisi dei rischi",
-          "description": "Approccio preventivo e sistematico alla sicurezza alimentare, dalla materia prima al consumatore."
+          "description": "Approccio preventivo e sistematico alla sicurezza alimentare, dalla materia prima al consumatore.",
+          "name": "HACCP"
         },
         "halal": {
           "tagline": "Certificazione Halal",
-          "description": "Conformità alle norme alimentari islamiche, con tracciabilità dall'approvvigionamento alla spedizione."
+          "description": "Conformità alle norme alimentari islamiche, con tracciabilità dall'approvvigionamento alla spedizione.",
+          "name": "Halal"
         },
         "brcIfs": {
           "tagline": "Standard globali",
-          "description": "Standard accettati a livello internazionale per il commercio alimentare globale e la vendita al dettaglio."
+          "description": "Standard accettati a livello internazionale per il commercio alimentare globale e la vendita al dettaglio.",
+          "name": "BRC / IFS"
         },
         "gmp": {
           "tagline": "Buone pratiche di produzione",
-          "description": "Ambienti di produzione con qualità garantita e disciplina dei processi."
+          "description": "Ambienti di produzione con qualità garantita e disciplina dei processi.",
+          "name": "GMP"
         },
         "kosher": {
           "tagline": "Certificazione Kosher",
-          "description": "Disponibile su richiesta per linee di prodotti selezionate e private label."
+          "description": "Disponibile su richiesta per linee di prodotti selezionate e private label.",
+          "name": "Kosher"
         }
       }
     },
@@ -2024,7 +2024,10 @@
         "title": "Account"
       }
     },
-    "comingSoon": "La cronologia degli ordini e le liste salvate saranno presto disponibili."
+    "comingSoon": "La cronologia degli ordini e le liste salvate saranno presto disponibili.",
+    "hero": {
+      "welcome": "Benvenuto, {name}"
+    }
   },
   "accountLoginPage": {
     "error": {
@@ -2114,5 +2117,13 @@
     "previousImage": "Immagine precedente",
     "nextImage": "Immagine successiva",
     "viewImage": "Visualizza immagine {index}"
+  },
+  "marketsListPage": {
+    "card": {
+      "countriesMore": "+{count} altri"
+    }
+  },
+  "categoryCard": {
+    "productsAvailable": "{count, plural, one {# prodotto disponibile} other {# prodotti disponibili}}"
   }
 }

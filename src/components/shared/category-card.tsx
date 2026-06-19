@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Category } from "@/types";
 
@@ -13,6 +13,7 @@ interface CategoryCardProps {
 
 export function CategoryCard({ category, index = 0 }: CategoryCardProps) {
   const locale = useLocale();
+  const t = useTranslations("categoryCard");
 
   return (
     <motion.div
@@ -42,7 +43,7 @@ export function CategoryCard({ category, index = 0 }: CategoryCardProps) {
             {category.name}
           </h3>
           <p className="mt-1 text-xs font-medium text-white/80 drop-shadow-md transition-colors group-hover:text-white">
-            {category.productCount} products available
+            {t("productsAvailable", { count: category.productCount })}
           </p>
         </div>
       </Link>

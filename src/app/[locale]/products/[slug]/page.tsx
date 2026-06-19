@@ -279,7 +279,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <SpecCell
                   icon={Layers}
                   label={tp("quickSpecs.caseSize")}
-                  value={product.caseSize ? `${product.caseSize} units` : "—"}
+                  value={
+                    product.caseSize
+                      ? t("quickSpecs.caseSizeValue", { count: product.caseSize })
+                      : "—"
+                  }
                 />
                 <SpecCell
                   icon={PackageIcon}
@@ -295,9 +299,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   label={tp("quickSpecs.shelfLife")}
                   value={
                     product.shelfLifeMin && product.shelfLifeMax
-                      ? `${product.shelfLifeMin}–${product.shelfLifeMax} days`
+                      ? t("quickSpecs.shelfLifeRange", {
+                          min: product.shelfLifeMin,
+                          max: product.shelfLifeMax,
+                        })
                       : product.shelfLifeMin
-                      ? `${product.shelfLifeMin}+ days`
+                      ? t("quickSpecs.shelfLifeMin", { min: product.shelfLifeMin })
                       : "—"
                   }
                 />
@@ -536,8 +543,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
                           </p>
                           <p className="text-base font-semibold">
                             {product.shelfLifeMax
-                              ? `${product.shelfLifeMin} – ${product.shelfLifeMax} days`
-                              : `${product.shelfLifeMin}+ days`}
+                              ? t("storage.shelfLifeRange", {
+                                  min: product.shelfLifeMin,
+                                  max: product.shelfLifeMax,
+                                })
+                              : t("storage.shelfLifeMin", { min: product.shelfLifeMin })}
                           </p>
                         </div>
                       </div>

@@ -199,7 +199,7 @@ export default async function CertificatesPage({
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {standards.map(({ id, icon: Icon, name }) => (
+            {standards.map(({ id, icon: Icon }) => (
               <div
                 key={id}
                 className="group relative overflow-hidden rounded-2xl border border-[oklch(0.72_0.11_80)]/15 bg-card p-6 transition-all hover:-translate-y-1 hover:border-[oklch(0.72_0.11_80)]/45 hover:shadow-[0_20px_40px_-18px_oklch(0.20_0.02_80/0.25)]"
@@ -217,7 +217,7 @@ export default async function CertificatesPage({
                   </span>
                 </div>
                 <h3 className="relative mt-5 font-[family-name:var(--font-playfair)] text-xl font-bold tracking-tight">
-                  {name}
+                  {t(`standards.items.${id}.name`)}
                 </h3>
                 <p className="relative mt-1 text-[11px] font-semibold uppercase tracking-wider text-[oklch(0.50_0.12_75)]">
                   {t(`standards.items.${id}.tagline`)}

@@ -56,10 +56,6 @@
     "trustNote": "Trusted by importers, distributors, and retail buyers worldwide."
   },
   "proofBar": {
-    "since": "Since 1996 — 29+ years",
-    "countries": "50+ Countries Served",
-    "products": "10,000+ Products",
-    "warehouse": "4,000 m² Warehouse · 75+ Factories",
     "items": {
       "since": {
         "label": "Years in Business",
@@ -137,37 +133,10 @@
     },
     "learnMore": "Learn More"
   },
-  "whyMarassi": {
-    "title": "Why Marassi",
-    "subtitle": "Built for serious FMCG buyers",
-    "items": {
-      "warehouse": {
-        "title": "4,000 m² Warehouse",
-        "description": "Ready stock of foodstuffs and detergents for fast supply and same-week dispatch."
-      },
-      "network": {
-        "title": "75+ Factory Partners",
-        "description": "Direct relationships with manufacturers across Turkey, Egypt, UAE, India, Vietnam, Thailand, China, and Saudi Arabia."
-      },
-      "compliance": {
-        "title": "Compliance Support",
-        "description": "Full documentation and regulatory compliance for your target market."
-      },
-      "mixed": {
-        "title": "Mixed Containers",
-        "description": "Consolidate multiple products into single container shipments."
-      }
-    }
-  },
   "featuredProducts": {
     "title": "Featured Products",
     "subtitle": "Most requested FMCG products from our catalog",
     "viewAll": "View All Products"
-  },
-  "ctaBand": {
-    "title": "Tell us your target market",
-    "subtitle": "Get a competitive quote for your next container",
-    "cta": "Get a Quote"
   },
   "products": {
     "title": "Product Finder",
@@ -200,7 +169,6 @@
       "brand": "Brand",
       "availability": "Availability",
       "shelfLife": "Shelf Life",
-      "packaging": "Packaging",
       "inStock": "In Stock",
       "onRequest": "On Request",
       "description": "Description",
@@ -213,6 +181,15 @@
       "stockStatus": {
         "seasonal": "Seasonal",
         "discontinued": "Discontinued"
+      },
+      "quickSpecs": {
+        "caseSizeValue": "{count, plural, one {# unit} other {# units}}",
+        "shelfLifeRange": "{min}–{max} days",
+        "shelfLifeMin": "{min}+ days"
+      },
+      "storage": {
+        "shelfLifeRange": "{min} – {max} days",
+        "shelfLifeMin": "{min}+ days"
       }
     },
     "breadcrumb": {
@@ -463,11 +440,8 @@
     }
   },
   "markets": {
-    "title": "Markets We Serve",
-    "subtitle": "Experience across major global regions",
     "popularCategories": "Popular Categories",
     "regulatoryNotes": "Regulatory Notes",
-    "viewDetails": "View Details",
     "meta": {
       "title": "Export Markets",
       "description": "Marassi Group serves clients in 50+ countries across GCC, MENA, Africa, Europe and beyond."
@@ -548,7 +522,14 @@
       "markets": "Markets Served",
       "products": "Products",
       "warehouse": "Warehouse",
-      "network": "Supplier Network"
+      "network": "Supplier Network",
+      "values": {
+        "years": "29+",
+        "markets": "50+",
+        "products": "10,000+",
+        "warehouse": "4,000 m²",
+        "network": "Global"
+      }
     },
     "mvv": {
       "mission": {
@@ -667,7 +648,6 @@
       "phone": "Phone / WhatsApp",
       "company": "Company Name",
       "country": "Country",
-      "buyerType": "Buyer Type",
       "message": "Message",
       "submit": "Send Message",
       "success": "Message sent! Our team will get back to you within 24 hours.",
@@ -687,7 +667,6 @@
       "submitting": "Sending...",
       "securityNote": "Your information is secure and will never be shared."
     },
-    "whatsapp": "Chat on WhatsApp",
     "offices": {
       "eyebrow": "Global Offices",
       "title": "Our Offices"
@@ -818,6 +797,48 @@
       "title": "Reach Our Team Directly",
       "subtitle": "Email or call any of our team members. The primary contact is the default recipient for forms submitted on this site.",
       "primary": "Primary"
+    },
+    "countries": {
+      "egypt": "Egypt",
+      "turkey": "Turkey",
+      "uae": "United Arab Emirates",
+      "saudiArabia": "Saudi Arabia",
+      "iraq": "Iraq",
+      "jordan": "Jordan",
+      "libya": "Libya",
+      "sudan": "Sudan",
+      "nigeria": "Nigeria",
+      "kenya": "Kenya",
+      "ghana": "Ghana",
+      "senegal": "Senegal",
+      "germany": "Germany",
+      "uk": "United Kingdom",
+      "france": "France",
+      "italy": "Italy",
+      "spain": "Spain",
+      "other": "Other"
+    },
+    "inquiryOptions": {
+      "productSourcing": "Product Sourcing",
+      "privateLabel": "Private Label",
+      "exportDocumentation": "Export Documentation",
+      "catalogRequest": "Catalog Request",
+      "bulkOrderInquiry": "Bulk Order Inquiry",
+      "partnershipRequest": "Partnership Request",
+      "mixedContainer": "Mixed Container",
+      "generalInquiry": "General Inquiry"
+    },
+    "productCategoryOptions": {
+      "biscuits": "Biscuits & Confectionery",
+      "dairy": "Dairy Products",
+      "beverages": "Beverages",
+      "snacksConfectionery": "Snacks & Confectionery",
+      "oilsCondiments": "Oils & Condiments",
+      "cannedDry": "Canned & Dry Foods",
+      "cleaning": "Cleaning Products",
+      "personalCare": "Personal Care",
+      "babyFood": "Baby Food",
+      "other": "Other"
     }
   },
   "rfqDrawer": {
@@ -829,18 +850,15 @@
     "emptyListHint": "Browse products and add items to your list",
     "steps": {
       "interest": "Interest",
-      "details": "Details",
       "contact": "Contact"
     },
     "form": {
       "country": "Your Country",
       "countryPlaceholder": "e.g. Saudi Arabia",
-      "categories": "Categories of Interest",
       "containerEstimate": "Container Size Estimate",
       "20ft": "20' Container",
       "40ft": "40' Container",
       "notSure": "Not Sure",
-      "targetPrice": "Target Price Range (optional)",
       "notes": "Additional Notes",
       "notesPlaceholder": "Product interests, target price...",
       "name": "Full Name",
@@ -870,22 +888,9 @@
       "invalidCode": "Invalid code"
     },
     "items": {
-      "quantity": "Qty",
       "remove": "Remove",
       "clearAll": "Clear all",
       "total": "{count} items in your RFQ list"
-    }
-  },
-  "catalogModal": {
-    "title": "Download Our Catalog",
-    "subtitle": "Get our complete product catalog with pricing ranges",
-    "form": {
-      "email": "Email Address",
-      "company": "Company Name",
-      "country": "Country",
-      "buyerType": "Buyer Type",
-      "submit": "Download Catalog",
-      "success": "Download starting! We've also sent the catalog to your email."
     }
   },
   "footer": {
@@ -924,17 +929,6 @@
       "terms": "Terms & Conditions",
       "cookies": "Cookies Policy"
     }
-  },
-  "common": {
-    "learnMore": "Learn More",
-    "viewAll": "View All",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "close": "Close",
-    "search": "Search",
-    "loading": "Loading...",
-    "error": "Something went wrong. Please try again."
   },
   "homeAdvantages": {
     "eyebrow": "Why Marassi Group",
@@ -1055,27 +1049,33 @@
       "items": {
         "iso22000": {
           "tagline": "Food Safety Management",
-          "description": "Internationally recognized food safety management system standard."
+          "description": "Internationally recognized food safety management system standard.",
+          "name": "ISO 22000"
         },
         "haccp": {
           "tagline": "Hazard Analysis",
-          "description": "Systematic preventive approach to food safety from raw material to consumer."
+          "description": "Systematic preventive approach to food safety from raw material to consumer.",
+          "name": "HACCP"
         },
         "halal": {
           "tagline": "Halal Certified",
-          "description": "Compliance with Islamic dietary laws — sourcing-to-shipment traceability."
+          "description": "Compliance with Islamic dietary laws — sourcing-to-shipment traceability.",
+          "name": "Halal"
         },
         "brcIfs": {
           "tagline": "Global Standards",
-          "description": "Internationally accepted standards for global food trade and retail."
+          "description": "Internationally accepted standards for global food trade and retail.",
+          "name": "BRC / IFS"
         },
         "gmp": {
           "tagline": "Good Manufacturing",
-          "description": "Quality-assured production environments and process discipline."
+          "description": "Quality-assured production environments and process discipline.",
+          "name": "GMP"
         },
         "kosher": {
           "tagline": "Kosher Certified",
-          "description": "Available on-request for selected product lines and private label."
+          "description": "Available on-request for selected product lines and private label.",
+          "name": "Kosher"
         }
       }
     },
@@ -2024,7 +2024,10 @@
         "title": "Account"
       }
     },
-    "comingSoon": "Order history and saved lists are coming soon."
+    "comingSoon": "Order history and saved lists are coming soon.",
+    "hero": {
+      "welcome": "Welcome, {name}"
+    }
   },
   "accountLoginPage": {
     "error": {
@@ -2114,5 +2117,13 @@
     "previousImage": "Previous image",
     "nextImage": "Next image",
     "viewImage": "View image {index}"
+  },
+  "marketsListPage": {
+    "card": {
+      "countriesMore": "+{count} more"
+    }
+  },
+  "categoryCard": {
+    "productsAvailable": "{count, plural, one {# product available} other {# products available}}"
   }
 }

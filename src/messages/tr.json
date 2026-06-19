@@ -56,10 +56,6 @@
     "trustNote": "Dünya genelinde ithalatçılar, distribütörler ve perakende alıcılar tarafından güvenilen iş ortağı."
   },
   "proofBar": {
-    "since": "1996'dan Beri — 29+ Yıl",
-    "countries": "50+ Ülke",
-    "products": "10.000+ Ürün",
-    "warehouse": "4.000 m² Depo · 75+ Fabrika",
     "items": {
       "since": {
         "label": "Sektördeki Yıllar",
@@ -137,37 +133,10 @@
     },
     "learnMore": "Daha Fazla Bilgi"
   },
-  "whyMarassi": {
-    "title": "Neden Marassi",
-    "subtitle": "Ciddi FMCG alıcıları için inşa edildi",
-    "items": {
-      "warehouse": {
-        "title": "4.000 m² Depo",
-        "description": "Hızlı tedarik ve aynı hafta sevkiyat için gıda ve deterjan hazır stoğu."
-      },
-      "network": {
-        "title": "75+ Fabrika Ortağı",
-        "description": "Türkiye, Mısır, BAE, Hindistan, Vietnam, Tayland, Çin ve Suudi Arabistan'da doğrudan üretici ilişkileri."
-      },
-      "compliance": {
-        "title": "Uyum Desteği",
-        "description": "Hedef pazarınız için tam dokümantasyon ve mevzuat uyumu."
-      },
-      "mixed": {
-        "title": "Karma Konteynerler",
-        "description": "Birden fazla ürünü tek konteyner sevkiyatında birleştirin."
-      }
-    }
-  },
   "featuredProducts": {
     "title": "Öne Çıkan Ürünler",
     "subtitle": "Kataloğumuzdan en çok talep edilen FMCG ürünleri",
     "viewAll": "Tüm Ürünleri Gör"
-  },
-  "ctaBand": {
-    "title": "Hedef pazarınızı bize bildirin",
-    "subtitle": "Sonraki konteyneriniz için rekabetçi teklif alın",
-    "cta": "Teklif Al"
   },
   "products": {
     "title": "Ürün Bulucu",
@@ -200,7 +169,6 @@
       "brand": "Marka",
       "availability": "Stok Durumu",
       "shelfLife": "Raf Ömrü",
-      "packaging": "Ambalaj",
       "inStock": "Stokta",
       "onRequest": "Talep Üzerine",
       "description": "Açıklama",
@@ -213,6 +181,15 @@
       "stockStatus": {
         "seasonal": "Mevsimsel",
         "discontinued": "Üretimi Durduruldu"
+      },
+      "quickSpecs": {
+        "caseSizeValue": "{count, plural, one {# adet} other {# adet}}",
+        "shelfLifeRange": "{min}–{max} gün",
+        "shelfLifeMin": "{min}+ gün"
+      },
+      "storage": {
+        "shelfLifeRange": "{min} – {max} gün",
+        "shelfLifeMin": "{min}+ gün"
       }
     },
     "noResults": "Filtrelerinize uygun ürün bulunamadı.",
@@ -463,11 +440,8 @@
     }
   },
   "markets": {
-    "title": "Hizmet Verdiğimiz Pazarlar",
-    "subtitle": "Başlıca küresel bölgelerde deneyim",
     "popularCategories": "Popüler Kategoriler",
     "regulatoryNotes": "Mevzuat Notları",
-    "viewDetails": "Detayları Gör",
     "meta": {
       "title": "İhracat Pazarları",
       "description": "Marassi Group; GCC, MENA, Afrika, Avrupa ve ötesinde 50'den fazla ülkede müşterilere hizmet vermektedir."
@@ -548,7 +522,14 @@
       "markets": "Hizmet Verilen Pazar",
       "products": "Ürün",
       "warehouse": "Depo",
-      "network": "Tedarikçi Ağı"
+      "network": "Tedarikçi Ağı",
+      "values": {
+        "years": "29+",
+        "markets": "50+",
+        "products": "10.000+",
+        "warehouse": "4.000 m²",
+        "network": "Küresel"
+      }
     },
     "mvv": {
       "mission": {
@@ -667,7 +648,6 @@
       "phone": "Telefon / WhatsApp",
       "company": "Şirket Adı",
       "country": "Ülke",
-      "buyerType": "Alıcı Tipi",
       "message": "Mesaj",
       "submit": "Mesaj Gönder",
       "success": "Mesajınız gönderildi! Ekibimiz 24 saat içinde size dönüş yapacaktır.",
@@ -687,7 +667,6 @@
       "submitting": "Gönderiliyor...",
       "securityNote": "Bilgileriniz güvende olup hiçbir zaman paylaşılmayacaktır."
     },
-    "whatsapp": "WhatsApp ile Yazın",
     "offices": {
       "eyebrow": "Global Ofisler",
       "title": "Ofislerimiz"
@@ -818,6 +797,48 @@
       "title": "Ekibimize Doğrudan Ulaşın",
       "subtitle": "Ekibimizin herhangi bir üyesine e-posta veya telefonla ulaşabilirsiniz. Bu sitedeki formlar varsayılan olarak birincil iletişim adresine gönderilir.",
       "primary": "Birincil"
+    },
+    "countries": {
+      "egypt": "Mısır",
+      "turkey": "Türkiye",
+      "uae": "Birleşik Arap Emirlikleri",
+      "saudiArabia": "Suudi Arabistan",
+      "iraq": "Irak",
+      "jordan": "Ürdün",
+      "libya": "Libya",
+      "sudan": "Sudan",
+      "nigeria": "Nijerya",
+      "kenya": "Kenya",
+      "ghana": "Gana",
+      "senegal": "Senegal",
+      "germany": "Almanya",
+      "uk": "Birleşik Krallık",
+      "france": "Fransa",
+      "italy": "İtalya",
+      "spain": "İspanya",
+      "other": "Diğer"
+    },
+    "inquiryOptions": {
+      "productSourcing": "Ürün Tedariki",
+      "privateLabel": "Özel Etiket",
+      "exportDocumentation": "İhracat Belgeleri",
+      "catalogRequest": "Katalog Talebi",
+      "bulkOrderInquiry": "Toplu Sipariş Talebi",
+      "partnershipRequest": "İş Ortaklığı Talebi",
+      "mixedContainer": "Karışık Konteyner",
+      "generalInquiry": "Genel Sorgulama"
+    },
+    "productCategoryOptions": {
+      "biscuits": "Bisküvi ve Şekerleme",
+      "dairy": "Süt Ürünleri",
+      "beverages": "İçecekler",
+      "snacksConfectionery": "Atıştırmalıklar ve Şekerleme",
+      "oilsCondiments": "Yağlar ve Soslar",
+      "cannedDry": "Konserve ve Kuru Gıdalar",
+      "cleaning": "Temizlik Ürünleri",
+      "personalCare": "Kişisel Bakım",
+      "babyFood": "Bebek Maması",
+      "other": "Diğer"
     }
   },
   "rfqDrawer": {
@@ -827,17 +848,14 @@
     "emptyList": "Henüz ürün eklenmedi. Kataloğumuza göz atarak ürün ekleyin.",
     "steps": {
       "interest": "İlgi Alanı",
-      "details": "Detaylar",
       "contact": "İletişim"
     },
     "form": {
       "country": "Ülkeniz",
-      "categories": "İlgilendiğiniz Kategoriler",
       "containerEstimate": "Konteyner Boyutu Tahmini",
       "20ft": "20' Konteyner",
       "40ft": "40' Konteyner",
       "notSure": "Emin Değilim",
-      "targetPrice": "Hedef Fiyat Aralığı (isteğe bağlı)",
       "notes": "Ek Notlar",
       "name": "Ad Soyad",
       "email": "E-posta Adresi",
@@ -859,7 +877,6 @@
       "error": "Bir sorun oluştu. Lütfen tekrar deneyin."
     },
     "items": {
-      "quantity": "Adet",
       "remove": "Kaldır",
       "total": "Teklif listenizde {count} ürün",
       "clearAll": "Tümünü temizle"
@@ -874,18 +891,6 @@
       "percentOff": "%{value} indirim",
       "amountOff": "${value} indirim",
       "invalidCode": "Geçersiz kod"
-    }
-  },
-  "catalogModal": {
-    "title": "Kataloğumuzu İndirin",
-    "subtitle": "Fiyat aralıklı eksiksiz ürün kataloğumuzu alın",
-    "form": {
-      "email": "E-posta Adresi",
-      "company": "Şirket Adı",
-      "country": "Ülke",
-      "buyerType": "Alıcı Tipi",
-      "submit": "Katalog İndir",
-      "success": "İndirme başlıyor! Kataloğu e-postanıza da gönderdik."
     }
   },
   "footer": {
@@ -924,17 +929,6 @@
       "terms": "Şartlar ve Koşullar",
       "cookies": "Çerez Politikası"
     }
-  },
-  "common": {
-    "learnMore": "Daha Fazla Bilgi",
-    "viewAll": "Tümünü Gör",
-    "back": "Geri",
-    "next": "İleri",
-    "previous": "Önceki",
-    "close": "Kapat",
-    "search": "Ara",
-    "loading": "Yükleniyor...",
-    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
   },
   "homeAdvantages": {
     "eyebrow": "Neden Marassi Group",
@@ -1055,27 +1049,33 @@
       "items": {
         "iso22000": {
           "tagline": "Gıda Güvenliği Yönetimi",
-          "description": "Uluslararası kabul görmüş gıda güvenliği yönetim sistemi standardı."
+          "description": "Uluslararası kabul görmüş gıda güvenliği yönetim sistemi standardı.",
+          "name": "ISO 22000"
         },
         "haccp": {
           "tagline": "Tehlike Analizi",
-          "description": "Hammaddeden tüketiciye gıda güvenliğine yönelik sistematik ve önleyici yaklaşım."
+          "description": "Hammaddeden tüketiciye gıda güvenliğine yönelik sistematik ve önleyici yaklaşım.",
+          "name": "HACCP"
         },
         "halal": {
           "tagline": "Halal Sertifikalı",
-          "description": "İslami beslenme kurallarına uygunluk — tedarikten sevkiyata izlenebilirlik."
+          "description": "İslami beslenme kurallarına uygunluk — tedarikten sevkiyata izlenebilirlik.",
+          "name": "Helal"
         },
         "brcIfs": {
           "tagline": "Küresel Standartlar",
-          "description": "Küresel gıda ticareti ve perakende için uluslararası kabul gören standartlar."
+          "description": "Küresel gıda ticareti ve perakende için uluslararası kabul gören standartlar.",
+          "name": "BRC / IFS"
         },
         "gmp": {
           "tagline": "İyi Üretim Uygulamaları",
-          "description": "Kalite güvenceli üretim ortamları ve süreç disiplini."
+          "description": "Kalite güvenceli üretim ortamları ve süreç disiplini.",
+          "name": "GMP"
         },
         "kosher": {
           "tagline": "Kosher Sertifikalı",
-          "description": "Seçili ürün grupları ve özel marka için talep üzerine sunulur."
+          "description": "Seçili ürün grupları ve özel marka için talep üzerine sunulur.",
+          "name": "Koşer"
         }
       }
     },
@@ -2024,7 +2024,10 @@
         "title": "Hesap"
       }
     },
-    "comingSoon": "Sipariş geçmişi ve kayıtlı listeler yakında geliyor."
+    "comingSoon": "Sipariş geçmişi ve kayıtlı listeler yakında geliyor.",
+    "hero": {
+      "welcome": "Hoş geldin, {name}"
+    }
   },
   "accountLoginPage": {
     "error": {
@@ -2114,5 +2117,13 @@
     "previousImage": "Önceki görsel",
     "nextImage": "Sonraki görsel",
     "viewImage": "{index} numaralı görseli görüntüle"
+  },
+  "marketsListPage": {
+    "card": {
+      "countriesMore": "+{count} daha"
+    }
+  },
+  "categoryCard": {
+    "productsAvailable": "{count, plural, one {# ürün mevcut} other {# ürün mevcut}}"
   }
 }

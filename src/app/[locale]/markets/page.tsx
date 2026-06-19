@@ -23,6 +23,7 @@ export default async function MarketsPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations("markets");
+  const tList = await getTranslations("marketsListPage");
 
   let markets: Array<{
     id: string;
@@ -144,7 +145,9 @@ export default async function MarketsPage({
                         <MapPin className="h-3 w-3" />
                         <span>{market.countries.slice(0, 5).join(", ")}</span>
                         {market.countries.length > 5 && (
-                          <span className="font-medium">+{market.countries.length - 5} more</span>
+                          <span className="font-medium">
+                            {tList("card.countriesMore", { count: market.countries.length - 5 })}
+                          </span>
                         )}
                       </div>
                     )}

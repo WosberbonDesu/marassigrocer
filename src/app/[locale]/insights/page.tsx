@@ -36,7 +36,7 @@ export default function InsightsPage() {
                   <div className="flex items-center gap-3 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <Calendar className="h-3 w-3" />
-                      {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                      {new Date(post.publishedAt).toLocaleDateString(locale, {
                         year: "numeric",
                         month: "short",
                         day: "numeric",

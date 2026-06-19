@@ -56,49 +56,20 @@ const CTA_BG =
   "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1920&q=70";
 
 const COUNTRY_OPTIONS = [
-  "Egypt",
-  "Turkey",
-  "United Arab Emirates",
-  "Saudi Arabia",
-  "Iraq",
-  "Jordan",
-  "Libya",
-  "Sudan",
-  "Nigeria",
-  "Kenya",
-  "Ghana",
-  "Senegal",
-  "Germany",
-  "United Kingdom",
-  "France",
-  "Italy",
-  "Spain",
-  "Other",
-];
+  "egypt", "turkey", "uae", "saudiArabia", "iraq", "jordan", "libya", "sudan",
+  "nigeria", "kenya", "ghana", "senegal", "germany", "uk", "france", "italy",
+  "spain", "other",
+] as const;
 
 const INQUIRY_TYPES = [
-  "Product Sourcing",
-  "Private Label",
-  "Export Documentation",
-  "Catalog Request",
-  "Bulk Order Inquiry",
-  "Partnership Request",
-  "Mixed Container",
-  "General Inquiry",
-];
+  "productSourcing", "privateLabel", "exportDocumentation", "catalogRequest",
+  "bulkOrderInquiry", "partnershipRequest", "mixedContainer", "generalInquiry",
+] as const;
 
 const PRODUCT_CATEGORIES = [
-  "Biscuits & Confectionery",
-  "Dairy Products",
-  "Beverages",
-  "Snacks & Confectionery",
-  "Oils & Condiments",
-  "Canned & Dry Foods",
-  "Cleaning Products",
-  "Personal Care",
-  "Baby Food",
-  "Other",
-];
+  "biscuits", "dairy", "beverages", "snacksConfectionery", "oilsCondiments",
+  "cannedDry", "cleaning", "personalCare", "babyFood", "other",
+] as const;
 
 const INQUIRY_CARDS = [
   { id: "productSourcing", icon: PackageSearch },
@@ -410,7 +381,7 @@ export default function ContactPage() {
                           <SelectContent>
                             {COUNTRY_OPTIONS.map((c) => (
                               <SelectItem key={c} value={c}>
-                                {c}
+                                {t(`countries.${c}`)}
                               </SelectItem>
                             ))}
                           </SelectContent>
@@ -453,7 +424,7 @@ export default function ContactPage() {
                           <SelectContent>
                             {INQUIRY_TYPES.map((c) => (
                               <SelectItem key={c} value={c}>
-                                {c}
+                                {t(`inquiryOptions.${c}`)}
                               </SelectItem>
                             ))}
                           </SelectContent>
@@ -477,7 +448,7 @@ export default function ContactPage() {
                           <SelectContent>
                             {PRODUCT_CATEGORIES.map((c) => (
                               <SelectItem key={c} value={c}>
-                                {c}
+                                {t(`productCategoryOptions.${c}`)}
                               </SelectItem>
                             ))}
                           </SelectContent>

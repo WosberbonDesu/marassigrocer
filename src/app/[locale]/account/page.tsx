@@ -1,9 +1,8 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { LogOut, Package, FileText, User } from "lucide-react";
+import { Package, FileText, User } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
-import { Button } from "@/components/ui/button";
 import { getCustomerSession } from "@/lib/customer-auth";
 import { CustomerLogoutButton } from "@/components/account/customer-logout-button";
 
@@ -22,7 +21,7 @@ export default async function AccountPage({
   return (
     <div>
       <PageHero
-        title={`Welcome, ${session.name}`}
+        title={t("hero.welcome", { name: session.name })}
         subtitle={session.company}
         locale={locale}
         breadcrumbs={[{ label: t("breadcrumb.account") }]}
