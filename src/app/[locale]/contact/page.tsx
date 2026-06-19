@@ -189,34 +189,12 @@ const PRE_CONTACT_FAQS = [
   { id: "markets" },
 ];
 
-const INFO_CARDS = [
-  {
-    id: "headOffice",
-    icon: Building2,
-    lines: ["Marassi Group", "Sapphire Towers", "Kağıthane, Istanbul"],
-  },
-  {
-    id: "phone",
-    icon: Phone,
-    lines: [
-      PRIMARY_CONTACT.phones[0].display,
-      PRIMARY_CONTACT.phones[1]?.display ?? "Mon – Fri, 9:00 – 18:00",
-      "(GMT+3)",
-    ],
-    href: `tel:${PRIMARY_CONTACT.phones[0].raw}`,
-  },
-  {
-    id: "email",
-    icon: Mail,
-    lines: [PRIMARY_CONTACT.email, "Direct line to our export team"],
-    href: `mailto:${PRIMARY_CONTACT.email}`,
-  },
-  {
-    id: "workingHours",
-    icon: Clock,
-    lines: ["Monday – Friday", "9:00 – 18:00", "(GMT+3)"],
-  },
-];
+const INFO_CARD_DEFS = [
+  { id: "headOffice", icon: Building2 },
+  { id: "phone", icon: Phone, href: `tel:${PRIMARY_CONTACT.phones[0].raw}` },
+  { id: "email", icon: Mail, href: `mailto:${PRIMARY_CONTACT.email}` },
+  { id: "workingHours", icon: Clock },
+] as const;
 
 const officeEmbedUrl = (q: string) =>
   `https://maps.google.com/maps?width=600&height=400&hl=en&q=${encodeURIComponent(q)}&output=embed`;
@@ -317,8 +295,29 @@ export default function ContactPage() {
       <section className="relative z-10 -mt-20 sm:-mt-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {INFO_CARDS.map((card, i) => {
+            {INFO_CARD_DEFS.map((card, i) => {
               const Icon = card.icon;
+              const lines: string[] =
+                card.id === "headOffice"
+                  ? [
+                      t("infoCards.headOffice.line1"),
+                      t("infoCards.headOffice.line2"),
+                      t("infoCards.headOffice.line3"),
+                    ]
+                  : card.id === "phone"
+                  ? [
+                      PRIMARY_CONTACT.phones[0].display,
+                      PRIMARY_CONTACT.phones[1]?.display ?? t("infoCards.phone.hours"),
+                      t("infoCards.phone.timezone"),
+                    ]
+                  : card.id === "email"
+                  ? [PRIMARY_CONTACT.email, t("infoCards.email.description")]
+                  : [
+                      t("infoCards.workingHours.days"),
+                      t("infoCards.workingHours.hours"),
+                      t("infoCards.workingHours.timezone"),
+                    ];
+              const href = "href" in card ? card.href : undefined;
               const inner = (
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[oklch(0.72_0.11_80)]/35 bg-[oklch(0.72_0.11_80)]/10 text-[oklch(0.60_0.12_75)]">
@@ -327,7 +326,7 @@ export default function ContactPage() {
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-foreground">{t(`infoCards.${card.id}.label`)}</p>
                     <div className="mt-1.5 space-y-0.5 text-xs leading-relaxed text-muted-foreground">
-                      {card.lines.map((l, k) => (
+                      {lines.map((l, k) => (
                         <p key={k} className="truncate">
                           {l}
                         </p>
@@ -345,8 +344,8 @@ export default function ContactPage() {
                   transition={{ duration: 0.45, delay: i * 0.06 }}
                   className="rounded-2xl border border-border bg-white p-5 shadow-xl shadow-[oklch(0.20_0.02_80)]/10 transition-all hover:-translate-y-0.5 hover:border-[oklch(0.72_0.11_80)]/40 hover:shadow-2xl"
                 >
-                  {card.href ? (
-                    <a href={card.href} className="block">
+                  {href ? (
+                    <a href={href} className="block">
                       {inner}
                     </a>
                   ) : (

@@ -3,13 +3,13 @@
     "products": "Produkte",
     "quickOrder": "Schnellbestellung",
     "whyMarassi": "Warum Marassi",
-    "privateLabel": "Private Label",
+    "privateLabel": "Eigenmarke",
     "mixedContainer": "Mischcontainer",
     "howItWorks": "Ablauf",
     "logistics": "Logistik & Dokumente",
     "markets": "Märkte",
     "company": "Unternehmen",
-    "insights": "Insights",
+    "insights": "Einblicke",
     "contact": "Kontakt",
     "requestQuote": "Angebot anfordern",
     "downloadCatalog": "Katalog herunterladen",
@@ -97,7 +97,7 @@
       "description": "Beschaffungsnetzwerk über mehrere Herkunftsländer für Molkereiprodukte, Snacks, Getränke, Reinigungsmittel und mehr."
     },
     "privateLabel": {
-      "title": "Private Label",
+      "title": "Eigenmarke",
       "description": "Ihre Marke, unser Produktionsnetzwerk. Von der Rezeptur bis zur Verpackung übernehmen wir die gesamte Produktion."
     },
     "logistics": {
@@ -293,7 +293,7 @@
     }
   },
   "privateLabel": {
-    "title": "Private Label",
+    "title": "Eigenmarke",
     "headline": "Ihre Marke, unser Produktionsnetzwerk",
     "subtitle": "Vom Konzept bis ins Regal – wir übernehmen Rezeptur, Produktion und Verpackung für Ihre Private-Label-Produkte.",
     "process": {
@@ -705,16 +705,25 @@
     },
     "infoCards": {
       "headOffice": {
-        "label": "Hauptsitz"
+        "label": "Hauptsitz",
+        "line1": "Marassi Group",
+        "line2": "Sapphire Towers",
+        "line3": "Kağıthane, Istanbul"
       },
       "phone": {
-        "label": "Telefon"
+        "label": "Telefon",
+        "hours": "Mo – Fr, 9:00 – 18:00",
+        "timezone": "(GMT+3)"
       },
       "email": {
-        "label": "E-Mail"
+        "label": "E-Mail",
+        "description": "Direkter Draht zu unserem Export-Team"
       },
       "workingHours": {
-        "label": "Geschäftszeiten"
+        "label": "Geschäftszeiten",
+        "days": "Montag – Freitag",
+        "hours": "9:00 – 18:00",
+        "timezone": "(GMT+3)"
       }
     },
     "getInTouch": {
@@ -748,7 +757,7 @@
           "description": "Finden Sie die richtigen FMCG-Produkte für Ihren Markt."
         },
         "privateLabel": {
-          "title": "Private Label",
+          "title": "Eigenmarke",
           "description": "Maßgeschneiderte Private-Label-Lösungen für Ihre Marke."
         },
         "exportDocumentation": {
@@ -908,7 +917,7 @@
       "privateLabel": "Eigenmarken",
       "mixedContainer": "Mischcontainer",
       "quickOrder": "Schnellbestellung",
-      "blogInsights": "Blog & Insights"
+      "blogInsights": "Blog & Einblicke"
     },
     "legal": {
       "privacy": "Datenschutzerklärung",
@@ -1137,7 +1146,7 @@
     "hero": {
       "title": "Mixed-Container-Lösungen",
       "subtitle": "Bis zu 50 verschiedene Produkte in einer Sendung – ein entscheidender Vorteil für Distributoren, Supermarktketten und wachsende Großhändler.",
-      "breadcrumb": "Mixed Container"
+      "breadcrumb": "Mischcontainer"
     },
     "stat": {
       "caption": "Verschiedene Produkte. Ein Container. Eine Handelsrechnung. Eine Ankunft."
@@ -1255,7 +1264,7 @@
         "description": "Incoterms, Versandzeiten und Exportdokumente."
       },
       "private_label": {
-        "label": "Private Label",
+        "label": "Eigenmarke",
         "description": "Individuelle Rezeptur, Verpackung und Lieferzeiten."
       }
     },
@@ -1337,7 +1346,7 @@
   },
   "insightsDetailPage": {
     "breadcrumbs": {
-      "insights": "Insights"
+      "insights": "Einblicke"
     },
     "byAuthor": "Von",
     "tagsLabel": "Schlagwörter:"
@@ -1380,7 +1389,7 @@
       "aboutBusinessPlaceholder": "An welchen Produkten sind Sie am meisten interessiert? Volumen? Belieferte Märkte?"
     },
     "buyerTypes": {
-      "distributor": "Distributor",
+      "distributor": "Großhändler",
       "retail": "Einzelhandel / Supermarkt",
       "smallBusiness": "Kleinunternehmen",
       "brandOwner": "Markeninhaber",
@@ -1663,7 +1672,7 @@
     },
     "buyerTypes": {
       "importer": "Importeur",
-      "distributor": "Distributor",
+      "distributor": "Großhändler",
       "wholesaler": "Großhändler",
       "retailer": "Einzelhändler",
       "privateLabelBuyer": "Eigenmarken-Käufer",
@@ -1673,7 +1682,7 @@
     },
     "buyerRoles": {
       "importer": "Importeur",
-      "distributor": "Distributor",
+      "distributor": "Großhändler",
       "wholesaler": "Großhändler",
       "retailer": "Einzelhändler",
       "privateLabelBuyer": "Eigenmarken-Käufer",
@@ -1702,11 +1711,11 @@
       "custom": "Individuell"
     },
     "shippingMethods": {
-      "fob": "FOB (Free on Board)",
-      "cif": "CIF (Cost, Insurance, Freight)",
-      "exw": "EXW (Ex Works)",
-      "cfr": "CFR (Cost & Freight)",
-      "ddp": "DDP (Delivered Duty Paid)",
+      "fob": "FOB (Frei an Bord)",
+      "cif": "CIF (Kosten, Versicherung, Fracht)",
+      "exw": "EXW (Ab Werk)",
+      "cfr": "CFR (Kosten & Fracht)",
+      "ddp": "DDP (Geliefert verzollt)",
       "notSure": "Nicht sicher"
     },
     "requiredDocs": {

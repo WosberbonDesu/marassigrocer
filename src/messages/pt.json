@@ -705,16 +705,25 @@
     },
     "infoCards": {
       "headOffice": {
-        "label": "Sede"
+        "label": "Sede",
+        "line1": "Marassi Group",
+        "line2": "Sapphire Towers",
+        "line3": "Kağıthane, Istambul"
       },
       "phone": {
-        "label": "Telefone"
+        "label": "Telefone",
+        "hours": "Seg – Sex, 9:00 – 18:00",
+        "timezone": "(GMT+3)"
       },
       "email": {
-        "label": "E-mail"
+        "label": "E-mail",
+        "description": "Linha direta com nossa equipe de exportação"
       },
       "workingHours": {
-        "label": "Horário de Funcionamento"
+        "label": "Horário de Funcionamento",
+        "days": "Segunda – Sexta",
+        "hours": "9:00 – 18:00",
+        "timezone": "(GMT+3)"
       }
     },
     "getInTouch": {
@@ -1375,7 +1384,7 @@
       "phone": "Telefone",
       "buyerType": "Tipo de Comprador *",
       "taxId": "NIF / Identificação Comercial",
-      "website": "Website",
+      "website": "Site",
       "aboutBusiness": "Fale-nos sobre o seu negócio",
       "aboutBusinessPlaceholder": "Que produtos lhe interessam mais? Volume? Mercados servidos?"
     },
@@ -1702,11 +1711,11 @@
       "custom": "Personalizada"
     },
     "shippingMethods": {
-      "fob": "FOB (Free on Board)",
-      "cif": "CIF (Cost, Insurance, Freight)",
-      "exw": "EXW (Ex Works)",
-      "cfr": "CFR (Cost & Freight)",
-      "ddp": "DDP (Delivered Duty Paid)",
+      "fob": "FOB (Livre a Bordo)",
+      "cif": "CIF (Custo, Seguro e Frete)",
+      "exw": "EXW (À Saída da Fábrica)",
+      "cfr": "CFR (Custo e Frete)",
+      "ddp": "DDP (Entregue com Direitos Pagos)",
       "notSure": "Não tenho a certeza"
     },
     "requiredDocs": {

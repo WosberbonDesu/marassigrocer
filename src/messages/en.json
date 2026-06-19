@@ -705,16 +705,25 @@
     },
     "infoCards": {
       "headOffice": {
-        "label": "Head Office"
+        "label": "Head Office",
+        "line1": "Marassi Group",
+        "line2": "Sapphire Towers",
+        "line3": "Kağıthane, Istanbul"
       },
       "phone": {
-        "label": "Phone"
+        "label": "Phone",
+        "hours": "Mon – Fri, 9:00 – 18:00",
+        "timezone": "(GMT+3)"
       },
       "email": {
-        "label": "Email"
+        "label": "Email",
+        "description": "Direct line to our export team"
       },
       "workingHours": {
-        "label": "Working Hours"
+        "label": "Working Hours",
+        "days": "Monday – Friday",
+        "hours": "9:00 – 18:00",
+        "timezone": "(GMT+3)"
       }
     },
     "getInTouch": {

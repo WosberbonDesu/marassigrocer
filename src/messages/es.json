@@ -705,16 +705,25 @@
     },
     "infoCards": {
       "headOffice": {
-        "label": "Oficina Central"
+        "label": "Oficina Central",
+        "line1": "Marassi Group",
+        "line2": "Sapphire Towers",
+        "line3": "Kağıthane, Estambul"
       },
       "phone": {
-        "label": "Teléfono"
+        "label": "Teléfono",
+        "hours": "Lun – Vie, 9:00 – 18:00",
+        "timezone": "(GMT+3)"
       },
       "email": {
-        "label": "Correo electrónico"
+        "label": "Correo electrónico",
+        "description": "Línea directa con nuestro equipo de exportación"
       },
       "workingHours": {
-        "label": "Horario de Atención"
+        "label": "Horario de Atención",
+        "days": "Lunes – Viernes",
+        "hours": "9:00 – 18:00",
+        "timezone": "(GMT+3)"
       }
     },
     "getInTouch": {
@@ -1167,7 +1176,7 @@
     "specs": {
       "heading": "Capacidad del contenedor",
       "description": "Elija el tamaño que se ajuste a su volumen. Nuestro equipo le ayuda a maximizar la tasa de llenado sin exceder los límites de peso.",
-      "pallets": "Pallets",
+      "pallets": "Palés",
       "cube": "Volumen",
       "maxWeight": "Peso máximo"
     },

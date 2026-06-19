@@ -3,7 +3,7 @@
     "products": "Prodotti",
     "quickOrder": "Ordine rapido",
     "whyMarassi": "Perché Marassi",
-    "privateLabel": "Private Label",
+    "privateLabel": "Marca Privata",
     "mixedContainer": "Container misto",
     "howItWorks": "Come funziona",
     "logistics": "Logistica e documenti",
@@ -97,7 +97,7 @@
       "description": "Rete di sourcing multi-origine che copre latticini, snack, bevande, prodotti per la pulizia e molto altro."
     },
     "privateLabel": {
-      "title": "Private Label",
+      "title": "Marca Privata",
       "description": "Il tuo brand, la nostra rete produttiva. Dalla formulazione al packaging, gestiamo l'intera produzione."
     },
     "logistics": {
@@ -230,7 +230,7 @@
       "sku": "SKU",
       "bestSeller": "Best seller",
       "hazmat": "Merci pericolose",
-      "reefer": "Reefer"
+      "reefer": "Refrigerato"
     },
     "quickSpecs": {
       "pack": "Confezione",
@@ -293,7 +293,7 @@
     }
   },
   "privateLabel": {
-    "title": "Private Label",
+    "title": "Marca Privata",
     "headline": "Il tuo brand, la nostra rete produttiva",
     "subtitle": "Dall'idea allo scaffale: gestiamo formulazione, produzione e packaging dei tuoi prodotti a marchio privato.",
     "process": {
@@ -538,7 +538,7 @@
       "images": {
         "warehouse": "Interno del magazzino",
         "ship": "Nave portacontainer",
-        "handshake": "Partnership",
+        "handshake": "Stretta di mano",
         "products": "Gamma di prodotti",
         "truck": "Camion per le consegne"
       }
@@ -705,16 +705,25 @@
     },
     "infoCards": {
       "headOffice": {
-        "label": "Sede centrale"
+        "label": "Sede centrale",
+        "line1": "Marassi Group",
+        "line2": "Sapphire Towers",
+        "line3": "Kağıthane, Istanbul"
       },
       "phone": {
-        "label": "Telefono"
+        "label": "Telefono",
+        "hours": "Lun – Ven, 9:00 – 18:00",
+        "timezone": "(GMT+3)"
       },
       "email": {
-        "label": "E-mail"
+        "label": "E-mail",
+        "description": "Linea diretta con il nostro team di export"
       },
       "workingHours": {
-        "label": "Orari di lavoro"
+        "label": "Orari di lavoro",
+        "days": "Lunedì – Venerdì",
+        "hours": "9:00 – 18:00",
+        "timezone": "(GMT+3)"
       }
     },
     "getInTouch": {
@@ -981,7 +990,7 @@
       },
       "southeastAsia": {
         "region": "Sud-est asiatico",
-        "countries": "Malaysia, Indonesia, Vietnam"
+        "countries": "Malesia, Indonesia, Vietnam"
       },
       "europe": {
         "region": "Europa",
@@ -1702,11 +1711,11 @@
       "custom": "Personalizzato"
     },
     "shippingMethods": {
-      "fob": "FOB (Free on Board)",
-      "cif": "CIF (Cost, Insurance, Freight)",
-      "exw": "EXW (Ex Works)",
-      "cfr": "CFR (Cost & Freight)",
-      "ddp": "DDP (Delivered Duty Paid)",
+      "fob": "FOB (Franco a Bordo)",
+      "cif": "CIF (Costo, Assicurazione, Nolo)",
+      "exw": "EXW (Franco Fabbrica)",
+      "cfr": "CFR (Costo e Nolo)",
+      "ddp": "DDP (Reso Sdoganato)",
       "notSure": "Non saprei"
     },
     "requiredDocs": {
@@ -2043,7 +2052,7 @@
     "badges": {
       "hazmat": "Merci pericolose",
       "hazmatTitle": "Materiale pericoloso",
-      "reefer": "Reefer",
+      "reefer": "Refrigerato",
       "reeferTitle": "Container refrigerato richiesto"
     },
     "moq": "MOQ",

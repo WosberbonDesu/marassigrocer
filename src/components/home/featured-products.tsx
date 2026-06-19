@@ -20,6 +20,7 @@ interface Product {
 
 export function FeaturedProducts() {
   const t = useTranslations("featuredProducts");
+  const tp = useTranslations("products.card");
   const locale = useLocale();
   const { addItem, hasItem } = useRFQStore();
   const [featured, setFeatured] = useState<Product[]>([]);
@@ -101,7 +102,7 @@ export function FeaturedProducts() {
                           ? "bg-[oklch(0.78_0.12_80)]/20 text-[oklch(0.82_0.11_80)]"
                           : "bg-[oklch(0.78_0.12_80)]/15 text-[oklch(0.82_0.11_80)] hover:bg-[oklch(0.66_0.16_35)] hover:text-white"
                       }`}
-                      aria-label={isAdded ? "Added to RFQ" : "Add to RFQ"}
+                      aria-label={isAdded ? tp("addedToRfq") : tp("addToRfq")}
                     >
                       {isAdded ? <Check className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
                     </button>

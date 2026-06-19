@@ -705,16 +705,25 @@
     },
     "infoCards": {
       "headOffice": {
-        "label": "Главный офис"
+        "label": "Главный офис",
+        "line1": "Marassi Group",
+        "line2": "Sapphire Towers",
+        "line3": "Кагитхане, Стамбул"
       },
       "phone": {
-        "label": "Телефон"
+        "label": "Телефон",
+        "hours": "Пн – Пт, 9:00 – 18:00",
+        "timezone": "(GMT+3)"
       },
       "email": {
-        "label": "Электронная почта"
+        "label": "Электронная почта",
+        "description": "Прямая связь с нашей экспортной командой"
       },
       "workingHours": {
-        "label": "Часы работы"
+        "label": "Часы работы",
+        "days": "Понедельник – Пятница",
+        "hours": "9:00 – 18:00",
+        "timezone": "(GMT+3)"
       }
     },
     "getInTouch": {

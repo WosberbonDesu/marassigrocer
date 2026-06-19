@@ -705,16 +705,25 @@
     },
     "infoCards": {
       "headOffice": {
-        "label": "Merkez Ofis"
+        "label": "Merkez Ofis",
+        "line1": "Marassi Group",
+        "line2": "Sapphire Towers",
+        "line3": "Kağıthane, İstanbul"
       },
       "phone": {
-        "label": "Telefon"
+        "label": "Telefon",
+        "hours": "Pzt – Cum, 9:00 – 18:00",
+        "timezone": "(GMT+3)"
       },
       "email": {
-        "label": "E-posta"
+        "label": "E-posta",
+        "description": "Export ekibimizle doğrudan iletişim"
       },
       "workingHours": {
-        "label": "Çalışma Saatleri"
+        "label": "Çalışma Saatleri",
+        "days": "Pazartesi – Cuma",
+        "hours": "9:00 – 18:00",
+        "timezone": "(GMT+3)"
       }
     },
     "getInTouch": {
@@ -1702,11 +1711,11 @@
       "custom": "Özel"
     },
     "shippingMethods": {
-      "fob": "FOB (Free on Board)",
-      "cif": "CIF (Cost, Insurance, Freight)",
-      "exw": "EXW (Ex Works)",
-      "cfr": "CFR (Cost & Freight)",
-      "ddp": "DDP (Delivered Duty Paid)",
+      "fob": "FOB (Gemide Teslim)",
+      "cif": "CIF (Mal Bedeli, Sigorta, Navlun)",
+      "exw": "EXW (İş Yerinde Teslim)",
+      "cfr": "CFR (Mal Bedeli ve Navlun)",
+      "ddp": "DDP (Gümrük Resmi Ödenmiş Teslim)",
       "notSure": "Emin değilim"
     },
     "requiredDocs": {
