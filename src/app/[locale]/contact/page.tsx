@@ -109,19 +109,78 @@ const INQUIRY_CARDS = [
   { id: "partnership", icon: Handshake },
 ];
 
-const PRIMARY_OFFICE = {
-  city: "Istanbul",
-  country: "Turkey",
-  flag: "🇹🇷",
-  full: "Marassi Group, Istanbul Office",
-  address: "Kurtkoy, Seyhli Mah., Bol Ahenk Sk. No:5, 34906 Pendik, Istanbul, Turkey",
-  raw: "+905512623859",
-  display: "+90 (551) 262 38 59",
-  email: "export@marassigroup.com",
-  lat: 40.895,
-  lng: 29.305,
-  hours: "Monday – Friday\n9:00 AM – 6:00 PM (GMT+3)",
+type ContactPerson = {
+  id: 1 | 2 | 3 | 4;
+  email: string;
+  phones: { display: string; raw: string }[];
+  primary?: boolean;
 };
+
+const CONTACTS: ContactPerson[] = [
+  {
+    id: 1,
+    email: "m.moamen@marassigroup.com",
+    phones: [
+      { display: "+20 150 855 77 41", raw: "+201508557741" },
+      { display: "+90 551 262 38 59", raw: "+905512623859" },
+    ],
+    primary: true,
+  },
+  {
+    id: 2,
+    email: "k.moamen@marassigroup.com",
+    phones: [{ display: "+20 100 003 4571", raw: "+201000034571" }],
+  },
+  {
+    id: 3,
+    email: "a.ashraf@marassigroup.com",
+    phones: [{ display: "+20 106 499 16 68", raw: "+201064991668" }],
+  },
+  {
+    id: 4,
+    email: "c.moamen@marassigroup.com",
+    phones: [{ display: "+90 534 253 77 70", raw: "+905342537770" }],
+  },
+];
+
+const PRIMARY_CONTACT = CONTACTS.find((c) => c.primary)!;
+
+type Office = {
+  id: "istanbul" | "cairo";
+  city: string;
+  country: string;
+  flag: string;
+  full: string;
+  address: string;
+  addressArabic?: string;
+  mapQuery: string;
+  hoursKey: "istanbul" | "cairo";
+};
+
+const OFFICES: Office[] = [
+  {
+    id: "istanbul",
+    city: "Istanbul",
+    country: "Turkey",
+    flag: "🇹🇷",
+    full: "Marassi Group — Istanbul Office",
+    address:
+      "Emniyet Evleri Mah, Eski Büyükdere Cad. Sapphire Towers No: 1 / No: 1B04, Kağıthane, Istanbul, Turkey",
+    mapQuery: "Sapphire Tower Eski Büyükdere Cad Kağıthane Istanbul",
+    hoursKey: "istanbul",
+  },
+  {
+    id: "cairo",
+    city: "Cairo",
+    country: "Egypt",
+    flag: "🇪🇬",
+    full: "Marassi Group — Cairo Office",
+    address: "Orabi Association, El Obour, Cairo, Egypt",
+    addressArabic: "العبور جمعية عرابي القاهرة مصر",
+    mapQuery: "Orabi Association El Obour Cairo Egypt",
+    hoursKey: "cairo",
+  },
+];
 
 const PRE_CONTACT_FAQS = [
   { id: "mixedContainers" },
@@ -134,26 +193,39 @@ const INFO_CARDS = [
   {
     id: "headOffice",
     icon: Building2,
-    lines: ["Marassi Group", "Pendik, Istanbul", "Turkey"],
+    lines: ["Marassi Group", "Sapphire Towers", "Kağıthane, Istanbul"],
   },
   {
     id: "phone",
     icon: Phone,
-    lines: ["+90 (551) 262 38 59", "Mon – Fri, 9:00 AM – 6:00 PM", "(GMT+3)"],
-    href: "tel:+905512623859",
+    lines: [
+      PRIMARY_CONTACT.phones[0].display,
+      PRIMARY_CONTACT.phones[1]?.display ?? "Mon – Fri, 9:00 – 18:00",
+      "(GMT+3)",
+    ],
+    href: `tel:${PRIMARY_CONTACT.phones[0].raw}`,
   },
   {
     id: "email",
     icon: Mail,
-    lines: ["export@marassigroup.com", "sales@marassigroup.com"],
-    href: "mailto:export@marassigroup.com",
+    lines: [PRIMARY_CONTACT.email, "Direct line to our export team"],
+    href: `mailto:${PRIMARY_CONTACT.email}`,
   },
   {
     id: "workingHours",
     icon: Clock,
-    lines: ["Monday – Friday", "9:00 AM – 6:00 PM", "(GMT+3)"],
+    lines: ["Monday – Friday", "9:00 – 18:00", "(GMT+3)"],
   },
 ];
+
+const officeEmbedUrl = (q: string) =>
+  `https://maps.google.com/maps?width=600&height=400&hl=en&q=${encodeURIComponent(q)}&output=embed`;
+
+const officeMapsUrl = (q: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+
+const officeDirectionsUrl = (q: string) =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(q)}`;
 
 export default function ContactPage() {
   const { locale } = useParams();
@@ -204,10 +276,6 @@ export default function ContactPage() {
       toast.error(t("toast.error"));
     }
   };
-
-  const mapEmbed = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d8000!2d${PRIMARY_OFFICE.lng}!3d${PRIMARY_OFFICE.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2str!4v1`;
-  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${PRIMARY_OFFICE.lat},${PRIMARY_OFFICE.lng}`;
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${PRIMARY_OFFICE.lat},${PRIMARY_OFFICE.lng}`;
 
   return (
     <div className="bg-[#faf8f4]">
@@ -486,7 +554,7 @@ export default function ContactPage() {
                     external
                   />
                   <QuickAction
-                    href="mailto:export@marassigroup.com"
+                    href={`mailto:${PRIMARY_CONTACT.email}`}
                     title={t("support.email.title")}
                     description={t("support.email.description")}
                     icon={<Mail className="h-4 w-4 text-[oklch(0.78_0.12_80)]" />}
@@ -554,108 +622,174 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ───────── OFFICE MAP (DARK CARD) ───────── */}
+      {/* ───────── CONTACT PEOPLE ───────── */}
       <section className="bg-[#faf8f4] pb-16 sm:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="overflow-hidden rounded-2xl border border-[oklch(0.28_0.02_80)] bg-[oklch(0.16_0.02_80)] text-white shadow-xl shadow-[oklch(0.20_0.02_80)]/15"
-          >
-            <div className="grid lg:grid-cols-[1.05fr_1.4fr]">
-              {/* Left: address */}
-              <div className="relative p-7 sm:p-10">
-                <div className="absolute inset-0 z-0 opacity-30">
-                  <div className="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-[oklch(0.78_0.12_80)]/12 blur-3xl" />
+          <div className="text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.60_0.12_75)]">
+              {t("contacts.eyebrow")}
+            </p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
+              {t("contacts.title")}
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              {t("contacts.subtitle")}
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {CONTACTS.map((c, i) => (
+              <motion.div
+                key={c.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="group flex h-full flex-col rounded-2xl border border-border bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-[oklch(0.72_0.11_80)]/45 hover:shadow-lg sm:p-6"
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[oklch(0.78_0.12_80)]/15 text-xs font-bold text-[oklch(0.40_0.10_75)] ring-1 ring-inset ring-[oklch(0.78_0.12_80)]/25">
+                    {c.id}
+                  </span>
+                  {c.primary && (
+                    <span className="rounded-full bg-[oklch(0.66_0.16_35)]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[oklch(0.55_0.17_35)] ring-1 ring-inset ring-[oklch(0.66_0.16_35)]/25">
+                      {t("contacts.primary")}
+                    </span>
+                  )}
                 </div>
-                <div className="relative">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[oklch(0.78_0.12_80)]/40 bg-[oklch(0.78_0.12_80)]/12 text-[oklch(0.78_0.12_80)]">
-                      <MapPin className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold">
-                        {PRIMARY_OFFICE.full}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-white/65">
-                        {PRIMARY_OFFICE.address}
-                      </p>
-                    </div>
-                  </div>
 
-                  <div className="mt-6 flex flex-wrap gap-2.5">
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="h-11 border-[oklch(0.78_0.12_80)]/40 bg-transparent text-sm font-medium text-[oklch(0.82_0.11_80)] hover:border-[oklch(0.78_0.12_80)] hover:bg-[oklch(0.78_0.12_80)]/10 hover:text-[oklch(0.82_0.11_80)]"
-                    >
-                      <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
-                        <Navigation className="mr-2 h-4 w-4" />
-                        {t("map.getDirections")}
-                      </a>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="h-11 border-white/20 bg-transparent text-sm font-medium text-white hover:border-white/40 hover:bg-white/8 hover:text-white"
-                    >
-                      <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
-                        {t("map.viewOnGoogleMaps")}
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </a>
-                    </Button>
-                  </div>
+                <a
+                  href={`mailto:${c.email}`}
+                  className="group/email flex items-center gap-2 break-all rounded-lg bg-[oklch(0.97_0.005_85)] px-3 py-2.5 text-[13px] font-semibold text-[oklch(0.40_0.10_75)] transition-colors hover:bg-[oklch(0.78_0.12_80)]/10"
+                >
+                  <Mail className="h-3.5 w-3.5 shrink-0 text-[oklch(0.50_0.12_75)]" />
+                  <span className="truncate">{c.email}</span>
+                </a>
 
-                  <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/10 pt-6 text-sm">
+                <div className="mt-3 space-y-2">
+                  {c.phones.map((p) => (
                     <a
-                      href={`tel:${PRIMARY_OFFICE.raw}`}
-                      className="group flex items-start gap-2.5 text-white/70 transition-colors hover:text-[oklch(0.82_0.11_80)]"
+                      key={p.raw}
+                      href={`tel:${p.raw}`}
+                      className="flex items-center gap-2 rounded-lg border border-border/60 bg-white px-3 py-2 text-[13px] font-medium tabular-nums text-foreground/85 transition-colors hover:border-[oklch(0.72_0.11_80)]/45 hover:bg-[oklch(0.78_0.12_80)]/8 hover:text-[oklch(0.40_0.10_75)]"
                     >
-                      <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[oklch(0.78_0.12_80)]" />
-                      <span className="truncate">{PRIMARY_OFFICE.display}</span>
+                      <Phone className="h-3.5 w-3.5 shrink-0 text-[oklch(0.50_0.12_75)]" />
+                      {p.display}
                     </a>
-                    <a
-                      href={`mailto:${PRIMARY_OFFICE.email}`}
-                      className="group flex items-start gap-2.5 text-white/70 transition-colors hover:text-[oklch(0.82_0.11_80)]"
-                    >
-                      <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[oklch(0.78_0.12_80)]" />
-                      <span className="truncate">{PRIMARY_OFFICE.email}</span>
-                    </a>
-                  </div>
+                  ))}
                 </div>
-              </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              {/* Right: map */}
-              <div className="relative min-h-[280px] lg:min-h-[360px]">
-                <iframe
-                  src={mapEmbed}
-                  className="absolute inset-0 h-full w-full"
-                  style={{
-                    border: 0,
-                    filter:
-                      "invert(0.92) hue-rotate(180deg) brightness(0.95) saturate(0.55) contrast(0.95)",
-                  }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={t("map.iframeTitle")}
-                />
-                <div className="pointer-events-none absolute inset-0 bg-[oklch(0.14_0.02_80)]/15 mix-blend-multiply" />
-                <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full">
-                  <div className="flex flex-col items-center">
-                    <div className="rounded-md bg-[oklch(0.16_0.02_80)]/95 px-2 py-1 text-[10px] font-semibold text-[oklch(0.78_0.12_80)] shadow-lg">
-                      {t("map.officeBadge")}
+      {/* ───────── OFFICES (2 dark cards with maps) ───────── */}
+      <section className="bg-[#faf8f4] pb-16 sm:pb-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[oklch(0.60_0.12_75)]">
+              {t("offices.eyebrow")}
+            </p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl">
+              {t("offices.title")}
+            </h2>
+          </div>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            {OFFICES.map((office, i) => (
+              <motion.div
+                key={office.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="overflow-hidden rounded-2xl border border-[oklch(0.28_0.02_80)] bg-[oklch(0.16_0.02_80)] text-white shadow-xl shadow-[oklch(0.20_0.02_80)]/15"
+              >
+                {/* Address head */}
+                <div className="relative p-6 sm:p-8">
+                  <div className="absolute inset-0 z-0 opacity-30">
+                    <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[oklch(0.78_0.12_80)]/12 blur-3xl" />
+                  </div>
+                  <div className="relative">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[oklch(0.78_0.12_80)]/40 bg-[oklch(0.78_0.12_80)]/12 text-[oklch(0.78_0.12_80)]">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[oklch(0.78_0.12_80)]">
+                          {office.flag} {office.city}, {office.country}
+                        </p>
+                        <h3 className="mt-1.5 font-[family-name:var(--font-playfair)] text-xl font-bold leading-tight">
+                          {office.full}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-white/65">
+                          {office.address}
+                        </p>
+                        {office.addressArabic && (
+                          <p
+                            dir="rtl"
+                            className="mt-1 text-sm leading-relaxed text-white/45"
+                          >
+                            {office.addressArabic}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <div className="mt-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-[oklch(0.78_0.12_80)] text-[oklch(0.16_0.02_80)] shadow-[0_0_18px_oklch(0.78_0.12_80)]/60">
-                      <MapPin className="h-5 w-5" />
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="h-10 border-[oklch(0.78_0.12_80)]/40 bg-transparent text-xs font-medium text-[oklch(0.82_0.11_80)] hover:border-[oklch(0.78_0.12_80)] hover:bg-[oklch(0.78_0.12_80)]/10 hover:text-[oklch(0.82_0.11_80)]"
+                      >
+                        <a
+                          href={officeDirectionsUrl(office.mapQuery)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Navigation className="mr-2 h-3.5 w-3.5" />
+                          {t("map.getDirections")}
+                        </a>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="h-10 border-white/20 bg-transparent text-xs font-medium text-white hover:border-white/40 hover:bg-white/10 hover:text-white"
+                      >
+                        <a
+                          href={officeMapsUrl(office.mapQuery)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {t("map.viewOnGoogleMaps")}
+                          <ArrowRight className="ml-2 h-3.5 w-3.5" />
+                        </a>
+                      </Button>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </motion.div>
+
+                {/* Map iframe */}
+                <div className="relative h-[260px] sm:h-[300px]">
+                  <iframe
+                    src={officeEmbedUrl(office.mapQuery)}
+                    className="absolute inset-0 h-full w-full"
+                    style={{
+                      border: 0,
+                      filter:
+                        "invert(0.92) hue-rotate(180deg) brightness(0.95) saturate(0.55) contrast(0.95)",
+                    }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${office.city} ${office.country} office map`}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-[oklch(0.14_0.02_80)]/15 mix-blend-multiply" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

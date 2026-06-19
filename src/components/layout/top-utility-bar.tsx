@@ -45,6 +45,7 @@ export function TopUtilityBar() {
     } else {
       parts.unshift(newLocale);
     }
+    // eslint-disable-next-line react-hooks/immutability
     window.location.href = "/" + parts.join("/");
   };
 
@@ -63,18 +64,18 @@ export function TopUtilityBar() {
         </div>
         <div className="flex items-center gap-4 shrink-0">
           <a
-            href="mailto:info@marassigroup.com"
+            href="mailto:m.moamen@marassigroup.com"
             className="flex items-center gap-1.5 transition-colors hover:text-[oklch(0.82_0.11_80)]"
           >
             <Mail className="h-3 w-3" />
-            <span className="hidden md:inline">info@marassigroup.com</span>
+            <span className="hidden md:inline">m.moamen@marassigroup.com</span>
           </a>
           <a
-            href="tel:+97141234567"
+            href="tel:+905512623859"
             className="flex items-center gap-1.5 whitespace-nowrap transition-colors hover:text-[oklch(0.82_0.11_80)]"
           >
             <Phone className="h-3 w-3" />
-            +971 4 123 4567
+            +90 551 262 38 59
           </a>
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 rounded px-1.5 py-0.5 transition-colors hover:text-[oklch(0.82_0.11_80)] outline-none">

@@ -17,7 +17,7 @@ interface RfqEmailPayload {
 }
 
 export async function sendRfqNotification(rfq: RfqEmailPayload) {
-  const adminEmail = process.env.ADMIN_EMAIL ?? "info@marassigrocer.com";
+  const adminEmail = process.env.ADMIN_EMAIL ?? "m.moamen@marassigroup.com";
 
   const itemsHtml =
     rfq.items.length > 0
@@ -75,7 +75,7 @@ interface CustomerApplicationPayload {
 }
 
 export async function sendCustomerApplicationNotification(customer: CustomerApplicationPayload) {
-  const adminEmail = process.env.ADMIN_EMAIL ?? "info@marassigrocer.com";
+  const adminEmail = process.env.ADMIN_EMAIL ?? "m.moamen@marassigroup.com";
   await getResend().emails.send({
     from: "Marassi Grocer <noreply@marassigrocer.com>",
     to: adminEmail,

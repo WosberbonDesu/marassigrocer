@@ -688,7 +688,10 @@
       "securityNote": "Le tue informazioni sono al sicuro e non saranno mai condivise."
     },
     "whatsapp": "Scrivici su WhatsApp",
-    "offices": "Le nostre sedi",
+    "offices": {
+      "eyebrow": "Uffici Globali",
+      "title": "I Nostri Uffici"
+    },
     "toast": {
       "error": "Si è verificato un errore. Riprova."
     },
@@ -800,6 +803,12 @@
       "subtitle": "Collabora con Marassi Group per un approvvigionamento affidabile, prezzi competitivi e un supporto all'export sicuro.",
       "requestQuote": "Richiedi un preventivo",
       "note": "Collaboriamo con importatori, distributori e grossisti in tutto il mondo."
+    },
+    "contacts": {
+      "eyebrow": "Contatti Diretti",
+      "title": "Contatta Direttamente il Nostro Team",
+      "subtitle": "Invia un'email o chiama uno dei membri del nostro team. Il contatto principale è il destinatario predefinito dei moduli inviati da questo sito.",
+      "primary": "Principale"
     }
   },
   "rfqDrawer": {

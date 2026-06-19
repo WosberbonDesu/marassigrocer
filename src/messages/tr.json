@@ -688,7 +688,10 @@
       "securityNote": "Bilgileriniz güvende olup hiçbir zaman paylaşılmayacaktır."
     },
     "whatsapp": "WhatsApp ile Yazın",
-    "offices": "Ofislerimiz",
+    "offices": {
+      "eyebrow": "Global Ofisler",
+      "title": "Ofislerimiz"
+    },
     "toast": {
       "error": "Bir sorun oluştu. Lütfen tekrar deneyin."
     },
@@ -800,6 +803,12 @@
       "subtitle": "Güvenilir tedarik, rekabetçi fiyatlar ve güvenilir ihracat desteği için Marassi Group ile iş ortaklığı yapın.",
       "requestQuote": "Teklif Talep Edin",
       "note": "Dünya genelinde ithalatçılar, distribütörler ve toptancılarla çalışıyoruz."
+    },
+    "contacts": {
+      "eyebrow": "Doğrudan İletişim",
+      "title": "Ekibimize Doğrudan Ulaşın",
+      "subtitle": "Ekibimizin herhangi bir üyesine e-posta veya telefonla ulaşabilirsiniz. Bu sitedeki formlar varsayılan olarak birincil iletişim adresine gönderilir.",
+      "primary": "Birincil"
     }
   },
   "rfqDrawer": {

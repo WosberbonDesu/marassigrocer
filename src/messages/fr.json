@@ -12,19 +12,72 @@
     "insights": "Actualités",
     "contact": "Contact",
     "requestQuote": "Demander un Devis",
-    "downloadCatalog": "Télécharger le Catalogue"
+    "downloadCatalog": "Télécharger le Catalogue",
+    "home": "Accueil",
+    "about": "À Propos",
+    "categories": "Catégories",
+    "exportServices": "Services d'Export",
+    "allCategories": "Toutes les Catégories",
+    "viewAllCategories": "Voir Toutes les Catégories →",
+    "download": "Télécharger",
+    "navigationMenu": "Menu de Navigation",
+    "categoryLinks": {
+      "biscuits": "Biscuits et Confiserie",
+      "dairy": "Produits Laitiers",
+      "beverages": "Boissons",
+      "snacks": "Snacks",
+      "sauces": "Sauces et Condiments",
+      "canned": "Conserves et Aliments Secs"
+    },
+    "exportServiceLinks": {
+      "privateLabel": "Marque Privée",
+      "mixedContainer": "Conteneur Mixte",
+      "logisticsShipping": "Logistique et Expédition",
+      "sourcing": "Sourcing et Approvisionnement",
+      "exportDocs": "Documentation Export"
+    },
+    "primaryLinks": {
+      "home": "Accueil",
+      "products": "Produits",
+      "privateLabel": "Marque Privée",
+      "about": "À Propos",
+      "contact": "Contact"
+    }
   },
   "hero": {
     "title": "Solutions Mondiales d'Exportation, Sourcing et Distribution FMCG",
     "subtitle": "Marassi Group fournit des produits FMCG alimentaires et non alimentaires de haute qualité aux importateurs, distributeurs, grossistes et chaînes de distribution dans le monde entier grâce à un sourcing fiable, un soutien en marque privée, des solutions de conteneurs mixtes et une logistique fiable.",
     "cta1": "Demander un Devis",
-    "cta2": "Télécharger le Catalogue"
+    "cta2": "Télécharger le Catalogue",
+    "eyebrow": "Connexions Mondiales, Qualité de Confiance",
+    "headlineStart": "Export FMCG Mondial,",
+    "headlineHighlight": "Sourcing et Marque Privée",
+    "headlineEnd": "Solutions",
+    "trustNote": "La confiance des importateurs, distributeurs et acheteurs au détail dans le monde entier."
   },
   "proofBar": {
     "since": "Depuis 1996 — Plus de 29 ans",
     "countries": "Plus de 50 Pays Servis",
     "products": "Plus de 10 000 Produits",
-    "warehouse": "Entrepôt de 4 000 m² · Plus de 75 Usines"
+    "warehouse": "Entrepôt de 4 000 m² · Plus de 75 Usines",
+    "items": {
+      "since": {
+        "label": "Années d'Activité",
+        "sub": "Depuis 1996"
+      },
+      "countries": {
+        "label": "Marchés Servis",
+        "sub": "Mondialement"
+      },
+      "products": {
+        "label": "Produits au Catalogue",
+        "sub": "Plus de 20 Catégories"
+      },
+      "warehouse": {
+        "label": "Capacité d'Entrepôt",
+        "sub": "Moderne et Entièrement Équipé"
+      }
+    }
   },
   "globe": {
     "badge": "Portée Mondiale",
@@ -81,7 +134,8 @@
         "title": "Expédition et Livraison",
         "description": "Documentation complète, expédition et support après-vente."
       }
-    }
+    },
+    "learnMore": "En Savoir Plus"
   },
   "whyMarassi": {
     "title": "Pourquoi Marassi",
@@ -148,10 +202,95 @@
       "shelfLife": "Durée de Conservation",
       "packaging": "Emballage",
       "inStock": "En Stock",
-      "onRequest": "Sur Demande"
+      "onRequest": "Sur Demande",
+      "description": "Description",
+      "tabs": {
+        "ingredients": "Ingrédients",
+        "nutrition": "Nutrition",
+        "storage": "Stockage et Durée de Conservation",
+        "export": "Infos Export"
+      },
+      "stockStatus": {
+        "seasonal": "Saisonnier",
+        "discontinued": "Discontinué"
+      }
     },
     "noResults": "Aucun produit ne correspond à vos filtres.",
-    "showing": "{count} produits affichés"
+    "showing": "{count} produits affichés",
+    "breadcrumb": {
+      "home": "Accueil",
+      "products": "Produits"
+    },
+    "trustBadges": {
+      "qualityVerified": "Qualité Vérifiée",
+      "exportReady": "Prêt à Exporter",
+      "certified": "Certifié"
+    },
+    "badges": {
+      "sku": "SKU",
+      "bestSeller": "Meilleure Vente",
+      "hazmat": "Matière Dangereuse",
+      "reefer": "Conteneur Frigorifique"
+    },
+    "quickSpecs": {
+      "pack": "Conditionnement",
+      "caseSize": "Taille du Carton",
+      "moq": "QCM",
+      "shelfLife": "Durée de Conservation",
+      "unitWeight": "Poids Unitaire",
+      "unitUpc": "UPC Unitaire"
+    },
+    "pricing": {
+      "volumePricing": "Tarification par Volume",
+      "liveQuote": "Devis en Direct",
+      "loginOrRfq": "Connectez-vous ou faites une demande de devis pour voir",
+      "fromCases": "À partir de (cartons)",
+      "casePrice": "Prix par Carton",
+      "unitPrice": "Prix Unitaire"
+    },
+    "cta": {
+      "requestSpecSheet": "Demander la Fiche Technique",
+      "viewCertifications": "Voir les Certifications"
+    },
+    "logistics": {
+      "title": "Logistique et Chargement",
+      "casesPerPallet": "Cartons / palette",
+      "casesPerLayer": "Cartons / couche",
+      "dimensions": "Dimensions",
+      "caseUpc": "UPC Carton",
+      "carton": "Carton",
+      "loading": "Chargement"
+    },
+    "sections": {
+      "ingredients": "Ingrédients",
+      "allergens": "Allergènes",
+      "storageInstructions": "Instructions de Stockage",
+      "exportSuitability": "Aptitude à l'Export",
+      "cartonDetails": "Détails du Carton",
+      "loadingInfo": "Infos de Chargement"
+    },
+    "nutrition": {
+      "nutrient": "Nutriment",
+      "amount": "Quantité",
+      "per": "Pour"
+    },
+    "whyStrip": {
+      "verifiedManufacturer": "Fabricant Vérifié",
+      "exportMarkets": "Plus de 50 Marchés d'Export",
+      "containerLcl": "Chargement Conteneur et LCL",
+      "fullDocumentation": "Documentation Complète"
+    },
+    "related": {
+      "eyebrow": "Vous pourriez aussi aimer",
+      "title": "Produits Associés",
+      "viewAllIn": "Voir Tous dans {category}",
+      "origin": "Origine : {country}"
+    },
+    "ctaBand": {
+      "title": "Prêt à importer <product></product> ?",
+      "subtitle": "Ajoutez-le à votre liste de demande de devis et notre équipe d'export répondra avec les prix, QCM et options d'expédition adaptés à votre marché.",
+      "requestDocumentation": "Demander la Documentation"
+    }
   },
   "privateLabel": {
     "title": "Marque Privée",
@@ -185,7 +324,10 @@
       "subtitle": "Plages typiques pour les commandes en marque privée",
       "moqRange": "5 000 - 50 000 unités",
       "leadTime": "8 - 16 semaines",
-      "sampling": "2 - 4 semaines"
+      "sampling": "2 - 4 semaines",
+      "moqRangeLabel": "Plage QCM",
+      "leadTimeLabel": "Délai de Livraison",
+      "samplingLabel": "Échantillonnage"
     },
     "form": {
       "title": "Lancez Votre Projet de Marque Privée",
@@ -197,7 +339,17 @@
       "timeline": "Calendrier",
       "notes": "Notes Supplémentaires",
       "fileUpload": "Télécharger des Fichiers de Référence (logo, emballage)",
-      "submit": "Envoyer la Demande"
+      "submit": "Envoyer la Demande",
+      "success": "Demande envoyée avec succès ! Nous vous contacterons sous 48-72 heures.",
+      "error": "Une erreur est survenue. Veuillez réessayer.",
+      "name": "Nom Complet",
+      "company": "Entreprise",
+      "email": "E-mail",
+      "phone": "Téléphone / WhatsApp",
+      "expectedQuantityPlaceholder": "ex. 10 000 unités / 1×40' conteneur",
+      "packagingLanguagePlaceholder": "ex. Anglais, Arabe",
+      "timelinePlaceholder": "ex. T2 2026",
+      "notesPlaceholder": "Produits de référence, exigences particulières…"
     }
   },
   "howItWorksPage": {
@@ -255,7 +407,8 @@
         ]
       }
     },
-    "whatWeNeed": "Ce dont nous avons besoin de vous"
+    "whatWeNeed": "Ce dont nous avons besoin de vous",
+    "startRfq": "Démarrer Votre Demande de Devis"
   },
   "logistics": {
     "title": "Logistique et Documentation",
@@ -314,7 +467,31 @@
     "subtitle": "Expérience dans les principales régions mondiales",
     "popularCategories": "Catégories Populaires",
     "regulatoryNotes": "Notes Réglementaires",
-    "viewDetails": "Voir les Détails"
+    "viewDetails": "Voir les Détails",
+    "meta": {
+      "title": "Marchés d'Export",
+      "description": "Marassi Group sert des clients dans plus de 50 pays à travers le CCG, le MENA, l'Afrique, l'Europe et au-delà."
+    },
+    "hero": {
+      "title": "Marchés d'Export",
+      "subtitle": "Plus de 50 pays servis — CCG, MENA, Afrique, Europe et au-delà. Sourcing direct usine et logistique d'export fiable.",
+      "breadcrumb": "Marchés d'Export"
+    },
+    "stats": {
+      "countriesServed": "Pays Servis",
+      "marketRegions": "Régions de Marché",
+      "sourcingCountries": "Pays de Sourcing"
+    },
+    "empty": {
+      "title": "Marchés bientôt disponibles",
+      "description": "Notre équipe finalise la liste des marchés. En attendant, contactez-nous pour discuter de n'importe quelle région — nous y avons probablement déjà des clients.",
+      "cta": "Contacter l'Équipe Export"
+    },
+    "cta": {
+      "title": "Vous ne voyez pas votre marché ?",
+      "description": "Nous servons des clients dans {count} pays — contactez-nous pour un sourcing et une logistique sur mesure.",
+      "button": "Discuter de Votre Marché"
+    }
   },
   "company": {
     "title": "À propos de Marassi Group",
@@ -340,6 +517,137 @@
     },
     "offices": {
       "title": "Nos Bureaux"
+    },
+    "breadcrumb": {
+      "home": "Accueil",
+      "about": "À Propos"
+    },
+    "hero": {
+      "titleLine1": "Partenaire d'Export FMCG",
+      "titleLine2": "de Confiance Depuis 1996",
+      "subtitle": "Marassi Group a construit des partenariats à long terme avec des importateurs, distributeurs, grossistes et détaillants en offrant un sourcing fiable, un soutien à l'export et des solutions de produits FMCG sur les marchés mondiaux.",
+      "productsAlt": "Gamme de produits FMCG"
+    },
+    "story": {
+      "eyebrow": "Notre Histoire",
+      "titleLine1": "Bâtie sur la Confiance. Animée par les",
+      "titleLine2": "Partenariats Mondiaux.",
+      "paragraph1": "Fondée en 1996, Marassi Group a commencé avec une vision claire — devenir un lien de confiance entre les fabricants FMCG de qualité et les marchés mondiaux. Depuis nos débuts en tant que partenaire de sourcing jusqu'à devenir un fournisseur intégré de solutions d'export et de marque privée, nous avons grandi grâce à l'engagement, la fiabilité et le succès de nos clients.",
+      "paragraph2": "Aujourd'hui, nous travaillons avec des marques et fournisseurs leaders pour livrer une large gamme de produits FMCG dans plus de 50 marchés mondiaux, garantissant une qualité constante, des prix compétitifs et un service fiable.",
+      "cta": "En Savoir Plus Sur Notre Parcours",
+      "images": {
+        "warehouse": "Intérieur de l'entrepôt",
+        "ship": "Porte-conteneurs",
+        "handshake": "Partenariat",
+        "products": "Gamme de produits",
+        "truck": "Camion de livraison"
+      }
+    },
+    "stats": {
+      "years": "Années d'Activité",
+      "markets": "Marchés Servis",
+      "products": "Produits",
+      "warehouse": "Entrepôt",
+      "network": "Réseau de Fournisseurs"
+    },
+    "mvv": {
+      "mission": {
+        "title": "Mission",
+        "body": "Connecter le monde à des produits FMCG de qualité grâce à un sourcing de confiance, des solutions d'export efficaces et des partenariats à long terme créateurs de valeur pour nos clients."
+      },
+      "vision": {
+        "title": "Vision",
+        "body": "Être un partenaire d'export FMCG mondial de premier plan reconnu pour son excellence, sa fiabilité et son innovation dans la connexion des marques aux marchés mondiaux."
+      },
+      "values": {
+        "title": "Valeurs"
+      }
+    },
+    "values": {
+      "items": {
+        "integrity": "Intégrité dans chaque partenariat",
+        "quality": "Qualité dans chaque produit",
+        "reliability": "Fiabilité dans chaque livraison",
+        "growth": "Croissance par la collaboration"
+      }
+    },
+    "reasons": {
+      "eyebrow": "Pourquoi les Acheteurs Font Confiance à Marassi",
+      "heading": "6 Raisons Pour Lesquelles les Acheteurs Mondiaux Nous Choisissent",
+      "items": {
+        "sourcing": {
+          "title": "Sourcing Produit Fiable",
+          "description": "Nous travaillons avec des fabricants vérifiés pour offrir une qualité constante."
+        },
+        "documentation": {
+          "title": "Expertise en Documentation Export",
+          "description": "Support de bout en bout pour tous les documents d'export et la conformité."
+        },
+        "network": {
+          "title": "Réseau Solide de Fournisseurs FMCG",
+          "description": "Accès à une large gamme de fournisseurs et marques mondiaux de confiance."
+        },
+        "privateLabel": {
+          "title": "Support Marque Privée",
+          "description": "Solutions de marque privée personnalisées adaptées à votre marque et marché."
+        },
+        "communication": {
+          "title": "Communication Transparente",
+          "description": "Mises à jour claires, en temps opportun, et gestion dédiée des comptes."
+        },
+        "marketFocused": {
+          "title": "Solutions Axées sur le Marché",
+          "description": "Produits et stratégies conçus pour le succès de votre marché cible."
+        }
+      }
+    },
+    "milestones": {
+      "eyebrow": "Notre Parcours",
+      "heading": "Jalons de Croissance et d'Excellence",
+      "items": {
+        "y1996": "Fondation de l'entreprise",
+        "y2005": "Expansion dans le sourcing FMCG",
+        "y2015": "Réseau d'export international élargi",
+        "y2020": "Développement du service marque privée",
+        "y2025": "Croissance mondiale à l'export"
+      }
+    },
+    "globalReach": {
+      "eyebrow": "Portée Mondiale",
+      "titleLine1": "Connecter les Produits",
+      "titleLine2": "FMCG aux",
+      "titleLine3": "Marchés Mondiaux",
+      "description": "Notre réseau solide nous permet de livrer des produits FMCG aux importateurs et détaillants à travers le monde avec fiabilité et efficacité.",
+      "stats": {
+        "markets": "Marchés",
+        "sourcingHubs": "Hubs de Sourcing",
+        "factories": "Usines"
+      },
+      "cta": "Voir Nos Marchés",
+      "regions": {
+        "europe": "Europe",
+        "middleEast": "Moyen-Orient",
+        "gulf": "Golfe",
+        "northAfrica": "Afrique du Nord",
+        "westAfrica": "Afrique de l'Ouest",
+        "eastAfrica": "Afrique de l'Est",
+        "southAsia": "Asie du Sud",
+        "seAsia": "Asie du Sud-Est",
+        "eastAsia": "Asie de l'Est"
+      }
+    },
+    "cta": {
+      "titleLine1": "Construisez Votre Chaîne d'Approvisionnement FMCG",
+      "titleLine2": "avec Marassi Group",
+      "subtitle": "Associez-vous à un expert export de confiance pour des produits de qualité, des prix compétitifs et un service fiable sur les marchés mondiaux.",
+      "contactUs": "Nous Contacter",
+      "requestProfile": "Demander la Présentation de l'Entreprise",
+      "bullets": {
+        "pricing": "Prix Compétitifs",
+        "quality": "Qualité Assurée",
+        "delivery": "Livraison Ponctuelle",
+        "standards": "Standards Mondiaux"
+      }
     }
   },
   "insights": {
@@ -362,10 +670,146 @@
       "buyerType": "Type d'Acheteur",
       "message": "Message",
       "submit": "Envoyer le Message",
-      "success": "Message envoyé ! Notre équipe vous recontactera dans les 24 heures."
+      "success": "Message envoyé ! Notre équipe vous recontactera dans les 24 heures.",
+      "namePlaceholder": "Entrez votre nom complet",
+      "companyPlaceholder": "Entrez le nom de votre entreprise",
+      "countryPlaceholder": "Sélectionnez votre pays",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "Entrez votre adresse e-mail",
+      "phonePlaceholder": "Entrez votre numéro de téléphone ou WhatsApp",
+      "inquiryType": "Type de Demande",
+      "inquiryTypePlaceholder": "Sélectionnez le type de demande",
+      "productCategory": "Catégorie de Produit",
+      "productCategoryPlaceholder": "Sélectionnez la catégorie de produit",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Entrez le sujet",
+      "messagePlaceholder": "Parlez-nous de vos besoins…",
+      "submitting": "Envoi en cours…",
+      "securityNote": "Vos informations sont sécurisées et ne seront jamais partagées."
     },
     "whatsapp": "Discuter sur WhatsApp",
-    "offices": "Nos Bureaux"
+    "offices": {
+      "eyebrow": "Bureaux Mondiaux",
+      "title": "Nos Bureaux"
+    },
+    "toast": {
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "breadcrumb": {
+      "home": "Accueil",
+      "contact": "Contact"
+    },
+    "hero": {
+      "titlePrefix": "Contactez",
+      "subtitle": "Parlez à notre équipe d'export pour le sourcing produit, les projets de marque privée, les demandes de catalogue, les demandes de tarification et le support international d'approvisionnement FMCG."
+    },
+    "infoCards": {
+      "headOffice": {
+        "label": "Siège Social"
+      },
+      "phone": {
+        "label": "Téléphone"
+      },
+      "email": {
+        "label": "E-mail"
+      },
+      "workingHours": {
+        "label": "Heures d'Ouverture"
+      }
+    },
+    "getInTouch": {
+      "title": "Entrer en Contact",
+      "subtitle": "Remplissez le formulaire ci-dessous et nos spécialistes export vous répondront rapidement."
+    },
+    "support": {
+      "title": "Besoin d'un Support Plus Rapide ?",
+      "subtitle": "Notre équipe d'export est prête à vous aider à travers les fuseaux horaires avec des réponses rapides et des solutions fiables.",
+      "whatsapp": {
+        "title": "Support WhatsApp",
+        "description": "Discutez avec notre équipe instantanément"
+      },
+      "email": {
+        "title": "Écrivez à Notre Équipe",
+        "description": "Envoyez-nous un e-mail à tout moment"
+      },
+      "catalog": {
+        "title": "Télécharger le Catalogue",
+        "description": "Découvrez notre gamme complète de produits"
+      },
+      "responseTime": "Nous répondons généralement en",
+      "responseTimeHighlight": "1 heure ouvrée"
+    },
+    "inquiryTypes": {
+      "eyebrow": "Comment Pouvons-Nous Aider ?",
+      "title": "Types de Demandes Courantes",
+      "cards": {
+        "productSourcing": {
+          "title": "Sourcing Produit",
+          "description": "Trouvez les bons produits FMCG pour votre marché."
+        },
+        "privateLabel": {
+          "title": "Marque Privée",
+          "description": "Solutions marque privée personnalisées pour votre enseigne."
+        },
+        "exportDocumentation": {
+          "title": "Documentation Export",
+          "description": "Support documents, conformité et commerce international."
+        },
+        "catalogRequest": {
+          "title": "Demande de Catalogue",
+          "description": "Demandez notre dernier catalogue produit."
+        },
+        "bulkOrder": {
+          "title": "Demande Commande en Gros",
+          "description": "Commandes en gros volumes et devis conteneur."
+        },
+        "partnership": {
+          "title": "Demande de Partenariat",
+          "description": "Explorez les partenariats mondiaux et la distribution."
+        }
+      }
+    },
+    "map": {
+      "getDirections": "Itinéraire",
+      "viewOnGoogleMaps": "Voir sur Google Maps",
+      "iframeTitle": "Bureau Marassi Group",
+      "officeBadge": "BUREAU"
+    },
+    "faqs": {
+      "eyebrow": "Questions ?",
+      "title": "Avant de Nous Contacter",
+      "items": {
+        "mixedContainers": {
+          "question": "Exportez-vous des conteneurs mixtes ?",
+          "answer": "Oui — la consolidation de conteneurs mixtes est l'une de nos forces principales. Nous combinons des produits de différentes marques et catégories dans un seul conteneur de 20' ou 40'."
+        },
+        "privateLabel": {
+          "question": "Soutenez-vous la marque privée ?",
+          "answer": "Oui — nous offrons des solutions de marque privée de bout en bout, de la formulation à l'emballage. Le QCM pour la marque privée commence à partir de 5 000 unités selon le produit."
+        },
+        "catalog": {
+          "question": "Puis-je demander un catalogue produit ?",
+          "answer": "Absolument — utilisez le raccourci « Télécharger le Catalogue » ou envoyez-nous un message rapide et nous vous enverrons notre catalogue complet par e-mail sous un jour ouvré."
+        },
+        "markets": {
+          "question": "Quels marchés servez-vous ?",
+          "answer": "Nous exportons vers plus de 50 marchés à travers le MENA, l'Afrique, l'Europe et certaines parties d'Asie. Indiquez-nous votre pays cible et nous présenterons ce qui est possible."
+        }
+      }
+    },
+    "cta": {
+      "titleStart": "Construisons Votre",
+      "titleHighlight": "Chaîne d'Approvisionnement FMCG",
+      "subtitle": "Associez-vous à Marassi Group pour un sourcing de confiance, des prix compétitifs et un support export fiable.",
+      "requestQuote": "Demander un Devis",
+      "note": "Nous travaillons avec des importateurs, distributeurs et grossistes dans le monde entier."
+    },
+    "contacts": {
+      "eyebrow": "Contacts Directs",
+      "title": "Contactez Notre Équipe Directement",
+      "subtitle": "Envoyez un e-mail ou appelez n'importe quel membre de notre équipe. Le contact principal est le destinataire par défaut des formulaires soumis sur ce site.",
+      "primary": "Principal"
+    }
   },
   "rfqDrawer": {
     "title": "Demander un Devis",
@@ -398,12 +842,29 @@
       "partner": "Partenaire B2B",
       "submit": "Soumettre la Demande",
       "submitting": "Envoi en cours...",
-      "success": "Demande soumise avec succès ! Nous vous recontacterons dans 24 à 48 heures."
+      "success": "Demande soumise avec succès ! Nous vous recontacterons dans 24 à 48 heures.",
+      "countryPlaceholder": "ex. Arabie saoudite",
+      "notesPlaceholder": "Intérêts produits, prix cible…",
+      "phonePlaceholder": "+90 …",
+      "submissionFailed": "L'envoi a échoué. Veuillez réessayer.",
+      "error": "Une erreur est survenue. Veuillez réessayer."
     },
     "items": {
       "quantity": "Qté",
       "remove": "Supprimer",
-      "total": "{count} articles dans votre liste de devis"
+      "total": "{count} articles dans votre liste de devis",
+      "clearAll": "Tout effacer"
+    },
+    "description": "Obtenez un devis pour votre commande",
+    "emptyListHint": "Parcourez les produits et ajoutez des articles à votre liste",
+    "promo": {
+      "label": "Code promo (optionnel)",
+      "placeholder": "SUMMER25",
+      "apply": "Appliquer",
+      "applied": "Appliqué :",
+      "percentOff": "{value}% de réduction",
+      "amountOff": "{value} $ de réduction",
+      "invalidCode": "Code invalide"
     }
   },
   "catalogModal": {
@@ -436,7 +897,24 @@
     "getInTouch": "Entrer en Contact",
     "whatsapp": "WhatsApp",
     "copyright": "Marassi Group. Tous droits réservés.",
-    "tagline": "Solutions d'Exportation FMCG et Marque Privée"
+    "tagline": "Solutions d'Exportation FMCG et Marque Privée",
+    "taglineDescription": "Depuis 1996, nous servons plus de 50 pays avec plus de 10 000 produits issus de plus de 75 usines partenaires dans le monde.",
+    "globalFmcgExport": "EXPORT FMCG MONDIAL",
+    "globalOffices": "Bureaux Mondiaux",
+    "links": {
+      "whyMarassi": "Pourquoi Marassi",
+      "exportMarkets": "Marchés d'Export",
+      "certificates": "Certificats",
+      "privateLabel": "Marque Privée",
+      "mixedContainer": "Conteneur Mixte",
+      "quickOrder": "Commande Rapide",
+      "blogInsights": "Blog et Actualités"
+    },
+    "legal": {
+      "privacy": "Politique de Confidentialité",
+      "terms": "Conditions Générales",
+      "cookies": "Politique des Cookies"
+    }
   },
   "common": {
     "learnMore": "En Savoir Plus",
@@ -552,7 +1030,11 @@
       "eyebrow": "Confiance et Conformité",
       "title": "Qualité Certifiée.",
       "titleAccent": "Confiance Mondiale.",
-      "subtitle": "Chaque produit que nous sourçons et exportons est soutenu par des certifications internationalement reconnues, des fournisseurs vérifiés et une documentation complète adaptée aux exigences réglementaires de votre marché."
+      "subtitle": "Chaque produit que nous sourçons et exportons est soutenu par des certifications internationalement reconnues, des fournisseurs vérifiés et une documentation complète adaptée aux exigences réglementaires de votre marché.",
+      "breadcrumbHome": "Accueil",
+      "breadcrumbCurrent": "Certificats et Qualité",
+      "titleLine1": "Qualité Certifiée.",
+      "titleLine2": "Confiance Mondiale."
     },
     "stats": {
       "verifiedSuppliers": "Fournisseurs Vérifiés",
@@ -594,6 +1076,33 @@
         "name": "Casher",
         "tagline": "Certifié Casher",
         "description": "Disponible sur demande pour les lignes de produits sélectionnées et la marque privée."
+      },
+      "activeBadge": "Actif",
+      "items": {
+        "iso22000": {
+          "tagline": "Gestion de la Sécurité Alimentaire",
+          "description": "Norme internationalement reconnue de système de management de la sécurité alimentaire."
+        },
+        "haccp": {
+          "tagline": "Analyse des Dangers",
+          "description": "Approche préventive systématique de la sécurité alimentaire, de la matière première au consommateur."
+        },
+        "halal": {
+          "tagline": "Certifié Halal",
+          "description": "Conformité aux lois alimentaires islamiques — traçabilité du sourcing à l'expédition."
+        },
+        "brcIfs": {
+          "tagline": "Standards Mondiaux",
+          "description": "Normes internationalement acceptées pour le commerce alimentaire mondial et le commerce de détail."
+        },
+        "gmp": {
+          "tagline": "Bonnes Pratiques de Fabrication",
+          "description": "Environnements de production à qualité assurée et discipline des processus."
+        },
+        "kosher": {
+          "tagline": "Certifié Casher",
+          "description": "Disponible sur demande pour les gammes de produits sélectionnées et la marque privée."
+        }
       }
     },
     "process": {
@@ -608,7 +1117,27 @@
       "step3Title": "Examen de la Documentation",
       "step3Desc": "COA, COO, santé et certificats halal vérifiés pour chaque envoi et marché cible.",
       "step4Title": "Livraison Conforme",
-      "step4Desc": "Documentation d'exportation complète, étiquetage et paperasse douanière adaptés aux réglementations de destination."
+      "step4Desc": "Documentation d'exportation complète, étiquetage et paperasse douanière adaptés aux réglementations de destination.",
+      "titleStart": "De la Source à l'Expédition —",
+      "titleHighlight": "Vérifié",
+      "items": {
+        "supplierVetting": {
+          "title": "Vérification des Fournisseurs",
+          "desc": "Chaque fabricant est audité pour l'hygiène des installations, les certifications et la traçabilité avant l'intégration."
+        },
+        "productTesting": {
+          "title": "Tests Produits",
+          "desc": "Tests en laboratoire pré-expédition pour les paramètres de sécurité microbienne, chimique et physique lorsque requis."
+        },
+        "documentationReview": {
+          "title": "Revue Documentaire",
+          "desc": "Certificats COA, COO, sanitaires et halal vérifiés pour chaque expédition et marché cible."
+        },
+        "compliantDelivery": {
+          "title": "Livraison Conforme",
+          "desc": "Documentation d'export complète, étiquetage et formalités douanières adaptés aux réglementations de destination."
+        }
+      }
     },
     "library": {
       "eyebrow": "Certifications Actives",
@@ -637,13 +1166,39 @@
         "Certificat de Vente Libre",
         "Liste de Colisage et Facture Commerciale",
         "Fiche de Données de Sécurité (MSDS)"
-      ]
+      ],
+      "titleLine1": "Chaque Expédition.",
+      "titleLine2": "Entièrement Documentée.",
+      "items": {
+        "coo": "Certificat d'Origine (COO)",
+        "coa": "Certificat d'Analyse (COA)",
+        "health": "Certificat Sanitaire",
+        "halal": "Certificat Halal",
+        "phytosanitary": "Certificat Phytosanitaire",
+        "freeSale": "Certificat de Libre Vente",
+        "packingInvoice": "Liste de Colisage et Facture Commerciale",
+        "msds": "Fiche de Données de Sécurité (MSDS)"
+      }
     },
     "cta": {
       "title": "Besoin d'un certificat spécifique ou d'un rapport de test pour une expédition ?",
       "subtitle": "Notre équipe qualité peut fournir des COA au niveau du produit, des certificats sanitaires et des certificats d'origine sur demande — généralement dans les 48 heures.",
       "request": "Demander la Documentation",
-      "about": "À Propos de Notre Entreprise"
+      "about": "À Propos de Notre Entreprise",
+      "requestDocumentation": "Demander la Documentation",
+      "aboutCompany": "À Propos de Notre Entreprise"
+    },
+    "gallery": {
+      "eyebrow": "Certifications Actives",
+      "title": "Notre Bibliothèque de Certificats en Direct",
+      "subtitle": "Parcourez et téléchargez les certifications actuelles. Besoin de documentation au niveau du produit ? Contactez notre équipe qualité.",
+      "requestSpecific": "Demander un Certificat Spécifique",
+      "emptyTitle": "Publication des certificats bientôt",
+      "emptyDescription": "Notre équipe qualité compile et traduit les derniers scans de certificats. En attendant, demandez tout document spécifique via notre formulaire de contact.",
+      "requestDocumentation": "Demander la Documentation",
+      "validBadge": "Valide",
+      "downloadCertificate": "Télécharger le Certificat",
+      "requestDocument": "Demander le Document"
     }
   },
   "mixedContainerPage": {

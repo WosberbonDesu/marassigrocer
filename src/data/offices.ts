@@ -2,30 +2,24 @@ import { Office } from "@/types";
 
 export const offices: Office[] = [
   {
-    id: "office-1",
+    id: "istanbul",
     city: "Istanbul",
     country: "Turkey",
-    address: "Kurtkoy, Seyhli Mah., Bol Ahenk Sk. No:5, 34906 Pendik, Istanbul",
-    phone: "+90 216 000 0000",
-    email: "info@marassigroup.com",
-    mapLink: "https://www.google.com/maps?q=40.8950,29.3050",
+    address:
+      "Emniyet Evleri Mah, Eski Büyükdere Cad. Sapphire Towers No: 1 / No: 1B04, Kağıthane, Istanbul, Turkey",
+    phone: "+90 551 262 38 59",
+    email: "m.moamen@marassigroup.com",
+    mapLink:
+      "https://www.google.com/maps?q=Sapphire+Tower+Eski+Buyukdere+Cad+Kagithane+Istanbul",
   },
   {
-    id: "office-2",
-    city: "Damanhour",
+    id: "cairo",
+    city: "Cairo",
     country: "Egypt",
-    address: "Damanhour, El Beheira Governorate, Egypt",
-    phone: "+20 105 048 3361",
-    email: "egypt@marassigroup.com",
-    mapLink: "https://www.google.com/maps?q=31.0409,30.4682",
-  },
-  {
-    id: "office-3",
-    city: "Dubai",
-    country: "UAE",
-    address: "Business Bay, Dubai, United Arab Emirates",
-    phone: "+971 4 000 0000",
-    email: "dubai@marassigroup.com",
-    mapLink: "https://www.google.com/maps?q=25.1865,55.2614",
+    address: "Orabi Association, El Obour, Cairo, Egypt",
+    phone: "+20 150 855 77 41",
+    email: "m.moamen@marassigroup.com",
+    mapLink:
+      "https://www.google.com/maps?q=Orabi+Association+El+Obour+Cairo+Egypt",
   },
 ];
