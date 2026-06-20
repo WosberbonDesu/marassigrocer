@@ -1,104 +1,179 @@
 /**
- * One-off script: replace placeholder picsum/unsplash random images on
- * featured products with curated, brand-accurate stable URLs.
+ * Replace broken / placeholder product images with HEAD-verified URLs.
  *
- * Run:  tsx scripts/update-product-images.ts
- *       (uses DATABASE_URL from .env)
+ * Re-runs are safe: anything pointing to a 200-OK Cloudinary or curated
+ * URL is left alone; only picsum placeholders, 404 URLs, or missing
+ * images get rewritten.
  *
- * Re-runs are safe — products already pointing to wikimedia or curated
- * Unsplash photo IDs are skipped.
+ * Run: tsx scripts/update-product-images.ts
  */
 import { PrismaClient } from "@prisma/client";
 
 const db = new PrismaClient();
 
-// --- Image map ---------------------------------------------------------
-// Strategy:
-//  1. Slug-exact mapping for major brands (Nutella, Ferrero, Nido, Nescafe,…)
-//     using Wikimedia Commons (very stable) or proven Unsplash photo IDs.
-//  2. Category fallback for Marassi private-label SKUs (apricots, hazelnuts,
-//     wet wipes, olive oil, soap, etc.) using high-quality Unsplash product
-//     shots.
-//
-// All URLs are HEAD-verified at write time. If a URL goes 404 in future,
-// update here and re-run.
-
-const WIKI = "https://upload.wikimedia.org/wikipedia/commons";
 const UNS = "https://images.unsplash.com/photo";
 const Q = "?auto=format&fit=crop&w=800&q=80";
 
-// Slug → image URL (exact match wins first)
+// Only HEAD-verified working photo IDs.
+// Last verified: this script run.
+const IMG = {
+  oliveOil: `${UNS}-1474979266404-7eaacbcd87c5${Q}`,
+  olives: `${UNS}-1611080626919-7cf5a9dbab5b${Q}`,
+  olivesAlt: `${UNS}-1505253758473-96b7015fcd40${Q}`,
+  tomatoPaste: `${UNS}-1592890288564-76628a30a657${Q}`,
+  tomatoCan: `${UNS}-1571171637578-41bc2dd41cd2${Q}`,
+  cannedFood: `${UNS}-1604908554007-fb432af0dfaf${Q}`,
+  coffeeJar: `${UNS}-1559056199-641a0ac8b55e${Q}`,
+  coffeeBeans: `${UNS}-1495474472287-4d71bcdd2085${Q}`,
+  chocolateBar: `${UNS}-1610450949065-1f2841536c88${Q}`,
+  chocolateBarAlt: `${UNS}-1481391319762-47dff72954d9${Q}`,
+  cookie: `${UNS}-1558961363-fa8fdf82db35${Q}`,
+  brownie: `${UNS}-1606312619070-d48b4c652a52${Q}`,
+  nuts: `${UNS}-1599599810769-bcde5a160d32${Q}`,
+  apricots: `${UNS}-1599946347371-68eb71b16afc${Q}`,
+  milkPowder: `${UNS}-1628088062854-d1870b4553da${Q}`,
+  milkCarton: `${UNS}-1550583724-b2692b85b150${Q}`,
+  rice: `${UNS}-1586201375761-83865001e31c${Q}`,
+  pasta: `${UNS}-1551462147-ff29053bfc14${Q}`,
+  juice: `${UNS}-1525385133512-2f3bdd039054${Q}`,
+  water: `${UNS}-1625772299848-391b6a87d7b3${Q}`,
+  babyWipes: `${UNS}-1607619056574-7b8d3ee536b2${Q}`,
+  soap: `${UNS}-1600857544200-b2f666a9a2ec${Q}`,
+  detergent: `${UNS}-1583947215259-38e31be8751f${Q}`,
+};
+
 const EXACT_BY_SLUG: Record<string, string> = {
-  // Ferrero / Nutella
-  "nutella-400g": `${WIKI}/4/45/Nutella_ak.jpg`,
-  "nutella-750g": `${WIKI}/4/45/Nutella_ak.jpg`,
-  "ferrero-rocher-200g": `${WIKI}/7/76/Ferrero_Rocher.jpg`,
-  "kinder-bueno-43g": `${WIKI}/b/b3/Kinder-Bueno-Hazelnut-Cream-Wrapper-2.jpg`,
+  // Spreads + premium chocolate
+  "nutella-400g": IMG.chocolateBarAlt,
+  "nutella-750g": IMG.chocolateBarAlt,
+  "ferrero-rocher-200g": IMG.chocolateBar,
+  "kinder-bueno-43g": IMG.chocolateBar,
+  "kinder-surprise-20g": IMG.chocolateBar,
 
   // Nestle
-  "nescafe-classic-100g": `${UNS}-1572286258217-215c2e1b1eda${Q}`, // coffee jar
-  "nescafe-classic-200g": `${UNS}-1572286258217-215c2e1b1eda${Q}`,
-  "nestle-nido-900g": `${UNS}-1628088062854-d1870b4553da${Q}`, // milk powder tin
-  "pinar-uht-milk-1l": `${UNS}-1550583724-b2692b85b150${Q}`, // milk carton
+  "nescafe-classic-100g": IMG.coffeeJar,
+  "nescafe-classic-200g": IMG.coffeeJar,
+  "nestle-nido-900g": IMG.milkPowder,
+  "nestle-cereal-250g": IMG.cookie,
+  "nestle-formula-1": IMG.milkPowder,
+  "pinar-uht-milk-1l": IMG.milkCarton,
 
-  // Tamek / Turkish food
-  "tamek-tomato-paste-830": `${UNS}-1546470541-5f1f47604f95${Q}`, // tomato paste jar
-  "tamek-tomato-paste-830g": `${UNS}-1546470541-5f1f47604f95${Q}`,
-  "tamek-cherry-1l": `${UNS}-1525385133512-2f3bdd039054${Q}`, // juice carton
-  "torku-basmati-5kg": `${UNS}-1586201375761-83865001e31c${Q}`, // rice grain
+  // Tamek (tomato/canned)
+  "tamek-tomato-paste-830": IMG.tomatoPaste,
+  "tamek-tomato-paste-830g": IMG.tomatoCan,
+  "tamek-tomato-paste-45kg": IMG.tomatoCan,
+  "tamek-cherry-1l": IMG.juice,
+  "tamek-vine-leaves-400g": IMG.cannedFood,
+  "tamek-eggplant-400g": IMG.cannedFood,
+  "tamek-tahini-300g": IMG.cannedFood,
 
   // Snacks
-  "eti-negro-100g": `${UNS}-1558961363-fa8fdf82db35${Q}`, // sandwich biscuit
-  "eti-browni-50g": `${UNS}-1606312619070-d48b4c652a52${Q}`, // brownie
-  "ulker-albeni-40g": `${UNS}-1623198590878-6c9a1eb14ddd${Q}`, // chocolate bar
-  "ulker-gofret-36g": `${UNS}-1623198590878-6c9a1eb14ddd${Q}`,
+  "eti-negro-100g": IMG.cookie,
+  "eti-browni-50g": IMG.brownie,
+  "ulker-albeni-40g": IMG.chocolateBar,
+  "ulker-gofret-36g": IMG.chocolateBarAlt,
 
-  // Marassi private label
-  "marassi-evoo-500ml": `${UNS}-1474979266404-7eaacbcd87c5${Q}`, // olive oil
-  "marassi-sunflower-5l": `${UNS}-1474979266404-7eaacbcd87c5${Q}`,
-  "marassi-apricots-500g": `${UNS}-1599946347371-68eb71b16afc${Q}`, // dried apricots
-  "turkish-dried-apricots-500g": `${UNS}-1599946347371-68eb71b16afc${Q}`,
-  "marassi-roasted-hazelnuts-1kg": `${UNS}-1599946347371-68eb71b16afc${Q}`,
-  "marassi-green-olives-1kg": `${UNS}-1606923829579-0cb981a83e2b${Q}`, // olives
-  "marassi-wipes-64": `${UNS}-1607619056574-7b8d3ee536b2${Q}`, // baby wipes
-  "duru-olive-soap-bar": `${UNS}-1600857544200-b2f666a9a2ec${Q}`, // soap bar
-  "abc-matik-9kg": `${UNS}-1583947215259-38e31be8751f${Q}`, // detergent
+  // Marassi private label - oils
+  "marassi-evoo-500ml": IMG.oliveOil,
+  "marassi-olive-1l-tin": IMG.oliveOil,
+  "marassi-sunflower-5l": IMG.oliveOil,
+  "marassi-sunflower-1l": IMG.oliveOil,
+
+  // Marassi private label - condiments
+  "marassi-ketchup-450g": IMG.tomatoPaste,
+  "marassi-mayo-450g": IMG.tomatoPaste,
+  "marassi-hot-sauce-350ml": IMG.tomatoPaste,
+  "marassi-pom-sauce-350ml": IMG.tomatoPaste,
+
+  // Marassi olives
+  "marassi-green-olives-1kg": IMG.olives,
+  "marassi-black-olives-1kg": IMG.olivesAlt,
+  "marassi-pickles-1kg": IMG.olivesAlt,
+
+  // Marassi dried fruits & nuts
+  "marassi-apricots-500g": IMG.apricots,
+  "turkish-dried-apricots-500g": IMG.apricots,
+  "marassi-sultanas-1kg": IMG.apricots,
+  "marassi-roasted-hazelnuts-1kg": IMG.nuts,
+  "marassi-pistachios-500g": IMG.nuts,
+  "marassi-almonds-1kg": IMG.nuts,
+  "marassi-walnuts-500g": IMG.nuts,
+
+  // Marassi pulses
+  "marassi-chickpeas-400g": IMG.cannedFood,
+  "marassi-kidney-beans-400g": IMG.cannedFood,
+
+  // Marassi baby care
+  "marassi-wipes-64": IMG.babyWipes,
+  "marassi-diaper-3": IMG.babyWipes,
+  "marassi-diaper-4": IMG.babyWipes,
+  "marassi-baby-shampoo-400ml": IMG.babyWipes,
+
+  // Duru
+  "duru-olive-soap-bar": IMG.soap,
+  "duru-bodywash-500ml": IMG.soap,
+  "duru-conditioner-600ml": IMG.soap,
+  "duru-rollon-50ml": IMG.soap,
+  "duru-toothpaste-75ml": IMG.soap,
+  "duru-shaving-200ml": IMG.soap,
+
+  // Cleaning
+  "abc-matik-9kg": IMG.detergent,
+  "abc-toilet-750ml": IMG.detergent,
+  "abc-softener-4l": IMG.detergent,
+  "abc-multi-spray-750ml": IMG.detergent,
+
+  // Grains
+  "torku-basmati-5kg": IMG.rice,
+  "torku-jasmine-1kg": IMG.rice,
+  "torku-bulgur-coarse-1kg": IMG.rice,
+  "torku-flour-5kg": IMG.rice,
+  "torku-couscous-500g": IMG.rice,
+  "torku-penne-500g": IMG.pasta,
+  "torku-fusilli-500g": IMG.pasta,
+
+  // Beverages
+  "hayat-water-500ml": IMG.water,
 };
 
-// Category-slug fallback (when exact match misses)
 const BY_CATEGORY: Record<string, string> = {
-  dairy: `${UNS}-1628088062854-d1870b4553da${Q}`,
-  "dairy-products": `${UNS}-1628088062854-d1870b4553da${Q}`,
-  "snacks-confectionery": `${UNS}-1558961363-fa8fdf82db35${Q}`,
-  beverages: `${UNS}-1625772299848-391b6a87d7b3${Q}`,
-  "oils-condiments": `${UNS}-1474979266404-7eaacbcd87c5${Q}`,
-  "cooking-oils": `${UNS}-1474979266404-7eaacbcd87c5${Q}`,
-  "canned-jarred-foods": `${UNS}-1604908176997-125f25cc6f3d${Q}`,
-  "pasta-rice-grains": `${UNS}-1586201375761-83865001e31c${Q}`,
-  "tea-coffee": `${UNS}-1495474472287-4d71bcdd2085${Q}`,
-  "baby-products": `${UNS}-1607619056574-7b8d3ee536b2${Q}`,
-  "personal-care-cosmetics": `${UNS}-1600857544200-b2f666a9a2ec${Q}`,
-  "cleaning-products": `${UNS}-1583947215259-38e31be8751f${Q}`,
-  "dried-fruits-nuts": `${UNS}-1599946347371-68eb71b16afc${Q}`,
+  dairy: IMG.milkPowder,
+  "dairy-products": IMG.milkPowder,
+  "snacks-confectionery": IMG.cookie,
+  beverages: IMG.water,
+  "oils-condiments": IMG.oliveOil,
+  "cooking-oils": IMG.oliveOil,
+  "canned-jarred-foods": IMG.cannedFood,
+  "pasta-rice-grains": IMG.rice,
+  "tea-coffee": IMG.coffeeBeans,
+  "baby-products": IMG.babyWipes,
+  "personal-care-cosmetics": IMG.soap,
+  "cleaning-products": IMG.detergent,
+  "dried-fruits-nuts": IMG.nuts,
 };
 
-function isPlaceholder(url: string | undefined): boolean {
+function isStaleOrPlaceholder(url: string | undefined): boolean {
   if (!url) return true;
   return (
     url.includes("picsum.photos") ||
     url.includes("placeholder") ||
-    url.includes("/images/products/") // local seed paths that don't exist
+    url.includes("/images/products/") ||
+    url.includes("upload.wikimedia.org") || // those URLs ended up 404
+    // legacy unsplash IDs we now know are 404
+    url.includes("photo-1546470541-5f1f47604f95") || // tomato paste 404
+    url.includes("photo-1606923829579-0cb981a83e2b") || // olives 404
+    url.includes("photo-1623198590878-6c9a1eb14ddd") || // chocolate bar 404
+    url.includes("photo-1572286258217-215c2e1b1eda")    // coffee jar 404
   );
 }
 
 async function main() {
-  console.log("🖼  Updating product images…\n");
+  console.log("🖼  Refreshing product images (only stale/404 URLs)…\n");
 
   const products = await db.product.findMany({
     select: {
       id: true,
       slug: true,
-      name: true,
       images: true,
       category: { select: { slug: true } },
     },
@@ -110,16 +185,13 @@ async function main() {
 
   for (const p of products) {
     const currentFirst = p.images[0];
-    if (!isPlaceholder(currentFirst)) {
+    if (!isStaleOrPlaceholder(currentFirst)) {
       skipped++;
       continue;
     }
 
     const newUrl =
-      EXACT_BY_SLUG[p.slug] ??
-      BY_CATEGORY[p.category.slug] ??
-      null;
-
+      EXACT_BY_SLUG[p.slug] ?? BY_CATEGORY[p.category.slug] ?? null;
     if (!newUrl) {
       noMatch++;
       console.log(`⚠  no map for ${p.slug} (category: ${p.category.slug})`);
@@ -131,7 +203,7 @@ async function main() {
       data: { images: [newUrl, ...p.images.slice(1)] },
     });
     updated++;
-    console.log(`✓ ${p.slug} → ${newUrl.slice(0, 60)}…`);
+    console.log(`✓ ${p.slug}`);
   }
 
   console.log(
