@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Mail, MapPin, Linkedin, Facebook, Instagram } from "lucide-react";
 import { offices } from "@/data/offices";
+import { SOCIAL_URLS } from "@/lib/site-links";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -75,13 +76,15 @@ export function Footer() {
 
             <div className="mt-5 flex items-center gap-2">
               {[
-                { icon: Linkedin, label: "LinkedIn", href: "#" },
-                { icon: Facebook, label: "Facebook", href: "#" },
-                { icon: Instagram, label: "Instagram", href: "#" },
+                { icon: Linkedin, label: "LinkedIn", href: SOCIAL_URLS.linkedin },
+                { icon: Facebook, label: "Facebook", href: SOCIAL_URLS.facebook },
+                { icon: Instagram, label: "Instagram", href: SOCIAL_URLS.instagram },
               ].map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-[oklch(0.78_0.13_35)] hover:text-[oklch(0.78_0.13_35)]"
                 >

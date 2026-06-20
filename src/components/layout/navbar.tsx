@@ -16,6 +16,7 @@ import {
 import { useRFQStore } from "@/stores/rfq-store";
 import { CustomerSessionBadge } from "@/components/layout/customer-session-badge";
 import { HeaderSearch } from "@/components/layout/header-search";
+import { CATALOG_PDF } from "@/lib/site-links";
 
 const categoryLinks = [
   { id: "biscuits", href: "/products/list?category=biscuits" },
@@ -211,12 +212,15 @@ export function Navbar() {
 
           {/* Download Catalog — gold outline (only xl) */}
           <Button
+            asChild
             variant="outline"
             size="sm"
             className="hidden h-10 shrink-0 border-[oklch(0.72_0.11_80)]/45 bg-transparent px-3.5 text-[13px] font-medium text-[oklch(0.82_0.11_80)] hover:border-[oklch(0.72_0.11_80)] hover:bg-[oklch(0.72_0.11_80)]/12 hover:text-[oklch(0.82_0.11_80)] xl:inline-flex"
           >
-            <Download className="mr-1.5 h-4 w-4" />
-            {t("download")}
+            <a href={CATALOG_PDF} download>
+              <Download className="mr-1.5 h-4 w-4" />
+              {t("download")}
+            </a>
           </Button>
 
           {/* Request a Quote — coral */}
@@ -290,11 +294,14 @@ export function Navbar() {
                   ))}
                 </div>
                 <Button
+                  asChild
                   variant="outline"
                   className="mt-3 border-[oklch(0.72_0.11_80)] text-[oklch(0.60_0.12_75)] hover:bg-[oklch(0.72_0.11_80)]/10"
                 >
-                  <Download className="mr-2 h-4 w-4" />
-                  {t("downloadCatalog")}
+                  <a href={CATALOG_PDF} download onClick={() => setMobileOpen(false)}>
+                    <Download className="mr-2 h-4 w-4" />
+                    {t("downloadCatalog")}
+                  </a>
                 </Button>
                 <Button
                   asChild

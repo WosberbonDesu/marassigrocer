@@ -35,6 +35,7 @@ import { ProductCatalogCard } from "@/components/products/product-catalog-card";
 import { ProductB2BCard } from "@/components/products/product-b2b-card";
 import { Product } from "@/types";
 import { useRFQStore } from "@/stores/rfq-store";
+import { CATALOG_PDF } from "@/lib/site-links";
 
 const HERO_BG = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=70";
 const PORT_BG = "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=70";
@@ -799,10 +800,10 @@ function ProductsListInner() {
                   size="lg"
                   className="h-12 whitespace-nowrap bg-[oklch(0.66_0.16_35)] px-6 text-sm font-semibold text-white shadow-md shadow-[oklch(0.66_0.16_35)]/25 hover:bg-[oklch(0.60_0.17_35)]"
                 >
-                  <Link href="/contact?subject=catalog">
+                  <a href={CATALOG_PDF} download>
                     <BookOpen className="mr-2 h-4 w-4" />
                     {t("catalogCta.downloadButton")}
-                  </Link>
+                  </a>
                 </Button>
                 <Button
                   type="button"

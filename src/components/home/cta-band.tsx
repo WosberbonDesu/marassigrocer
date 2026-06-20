@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, DollarSign, ShieldCheck, Clock, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CATALOG_PDF } from "@/lib/site-links";
 
 const WAREHOUSE_BG = "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=70";
 
@@ -72,12 +73,15 @@ export function CTABand() {
               </Link>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="h-12 border-white/25 bg-transparent px-6 text-base text-white hover:bg-white/10"
             >
-              <Download className="mr-2 h-4 w-4" />
-              {t("downloadCatalog")}
+              <a href={CATALOG_PDF} download>
+                <Download className="mr-2 h-4 w-4" />
+                {t("downloadCatalog")}
+              </a>
             </Button>
           </motion.div>
         </div>

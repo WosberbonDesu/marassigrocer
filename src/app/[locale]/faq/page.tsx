@@ -25,6 +25,7 @@ import { Input } from "@/components/ui/input";
 import { PageHero } from "@/components/shared/page-hero";
 import { faqs } from "@/data/faqs";
 import type { FAQ } from "@/types";
+import { WHATSAPP_URL } from "@/lib/site-links";
 
 const CATEGORIES: {
   id: string;
@@ -305,7 +306,7 @@ export default function FAQPage() {
               </div>
             </a>
             <a
-              href="https://wa.me/c/23859113816087"
+              href={WHATSAPP_URL()}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 transition-colors hover:border-[#25D366]/40 hover:bg-white/10"

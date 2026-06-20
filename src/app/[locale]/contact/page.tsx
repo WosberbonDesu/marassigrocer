@@ -49,6 +49,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { contactFormSchema, type ContactFormValues } from "@/lib/validations";
+import { WHATSAPP_URL, CATALOG_PDF } from "@/lib/site-links";
 
 const HERO_BG =
   "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=70";
@@ -516,7 +517,7 @@ export default function ContactPage() {
 
                 <div className="mt-7 space-y-3">
                   <QuickAction
-                    href="https://wa.me/c/23859113816087?text=Hi!%20Can%20I%20get%20your%20product%20catalog%20and%20information%20about%20shipping%3F"
+                    href={WHATSAPP_URL("Hi! Can I get your product catalog and information about shipping?")}
                     title={t("support.whatsapp.title")}
                     description={t("support.whatsapp.description")}
                     icon={<WhatsAppIcon className="h-4 w-4 text-white" />}
@@ -531,11 +532,12 @@ export default function ContactPage() {
                     iconBg="bg-[oklch(0.78_0.12_80)]/15"
                   />
                   <QuickAction
-                    href={`/${locale}/products`}
+                    href={CATALOG_PDF}
                     title={t("support.catalog.title")}
                     description={t("support.catalog.description")}
                     icon={<Download className="h-4 w-4 text-[oklch(0.78_0.12_80)]" />}
                     iconBg="bg-[oklch(0.78_0.12_80)]/15"
+                    download
                   />
                 </div>
 
@@ -897,6 +899,7 @@ function QuickAction({
   icon,
   iconBg,
   external,
+  download,
 }: {
   href: string;
   title: string;
@@ -904,12 +907,14 @@ function QuickAction({
   icon: React.ReactNode;
   iconBg: string;
   external?: boolean;
+  download?: boolean;
 }) {
   return (
     <a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
+      download={download ? "" : undefined}
       className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3.5 transition-all hover:-translate-y-0.5 hover:border-[oklch(0.78_0.12_80)]/35 hover:bg-white/10"
     >
       <span

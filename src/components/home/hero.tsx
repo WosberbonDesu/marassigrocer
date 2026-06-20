@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CATALOG_PDF } from "@/lib/site-links";
 
 // Hero image: dark cargo port with product showcase in foreground
 const HERO_BG = "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1920&q=70";
@@ -94,12 +95,15 @@ export function Hero() {
               </Link>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="h-12 border-white/25 bg-transparent px-6 text-base text-white backdrop-blur-sm hover:bg-white/10"
             >
-              <Download className="mr-2 h-4 w-4" />
-              {t("cta2")}
+              <a href={CATALOG_PDF} download>
+                <Download className="mr-2 h-4 w-4" />
+                {t("cta2")}
+              </a>
             </Button>
           </motion.div>
 

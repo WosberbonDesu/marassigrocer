@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { WHATSAPP_URL as buildWhatsAppUrl } from "@/lib/site-links";
 
-const WHATSAPP_URL =
-  "https://wa.me/201050483361?text=Hi!%20I'm%20interested%20in%20your%20FMCG%20products.%20Can%20I%20get%20a%20catalog%20and%20pricing%3F";
+const WHATSAPP_URL = buildWhatsAppUrl();
 
 export function WhatsAppButton() {
   const [expanded, setExpanded] = useState(false);
