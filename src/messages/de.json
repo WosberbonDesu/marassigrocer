@@ -1289,6 +1289,48 @@
       "phoneLabel": "Büro Istanbul",
       "whatsappLabel": "WhatsApp",
       "whatsappValue": "Mit dem Vertrieb chatten"
+    },
+    "items": {
+      "faq-1": {
+        "question": "Wie hoch ist die Mindestbestellmenge (MOQ)?",
+        "answer": "Die MOQ variiert je nach Produktkategorie. Für die meisten Produkte beträgt das Minimum 1 Palette. Bei Mixed Containern können wir mehrere Produkte in einem 20'- oder 40'-Container konsolidieren. Kontaktieren Sie uns für spezifische Angaben."
+      },
+      "faq-2": {
+        "question": "Mit welchen Incoterms arbeiten Sie?",
+        "answer": "Wir bieten FOB, CIF und EXW je nach Ihrer Präferenz an. Die meisten unserer Kunden bevorzugen FOB oder CIF. Wir besprechen die beste Option je nach Zielort und Volumen."
+      },
+      "faq-3": {
+        "question": "Wie lange dauert der Versand?",
+        "answer": "Versandzeiten variieren je nach Zielort. Typische Transitzeiten: MENA-Region 7–15 Tage, Afrika 15–25 Tage, Europa 10–20 Tage, Amerika 25–35 Tage. Wir bieten Sendungsverfolgung für alle Versendungen."
+      },
+      "faq-4": {
+        "question": "Können Sie Mixed Container abwickeln?",
+        "answer": "Ja, die Konsolidierung von Mixed Containern ist eine unserer Kernkompetenzen. Wir kombinieren Produkte aus verschiedenen Kategorien und Marken in einem Container und senken so Ihre Logistikkosten."
+      },
+      "faq-5": {
+        "question": "Welche Dokumente stellen Sie bereit?",
+        "answer": "Wir erstellen das vollständige Dokumentenpaket: Handelsrechnung, Packliste, Ursprungszeugnis (COO), Konnossement (B/L), Analysezertifikat (COA), Gesundheitszeugnis sowie alle weiteren von Ihrem Land geforderten Dokumente."
+      },
+      "faq-6": {
+        "question": "Bieten Sie Private-Label-Dienstleistungen an?",
+        "answer": "Ja, wir bieten umfassende Private-Label-Lösungen von der Rezeptur bis zur Verpackung. Wir arbeiten mit unserem Werksnetzwerk, um Ihre Marke nach Ihren Spezifikationen zu produzieren. Die MOQ für Private Label beginnt produktabhängig bei 5.000 Einheiten."
+      },
+      "faq-7": {
+        "question": "Wie lang ist die typische Lieferzeit für Private-Label-Aufträge?",
+        "answer": "Private-Label-Lieferzeiten liegen üblicherweise zwischen 8 und 16 Wochen, einschließlich Bemusterung (2–4 Wochen), Freigabe des Artworks (1–2 Wochen), Produktion (4–8 Wochen) und Versand. Express-Aufträge sind für ausgewählte Produkte möglich."
+      },
+      "faq-8": {
+        "question": "Wie fordere ich ein Angebot an?",
+        "answer": "Sie können eine Angebotsanfrage (RFQ) über unsere Website mit der Schaltfläche 'Angebot anfordern' auf jeder Seite einreichen. Tragen Sie Ihre Anforderungen ein, unser Vertriebsteam antwortet binnen 24–48 Stunden."
+      },
+      "faq-9": {
+        "question": "Welche Zahlungsbedingungen akzeptieren Sie?",
+        "answer": "Wir akzeptieren T/T (Banküberweisung), Akkreditiv (L/C) und in einigen Fällen CAD (Zahlung gegen Dokumente). Die Zahlungsbedingungen werden während des Angebotsprozesses je nach Bestellvolumen und Geschäftsbeziehung besprochen."
+      },
+      "faq-10": {
+        "question": "Stellen Sie Produktmuster zur Verfügung?",
+        "answer": "Ja, wir können Muster zur Bewertung zur Verfügung stellen. Muster- und Versandkosten trägt in der Regel der Käufer. Bei Private-Label-Projekten werden Erstmuster als Teil des Entwicklungsprozesses bereitgestellt."
+      }
     }
   },
   "brandsPage": {

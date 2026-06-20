@@ -1289,6 +1289,48 @@
       "phoneLabel": "Oficina de Estambul",
       "whatsappLabel": "WhatsApp",
       "whatsappValue": "Chatear con ventas"
+    },
+    "items": {
+      "faq-1": {
+        "question": "¿Cuál es la cantidad mínima de pedido (MOQ)?",
+        "answer": "El MOQ varía según la categoría del producto. Para la mayoría de productos, el mínimo es 1 pallet. Para contenedores mixtos podemos consolidar varios productos en un solo contenedor de 20' o 40'. Contáctenos para detalles específicos."
+      },
+      "faq-2": {
+        "question": "¿Con qué Incoterms trabajan?",
+        "answer": "Ofrecemos condiciones FOB, CIF y EXW según su preferencia. La mayoría de nuestros clientes prefieren FOB o CIF. Podemos discutir la mejor opción según su destino y volumen."
+      },
+      "faq-3": {
+        "question": "¿Cuánto tarda el envío?",
+        "answer": "Los tiempos de envío varían según el destino. Tránsitos típicos: región MENA 7–15 días, África 15–25 días, Europa 10–20 días, América 25–35 días. Proporcionamos seguimiento para todos los envíos."
+      },
+      "faq-4": {
+        "question": "¿Pueden gestionar contenedores mixtos?",
+        "answer": "Sí, la consolidación de contenedores mixtos es una de nuestras fortalezas. Combinamos productos de diferentes categorías y marcas en un solo contenedor, reduciendo sus costos logísticos."
+      },
+      "faq-5": {
+        "question": "¿Qué documentos proporcionan?",
+        "answer": "Preparamos el conjunto completo de documentos: Factura Comercial, Lista de Empaque, Certificado de Origen (COO), Conocimiento de Embarque, Certificado de Análisis (COA), Certificado Sanitario, y cualquier documento adicional requerido por su país."
+      },
+      "faq-6": {
+        "question": "¿Ofrecen servicios de marca privada?",
+        "answer": "Sí, ofrecemos soluciones de marca privada integrales, desde formulación hasta empaque. Trabajamos con nuestra red de fábricas para producir su marca según sus especificaciones. El MOQ para marca privada comienza desde 5,000 unidades según el producto."
+      },
+      "faq-7": {
+        "question": "¿Cuál es el tiempo típico para pedidos de marca privada?",
+        "answer": "Los tiempos de marca privada van de 8 a 16 semanas, incluyendo: muestreo (2–4 semanas), aprobación de arte (1–2 semanas), producción (4–8 semanas) y envío. Pedidos urgentes son posibles para algunos productos."
+      },
+      "faq-8": {
+        "question": "¿Cómo solicito una cotización?",
+        "answer": "Puede enviar una Solicitud de Cotización (RFQ) en nuestra web usando el botón 'Solicitar Cotización' en cualquier página. Complete sus requerimientos y nuestro equipo responderá en 24–48 horas."
+      },
+      "faq-9": {
+        "question": "¿Qué condiciones de pago aceptan?",
+        "answer": "Aceptamos T/T (transferencia), Carta de Crédito (L/C), y en algunos casos CAD (Pago contra Documentos). Las condiciones se discuten durante la cotización según el volumen y la relación."
+      },
+      "faq-10": {
+        "question": "¿Proporcionan muestras de productos?",
+        "answer": "Sí, podemos proporcionar muestras para evaluación. Los costos de muestra y envío suelen ser asumidos por el comprador. En proyectos de marca privada, las muestras iniciales se proporcionan como parte del desarrollo."
+      }
     }
   },
   "brandsPage": {

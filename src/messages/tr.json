@@ -1289,6 +1289,48 @@
       "phoneLabel": "İstanbul Ofisi",
       "whatsappLabel": "WhatsApp",
       "whatsappValue": "Satış ekibiyle sohbet edin"
+    },
+    "items": {
+      "faq-1": {
+        "question": "Minimum sipariş miktarı (MOQ) nedir?",
+        "answer": "MOQ ürün kategorisine göre değişir. Çoğu ürün için minimum 1 paletdir. Karma konteynerlerde birden fazla ürünü 20' veya 40' konteynerde birleştirebiliriz. Spesifik MOQ detayları için bize ulaşın."
+      },
+      "faq-2": {
+        "question": "Hangi Incoterms'lerle çalışıyorsunuz?",
+        "answer": "Tercihinize göre FOB, CIF ve EXW şartlarını sunuyoruz. Müşterilerimizin çoğu FOB veya CIF'i tercih ediyor. Hedefinize ve hacminize göre en uygun seçeneği görüşebiliriz."
+      },
+      "faq-3": {
+        "question": "Sevkiyat ne kadar sürer?",
+        "answer": "Sevkiyat süreleri hedefe göre değişir. Tipik transit süreler: MENA bölgesi 7–15 gün, Afrika 15–25 gün, Avrupa 10–20 gün, Amerika 25–35 gün. Tüm sevkiyatlar için takip sağlıyoruz."
+      },
+      "faq-4": {
+        "question": "Karma konteyner yapabiliyor musunuz?",
+        "answer": "Evet, karma konteyner konsolidasyonu temel güçlü yanlarımızdan biridir. Farklı kategori ve markalardaki ürünleri tek bir konteynerde birleştirerek lojistik maliyetlerinizi düşürürüz."
+      },
+      "faq-5": {
+        "question": "Hangi belgeleri sağlıyorsunuz?",
+        "answer": "Eksiksiz belge setini hazırlıyoruz: Ticari Fatura, Çeki Listesi, Menşe Şahadetnamesi (COO), Konşimento (B/L), Analiz Sertifikası (COA), Sağlık Sertifikası ve ülkenizin gerektirdiği ek belgeler."
+      },
+      "faq-6": {
+        "question": "Özel marka (private label) hizmeti sunuyor musunuz?",
+        "answer": "Evet, formülasyondan ambalajlamaya kadar kapsamlı özel marka çözümleri sunuyoruz. Fabrika ağımızla çalışarak markanızı sizin spesifikasyonlarınızla üretiyoruz. Özel marka için MOQ ürüne bağlı olarak 5.000 birimden başlar."
+      },
+      "faq-7": {
+        "question": "Özel marka siparişleri için tipik teslim süresi nedir?",
+        "answer": "Özel marka teslim süreleri genellikle 8–16 hafta arasındadır: numune (2–4 hafta), tasarım onayı (1–2 hafta), üretim (4–8 hafta) ve sevkiyat. Seçili ürünlerde hızlandırılmış siparişler mümkün olabilir."
+      },
+      "faq-8": {
+        "question": "Nasıl teklif talep ederim?",
+        "answer": "Sitedeki herhangi bir sayfadaki 'Teklif Al' düğmesiyle Teklif Talebi (RFQ) gönderebilirsiniz. Gereksinimlerinizi doldurun, satış ekibimiz 24–48 saat içinde yanıt verir."
+      },
+      "faq-9": {
+        "question": "Hangi ödeme şartlarını kabul ediyorsunuz?",
+        "answer": "T/T (havale), Akreditif (L/C) ve bazı durumlarda CAD (Vesaik Karşılığı Ödeme) kabul ediyoruz. Ödeme şartları, sipariş hacmi ve ilişkiye göre teklif sürecinde görüşülür."
+      },
+      "faq-10": {
+        "question": "Ürün numunesi sağlıyor musunuz?",
+        "answer": "Evet, değerlendirme amaçlı ürün numuneleri sağlayabiliriz. Numune ve nakliye maliyetleri genellikle alıcıya aittir. Özel marka projelerinde geliştirme sürecinin parçası olarak ilk numuneler verilir."
+      }
     }
   },
   "brandsPage": {

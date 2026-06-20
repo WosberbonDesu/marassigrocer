@@ -60,18 +60,28 @@ export default function FAQPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [query, setQuery] = useState("");
 
+  // Resolve translated question/answer for each FAQ once.
+  const resolved = useMemo(
+    () =>
+      faqs.map((f) => ({
+        id: f.id,
+        tags: f.tags,
+        question: t(`items.${f.id}.question`),
+        answer: t(`items.${f.id}.answer`),
+      })),
+    [t]
+  );
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return faqs.filter((f) => {
+    return resolved.filter((f) => {
       const matchesCategory =
         activeCategory === "all" || f.tags.includes(activeCategory as FAQ["tags"][number]);
       const matchesQuery =
-        !q ||
-        f.question.toLowerCase().includes(q) ||
-        f.answer.toLowerCase().includes(q);
+        !q || f.question.toLowerCase().includes(q) || f.answer.toLowerCase().includes(q);
       return matchesCategory && matchesQuery;
     });
-  }, [activeCategory, query]);
+  }, [resolved, activeCategory, query]);
 
   const categoryCounts = useMemo(() => {
     const map: Record<string, number> = { all: faqs.length };

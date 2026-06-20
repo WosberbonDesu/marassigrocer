@@ -1289,6 +1289,48 @@
       "phoneLabel": "Bureau d'Istanbul",
       "whatsappLabel": "WhatsApp",
       "whatsappValue": "Discuter avec les ventes"
+    },
+    "items": {
+      "faq-1": {
+        "question": "Quelle est la quantité minimale de commande (QCM) ?",
+        "answer": "Le QCM varie selon la catégorie de produit. Pour la plupart des produits, le minimum est de 1 palette. Pour les conteneurs mixtes, nous pouvons regrouper plusieurs produits dans un seul conteneur de 20' ou 40'. Contactez-nous pour les détails spécifiques."
+      },
+      "faq-2": {
+        "question": "Avec quels Incoterms travaillez-vous ?",
+        "answer": "Nous proposons les conditions FOB, CIF et EXW selon votre préférence. La plupart de nos clients préfèrent FOB ou CIF. Nous pouvons discuter de la meilleure option selon votre destination et votre volume."
+      },
+      "faq-3": {
+        "question": "Combien de temps prend l'expédition ?",
+        "answer": "Les délais d'expédition varient selon la destination. Délais typiques : région MENA 7–15 jours, Afrique 15–25 jours, Europe 10–20 jours, Amériques 25–35 jours. Nous fournissons le suivi pour toutes les expéditions."
+      },
+      "faq-4": {
+        "question": "Pouvez-vous gérer les conteneurs mixtes ?",
+        "answer": "Oui, la consolidation de conteneurs mixtes est l'une de nos forces principales. Nous combinons des produits de différentes catégories et marques dans un seul conteneur, réduisant vos coûts logistiques."
+      },
+      "faq-5": {
+        "question": "Quels documents fournissez-vous ?",
+        "answer": "Nous préparons l'ensemble complet des documents : Facture commerciale, Liste de colisage, Certificat d'origine (COO), Connaissement, Certificat d'analyse (COA), Certificat sanitaire, et tout document supplémentaire requis par votre pays."
+      },
+      "faq-6": {
+        "question": "Proposez-vous des services de marque privée ?",
+        "answer": "Oui, nous proposons des solutions de marque privée complètes, de la formulation à l'emballage. Nous travaillons avec notre réseau d'usines pour produire votre marque selon vos spécifications. Le QCM pour la marque privée commence à 5 000 unités selon le produit."
+      },
+      "faq-7": {
+        "question": "Quel est le délai typique pour les commandes en marque privée ?",
+        "answer": "Les délais de marque privée vont généralement de 8 à 16 semaines, incluant : échantillonnage (2–4 semaines), validation graphique (1–2 semaines), production (4–8 semaines) et expédition. Les commandes urgentes sont possibles pour certains produits."
+      },
+      "faq-8": {
+        "question": "Comment demander un devis ?",
+        "answer": "Vous pouvez soumettre une Demande de Devis (RFQ) via notre site en utilisant le bouton 'Demander un Devis' sur n'importe quelle page. Remplissez vos besoins et notre équipe commerciale répondra sous 24–48 heures."
+      },
+      "faq-9": {
+        "question": "Quelles conditions de paiement acceptez-vous ?",
+        "answer": "Nous acceptons le T/T (virement bancaire), la Lettre de Crédit (L/C), et dans certains cas le CAD (Paiement contre Documents). Les conditions de paiement sont discutées lors du processus de devis selon le volume et la relation."
+      },
+      "faq-10": {
+        "question": "Fournissez-vous des échantillons de produits ?",
+        "answer": "Oui, nous pouvons fournir des échantillons pour évaluation. Les coûts d'échantillon et d'expédition sont généralement à la charge de l'acheteur. Pour les projets de marque privée, les premiers échantillons sont fournis dans le cadre du développement."
+      }
     }
   },
   "brandsPage": {

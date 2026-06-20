@@ -1289,6 +1289,48 @@
       "phoneLabel": "Escritório de Istambul",
       "whatsappLabel": "WhatsApp",
       "whatsappValue": "Conversar com vendas"
+    },
+    "items": {
+      "faq-1": {
+        "question": "Qual é a quantidade mínima de pedido (MOQ)?",
+        "answer": "O MOQ varia conforme a categoria do produto. Para a maioria dos produtos, o mínimo é 1 palete. Para contêineres mistos podemos consolidar vários produtos em um único contêiner de 20' ou 40'. Contate-nos para detalhes específicos."
+      },
+      "faq-2": {
+        "question": "Com quais Incoterms vocês trabalham?",
+        "answer": "Oferecemos os termos FOB, CIF e EXW conforme sua preferência. A maioria dos nossos clientes prefere FOB ou CIF. Podemos discutir a melhor opção com base no seu destino e volume."
+      },
+      "faq-3": {
+        "question": "Quanto tempo demora o envio?",
+        "answer": "Os tempos de envio variam conforme o destino. Tempos típicos: região MENA 7–15 dias, África 15–25 dias, Europa 10–20 dias, Américas 25–35 dias. Fornecemos rastreamento para todos os envios."
+      },
+      "faq-4": {
+        "question": "Vocês podem gerenciar contêineres mistos?",
+        "answer": "Sim, a consolidação de contêineres mistos é uma de nossas principais forças. Combinamos produtos de diferentes categorias e marcas em um único contêiner, reduzindo seus custos logísticos."
+      },
+      "faq-5": {
+        "question": "Quais documentos vocês fornecem?",
+        "answer": "Preparamos o conjunto completo de documentos: Fatura Comercial, Lista de Embalagem, Certificado de Origem (COO), Conhecimento de Embarque, Certificado de Análise (COA), Certificado Sanitário e quaisquer documentos adicionais exigidos pelo seu país."
+      },
+      "faq-6": {
+        "question": "Vocês oferecem serviços de marca própria?",
+        "answer": "Sim, oferecemos soluções completas de marca própria, da formulação à embalagem. Trabalhamos com nossa rede de fábricas para produzir sua marca conforme suas especificações. O MOQ para marca própria começa em 5.000 unidades conforme o produto."
+      },
+      "faq-7": {
+        "question": "Qual é o prazo típico para pedidos de marca própria?",
+        "answer": "Os prazos de marca própria variam de 8 a 16 semanas, incluindo: amostragem (2–4 semanas), aprovação de artes (1–2 semanas), produção (4–8 semanas) e envio. Pedidos urgentes são possíveis para alguns produtos."
+      },
+      "faq-8": {
+        "question": "Como solicito uma cotação?",
+        "answer": "Você pode enviar uma Solicitação de Cotação (RFQ) em nosso site usando o botão 'Solicitar Cotação' em qualquer página. Preencha seus requisitos e nosso time comercial responderá em 24–48 horas."
+      },
+      "faq-9": {
+        "question": "Quais condições de pagamento vocês aceitam?",
+        "answer": "Aceitamos T/T (transferência bancária), Carta de Crédito (L/C) e em alguns casos CAD (Pagamento contra Documentos). As condições são discutidas durante a cotação conforme volume e relacionamento."
+      },
+      "faq-10": {
+        "question": "Vocês fornecem amostras de produtos?",
+        "answer": "Sim, podemos fornecer amostras para avaliação. Os custos de amostra e envio geralmente são por conta do comprador. Em projetos de marca própria, as amostras iniciais são fornecidas como parte do desenvolvimento."
+      }
     }
   },
   "brandsPage": {

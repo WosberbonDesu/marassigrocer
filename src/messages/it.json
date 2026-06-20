@@ -1289,6 +1289,48 @@
       "phoneLabel": "Ufficio di Istanbul",
       "whatsappLabel": "WhatsApp",
       "whatsappValue": "Chatta con il team commerciale"
+    },
+    "items": {
+      "faq-1": {
+        "question": "Qual è la quantità minima d'ordine (MOQ)?",
+        "answer": "Il MOQ varia in base alla categoria di prodotto. Per la maggior parte dei prodotti, il minimo è 1 pallet. Per i container misti possiamo consolidare più prodotti in un singolo container da 20' o 40'. Contattateci per i dettagli specifici."
+      },
+      "faq-2": {
+        "question": "Con quali Incoterms lavorate?",
+        "answer": "Offriamo i termini FOB, CIF ed EXW in base alle vostre preferenze. La maggior parte dei nostri clienti preferisce FOB o CIF. Possiamo discutere l'opzione migliore in base alla destinazione e al volume."
+      },
+      "faq-3": {
+        "question": "Quanto tempo richiede la spedizione?",
+        "answer": "I tempi di spedizione variano in base alla destinazione. Tempi di transito tipici: regione MENA 7–15 giorni, Africa 15–25 giorni, Europa 10–20 giorni, Americhe 25–35 giorni. Forniamo tracciamento per tutte le spedizioni."
+      },
+      "faq-4": {
+        "question": "Potete gestire container misti?",
+        "answer": "Sì, il consolidamento di container misti è uno dei nostri punti di forza. Combiniamo prodotti di categorie e marchi diversi in un singolo container, riducendo i vostri costi logistici."
+      },
+      "faq-5": {
+        "question": "Quali documenti fornite?",
+        "answer": "Prepariamo il set completo di documenti: Fattura Commerciale, Distinta di Imballaggio, Certificato d'Origine (COO), Polizza di Carico (B/L), Certificato di Analisi (COA), Certificato Sanitario e qualsiasi documento aggiuntivo richiesto dal vostro paese."
+      },
+      "faq-6": {
+        "question": "Offrite servizi di private label?",
+        "answer": "Sì, offriamo soluzioni complete di private label, dalla formulazione al packaging. Lavoriamo con la nostra rete di fabbriche per produrre il vostro brand secondo le vostre specifiche. Il MOQ per private label parte da 5.000 unità in base al prodotto."
+      },
+      "faq-7": {
+        "question": "Qual è il tempo tipico per ordini in private label?",
+        "answer": "I tempi di private label vanno da 8 a 16 settimane, includendo: campionatura (2–4 settimane), approvazione grafica (1–2 settimane), produzione (4–8 settimane) e spedizione. Ordini urgenti sono possibili per alcuni prodotti."
+      },
+      "faq-8": {
+        "question": "Come richiedo un preventivo?",
+        "answer": "Potete inviare una Richiesta di Preventivo (RFQ) tramite il nostro sito usando il pulsante 'Richiedi Preventivo' in qualsiasi pagina. Compilate i vostri requisiti e il nostro team commerciale risponderà entro 24–48 ore."
+      },
+      "faq-9": {
+        "question": "Quali termini di pagamento accettate?",
+        "answer": "Accettiamo T/T (bonifico bancario), Lettera di Credito (L/C) e in alcuni casi CAD (Pagamento contro Documenti). I termini di pagamento vengono discussi durante la fase di preventivo in base al volume d'ordine e alla relazione commerciale."
+      },
+      "faq-10": {
+        "question": "Fornite campioni di prodotto?",
+        "answer": "Sì, possiamo fornire campioni per la valutazione. I costi di campionatura e spedizione sono generalmente a carico dell'acquirente. Per progetti di private label, i campioni iniziali sono forniti come parte del processo di sviluppo."
+      }
     }
   },
   "brandsPage": {
