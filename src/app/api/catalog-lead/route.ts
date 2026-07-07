@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { catalogLeadSchema } from "@/lib/validations";
+import { CATALOG_PDF } from "@/lib/site-links";
 
 export async function POST(request: Request) {
   try {
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       message: "Catalog download started",
-      downloadUrl: "/catalog/marassi-catalog-2025.pdf",
+      downloadUrl: CATALOG_PDF,
     });
   } catch {
     return NextResponse.json(
