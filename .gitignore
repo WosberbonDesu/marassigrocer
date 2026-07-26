@@ -50,3 +50,8 @@ next-env.d.ts
 /src/generated/prisma
 
 .vercel
+
+# catalog extraction workspace (large, regenerable from the PDF)
+/catalog-pages
+/catalog-images
+/catalog-2026.pdf
