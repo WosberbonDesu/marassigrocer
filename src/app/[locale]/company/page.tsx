@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { CATALOG_PDF } from "@/lib/site-links";
 import { WorldMap, type MapMarker } from "@/components/shared/world-map";
 
 const HERO_BG = "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1920&q=70";
@@ -480,12 +481,15 @@ export default function CompanyPage() {
                 </Link>
               </Button>
               <Button
+                asChild
                 size="lg"
                 variant="outline"
                 className="h-12 border-white/25 bg-transparent px-6 text-base text-white hover:bg-white/10"
               >
-                <Download className="mr-2 h-4 w-4" />
-                {t("cta.requestProfile")}
+                <a href={CATALOG_PDF} download>
+                  <Download className="mr-2 h-4 w-4" />
+                  {t("cta.requestProfile")}
+                </a>
               </Button>
             </motion.div>
           </div>
